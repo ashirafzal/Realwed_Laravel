@@ -272,7 +272,7 @@
                         </h3>
                         <ul class="listnone">
                             <li><a href="#">About us</a></li>
-                            <li><a href="#">Contact us</a></li>
+                            <li><a href="/contact-us">Contact us</a></li>
                             <li><a href="#">Faq</a></li>
                             <li><a href="#">Pricing Plan</a></li>
                             <li><a href="#">Meet The Team</a></li>

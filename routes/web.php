@@ -30,3 +30,7 @@ Route::get('/vendor-by-category', function () {
 Route::get('/vendor-by-location', function () {
     return view('/vendorbylocation');
 });
+
+Route::get('/contact-us', function () {
+    return view('/contact-us');
+});

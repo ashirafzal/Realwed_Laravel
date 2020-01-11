@@ -30,8 +30,8 @@
        <![endif]-->
 </head>
 <body>
-   <!-- header -->
-   <div class="header">
+    <!-- header -->
+    <div class="header">
         <!-- header-top -->
         <div class="header-top">
             <div class="container">
@@ -118,7 +118,7 @@
                 <!-- page caption -->
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
                     <div class="page-caption">
-                        <h1 class="page-title">Vendor Categories</h1>
+                        <h1 class="page-title">Vendor By Location</h1>
                     </div>
                 </div>
                 <!-- /.page caption -->
@@ -131,7 +131,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
-                            <li class="breadcrumb-item active text-white" aria-current="page">Vendor Categories</li>
+                            <li class="breadcrumb-item active text-white" aria-current="page">Vendor location</li>
                         </ol>
                     </nav>
                 </div>
@@ -145,49 +145,73 @@
             <div class="row">
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/catergory-venue.jpg" alt=""></a></div>
+                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-1.jpg" alt=""></a></div>
                         <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Venue</a> <span class="category-count">(12)</span></h3>
+                            <h3 class="cateogry-title"> <a href="#">Ahmedabad</a> <span class="category-count">(12)</span></h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/catergory-photographer.jpg" alt=""></a></div>
+                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-2.jpg" alt=""></a></div>
                         <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Photographer</a> <span class="category-count">(2)</span></h3>
+                            <h3 class="cateogry-title"> <a href="#">Surat</a> <span class="category-count">(2)</span></h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/catergory-florist.jpg" alt=""></a></div>
+                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-3.jpg" alt=""></a></div>
                         <div class="category-content">
-                            <h3 class="cateogry-title"><a href="#">Florist</a> <span class="category-count">(3)</span></h3>
+                            <h3 class="cateogry-title"><a href="#">Vadodara</a> <span class="category-count">(3)</span></h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/wedding-cake-small.jpg" alt=""></a></div>
+                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-4.jpg" alt=""></a></div>
                         <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Wedding Cakes</a> <span class="category-count">(4)</span></h3>
+                            <h3 class="cateogry-title"> <a href="#">Rajkot</a> <span class="category-count">(4)</span></h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/wedding-dresses-small.jpg" alt=""></a></div>
+                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-5.jpg" alt=""></a></div>
                         <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Wedding  Dresses</a> <span class="category-count">(8)</span></h3>
+                            <h3 class="cateogry-title"> <a href="#">Jaipur</a> <span class="category-count">(8)</span></h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/wedding-dj-small.jpg" alt=""></a></div>
+                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-6.jpg" alt=""></a></div>
                         <div class="category-content">
-                            <h3 class="cateogry-title"><a href="#">Dj</a> <span class="category-count">(6)</span></h3>
+                            <h3 class="cateogry-title"><a href="#">Udaipur</a> <span class="category-count">(6)</span></h3>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="card-category">
+                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-7.jpg" alt=""></a></div>
+                        <div class="category-content">
+                            <h3 class="cateogry-title"> <a href="#">Jodhpur</a> <span class="category-count">(4)</span></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="card-category">
+                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-8.jpg" alt=""></a></div>
+                        <div class="category-content">
+                            <h3 class="cateogry-title"> <a href="#">Pune</a> <span class="category-count">(8)</span></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="card-category">
+                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-9.jpg" alt=""></a></div>
+                        <div class="category-content">
+                            <h3 class="cateogry-title"><a href="#">Mumbai</a> <span class="category-count">(6)</span></h3>
                         </div>
                     </div>
                 </div>

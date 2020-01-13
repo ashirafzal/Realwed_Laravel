@@ -34,3 +34,19 @@ Route::get('/vendor-by-location', function () {
 Route::get('/contact-us', function () {
     return view('/contact-us');
 });
+
+Route::get('/about-us', function () {
+    return view('/about-us');
+});
+
+Route::get('/faq', function () {
+    return view('/faq');
+});
+
+Route::get('/register', function () {
+    return view('/register');
+});
+
+Route::get('/signin', function () {
+    return view('/signin');
+});

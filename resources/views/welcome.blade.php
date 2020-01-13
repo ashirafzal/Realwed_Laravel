@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 col-sm-6 col-md-6 col-sm-12 col-12">
                         <div class="header-text text-right">
-                            <p>Are You Vendor?<a href="vendor-form.html" class="text-white">List Your Business</a></p>
+                            <p>Are You Vendor?<a href="/signin" class="text-white">List Your Business</a></p>
                         </div>
                     </div>
                 </div>
@@ -804,9 +804,9 @@
                             About Company
                         </h3>
                         <ul class="listnone">
-                            <li><a href="#">About us</a></li>
+                            <li><a href="/about-us">About us</a></li>
                             <li><a href="/contact-us">Contact us</a></li>
-                            <li><a href="#">Faq</a></li>
+                            <li><a href="/faq">Faq</a></li>
                             <li><a href="#">Pricing Plan</a></li>
                             <li><a href="#">Meet The Team</a></li>
                         </ul>
@@ -820,7 +820,7 @@
                             List you Business
                         </h3>
                         <p>Are you vendor ? List your venue and service get more from listing business.</p>
-                        <a href="#" class="btn btn-default">List your Business</a>
+                        <a href="/signin" class="btn btn-default">List your Business</a>
                     </div>
                 </div>
                 <!-- /.footer-widget -->

@@ -102,7 +102,6 @@
                                     </a>
                                 </li>
                             </ul>
-                            <a href="#" class="btn btn-default btn-sm">Get Started Now</a>
                         </div>
                     </nav>
                 </div>
@@ -111,121 +110,69 @@
         <!-- navigation close -->
     </div>
     <!-- /.header -->
-    <!-- page-header -->
-    <div class="page-header">
+    <!-- hero-section -->
+    <div class="hero-section">
         <div class="container">
             <div class="row">
-                <!-- page caption -->
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                    <div class="page-caption">
-                        <h1 class="page-title">Vendor By Location</h1>
-                    </div>
-                </div>
-                <!-- /.page caption -->
-            </div>
-        </div>
-        <!-- page caption -->
-        <div class="page-breadcrumb">
-            <div class="container">
-                <div class="row">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
-                            <li class="breadcrumb-item active text-white" aria-current="page">Vendor location</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-        <!-- page breadcrumb -->
-    </div>
-    <!-- /.page-header -->
-    <div class="content">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-1.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Ahmedabad</a> <span class="category-count">(12)</span></h3>
+                <div class="offset-xl-1 col-xl-10 offset-lg-1 col-lg-10 col-md-12 col-sm-12 col-12">
+                    <!-- search-block -->
+                    <div class="">
+                        <div class="text-center search-head">
+                            <h1 class="search-head-title">Find Local Wedding Vendors</h1>
+                            <p class="d-none d-xl-block d-lg-block d-sm-block text-white">Browse the best wedding vendors in your area — from venues and photographers, to wedding planners, caterers, florists and more by registering yourself.</p>
                         </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-2.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Surat</a> <span class="category-count">(2)</span></h3>
+                        <!-- /.search-block -->
+                        <!-- search-form -->
+                        <form method="post" class="needs-validation" novalidate>
+                            <div class="form-group">                              
+                                <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Enter your username" required>
+                                <div class="invalid-feedback">Please enter a valid username.</div>
+                            </div>
+                            <div class="form-group">                              
+                                <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Enter your email" required>
+                                <div class="invalid-feedback">Please enter a valid email.</div>
+                            </div>
+                            <div class="form-group">
+                                <!-- select -->
+                                <select class="wide">
+                                    <option value="Select Type">Please select type</option>
+                                    <option value="Couple">Couple</option>
+                                    <option value="Vendor">Vendor</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Enter new password" required>
+                                <div class="invalid-feedback">Please enter your new password to continue.</div>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Enter confirm password" required>
+                                <div class="invalid-feedback">Please enter your confirm password to continue.</div>
+                            </div>
+                            <button type="submit" name="login" class="btn btn-default btn-block">Register</button>
+                        </form>
+                        <!-- /.search-form -->
+                        <br/>
+                        <!-- Sign in text -->
+                        <div class="text-center search-head">
+                            <p class="d-none d-xl-block d-lg-block d-sm-block text-white">Already have an account ?
+                                <a class="text-white" href="/signin"> Sign in</a>
+                            </p>
                         </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-3.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"><a href="#">Vadodara</a> <span class="category-count">(3)</span></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-4.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Rajkot</a> <span class="category-count">(4)</span></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-5.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Jaipur</a> <span class="category-count">(8)</span></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-6.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"><a href="#">Udaipur</a> <span class="category-count">(6)</span></h3>
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-7.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Jodhpur</a> <span class="category-count">(4)</span></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-8.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Pune</a> <span class="category-count">(8)</span></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-9.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"><a href="#">Mumbai</a> <span class="category-count">(6)</span></h3>
-                        </div>
+                        <!-- /. Sign in text -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- /.hero-section -->
     <!-- social-media-section -->
     <div class="social-media-block">
         <div class="container">
             <div class="row">
-                <div class="col-xl-7 col-lg-7 col-md-6 col-sm-12 col-12">
+                <div class="col-xl-7 col-lg-7 col-md-6 col-sm-6 col-12">
                     <h3 class="text-white mb0 mt10">Would you like to connect with us</h3>
                 </div>
-                <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12 col-12 text-right">
+                <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12 text-right">
                     <div class="social-icons">
                         <a href="#" class="icon-square"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="icon-square"><i class="fab fa-twitter"></i> </a>
@@ -271,7 +218,7 @@
                             About Company
                         </h3>
                         <ul class="listnone">
-                        <li><a href="/about-us">About us</a></li>
+                            <li><a href="/about-us">About us</a></li>
                             <li><a href="/contact-us">Contact us</a></li>
                             <li><a href="/faq">Faq</a></li>
                             <li><a href="#">Pricing Plan</a></li>
@@ -310,8 +257,13 @@
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    
+   
+    <!-- owl-carousel js -->
+    <script src="js/owl.carousel.min.js"></script>
+    <!-- nice-select js -->
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/fastclick.js"></script>
     <script src="js/custom-script.js"></script>
     <script src="js/return-to-top.js"></script>
-</body>
+    </body>
 </html>

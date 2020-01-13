@@ -30,8 +30,8 @@
        <![endif]-->
 </head>
 <body>
-    <!-- header -->
-    <div class="header">
+  <!-- header -->
+  <div class="header">
         <!-- header-top -->
         <div class="header-top">
             <div class="container">
@@ -118,7 +118,7 @@
                 <!-- page caption -->
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
                     <div class="page-caption">
-                        <h1 class="page-title">Vendor By Location</h1>
+                        <h1 class="page-title">Frequantly Ask Question</h1>
                     </div>
                 </div>
                 <!-- /.page caption -->
@@ -131,7 +131,8 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
-                            <li class="breadcrumb-item active text-white" aria-current="page">Vendor location</li>
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Pages</a></li>
+                            <li class="breadcrumb-item active text-white" aria-current="page">FAQ</li>
                         </ol>
                     </nav>
                 </div>
@@ -140,84 +141,145 @@
         <!-- page breadcrumb -->
     </div>
     <!-- /.page-header -->
+    <!-- faq-page-section -->
     <div class="content">
         <div class="container">
             <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-1.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Ahmedabad</a> <span class="category-count">(12)</span></h3>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                    <div class="left-navbar mb30">
+                        <ul class="nav flex-column mb30">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#general">General</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#vendor-faq">Vendor</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#bride-groom-faq">Groom & Brides</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#pricing">Pricing</a>
+                            </li>
+                        </ul>
+                  
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Can’t find what you’re looking for </h3>
+                            <p>Contact our customer service representative for further assistance.</p>
+                            <a href="#" class="btn btn-primary">contact us</a>
                         </div>
+                        <div class="card-footer">
+                            <p class="text-default">+1 - 800-123-4567</p>
+                        </div>
+                    </div>
+                      </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+                    <div class="" id="general">
+                    <div class="card">
+                        <!-- section-title -->
+                        <h3 class="card-header bg-white">General Questions</h3>
+                        <!-- /.section-title -->
+                        <!-- faq-block -->
+                        <div class="card-body">
+                            <div class="faq-qa-block">
+                                <h4>What is weddings?</h4>
+                                <p>Nam placerat cursus euismunc tincidunt rutrum telluseu ornare velit tempor eutiam rutrum elit hendrerit, imperdiet ipsum sed, interdum velit. Fusce semper ut nisl quis finibusullam semper imperdiet erat vitae aliquam turpis ultrices at.usce tincidunt hendrerite. </p>
+                            </div>
+                            <!-- /.faq-block -->
+                            <!-- faq-block -->
+                            <div class="faq-qa-block">
+                                <h4>How does weddings work?</h4>
+                                <p>Cursus euismodunc tincidunt rutrum telluseu ornare velit tempor eutiam rutrum elit hendrerit imperdiet ipsum sedinterdum velisce semperut nisl quis finibullam semper imperdiet erat vitae aliquam turpis ultrices atusce tincidunt hendrerit hendrerit imperdiet ipsum. </p>
+                            </div>
+                            <!-- /.faq-block -->
+                            <!-- faq-block -->
+                            <div class="faq-qa-block">
+                                <h4>Why should i use weddings?</h4>
+                                <p>Placerat cursus euismounc tincidunt rutrum telluseu ornare velit tempor euiam rutrum elit hendrerit imperdiet ipsum sed, interdum velit. Fusce semper ut nisl quis finibuullam semper imperdiet eratvitae aliquam turpis ultrices atusce. </p>
+                            </div>
+                            <!-- /.faq-block -->
+                            <!-- faq-block -->
+                            <div class="faq-qa-block">
+                                <h4>Which vendor categories can sign up for the vendor accounts?</h4>
+                                <p>Serunc tincidunt rutrum tellus eu ornare velit temiam rutrum elit hendrerit, imperdiet ipsum sed, interdum vsce semper utnisluis. </p>
+                                <ul class="list-unstyled arrow">
+                                    <li> Cake & Desserts </li>
+                                    <li> DJs</li>
+                                    <li> Dress & Apparel </li>
+                                    <li> Make-Up/Hair </li>
+                                    <li> Photographers</li>
+                                    <li> Reception Location </li>
+                                    <li> Transportation </li>
+                                    <li> Videographers </li>
+                                    <li> Wedding Planners</li>
+                                </ul>
+                                <p>Ertnc tincidunt rutrum tellus, eu ornare velit tempor eu. Etiam rutrum elit hendrerit, imperdiet ipsum sedinterdum velit. </p>
+                            </div>
+                            <!-- /.faq-block -->
+                        </div>
+                        <!-- faq-block -->
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-2.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Surat</a> <span class="category-count">(2)</span></h3>
+                    <div class="" id="vendor-faq">
+                        <div class="card">
+                            <h3 class="card-header bg-white">Vendor</h3>
+                            <div class="card-body">
+                                <div class="faq-qa-block">
+                                    <h4>What information is provided for each couple?</h4>
+                                    <p>Proin aliquet ipsum etaugue euismod elemuisque vitae lacus et urna laoreet posuere. Nulla faucibus blandit metuedac posuere metusurabitur at ligula ausce et ante vest pellentesque maellentesque augue sem pharetra eget odio acconsequat malesuada orconec arcu tortore. </p>
+                                </div>
+                                <div class="faq-qa-block">
+                                    <h4>What can I display in my vendor profile?</h4>
+                                    <p>Nam placerat cursus euismunc tincidunt rutrum tellus, eu ornare velit temam rutrum elit hendrerit, imperdiet ipsum sed, interdum ve semper ut nisl quislorem ipsum sitametdinoser finibusullam semper imperdiet erat, vitae aliquam turpis ultrices at. Fusce tincidunt hendrerit </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.faq-block -->
+                    </div>
+                   <div class="" id="bride-groom-faq">
+                        <div class="card">
+                        <h3 class="card-header bg-white">Bride & Groom</h3>
+                        <!-- faq-block -->
+                        <div class="card-body">
+                            <div class="faq-qa-block">
+                                <h4>How does tiam at eros pharetra, eleifend erat vel, euismod velit. ?</h4>
+                                <p>Cursus euismodunc tincidunt rutrum telluseu ornare velit tempor eutiam rutrum elit hendrerit imperdiet ipsum sedinterdum velisce semperut nisl quis finibullam semper imperdiet erat vitae aliquam turpis ultrices atusce tincidunt hendrerit hendrerit imperdiet ipsum.</p>
+                            </div>
+                            <!-- /.faq-block -->
+                            <!-- faq-block -->
+                            <div class="faq-qa-block">
+                                <h4>Why should i roin metus erat, rhoncus vel vehicula nec?</h4>
+                                <p>Placerat cursus euismounc tincidunt rutrum telluseu ornare velit tempor euiam rutrum elit hendrerit imperdiet ipsum sed, interdum velit. Fusce semper ut nisl quis finibuullam semper imperdiet eratvitae aliquam turpis ultrices atusce. </p>
+                            </div>
+                            <!-- /.faq-block -->
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-3.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"><a href="#">Vadodara</a> <span class="category-count">(3)</span></h3>
+                   </div>
+                   <div id="pricing">
+                        <div class="card">
+                        <h3 class="card-header bg-white">Pricing</h3>
+                        <!-- faq-block -->
+                        <div class="card-body">
+                            <div class="faq-qa-block">
+                                <h4>How does tiam suscipit at nulla in pretium?</h4>
+                                <p>Cursus euismodunc tincidunt rutrum telluseu ornare velit tempor eutiam rutrum elit hendrerit imperdiet ipsum sedinterdum velisce semperut nisl quis finibullam semper imperdiet erat vitae aliquam turpis ultrices atusce tincidunt hendrerit hendrerit imperdiet ipsum.</p>
+                            </div>
+                            <!-- /.faq-block -->
+                            <!-- faq-block -->
+                            <div class="faq-qa-block">
+                                <h4>What is ellentesque id mattis mauris, vitae pulvinar augue ?</h4>
+                                <p>Placerat cursus euismounc tincidunt rutrum telluseu ornare velit tempor euiam rutrum elit hendrerit imperdiet ipsum sed, interdum velit. Fusce semper ut nisl quis finibuullam semper imperdiet eratvitae aliquam turpis ultrices atusce. </p>
+                            </div>
+                            <!-- /.faq-block -->
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-4.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Rajkot</a> <span class="category-count">(4)</span></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-5.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Jaipur</a> <span class="category-count">(8)</span></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-6.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"><a href="#">Udaipur</a> <span class="category-count">(6)</span></h3>
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-7.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Jodhpur</a> <span class="category-count">(4)</span></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-8.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"> <a href="#">Pune</a> <span class="category-count">(8)</span></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card-category">
-                        <div class="category-image zoomimg"><a href="#"><img src="images/category-location-img-9.jpg" alt=""></a></div>
-                        <div class="category-content">
-                            <h3 class="cateogry-title"><a href="#">Mumbai</a> <span class="category-count">(6)</span></h3>
-                        </div>
-                    </div>
+                   </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- /.faq-page-section -->
     <!-- social-media-section -->
     <div class="social-media-block">
         <div class="container">
@@ -271,7 +333,7 @@
                             About Company
                         </h3>
                         <ul class="listnone">
-                        <li><a href="/about-us">About us</a></li>
+                            <li><a href="/about-us">About us</a></li>
                             <li><a href="/contact-us">Contact us</a></li>
                             <li><a href="/faq">Faq</a></li>
                             <li><a href="#">Pricing Plan</a></li>
@@ -310,8 +372,54 @@
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    
+   
     <script src="js/custom-script.js"></script>
     <script src="js/return-to-top.js"></script>
+    <script src="js/jquery.slimscroll.js"></script>
+
+     <script>
+    // Select all links with hashes
+    $('.left-navbar a')
+        // Remove links that don't actually link to anything
+
+        .click(function(event) {
+            // On-page links
+            if (
+                location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
+                location.hostname == this.hostname
+            ) {
+                // Figure out element to scroll to
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                // Does a scroll target exist?
+                if (target.length) {
+                    // Only prevent default if animation is actually gonna happen
+                    event.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - 40
+                    }, 1000, function() {
+                        // Callback after animation
+                        // Must change focus!
+                        var $target = $(target);
+                        $target.focus();
+                        if ($target.is(":focus")) { // Checking if the target was focused
+                            return false;
+                        } else {
+                            $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                            $target.focus(); // Set focus again
+                        };
+                    });
+                }
+            };
+            $('.left-navbar a').each(function() {
+                $(this).removeClass('active');
+            })
+            $(this).addClass('active');
+
+
+
+        });
+    </script>
+</body>
 </body>
 </html>

@@ -118,7 +118,7 @@
                 <!-- page caption -->
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
                     <div class="page-caption">
-                        <h1 class="page-title">Contact us</h1>
+                        <h1 class="page-title">About us</h1>
                     </div>
                 </div>
                 <!-- /.page caption -->
@@ -132,7 +132,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Pages</a></li>
-                            <li class="breadcrumb-item active text-white" aria-current="page">Contact us</li>
+                            <li class="breadcrumb-item active text-white" aria-current="page">About us</li>
                         </ol>
                     </nav>
                 </div>
@@ -141,149 +141,166 @@
         <!-- page breadcrumb -->
     </div>
     <!-- /.page-header -->
-    <!-- contact-form -->
-    <div class="content">
+    <!-- about-descriptions -->
+    <div class="space-medium">
         <div class="container">
             <div class="row">
-                <div class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-12 col-12 mb60">
-                    <!-- contact-section-title -->
-                    <div class="text-center">
-                        <p class="lead">We would like to talk with you, Talk to us and we'll show you what we’ve done, and what we can do for you.
-                        </p>
+                <!--  about-details  -->
+                <div class="offset-xl-2 col-xl-8 offset-lg-2 col-lg-8 col-md-12 col-sm-12 col-12 mb60">
+                    <div class="about-descriptions text-center">
+                        <h2>Who we are</h2>
+                        <p class="lead">VendorHub is the largest and most trusted global directory connecting engaged couples with local wedding professionals. Millions of couples around the world are able to search, compare and book from a directory of over 500+ vendors.</p>
                     </div>
-                    <!-- /.contact-section-title -->
                 </div>
-                <div class="offset-xl-3 col-xl-6 offset-lg-3 col-lg-6 col-md-12 col-sm-12 col-12">
-                    <form action="https://jituchauhan.com/real-wed/realwed/contactus.php" method="post">
-                        <!-- form -->
-                        <div class="contact-form">
-                            <div class="row">
-                              
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
-                                    <!-- Text input-->
-                                    <div class="form-group service-form-group">
-                                        <label class="control-label sr-only" for="fname"></label>
-                                        <input id="fname" type="text" name="fname" placeholder="First Name" class="form-control" required>
-                                    </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb60">
+                    <img src="images/about-img-3.jpg" alt="" class="img-fluid rounded">
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb30">
+                    <div class="feature">
+                        <h3>Our Mission</h3>
+                        <p>Quisque consectauris elurpis faucibus dictum sium mi eget convallis aliquam metus ipsum volutpat nisperdiet nibh purus nec libero.</p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb30">
+                    <div class="feature">
+                        <h3>Our Vision</h3>
+                        <p>Maecenas semper dolor metus, a convallis ipsum condimentum ras eros ex, euismod vitae congue ullamcorper id ligula. </p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb30">
+                    <div class="feature">
+                        <h3>Our Purpose</h3>
+                        <p>Maecenas semper dolor metus, a convallis ipsum condimentum ras eros ex, euismod vitae congue ullamcorper id ligula. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="space-medium  bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="offset-xl-2 col-xl-8 offset-lg-2 col-lg-8 col-md-12 col-sm-12 col-12 mb60">
+                    <div class="about-descriptions text-center">
+                        <h2>VendorHub by the Numbers</h2>
+                        <p class="lead">We were first in creating content discovery and we are first in markets across the world.</p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="metrics-v2 metrics">
+                        <div class="metrics-icon"><img src="images/metrics-icon-1.png" alt="" class="img-fluid"></div>
+                        <h2 class="metrics-title">2015</h2>
+                        <h3 class="metrics-subtitle">Founded in</h3>
+                        <p>VendorHub was founded in Jhone Doe room at the University of India.</p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="metrics-v2 metrics">
+                        <div class="metrics-icon"><img src="images/metrics-icon-2.png" alt="" class="img-fluid"></div>
+                        <h2 class="metrics-title ">9</h2>
+                        <h3 class="metrics-subtitle ">Offices</h3>
+                        <p>Our company available in 9 city world wide. Nulla vehicula quis jusas fringilla tortor at effitum.</p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="metrics-v2 metrics">
+                        <div class="metrics-icon"><img src="images/metrics-icon-3.png" alt="" class="img-fluid"></div>
+                        <h2 class="metrics-title">120+</h2>
+                        <h3 class="metrics-subtitle">Our Team</h3>
+                        <p>VendorHub has grown to a team of more than 120 + talented individuals. <a href="#" class="text-default
+                        ">Meet The Team</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <!-- /.venue-categoris-section-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="offset-xl-2 col-xl-8 offset-lg-2 col-lg-8 col-md-12 col-sm-12 col-12 text-center">
+                    <div class="section-title">
+                        <h2>Meet The Leadership</h2>
+                        <p>Meet the designers, engineers, support experts, dog-lovers, hula-hoopers, pilots, and kickboxers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card-group">
+                        <div class="card card-shadow-none team-card">
+                            <img src="images/team-member-2.jpg" alt="" class="img-fluid">
+                            <div class="team-card-body border">
+                                <div class="team-head">
+                                    <h3 class="mb-1">Nancy B. Schulze</h3>
+                                    <small class="text-muted">CEO/ Founder</small>
                                 </div>
-                                <!-- Text input-->
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12  ">
-                                    <div class="form-group service-form-group">
-                                        <label class="control-label sr-only" for="lname"></label>
-                                        <input id="lname" type="text" name="lname" placeholder="Last Name" class="form-control" required>
-                                    </div>
+                                <div class="team-content">
+                                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin non ante eu leo tincidunt tincidunt. Nullam vitae odio a dolor tincidunt efficitur. Fusce in turpis laoreet, facilisis est non.</p>
                                 </div>
-                                <!-- Text input-->
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                                    <div class="form-group service-form-group">
-                                        <label class="control-label sr-only" for="email"></label>
-                                        <input id="email" type="email" name="email" placeholder="Email" class="form-control" required>
-                                    </div>
-                                </div>
-                                <!-- Text input-->
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                                    <div class="form-group service-form-group">
-                                        <label class="control-label sr-only" for="phone"></label>
-                                        <input id="phone" type="text" name="phone" placeholder="Phone" class="form-control" required>
-                                    </div>
-                                </div>
-                                <!-- select -->
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                                    <div class="form-group">
-                                        <select class="wide mb20" name="selectvendor">
-                                            <option value="Vendor Purpose">Vendor Purpose</option>
-                                            <option value="Couple">Couple</option>
-                                            <option value="Pricing">Pricing</option>
-                                            <option value="Vendor">Vendor</option>
-                                            <option value="Advertise with us">Advertise with us</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                                    <!-- textarea -->
-                                    <div class="form-group">
-                                        <label class="control-label sr-only" for="message"></label>
-                                        <textarea class="form-control" id="message" name="message" rows="3" placeholder="Messages"></textarea>
-                                    </div>
-                                </div>
-                                <!--button -->
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                                    <button type="submit" name="singlebutton" class="btn btn-default">submit</button>
+                                <div class="team-social">
+                                    <span><a href="#" class="icon-square-outline twitter-outline"><i class="fab fa-fw fa-twitter"></i></a></span>
+                                    <span><a href="#" class="icon-square-outline linkedin-outline"><i class="fab fa-fw fa-linkedin-in"></i></a></span>
                                 </div>
                             </div>
                         </div>
-                        <!-- /.form -->
-                    </form>
+                        <div class="card card-shadow-none team-card">
+                            <img src="images/team-member-1.jpg" alt="" class="img-fluid">
+                            <div class="team-card-body border">
+                                <div class="team-head">
+                                    <h3 class="mb-1">Robert E. Orlowski</h3>
+                                    <small>CEO/ Founder</small>
+                                </div>
+                                <div class="team-content">
+                                    <p>Fusce nec arcu ipsum. Aenean sit amet ante ante. Nulla ultricies vehicula purus id malesuada. Sed id metus sit amet ex rutrum ornare. Maecenas commodo erat sit amet luctus aliquet. Maecenas ut mauris id orci lobortis tincidunt.</p>
+                                </div>
+                                <div class="team-social">
+                                    <span><a href="#" class="icon-square-outline twitter-outline"><i class="fab fa-fw fa-twitter"></i></a></span>
+                                    <span><a href="#" class="icon-square-outline linkedin-outline"><i class="fab fa-fw fa-linkedin-in"></i></a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center mt40">
+                    <div class="mb30">
+                        <a href="#" class="btn btn-default">Meet The Team</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-    <!-- /.contact-form -->
-    <!-- contact-map -->
-    <div id="map"></div>
-    <!-- /.contact-map -->
-    <!-- contact-block-section -->
-    <div class="space-medium bg-white">
+    <div class="cta-third">
         <div class="container">
-            <div class="row">
-                <!-- contact-block -->
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                    <div class="contact-block">
-                        <div class="contact-icon"><i class="far fa-user-circle"></i></div>
-                        <div class="contact-content">
-                            <h3>Customer Support</h3>
-                            <p>Call our 24-hour helpline.</p>
-                            <p><strong>Phone number:</strong><span class="text-default"> +800-123-4567</span>
-                                <br> <strong>Email Us:</strong><span class="text-default"> info@realwed.com</span></p>
-                        </div>
+            <div class="row d-flex align-items-center">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+                    <div class="cta-third-content">
+                        <h2 class="text-white">Join us and help create a better future.</h2>
+                        <p>Aenean efficitur vulputate imperdiet. Morbi aliquet consequat dolor non faucibus.
+                        </p>
                     </div>
                 </div>
-                <!-- /.contact-block -->
-                <!-- contact-block -->
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                    <div class="contact-block">
-                        <div class="contact-icon"><i class="fa fa-map-marker-alt"></i></div>
-                        <div class="contact-content">
-                            <h3>Our Address</h3>
-                            <p>Our offices are located in the Georgia. </p>
-                            <p><strong>Address:</strong> 4998 Elk Creek Road
-                                <br> Canton, GA 30114
-                            </p>
-                        </div>
-                    </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 text-right">
+                    <a href="#" class="btn btn-default">Join our Team</a>
                 </div>
-                <!-- /.contact-block -->
-                <!-- contact-block -->
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                    <div class="contact-block">
-                        <div class="contact-icon"><i class="far fa-envelope"></i></div>
-                        <div class="contact-content">
-                            <h3>Other Enquiries</h3>
-                            <p>Please contact us at the email below for all other inquiries.</p>
-                            <p><strong>Email Us:</strong> <span class="text-default">info@realwed.com</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.contact-block -->
             </div>
         </div>
     </div>
-    <!-- /.contact-block-section -->
     <!-- social-media-section -->
-    <div class="social-media-block">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-7 col-lg-7 col-md-6 col-sm-12 col-12">
-                    <h3 class="text-white mb0 mt10">Would you like to connect with us</h3>
+    <div class="social-media-block ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-xl-7 col-lg-7 col-md-6 col-sm-12 col-12 ">
+                    <h3 class="text-white mb0 mt10 ">Would you like to connect with us</h3>
                 </div>
-                <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12 col-12 text-right">
-                    <div class="social-icons">
-                        <a href="#" class="icon-square"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="icon-square"><i class="fab fa-twitter"></i> </a>
-                        <a href="#" class="icon-square"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="icon-square"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="icon-square"><i class="fab fa-youtube"></i></a>
+                <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12 col-12 text-right ">
+                    <div class="social-icons ">
+                        <a href="# " class="icon-square "><i class="fab fa-facebook-f "></i></a>
+                        <a href="# " class="icon-square "><i class="fab fa-twitter "></i> </a>
+                        <a href="# " class="icon-square "><i class="fab fa-google-plus-g "></i></a>
+                        <a href="# " class="icon-square "><i class="fab fa-instagram "></i></a>
+                        <a href="# " class="icon-square "><i class="fab fa-youtube "></i></a>
                     </div>
                 </div>
             </div>
@@ -291,38 +308,39 @@
     </div>
     <!-- /.social-media-section -->
     <!-- footer-section -->
-    <div class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+    <div class="footer ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 ">
                     <!-- footer-widget -->
-                    <div class="footer-widget">
-                        <a href="#"><img src="images/footer-logo.png" alt="" class="mb20"></a>
-                        <p class="mb10">Vestibulum ante elit, convallis quis nibh in, vulputate rhoncus massa. In hac habitasse platea dictumst.</p>
+                    <div class="footer-widget ">
+                        <a href="# "><img src="images/footer-logo.png" alt=" " class="mb20 "></a>
+                        <p class="mb10 ">Vestibulum ante elit, convallis quis nibh in, vulputate rhoncus massa. In hac habitasse platea dictumst.</p>
                         <p>In hac habitasse platea dictumst simple dummy content here.</p>
                     </div>
                 </div>
                 <!-- /.footer-widget -->
                 <!-- footer-widget -->
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
-                    <div class="footer-widget">
-                        <h3 class="widget-title">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 ">
+                    <div class="footer-widget ">
+                        <h3 class="widget-title ">
                             Contact Address
                         </h3>
                         <p>4998 Elk Creek Road Canton,
-                            <br> GA 30114</p>
-                        <p class="mb0 text-default">+0-800-1234-123</p>
-                        <p class="mb0 text-default">info@realwed.com</p>
+                            <br> GA 30114
+                        </p>
+                        <p class="mb0 text-default ">+0-800-1234-123</p>
+                        <p class="mb0 text-default ">info@realwed.com</p>
                     </div>
                 </div>
                 <!-- /.footer-widget -->
                 <!-- footer-widget -->
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12">
-                    <div class="footer-widget">
-                        <h3 class="widget-title">
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12 ">
+                    <div class="footer-widget ">
+                        <h3 class="widget-title ">
                             About Company
                         </h3>
-                        <ul class="listnone">
+                        <ul class="listnone ">
                             <li><a href="/about-us">About us</a></li>
                             <li><a href="/contact-us">Contact us</a></li>
                             <li><a href="/faq">Faq</a></li>
@@ -333,13 +351,13 @@
                 </div>
                 <!-- /.footer-widget -->
                 <!-- /.footer-widget -->
-                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-6 col-12">
-                    <div class="footer-widget">
-                        <h3 class="widget-title">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-6 col-12 ">
+                    <div class="footer-widget ">
+                        <h3 class="widget-title ">
                             List you Business
                         </h3>
                         <p>Are you vendor ? List your venue and service get more from listing business.</p>
-                        <a href="/signin" class="btn btn-default">List your Business</a>
+                        <a href="/signin" class="btn btn-default ">List your Business</a>
                     </div>
                 </div>
                 <!-- /.footer-widget -->
@@ -347,10 +365,10 @@
         </div>
     </div>
     <!-- tiny-footer-section -->
-    <div class="tiny-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-right">
+    <div class="tiny-footer ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-right ">
                     <p>© 2018 RealWed. All Rights Reserved.</p>
                 </div>
             </div>
@@ -362,30 +380,8 @@
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-   
-    <!-- nice-select -->
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/fastclick.js"></script>
+ 
     <script src="js/custom-script.js"></script>
-    <script>
-    function initMap() {
-        var uluru = {
-            lat: 23.0732195,
-            lng: 72.5646902
-        };
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 17,
-            center: uluru
-        });
-        var marker = new google.maps.Marker({
-            position: uluru,
-            map: map,
-            icon: 'images/map-pin.png'
-        });
-    }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvZiQwPXkkIeXfAn-Cki9RZBj69mg-95M&amp;callback=initMap">
-    </script>
     <script src="js/return-to-top.js"></script>
 </body>
 </html>

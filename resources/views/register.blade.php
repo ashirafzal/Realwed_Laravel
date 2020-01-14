@@ -123,7 +123,7 @@
                         </div>
                         <!-- /.search-block -->
                         <!-- search-form -->
-                        <form method="post" class="needs-validation" novalidate>
+                        <form method="post" action="" class="needs-validation" novalidate>
                             <div class="form-group">                              
                                 <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Enter your username" required>
                                 <div class="invalid-feedback">Please enter a valid username.</div>

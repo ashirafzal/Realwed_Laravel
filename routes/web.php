@@ -50,3 +50,5 @@ Route::get('/register', function () {
 Route::get('/signin', function () {
     return view('/signin');
 });
+
+Route::post('/store',"login@store");

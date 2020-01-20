@@ -123,9 +123,10 @@
                         </div>
                         <!-- /.search-block -->
                         <!-- search-form -->
-                        <form method="post" action="" class="needs-validation" novalidate>
+                        <form action="/create" method="post" class="needs-validation" novalidate>
+                            {{ csrf_field() }}
                             <div class="form-group">                              
-                                <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Enter your username" required>
+                                <input type="email" name="username" class="form-control" id="inputEmail" placeholder="Enter your username" required>
                                 <div class="invalid-feedback">Please enter a valid username.</div>
                             </div>
                             <div class="form-group">                              
@@ -134,7 +135,7 @@
                             </div>
                             <div class="form-group">
                                 <!-- select -->
-                                <select class="wide">
+                                <select class="wide" name="type">
                                     <option value="Select Type">Please select type</option>
                                     <option value="Couple">Couple</option>
                                     <option value="Vendor">Vendor</option>
@@ -145,10 +146,10 @@
                                 <div class="invalid-feedback">Please enter your new password to continue.</div>
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Enter confirm password" required>
+                                <input type="password" name="confirmpassword" class="form-control" id="inputPassword" placeholder="Enter confirm password" required>
                                 <div class="invalid-feedback">Please enter your confirm password to continue.</div>
                             </div>
-                            <button type="submit" name="login" class="btn btn-default btn-block">Register</button>
+                            <button type="submit" name="register" class="btn btn-default btn-block">Register</button>
                         </form>
                         <!-- /.search-form -->
                         <br/>

@@ -51,4 +51,8 @@ Route::get('/signin', function () {
     return view('/signin');
 });
 
-Route::post('/store',"login@store");
+Route::name('login')->get('/signin', 'LoginController@index');
+
+Route::post('create',"RegisterController@insert");
+
+Route::post('userlogin',"LoginController@login");

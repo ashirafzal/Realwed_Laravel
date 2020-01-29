@@ -51,7 +51,25 @@ Route::get('/signin', function () {
     return view('/signin');
 });
 
+Route::get('/dashboard', function () {
+    return view('/dashboard');
+});
+
+Route::get('/coupledashboard', function () {
+    return view('/coupledashboard');
+});
+
+Route::get('/logout', function () {
+    return redirect()->route('killsession');
+});
+
+Route::get('/sigin', 'LoginController@index')->name('signintocontinue');
+
+Route::name('dashboard-overview')->get('/dashboard', 'DashboardController@index');
+
 Route::name('login')->get('/signin', 'LoginController@index');
+
+Route::name('killsession')->get('/signin', 'LogoutController@index');
 
 Route::post('create',"RegisterController@insert");
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Session;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
@@ -24,16 +25,22 @@ class LoginController extends Controller
         $count = count($users);
 
         if($count > 0){
-            echo 'record exist</br>';
             foreach($users as $user){
-                echo '</br>'.$user->id.'</br>';
-                echo '</br>'.$user->name.'</br>';
-                echo '</br>'.$user->email.'</br>';
-                echo '</br>'.$user->type.'</br>';
-                echo '</br>'.$user->password;
+                $userid = $user->id;
+                $username = $user->name;
+                $useremail = $user->email;
+                $usertype = $user->type;
+            }
+
+            session(['userid' => $userid,'username' => $username,'useremail' => $useremail,'usertype' => $usertype]);
+
+            if($usertype == 'Vendor'){
+                return redirect()->route('dashboard-overview');
+            }else{
+                return view('/coupledashboard');
             }
         }else{
-            echo 'record not exist';
+            return Redirect::route('signintocontinue');
         }
     }
 }

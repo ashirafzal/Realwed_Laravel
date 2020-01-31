@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Redirect;
 class RegisterController extends Controller
 {
     public function insert(Request $request) 
-    {
+    {        
         $username = $request->input('username');
         $email = $request->input('email');
         $type = $request->input('type');
         $password = $request->input('password');
-        //DB::insert('insert into appusers(name,email,type,password) values (?,?,?,?)',[$username],[$email],[$type],[$password]);
+
         DB::table('appusers')->insert(
             array(
                    'name'   =>   $username,

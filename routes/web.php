@@ -59,6 +59,10 @@ Route::get('/coupledashboard', function () {
     return view('/coupledashboard');
 });
 
+Route::get('/dashboardaddlisting', function () {
+    return view('/dashboardaddlisting');
+});
+
 Route::get('/logout', function () {
     return redirect()->route('killsession');
 });
@@ -67,7 +71,7 @@ Route::get('/sigin', 'LoginController@index')->name('signintocontinue');
 
 Route::name('dashboard-overview')->get('/dashboard', 'DashboardController@index');
 
-Route::name('login')->get('/signin', 'LoginController@index');
+Route::name('login')->get('/sigin', 'LoginController@index');
 
 Route::name('killsession')->get('/signin', 'LogoutController@index');
 

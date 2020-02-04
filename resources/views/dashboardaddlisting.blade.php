@@ -19,6 +19,11 @@
     <!-- Style CSS -->
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/offcanvas.css">
+    <!-- External script links -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
+    <!-- -->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -145,11 +150,18 @@
                 <div class="card">
                     <div class="card-header"> <h4 class="mb0">About Listing</h4></div>
                     <div class="">
-                        <form>
+                        @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                        <br>
+                        @endif
+                        <form id="addlistingform" action="addlisting" enctype="multipart/form-data" method="post">
+                            {{ csrf_field() }}
                             <!-- Form Name -->
                             <div class="venue-form-info card-body">
                                 <div class="row">
-                                   
                                     <!-- Text input-->
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="form-group">
@@ -239,7 +251,7 @@
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="form-group">
                                             <label class="control-label" for="summernote">Descriptions </label>
-                                            <textarea class="form-control" id="summernote" name="editordata" rows="6" placeholder="Write Descriptions for your venue"></textarea>
+                                            <textarea class="form-control" id="editordata" name="editordata" rows="6" placeholder="Write Descriptions for your venue"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -278,59 +290,59 @@
                                         <h3>Amenities</h3>
                                     </div>
                                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                            <label class="custom-control-label" for="customCheck1"> Groom Lounge</label>
+                                        <div class="">
+                                            <input type="checkbox" id="groomlounge" name="groomlounge" class="" id="customCheck1">
+                                            <label class="" for="customCheck1"> Groom Lounge</label>
                                         </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                            <label class="custom-control-label" for="customCheck2"> Bridal Suite</label>
+                                        <div class="">
+                                            <input type="checkbox" id="bridalsuite" name="bridalsuite" class="" id="customCheck2">
+                                            <label class="" for="customCheck2"> Bridal Suite</label>
                                         </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                            <label class="custom-control-label" for="customCheck3">Table and chairs</label>
+                                        <div class="">
+                                            <input type="checkbox" id="tableandchairs" name="tableandchairs" class="" id="customCheck3">
+                                            <label class="" for="customCheck3">Table and chairs</label>
                                         </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                            <label class="custom-control-label" for="customCheck4"> Get Ready Rooms</label>
+                                        <div class="">
+                                            <input type="checkbox" id="getreadyrooms" name="getreadyrooms" class="" id="customCheck4">
+                                            <label class="" for="customCheck4"> Get Ready Rooms</label>
                                         </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                            <label class="custom-control-label" for="customCheck5">Event Rentals</label>
+                                        <div class="">
+                                            <input type="checkbox" id="eventrentals" name="eventrentals" class="" id="customCheck5">
+                                            <label class="" for="customCheck5">Event Rentals</label>
                                         </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck6">
-                                            <label class="custom-control-label" for="customCheck6">Outside Vendors</label>
+                                        <div class="">
+                                            <input type="checkbox" id="outsidevendors" name="outsidevendors" class="" id="customCheck6">
+                                            <label class="" for="customCheck6">Outside Vendors</label>
                                         </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck7">
-                                            <label class="custom-control-label" for="customCheck7"> Bar Services</label>
+                                        <div class="">
+                                            <input type="checkbox" id="barservices" name="barservices" class="" id="customCheck7">
+                                            <label class="" for="customCheck7"> Bar Services</label>
                                         </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck8">
-                                            <label class="custom-control-label" for="customCheck8"> Catering Services</label>
+                                        <div class="">
+                                            <input type="checkbox" id="cateringservices" name="cateringservices" class="" id="customCheck8">
+                                            <label class="" for="customCheck8"> Catering Services</label>
                                         </div>
                                     </div>
                                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck9">
-                                            <label class="custom-control-label" for="customCheck9"> Clean Up</label>
+                                        <div class="">
+                                            <input type="checkbox" id="cleanup" name="cleanup" class="" id="customCheck9">
+                                            <label class="" for="customCheck9"> Clean Up</label>
                                         </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck10">
-                                            <label class="custom-control-label" for="customCheck10">Event Planner</label>
+                                        <div class="">
+                                            <input type="checkbox" id="eventplanner" name="eventplanner" class="" id="customCheck10">
+                                            <label class="" for="customCheck10">Event Planner</label>
                                         </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck11">
-                                            <label class="custom-control-label" for="customCheck11">Wifi</label>
+                                        <div class="">
+                                            <input type="checkbox" id="wifi" name="wifi" class="" id="customCheck11">
+                                            <label class="l" for="customCheck11">Wifi</label>
                                         </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck12">
-                                            <label class="custom-control-label" for="customCheck12">Pet Friendly</label>
+                                        <div class="">
+                                            <input type="checkbox" id="petfriendly" name="petfriendly" class="" id="customCheck12">
+                                            <label class="" for="customCheck12">Pet Friendly</label>
                                         </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck13">
-                                            <label class="custom-control-label" for="customCheck13">Accommodations</label>
+                                        <div class="">
+                                            <input type="checkbox" id="accommodations" name="accommodations" class="" id="customCheck13">
+                                            <label class="" for="customCheck13">Accommodations</label>
                                         </div>
                                     </div>
                                 </div>
@@ -339,50 +351,54 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <h3>Add Gallery Of Venue</h3>
-                                        
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <!-- File Button -->
                                         <div class="form-group">
-                                            <label class="control-label" for="filebutton">Browse Image</label>
-                                            <input id="filebutton" name="filebutton" class="btn btn-primary btn-block" type="file">
+                                            <label class="control-label" for="filebutton">Browse Images | Select upto 6 images</label>
+                                            <input id="filebutton" name="filebutton" onchange="readURL(this);" class="btn btn-primary btn-block" type="file">
+                                            <input id="filebutton2" name="filebutton2" onchange="readURL2(this);" class="btn btn-primary btn-block" type="file">
+                                            <input id="filebutton3" name="filebutton3" onchange="readURL3(this);" class="btn btn-primary btn-block" type="file">
+                                            <input id="filebutton4" name="filebutton4" onchange="readURL4(this);" class="btn btn-primary btn-block" type="file">
+                                            <input id="filebutton5" name="filebutton5" onchange="readURL5(this);" class="btn btn-primary btn-block" type="file">
+                                            <input id="filebutton6" name="filebutton6" onchange="readURL6(this);" class="btn btn-primary btn-block" type="file">
                                         </div>
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="row">
                                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6">
                                                 <div class="gallery-upload-img">
-                                                    <img src="images/gallery-thumb.html" alt="" class="img-fluid">
+                                                    <img src="" id="image" alt="" class="img-fluid">
                                                     <span class="delete-gallery-img"> <a href="#"><i class="fa  fa-times-circle"></i></a></span>
                                                 </div>
                                             </div>
                                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6">
                                                 <div class="gallery-upload-img">
-                                                    <img src="images/gallery-thumb.html" alt="" class="img-fluid">
+                                                    <img src="" id="image2" alt="" class="img-fluid">
                                                     <span class="delete-gallery-img"> <a href="#"><i class="fa  fa-times-circle"></i></a></span>
                                                 </div>
                                             </div>
                                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6">
                                                 <div class="gallery-upload-img">
-                                                    <img src="images/gallery-thumb.html" alt="" class="img-fluid">
+                                                    <img src="" id="image3" alt="" class="img-fluid">
                                                     <span class="delete-gallery-img"> <a href="#"><i class="fa  fa-times-circle"></i></a></span>
                                                 </div>
                                             </div>
                                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6">
                                                 <div class="gallery-upload-img">
-                                                    <img src="images/gallery-thumb.html" alt="" class="img-fluid">
+                                                    <img src="" id="image4" alt="" class="img-fluid">
                                                     <span class="delete-gallery-img"> <a href="#"><i class="fa  fa-times-circle"></i></a></span>
                                                 </div>
                                             </div>
                                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6">
                                                 <div class="gallery-upload-img">
-                                                    <img src="images/gallery-thumb.html" alt="" class="img-fluid">
+                                                    <img src="" id="image5" alt="" class="img-fluid">
                                                     <span class="delete-gallery-img"> <a href="#"><i class="fa  fa-times-circle"></i></a></span>
                                                 </div>
                                             </div>
                                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6">
                                                 <div class="gallery-upload-img">
-                                                    <img src="images/gallery-thumb.html" alt="" class="img-fluid">
+                                                    <img src="" id="image6" alt="" class="img-fluid">
                                                     <span class="delete-gallery-img"> <a href="#"><i class="fa  fa-times-circle"></i></a></span>
                                                 </div>
                                             </div>
@@ -435,7 +451,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <button class="btn btn-default" type="submit">Submit New Item</button>
+                                        <button class="btn btn-default" type="submit" name="submit">Submit New Item</button>
                                     </div>
                                 </div>
                             </div>
@@ -445,6 +461,279 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        function readURL(input) 
+        {
+            if (input.files && input.files[0])
+            {
+                var reader = new FileReader();
+
+                reader.onload = function (e) 
+                {
+                    $('#image')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL2(input) 
+        {
+            if (input.files && input.files[0])
+            {
+                var reader = new FileReader();
+
+                reader.onload = function (e) 
+                {
+                    $('#image2')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL3(input) 
+        {
+            if (input.files && input.files[0])
+            {
+                var reader = new FileReader();
+
+                reader.onload = function (e) 
+                {
+                    $('#image3')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL4(input) 
+        {
+            if (input.files && input.files[0])
+            {
+                var reader = new FileReader();
+
+                reader.onload = function (e) 
+                {
+                    $('#image4')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL5(input) 
+        {
+            if (input.files && input.files[0])
+            {
+                var reader = new FileReader();
+
+                reader.onload = function (e) 
+                {
+                    $('#image5')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL6(input) 
+        {
+            if (input.files && input.files[0])
+            {
+                var reader = new FileReader();
+
+                reader.onload = function (e) 
+                {
+                    $('#image6')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <script>
+   if ($("#addlistingform").length > 0) {
+        $("#addlistingform").validate({   
+        rules: {
+            title: {
+            required: true,
+            maxlength: 50
+        },    
+        Category: {
+                required: true,
+                minlength: 5,
+                maxlength:15,
+            },
+        seat: {
+                required: true,
+                maxlength: 50,
+                digits: true,
+            },
+        price: {
+            required: true,
+            maxlength: 50,
+        },
+        address: {
+            required: true,
+            maxlength: 50,
+        },
+        city: {
+            required: true,
+            maxlength: 50,
+        },
+        postcode: {
+            required: true,
+            maxlength: 50,
+        },
+        state: {
+            required: true,
+            maxlength: 50,
+        },
+        country: {
+            required: true,
+            maxlength: 50,
+        },
+        editordata: {
+            required: true,
+            maxlength: 50,
+        },
+        latitude: {
+            required: true,
+            maxlength: 50,
+        },
+        longitude: {
+            required: true,
+            maxlength: 50,
+        },
+        filebutton: {
+            required: true,
+        },
+        filebutton2: {
+            required: true,
+        },
+        filebutton3: {
+            required: true,
+        },
+        filebutton4: {
+            required: true,
+        },
+        filebutton5: {
+            required: true,
+        },
+        filebutton6: {
+            required: true,
+        },
+        facebook: {
+            required: true,
+            maxlength: 50,
+        },
+        instagram: {
+            required: true,
+            maxlength: 50,
+        },
+            },
+        messages: {
+            
+            title: {
+                required: "Please enter title",
+                maxlength: "Your title maxlength should be 50 characters long."
+            },
+            Category: {
+                required: "Please enter contact number",
+                minlength: "The Category should be 5 letter long",
+                maxlength: "The Category should be under 15 letters ",
+            },
+            seat: {
+                required: "Please enter a seat number",
+                seat: "Please enter a seat number",
+                },
+            price: {
+                required: "Please enter price",
+                price: "Please enter price",
+            },
+            address: {
+                required: "Please enter address",
+                address: "Please enter a address",
+                },
+            postcode: {
+                required: "Please enter a postcode",
+                postcode: "Please enter a postcode",
+            },
+            state: {
+                required: "Please enter a state",
+                state: "Please enter a state",
+            },
+            country: {
+                required: "Please enter a country",
+                country: "Please enter a country",
+            },
+            editordata: {
+                required: "Please enter a editordata",
+                editordata: "Please enter a editordata",
+            },
+            latitude: {
+                required: "Please enter a latitude",
+                latitude: "Please enter a latitude",
+            },
+            longitude: {
+                required: "Please enter a longitude",
+                longitude: "Please enter a longitude",
+            },
+            filebutton: {
+                required: "Please select image one",
+                filebutton: "Please select image one",
+            },
+            filebutton2: {
+                required: "Please select image two",
+                filebutton2: "Please select image two",
+            },
+            filebutton3: {
+                required: "Please select image three",
+                filebutton3: "Please select image three",
+            },
+            filebutton4: {
+                required: "Please select image four",
+                filebutton4: "Please select image four",
+            },
+            filebutton5: {
+                required: "Please select image five",
+                filebutton5: "Please select image five",
+            },
+            filebutton6: {
+                required: "Please select image six",
+                filebutton6: "Please select image six",
+            },
+            facebook: {
+                required: "Facebook page address required",
+                facebook: "Facebook page address required",
+            },
+            instagram: {
+                required: "Instagram page address required",
+                instagram: "Instagram page address required",
+            },
+            },
+            })
+    }
+    </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

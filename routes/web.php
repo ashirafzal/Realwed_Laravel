@@ -69,6 +69,10 @@ Route::get('/logout', function () {
 
 Route::get('/sigin', 'LoginController@index')->name('signintocontinue');
 
+Route::get('addlisting-success', 'AddListingController@index');
+
+Route::post('addlisting',"AddListingController@save");
+
 Route::name('dashboard-overview')->get('/dashboard', 'DashboardController@index');
 
 Route::name('login')->get('/sigin', 'LoginController@index');

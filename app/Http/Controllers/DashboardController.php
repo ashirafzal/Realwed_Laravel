@@ -23,7 +23,6 @@ class DashboardController extends Controller
         }else{
             return view('dashboard')
             ->with('username', $request->session()->get('username'));
-        }
-        //return view('dashboard');        
+        }        
     }
 }

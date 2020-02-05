@@ -20,7 +20,7 @@ class LoginController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
 
-        $users = DB::select("select * from appusers where email = '$email' and password = '$password' ");
+        $users = DB::select("select * from appusers where email = '$email' and userpassword = '$password' ");
 
         $count = count($users);
 
@@ -30,9 +30,10 @@ class LoginController extends Controller
                 $username = $user->name;
                 $useremail = $user->email;
                 $usertype = $user->type;
+                $userpass = $user->userpassword;
             }
 
-            session(['userid' => $userid,'username' => $username,'useremail' => $useremail,'usertype' => $usertype]);
+            session(['userid' => $userid,'username' => $username,'useremail' => $useremail,'usertype' => $usertype,'userpass' => $userpass]);
 
             if($usertype == 'Vendor'){
                 return redirect()->route('dashboard-overview');

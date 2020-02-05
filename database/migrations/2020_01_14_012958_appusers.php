@@ -18,7 +18,14 @@ class Appusers extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('type');
-            $table->string('password');
+            $table->string('userpassword');
+            $table->string('phone');
+            $table->string('description');
+            $table->binary('userimage');
+            $table->string('facebook');
+            $table->string('twitter');
+            $table->string('instagram');
+            $table->string('youtube');
             $table->timestamps();
         });
     }

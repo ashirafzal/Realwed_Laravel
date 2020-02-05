@@ -102,7 +102,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <a href="#" class="btn btn-default btn-sm">Get Started Now</a>
+                            <a href="/sigin" class="btn btn-default btn-sm">Get Started Now</a>
                         </div>
                     </nav>
                 </div>
@@ -817,10 +817,10 @@
                 <div class="col-xl-3 col-lg-3 col-md-12 col-sm-6 col-12">
                     <div class="footer-widget">
                         <h3 class="widget-title">
-                            List you Business
+                            List your Business
                         </h3>
                         <p>Are you vendor ? List your venue and service get more from listing business.</p>
-                        <a href="/signin" class="btn btn-default">List your Business</a>
+                        <a href="/sigin" class="btn btn-default">List your Business</a>
                     </div>
                 </div>
                 <!-- /.footer-widget -->

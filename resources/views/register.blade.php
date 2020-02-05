@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 col-sm-6 col-md-6 col-sm-12 col-12">
                         <div class="header-text text-right">
-                            <p>Are You Vendor?<a href="/signin" class="text-white">List Your Business</a></p>
+                            <p>Are You Vendor?<a href="/sigin" class="text-white">List Your Business</a></p>
                         </div>
                     </div>
                 </div>
@@ -235,7 +235,7 @@
                             List you Business
                         </h3>
                         <p>Are you vendor ? List your venue and service get more from listing business.</p>
-                        <a href="/signin" class="btn btn-default">List your Business</a>
+                        <a href="/sigin" class="btn btn-default">List your Business</a>
                     </div>
                 </div>
                 <!-- /.footer-widget -->

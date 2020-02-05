@@ -47,9 +47,17 @@ Route::get('/register', function () {
     return view('/register');
 });
 
-Route::get('/signin', function () {
+Route::get('/sigin', function () {
     return view('/signin');
 });
+
+Route::get('mylisting', 'MylistedItems@index');
+
+Route::get('myprofile', 'myprofile@index');
+
+Route::get('updateuser',"myprofile@save");
+
+Route::get('passwordupdate',"myprofile@updatepassword");
 
 Route::get('/dashboard', function () {
     return view('/dashboard');

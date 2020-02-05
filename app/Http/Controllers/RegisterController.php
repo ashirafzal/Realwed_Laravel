@@ -22,7 +22,7 @@ class RegisterController extends Controller
                    'name'   =>   $username,
                    'email'   =>   $email,
                    'type'   =>   $type,
-                   'password'   =>   $password
+                   'userpassword'   =>   $password
             )
        );
 

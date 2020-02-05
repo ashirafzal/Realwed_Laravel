@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 col-sm-6 col-md-6 col-sm-12 col-12">
                         <div class="header-text text-right">
-                            <p>Are You Vendor?<a href="vendor-form.html" class="text-white">List Your Business</a></p>
+                            <p>Are You Vendor?<a href="/sigin" class="text-white">List Your Business</a></p>
                         </div>
                     </div>
                 </div>
@@ -160,11 +160,11 @@
                 </div>
                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12 text-right">
                     <div class="social-icons">
-                        <a href="#" class="icon-square"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="icon-square"><i class="fab fa-twitter"></i> </a>
-                        <a href="#" class="icon-square"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="icon-square"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="icon-square"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com" class="icon-square"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.twitter.com" class="icon-square"><i class="fab fa-twitter"></i> </a>
+                        <a href="https://www.google.com" class="icon-square"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="https://www.instagram.com" class="icon-square"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com" class="icon-square"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>

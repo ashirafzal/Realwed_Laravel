@@ -18,7 +18,8 @@ class AddListingController extends Controller
         $username = Session::get('username');
         $useremail = Session::get('useremail');
         $usertype = Session::get('usertype');
-        return view('dashboardaddlisting');
+ 
+        return view('dashboardaddlisting')->with('username',session()->get('username'));
     }
 
     public function save(Request $request)

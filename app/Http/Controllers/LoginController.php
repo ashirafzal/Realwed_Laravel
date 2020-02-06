@@ -33,7 +33,8 @@ class LoginController extends Controller
                 $userpass = $user->userpassword;
             }
 
-            session(['userid' => $userid,'username' => $username,'useremail' => $useremail,'usertype' => $usertype,'userpass' => $userpass]);
+            session(['userid' => $userid,'username' => $username,'useremail' => $useremail,
+            'usertype' => $usertype,'userpass' => $userpass]);
 
             if($usertype == 'Vendor'){
                 return redirect()->route('dashboard-overview');
@@ -41,7 +42,7 @@ class LoginController extends Controller
                 return view('/coupledashboard');
             }
         }else{
-            return Redirect::route('signintocontinue');
+            return Redirect::route('killsession');
         }
     }
 }

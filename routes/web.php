@@ -57,7 +57,7 @@ Route::get('myprofile', 'myprofile@index');
 
 Route::get('updateuser',"myprofile@save");
 
-Route::get('passwordupdate',"myprofile@updatepassword");
+Route::post('updatepassword',"myprofile@updatepassword");
 
 Route::get('/dashboard', function () {
     return view('/dashboard');
@@ -83,9 +83,9 @@ Route::post('addlisting',"AddListingController@save");
 
 Route::name('dashboard-overview')->get('/dashboard', 'DashboardController@index');
 
-Route::name('login')->get('/sigin', 'LoginController@index');
+Route::name('login')->get('/signin', 'LoginController@index');
 
-Route::name('killsession')->get('/signin', 'LogoutController@index');
+Route::name('killsession')->get('/sigin', 'LogoutController@index');
 
 Route::post('create',"RegisterController@insert");
 

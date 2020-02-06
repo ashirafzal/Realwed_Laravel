@@ -19,7 +19,9 @@ class myprofile extends Controller
         $useremail = Session::get('useremail');
         $usertype = Session::get('usertype');
 
-        return view('myprofile');       
+        $users = DB::table('appusers')->where('id',$userid)->get();
+
+        return view('myprofile',['users'=>$users]);       
     }
 
     public function save(Request $request)
@@ -54,6 +56,16 @@ class myprofile extends Controller
         $twitter = $request->input('twitter');
         $instagram = $request->input('instagram');
         $youtube = $request->input('youtube');
+
+        if($request->hasFile('image'))
+        {
+            if ($request->file('image')->isValid()) {
+                $image_name = $request->file('image')->getClientOriginalName();
+                $path = base_path() . '/public/userimage/';
+                $request->file('image')->move($path,$image_name);
+                $image = $path.$image_name;
+            }
+        }
     
        DB::table('appusers')->where('id',$vendorid)->update(array(
         'name'=>$vendorname,'email'=>$email,
@@ -70,7 +82,64 @@ class myprofile extends Controller
 
     public function updatepassword(Request $request)
     {
+        $userid = Session::get('userid');
+        $username = Session::get('username');
+        $useremail = Session::get('useremail');
+        $usertype = Session::get('usertype');
+        $userpass = Session::get('userpass');
 
+        request()->validate([
+            'currentpassword' => 'required',
+            'newpassword' => 'required',
+            'retypepassword' => 'required',
+        ]);
+
+        $currentpassword = $request->input('currentpassword');
+        $newpassword = $request->input('newpassword');
+        $retypepassword = $request->input('retypepassword');
+
+        $users = DB::select("select * from appusers where email = '$useremail' and userpassword = '$currentpassword' ");
+
+        $count = count($users);
+
+        if($count > 0){
+            foreach($users as $user)
+            {
+                $userid = $user->id;
+                $username = $user->name;
+                $useremail = $user->email;
+                $usertype = $user->type;
+                $userpass = $user->userpassword;
+                $userphone = $user->phone;
+                $userdescription = $user->description;
+                $userimage = $user->userimage;
+                $userfacebook = $user->facebook;
+                $usertwitter = $user->twitter;
+                $userinstagram = $user->instagram;
+                $useryoutube = $user->youtube;
+            }
+
+            if($newpassword == $retypepassword)
+            {
+                DB::table('appusers')->where('id',$userid)->update(array(
+                    'name'=>$username,'email'=>$useremail,
+                    'type'=>$usertype,'userpassword'=>$newpassword,
+                    'phone'=>$userphone,'description'=>$userdescription,
+                    'userimage'=>$userimage,'facebook'=>$userfacebook,
+                    'twitter'=>$usertwitter,'instagram'=>$userinstagram,
+                    'youtube'=>$useryoutube,
+                    ));
+            
+                   return Redirect::to("myprofile")->withSuccess('Password updated successfully');
+            }
+            else
+            {
+                return Redirect::to("myprofile")->withSuccess('new password & retype password doesnot matched');
+            }
+        }
+        else{
+            return Redirect::to("myprofile")->withSuccess('Current password is not correct');
+        }
     }
 
 }

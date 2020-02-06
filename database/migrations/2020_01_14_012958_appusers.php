@@ -21,7 +21,7 @@ class Appusers extends Migration
             $table->string('userpassword');
             $table->string('phone');
             $table->string('description');
-            $table->binary('userimage');
+            $table->string('userimage');
             $table->string('facebook');
             $table->string('twitter');
             $table->string('instagram');

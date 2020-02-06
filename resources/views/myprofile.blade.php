@@ -127,8 +127,11 @@
     <div class="dashboard-wrapper">
         <div class="dashboard-sidebar offcanvas-collapse">
             <div class="vendor-user-profile">
+                @foreach ($users as $user)
                 <div class="vendor-profile-img">
-                    <img src="images/dashboard-profile.jpg" alt="" class="rounded-circle"></div>
+                    <img src="userimage/IMG_20200107_201839_433.jpg" alt="" class="rounded-circle">
+                </div>
+                @endforeach
                 <h3 class="vendor-profile-name"><?php {{ echo $username = Session::get('username'); }} ?></h3>
                 <a href="#" class="edit-link">edit profile</a>
             </div>
@@ -176,8 +179,9 @@
                                         </div>
                                         <br>
                                         @endif
-                                        <form id="userupdateform" action="updateuser" enctype="multipart/form-data" method="POST">
+                                        <form id="userupdateform" action="updateuser" enctype="multipart/form-data" method="post">
                                             {{ csrf_field() }}
+                                            {{ method_field('POST') }}
                                             <!-- Form Name -->
                                             <div class="profile-upload-img">
                                                 <div class="row">
@@ -270,8 +274,15 @@
                             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                 <div class="card">
                                     <div class="card-header">Password Change</div>
+                                    @if ($message = Session::get('success'))
+                                        <div class="alert alert-success alert-block">
+                                            <button type="button" class="close" data-dismiss="alert">×</button>
+                                            <strong>{{ $message }}</strong>
+                                        </div>
+                                        <br>
+                                    @endif
                                     <div class="card-body">
-                                        <form id="updatepassword" action="passwordupdate" class="row" method="POST">
+                                        <form id="passwordupdate" action="updatepassword" class="row" method="POST">
                                         {{ csrf_field() }}
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                 <div class="form-group">
@@ -401,8 +412,10 @@
           },
         })
     }
-    if ($("#updatepassword").length > 0) {
-        $("#updatepassword").validate({   
+    </script>
+    <script>
+    if ($("#passwordupdate").length > 0) {
+        $("#passwordupdate").validate({   
         currentpassword: {
                 required: true,
                 minlength: 6,

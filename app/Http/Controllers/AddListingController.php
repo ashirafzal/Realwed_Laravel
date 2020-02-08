@@ -19,7 +19,9 @@ class AddListingController extends Controller
         $useremail = Session::get('useremail');
         $usertype = Session::get('usertype');
  
-        return view('dashboardaddlisting')->with('username',session()->get('username'));
+        $users = DB::table('appusers')->where('id',$userid)->get();
+
+        return view('dashboardaddlisting',['users'=>$users]); 
     }
 
     public function save(Request $request)
@@ -174,11 +176,6 @@ class AddListingController extends Controller
             $accommodations = "false"; 
         }
 
-        /*
-        $data = $request->all();
-        $check = Vendorlistings::create($data);
-        */
-
         $title = $request->input('title');
         $Category = $request->input('Category');
         $seat = $request->input('seat');
@@ -191,17 +188,74 @@ class AddListingController extends Controller
         $editordata = $request->input('editordata');
         $latitude = $request->input('latitude');
         $longitude = $request->input('longitude');
+        $video = $request->input('video');
+        $facebook = $request->input('facebook');
+        $twitter = $request->input('twitter');
+        $instagram = $request->input('instagram');
+        $youtube = $request->input('youtube');
+        
+        /*
         $filebutton = $request->file('filebutton');
         $filebutton2 = $request->file('filebutton2');
         $filebutton3 = $request->file('filebutton3');
         $filebutton4 = $request->file('filebutton4');
         $filebutton5 = $request->file('filebutton5');
         $filebutton6 = $request->file('filebutton6');
-        $video = $request->input('video');
-        $facebook = $request->input('facebook');
-        $twitter = $request->input('twitter');
-        $instagram = $request->input('instagram');
-        $youtube = $request->input('youtube');
+        */
+
+        if($request->hasFile('filebutton'))
+        {
+            $file = $request->file('filebutton');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('userimage',$filename);
+            $filebutton = $filename;
+        }
+
+        if($request->hasFile('filebutton2'))
+        {
+            $file = $request->file('filebutton2');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('userimage',$filename);
+            $filebutton2 = $filename;
+        }
+
+        if($request->hasFile('filebutton3'))
+        {
+            $file = $request->file('filebutton3');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('userimage',$filename);
+            $filebutton3 = $filename;
+        }
+
+        if($request->hasFile('filebutton4'))
+        {
+            $file = $request->file('filebutton4');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('userimage',$filename);
+            $filebutton4 = $filename;
+        }
+
+        if($request->hasFile('filebutton5'))
+        {
+            $file = $request->file('filebutton5');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('userimage',$filename);
+            $filebutton5 = $filename;
+        }
+
+        if($request->hasFile('filebutton6'))
+        {
+            $file = $request->file('filebutton6');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('userimage',$filename);
+            $filebutton6 = $filename;
+        }
         
 
         DB::table('vendorlistings')->insert(

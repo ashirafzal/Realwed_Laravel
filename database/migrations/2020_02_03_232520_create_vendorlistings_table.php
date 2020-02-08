@@ -44,12 +44,12 @@ class CreateVendorlistingsTable extends Migration
             $table->string('wifi');
             $table->string('petfriendly');
             $table->string('accommodations');
-            $table->binary('filebutton');
-            $table->binary('filebutton2');
-            $table->binary('filebutton3');
-            $table->binary('filebutton4');
-            $table->binary('filebutton5');
-            $table->binary('filebutton6');
+            $table->string('filebutton');
+            $table->string('filebutton2');
+            $table->string('filebutton3');
+            $table->string('filebutton4');
+            $table->string('filebutton5');
+            $table->string('filebutton6');
             $table->string('video');
             $table->string('facebook');
             $table->string('twitter');

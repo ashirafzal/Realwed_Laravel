@@ -67,9 +67,7 @@ Route::get('/coupledashboard', function () {
     return view('/coupledashboard');
 });
 
-Route::get('/dashboardaddlisting', function () {
-    return view('/dashboardaddlisting');
-});
+Route::get('/dashboardaddlisting', 'AddListingController@index');
 
 Route::get('/logout', function () {
     return redirect()->route('killsession');

@@ -194,15 +194,6 @@ class AddListingController extends Controller
         $instagram = $request->input('instagram');
         $youtube = $request->input('youtube');
         
-        /*
-        $filebutton = $request->file('filebutton');
-        $filebutton2 = $request->file('filebutton2');
-        $filebutton3 = $request->file('filebutton3');
-        $filebutton4 = $request->file('filebutton4');
-        $filebutton5 = $request->file('filebutton5');
-        $filebutton6 = $request->file('filebutton6');
-        */
-
         if($request->hasFile('filebutton'))
         {
             $file = $request->file('filebutton');

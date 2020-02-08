@@ -162,132 +162,30 @@
                 </div>
                 <div class="dashboard-vendor-list">
                     <ul class="list-unstyled">
+                         @foreach ($listing as $listing)
                         <li>
                             <div class="dashboard-list-block">
                                 <div class="row">
                                     <div class="col-xl-2 col-lg-4 col-md-12 col-sm-12 col-12">
-                                        <div class="dashboard-list-img"><a href="#"><img src="images/dashboard-list-img-1.jpg" alt="" class="img-fluid"></a></div>
+                                        <div class="dashboard-list-img">
+                                        <a href="#"><img src="userimage/{{$listing->filebutton}}" alt="Listing image" class="img-fluid"></a>
+                                    </div>
                                     </div>
                                     <div class="col-xl-7 col-lg-5 col-md-6 col-sm-12 col-12 ">
                                         <div class="dashboard-list-content">
-                                            <h3 class="mb0"><a href="#" class="title">Wedding Venue Heading Title</a></h3>
-                                            <p>1006 Fantages Way Norway, ME 04268</p>
+                                            <h3 class="mb0"><a href="#" class="title">{{ $listing->title }}</a></h3>
+                                            <p>{{ $listing->editordata }}</p>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-                                        <div class="dashboard-list-btn"><a href="#" class="btn btn-outline-violate btn-xs mr10">edit</a><a href="#" class="btn btn-outline-pink btn-xs ">delete</a></div>
+                                        <div class="dashboard-list-btn">
+                                        <a href="editlisting/{{$listing->id }}" class="btn btn-outline-violate btn-xs mr10">edit</a>
+                                        <a href="#" class="btn btn-outline-pink btn-xs ">delete</a></div>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li>
-                            <div class="dashboard-list-block">
-                                <div class="row">
-                                    <div class="col-xl-2 col-lg-4 col-md-12 col-sm-12 col-12">
-                                        <div class="dashboard-list-img"><a href="#"><img src="images/dashboard-list-img-2.jpg" alt="" class="img-fluid"></a></div>
-                                    </div>
-                                    <div class="col-xl-7 col-lg-5 col-md-6 col-sm-12 col-12">
-                                        <div class="dashboard-list-content">
-                                            <h3 class="mb0"><a href="#" class="title">Wedding Venue Heading Title</a></h3>
-                                            <p>4098 Robinson Court Lachine, MI 49753</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 ">
-                                        <div class="dashboard-list-btn"><a href="#" class="btn btn-outline-violate btn-xs mr10">edit</a><a href="#" class="btn btn-outline-pink btn-xs ">delete</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dashboard-list-block">
-                                <div class="row">
-                                    <div class="col-xl-2 col-lg-4 col-md-12 col-sm-12 col-12">
-                                        <div class="dashboard-list-img"><a href="#"><img src="images/dashboard-list-img-3.jpg" alt="" class="img-fluid"></a></div>
-                                    </div>
-                                    <div class="col-xl-7 col-lg-5 col-md-7 col-sm-12 col-12">
-                                        <div class="dashboard-list-content">
-                                            <h3 class="mb0"><a href="#" class="title">Wedding Venue Heading Title</a></h3>
-                                            <p>3316 Java Lane Orangeburg, SC 29115</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-                                        <div class="dashboard-list-btn"><a href="#" class="btn btn-outline-violate btn-xs mr10">edit</a><a href="#" class="btn btn-outline-pink btn-xs ">delete</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dashboard-list-block">
-                                <div class="row">
-                                    <div class="col-xl-2 col-lg-4 col-md-12 col-sm-12 col-12">
-                                        <div class="dashboard-list-img"><a href="#"><img src="images/dashboard-list-img-4.jpg" alt="" class="img-fluid"></a></div>
-                                    </div>
-                                    <div class="col-xl-7 col-lg-5 col-md-6 col-sm-12 col-12">
-                                        <div class="dashboard-list-content">
-                                            <h3 class="mb0"><a href="#" class="title">Wedding Venue Heading Title</a></h3>
-                                            <p>1006 Fantages Way Norway, ME 04268</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-                                        <div class="dashboard-list-btn"><a href="#" class="btn btn-outline-violate btn-xs mr10">edit</a><a href="#" class="btn btn-outline-pink btn-xs ">delete</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dashboard-list-block">
-                                <div class="row">
-                                    <div class="col-xl-2 col-lg-4 col-md-12 col-sm-12 col-12">
-                                        <div class="dashboard-list-img"><a href="#"><img src="images/dashboard-list-img-5.jpg" alt="" class="img-fluid"></a></div>
-                                    </div>
-                                    <div class="col-xl-7 col-lg-5 col-md-6 col-sm-12 col-12">
-                                        <div class="dashboard-list-content">
-                                            <h3 class="mb0"><a href="#" class="title">Wedding Venue Heading Title</a></h3>
-                                            <p>4098 Robinson Court Lachine, MI 49753</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-                                        <div class="dashboard-list-btn"><a href="#" class="btn btn-outline-violate btn-xs mr10">edit</a><a href="#" class="btn btn-outline-pink btn-xs ">delete</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dashboard-list-block">
-                                <div class="row">
-                                    <div class="col-xl-2 col-lg-4 col-md-12 col-sm-12 col-12">
-                                        <div class="dashboard-list-img"><a href="#"><img src="images/dashboard-list-img-6.jpg" alt="" class="img-fluid"></a></div>
-                                    </div>
-                                    <div class="col-xl-7 col-lg-5 col-md-6 col-sm-12 col-12">
-                                        <div class="dashboard-list-content">
-                                            <h3 class="mb0"><a href="#" class="title">Wedding Venue Heading Title</a></h3>
-                                            <p>3316 Java Lane Orangeburg, SC 29115</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-                                        <div class="dashboard-list-btn"><a href="#" class="btn btn-outline-violate btn-xs mr10">edit</a><a href="#" class="btn btn-outline-pink btn-xs ">delete</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dashboard-list-block">
-                                <div class="row">
-                                    <div class="col-xl-2 col-lg-4 col-md-12 col-sm-12 col-12">
-                                        <div class="dashboard-list-img"><a href="#"><img src="images/dashboard-list-img-4.jpg" alt="" class="img-fluid"></a></div>
-                                    </div>
-                                    <div class="col-xl-7 col-lg-5 col-md-6 col-sm-12 col-12">
-                                        <div class="dashboard-list-content">
-                                            <h3 class="mb0"><a href="#" class="title">Wedding Venue Heading Title</a></h3>
-                                            <p>3316 Java Lane Orangeburg, SC 29115</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-                                        <div class="dashboard-list-btn"><a href="#" class="btn btn-outline-violate btn-xs mr10">edit</a><a href="#" class="btn btn-outline-pink btn-xs">delete</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

@@ -10,18 +10,16 @@ use Validator,Redirect,Response;
 use App\Customer;
 use App\Http\Controllers\Controller;
 
-class MylistedItems extends Controller
+class Editlisting extends Controller
 {
-    public function index(){
-
+    public function index($id){
         $userid = Session::get('userid');
         $username = Session::get('username');
         $useremail = Session::get('useremail');
         $usertype = Session::get('usertype');
 
         $users = DB::table('appusers')->where('id',$userid)->get();
-        $listing = DB::table('vendorlistings')->where('vendorid',$userid)->get();
-        return view('mylisting',['users'=>$users , 'listing'=>$listing]);       
+        $listing = DB::table('vendorlistings')->where('id',$id)->get();
+        return view('editlisting',['users'=>$users , 'listing'=>$listing]);
     }
-
 }

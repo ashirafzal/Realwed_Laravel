@@ -123,10 +123,17 @@
                         </div>
                         <!-- /.search-block -->
                         <!-- search-form -->
-                        <form action="/create" method="post" class="needs-validation" novalidate>
+                        <form action="/create" id="register" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
                             {{ csrf_field() }}
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-info alert-block">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                                <br>
+                            @endif
                             <div class="form-group">                              
-                                <input type="email" name="username" class="form-control" id="inputEmail" placeholder="Enter your username" required>
+                                <input type="text" name="username" class="form-control" id="inputEmail" placeholder="Enter your username" required>
                                 <div class="invalid-feedback">Please enter a valid username.</div>
                             </div>
                             <div class="form-group">                              
@@ -148,6 +155,27 @@
                             <div class="form-group">
                                 <input type="password" name="confirmpassword" class="form-control" id="inputPassword" placeholder="Enter confirm password" required>
                                 <div class="invalid-feedback">Please enter your confirm password to continue.</div>
+                            </div>
+                            <div class="form-group">
+                                <input id="phone" name="phone" type="hidden" placeholder="" value="" class="form-control ">
+                            </div>
+                            <div style="display:none;" class="form-group">
+                                <textarea class="form-control" id="summernote" name="editordata" rows="6" placeholder="Write Descriptions for your venue"></textarea>
+                            </div>
+                            <div style="display:none;" class="form-group">
+                                <input type="file" name="image" id="image-upload" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input id="facebook" name="facebook" value="" type="hidden" placeholder="" class="form-control ">
+                            </div>
+                            <div class="form-group">
+                                <input id="twitter" name="twitter" value="" type="hidden" placeholder="" class="form-control ">
+                            </div>
+                            <div class="form-group">
+                                <input id="instagram" name="instagram" value="" type="hidden" placeholder="" class="form-control ">
+                            </div>
+                            <div class="form-group">
+                                <input id="youtube" name="youtube" value="" type="hidden" placeholder="" class="form-control ">
                             </div>
                             <button type="submit" name="register" class="btn btn-default btn-block">Register</button>
                         </form>
@@ -258,7 +286,6 @@
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-   
     <!-- owl-carousel js -->
     <script src="js/owl.carousel.min.js"></script>
     <!-- nice-select js -->
@@ -266,5 +293,66 @@
     <script src="js/fastclick.js"></script>
     <script src="js/custom-script.js"></script>
     <script src="js/return-to-top.js"></script>
+    <script type="text/javascript">
+    if ($("#register").length > 0) {
+        $("#register").validate({   
+            username: {
+                required: true,
+                minlength: 6,
+                maxlength: 50,
+            },
+            email: {
+            required: true,
+            maxlength: 50,
+            },
+            type: {
+            required: true,
+            maxlength: 50,
+            },
+            password: {
+            required: true,
+            minlength: 6,
+            maxlength: 50,
+            },
+            confirmpassword: {
+            required: true,
+            minlength: 6,
+            maxlength: 50,
+            },
+        },
+        messages: {
+            username: {
+                required: "Please enter username",
+                minlength: "Your username minlength should be more than 6 characters long."
+                maxlength: "Your username maxlength should not be more than 50 characters long."
+                username: "Please enter username",
+            },
+            email: {
+                required: "Please enter email",
+                email: "Please enter email",
+                email: "Please enter email",
+            },
+            type: {
+                required: "Please select type",
+                type: "Please select type",
+                 },
+            password: {
+                required: "Please enter password",
+                password: "Please enter password",
+                minlength: "Your password minlength should be more than 6 characters long."
+                maxlength: "Your password maxlength should not be more than 50 characters long."
+                password: "Please enter password",
+                 },
+            confirmpassword: {
+                required: "Please enter confirm password",
+                confirmpassword: "Please enter confirm password",
+                minlength: "Your confirm password minlength should be more than 6 characters long."
+                maxlength: "Your confirm password maxlength should not be more than 50 characters long."
+                confirmpassword: "Please enter confirm password",
+                 },
+            },
+        })
+    }
+    </script>
     </body>
 </html>

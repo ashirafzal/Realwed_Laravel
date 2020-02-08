@@ -19,6 +19,7 @@ class MylistedItems extends Controller
         $useremail = Session::get('useremail');
         $usertype = Session::get('usertype');
 
-        return view('mylisting')->with('username',session()->get('username'));       
+        $users = DB::table('appusers')->where('id',$userid)->get();
+            return view('mylisting',['users'=>$users]);       
     }
 }

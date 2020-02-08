@@ -47,7 +47,7 @@ Route::get('/register', function () {
     return view('/register');
 });
 
-Route::get('/sigin', function () {
+Route::get('/signin', function () {
     return view('/signin');
 });
 
@@ -83,7 +83,7 @@ Route::post('addlisting',"AddListingController@save");
 
 Route::name('dashboard-overview')->get('/dashboard', 'DashboardController@index');
 
-Route::name('login')->get('/signin', 'LoginController@index');
+Route::name('login')->get('/sigin', 'LoginController@index');
 
 Route::name('killsession')->get('/sigin', 'LogoutController@index');
 

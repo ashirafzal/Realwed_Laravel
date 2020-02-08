@@ -21,8 +21,9 @@ class DashboardController extends Controller
         if(! $request->session()->has('userid')) {
             return Redirect::route('signintocontinue');
         }else{
-            return view('dashboard')
-            ->with('username', $request->session()->get('username'));
+            
+            $users = DB::table('appusers')->where('id',$userid)->get();
+            return view('dashboard',['users'=>$users]); 
         }        
     }
 }

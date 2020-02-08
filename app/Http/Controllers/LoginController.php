@@ -17,6 +17,11 @@ class LoginController extends Controller
 
     public function login(Request $request){
 
+        request()->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
         $email = $request->input('email');
         $password = $request->input('password');
 
@@ -42,7 +47,7 @@ class LoginController extends Controller
                 return view('/coupledashboard');
             }
         }else{
-            return Redirect::route('killsession');
+            return Redirect::to("loginuser")->withSuccess('username or password incorrect');
         }
     }
 }

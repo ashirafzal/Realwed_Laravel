@@ -123,8 +123,15 @@
                         </div>
                         <!-- /.search-block -->
                         <!-- search-form -->
-                        <form action="/userlogin" method="post" class="needs-validation" novalidate>
-                        {{ csrf_field() }}
+                        <form action="/userlogin" id="loginuser" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+                            {{ csrf_field() }}
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-info alert-block">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                                <br>
+                            @endif
                             <div class="form-group">                              
                                 <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Enter your username" required>
                                 <div class="invalid-feedback">Please enter a valid username.</div>
@@ -251,5 +258,29 @@
     <script src="js/fastclick.js"></script>
     <script src="js/custom-script.js"></script>
     <script src="js/return-to-top.js"></script>
+    <script type="text/javascript">
+    if ($("#loginuser").length > 0) {
+        $("#loginuser").validate({   
+            email: {
+            required: true,
+            },
+            password: {
+            required: true,
+            },
+        },
+        messages: {
+            email: {
+                required: "Please enter email",
+                email: "Please enter email",
+                email: "Please enter email",
+            },
+            password: {
+                required: "Please enter password",
+                password: "Please enter password",
+                 },
+            },
+        })
+    }
+    </script>
     </body>
 </html>

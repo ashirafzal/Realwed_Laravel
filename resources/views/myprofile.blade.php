@@ -100,7 +100,11 @@
                                 </li>
                                 <li class="nav-item dropdown dropleft user-vendor ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="user-icon"> <img src="images/dashboard-profile.jpg" alt="" class="rounded-circle mb10"></span>
+                                    <span class="user-icon"> 
+                                    @foreach ($users as $user)
+                                    <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle mb10">
+                                    </span>
+                                    @endforeach
                                     <span class="user-vendor-name"><?php {{ echo $username = Session::get('username'); }} ?></span></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="/dashboard">Dashboard</a>
@@ -129,7 +133,7 @@
             <div class="vendor-user-profile">
                 @foreach ($users as $user)
                 <div class="vendor-profile-img">
-                    <img src="userimage/IMG_20200107_201839_433.jpg" alt="" class="rounded-circle">
+                    <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle">
                 </div>
                 @endforeach
                 <h3 class="vendor-profile-name"><?php {{ echo $username = Session::get('username'); }} ?></h3>
@@ -173,12 +177,13 @@
                                     <div class="card-header">Profile</div>
                                     <div class="card-body">
                                         @if ($message = Session::get('success'))
-                                        <div class="alert alert-success alert-block">
+                                        <div class="alert alert-info alert-block">
                                             <button type="button" class="close" data-dismiss="alert">×</button>
                                             <strong>{{ $message }}</strong>
                                         </div>
                                         <br>
                                         @endif
+                                        @foreach ($users as $user)
                                         <form id="userupdateform" action="updateuser" enctype="multipart/form-data" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('POST') }}
@@ -187,6 +192,7 @@
                                                 <div class="row">
                                                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
                                                         <div id="image-preview">
+                                                        <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle">
                                                         </div>
                                                         <input type="file" name="image" id="image-upload" class="upload-profile-input">
                                                     </div>
@@ -220,13 +226,13 @@
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                         <div class="form-group">
                                                             <label class="control-label" for="phone">Phone</label>
-                                                            <input id="phone" name="phone" type="text" placeholder="" class="form-control ">
+                                                            <input id="phone" name="phone" type="text" placeholder="" value="{{$user->phone}}" class="form-control ">
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                         <div class="form-group">
                                                             <label class="control-label" for="summernote">Descriptions </label>
-                                                            <textarea class="form-control" id="summernote" name="editordata" rows="6" placeholder="Write Descriptions for your venue"></textarea>
+                                                            <textarea class="form-control" id="summernote" name="editordata" rows="6" placeholder="Write Descriptions for your venue">{{$user->description}}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -241,25 +247,25 @@
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                         <div class="form-group">
                                                             <label class="control-label" for="facebook">Facebook</label>
-                                                            <input id="facebook" name="facebook" type="url" placeholder="https://www.facebook.com" class="form-control ">
+                                                            <input id="facebook" name="facebook" value="{{$user->facebook}}" type="url" placeholder="https://www.facebook.com" class="form-control ">
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                         <div class="form-group">
                                                             <label class="control-label" for="twitter">Twitter</label>
-                                                            <input id="twitter" name="twitter" type="url" placeholder="https://www.twitter.com" class="form-control">
+                                                            <input id="twitter" name="twitter" value="{{$user->twitter}}" type="url" placeholder="https://www.twitter.com" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                         <div class="form-group">
                                                             <label class="control-label" for="instagram">Instagram</label>
-                                                            <input id="instagram" name="instagram" type="url" placeholder="https://www.instagram.com" class="form-control">
+                                                            <input id="instagram" name="instagram" value="{{$user->instagram}}" type="url" placeholder="https://www.instagram.com" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                         <div class="form-group">
                                                             <label class="control-label" for="youtube">Youtube</label>
-                                                            <input id="youtube" name="youtube" type="url" placeholder="https://www.youtube.com" class="form-control">
+                                                            <input id="youtube" name="youtube" value="{{$user->youtube}}" type="url" placeholder="https://www.youtube.com" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -268,6 +274,7 @@
                                                 </div>
                                             </div>
                                         </form>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -391,7 +398,6 @@
         },
             },
         messages: {
-            
             vendorname: {
                 required: "Please enter vendorname",
                 maxlength: "Your vendorname maxlength should not be more than 50 characters long."
@@ -408,8 +414,8 @@
             editordata: {
                 required: "Please enter description",
                 editordata: "Please enter description",
+                },
             },
-          },
         })
     }
     </script>

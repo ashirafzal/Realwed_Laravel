@@ -59,12 +59,11 @@ class myprofile extends Controller
 
         if($request->hasFile('image'))
         {
-            if ($request->file('image')->isValid()) {
-                $image_name = $request->file('image')->getClientOriginalName();
-                $path = base_path() . '/public/userimage/';
-                $request->file('image')->move($path,$image_name);
-                $image = $path.$image_name;
-            }
+            $file = $request->file('image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('userimage',$filename);
+            $image = $filename;
         }
     
        DB::table('appusers')->where('id',$vendorid)->update(array(

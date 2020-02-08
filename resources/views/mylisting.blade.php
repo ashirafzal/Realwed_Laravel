@@ -94,16 +94,20 @@
                                 </li>
                                 <li class="nav-item dropdown dropleft user-vendor ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="user-icon"> <img src="images/dashboard-profile.jpg" alt="" class="rounded-circle mb10"></span>
+                                        <span class="user-icon">
+                                        @foreach ($users as $user)
+                                        <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle mb10">
+                                        @endforeach
+                                        </span>
                                         <span class="user-vendor-name"><?php {{ echo $username = Session::get('username'); }} ?></span></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                              <a class="dropdown-item" href="/dashboard">Dashboard</a>
-                                <a class="dropdown-item" href="mylisting"> My Listed Item </a>
-                                <a class="dropdown-item" href="vendor-dashboard-pricing.html">Pricing Plan</a>
-                                <a class="dropdown-item" href="vendor-dashboard-request-quote.html">Request Quotes</a>
-                                <a class="dropdown-item" href="vendor-dashboard-reviews.html">Reviews </a>
-                                <a class="dropdown-item" href="myprofile">My Profile </a>
-                                <a class="dropdown-item" href="/logout">Log Out</a>
+                                        <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                                        <a class="dropdown-item" href="mylisting"> My Listed Item </a>
+                                        <a class="dropdown-item" href="vendor-dashboard-pricing.html">Pricing Plan</a>
+                                        <a class="dropdown-item" href="vendor-dashboard-request-quote.html">Request Quotes</a>
+                                        <a class="dropdown-item" href="vendor-dashboard-reviews.html">Reviews </a>
+                                        <a class="dropdown-item" href="myprofile">My Profile </a>
+                                        <a class="dropdown-item" href="/logout">Log Out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -122,7 +126,10 @@
         <div class="dashboard-sidebar offcanvas-collapse">
             <div class="vendor-user-profile">
                 <div class="vendor-profile-img">
-                    <img src="images/dashboard-profile.jpg" alt="" class="rounded-circle"></div>
+                    @foreach ($users as $user)
+                    <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle">
+                    @endforeach
+                </div>
                 <h3 class="vendor-profile-name"><?php {{ echo $username = Session::get('username'); }} ?></h3>
                 <a href="#" class="edit-link">edit profile</a>
             </div>

@@ -23,7 +23,9 @@ class DashboardController extends Controller
         }else{
             
             $users = DB::table('appusers')->where('id',$userid)->get();
-            return view('dashboard',['users'=>$users]); 
+            $listing = DB::table('vendorlistings')->where('vendorid',$userid)->get();
+            $listing = count($listing);
+            return view('dashboard',['users'=>$users, 'listing'=>$listing]); 
         }        
     }
 }

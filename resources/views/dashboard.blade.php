@@ -8,20 +8,20 @@
   	 
        <title> Wedding Vendor &amp; Supplier Directory HTML Template - RealWed </title>
        <!-- Bootstrap -->
-       <link href="css/bootstrap.min.css" rel="stylesheet">
+       <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
        <!-- Google Fonts -->
       <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
        <!-- FontAwesome icon -->
-       <link href="fontawesome/css/fontawesome-all.css" rel="stylesheet">
+       <link href="{{ asset('fontawesome/css/fontawesome-all.css') }}" rel="stylesheet">
        <!-- Fontello icon -->
-       <link href="fontello/css/fontello.css" rel="stylesheet">
+       <link href="{{ asset('fontello/css/fontello.css') }}" rel="stylesheet">
        <!-- OwlCarosuel CSS -->
-       <link href="css/owl.carousel.css" type="text/css" rel="stylesheet">
-       <link href="css/owl.theme.default.css" type="text/css" rel="stylesheet">
+       <link href="{{ asset('css/owl.carousel.css') }}" type="text/css" rel="stylesheet">
+       <link href="{{ asset('css/owl.theme.default.css') }}" type="text/css" rel="stylesheet">
        <!-- Favicon icon -->
-       <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+       <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
        <!-- Style CSS -->
-       <link href="css/style.css" rel="stylesheet">
+       <link href="{{ asset('css/style.css') }}" rel="stylesheet">
        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
        <!--[if lt IE 9]>
@@ -52,7 +52,7 @@
                                                 <div class="list-group">
                                                     <a href="#" class="list-group-item list-group-item-action active">
                                                         <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                            <div class="notification-list-user-img"><img src="{{ asset('images/avatar-2.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
                                                             <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
                                                                 <div class="notification-date">2 min ago</div>
                                                             </div>
@@ -160,7 +160,7 @@
                         <div class="card card-summary">
                             <div class="card-body">
                                 <div class="float-left">
-                                <div class="summary-count">6</div>
+                                    <div class="summary-count">{{ $listing }}</div>
                                 <p>Total Listed Item</p>
                             </div>
                                   <div class="summary-icon"><i class="icon-051-wedding-arch"></i></div>
@@ -200,12 +200,12 @@
         </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/menumaker.min.js"></script>
-    <script src="js/custom-script.js"></script>
-     <script src="js/jquery.slimscroll.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/offcanvas.js"></script>    
+    <script src="{{ asset('js/menumaker.min.js') }}"></script>
+    <script src="{{ asset('js/custom-script.js') }}"></script>
+     <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/offcanvas.js') }}"></script>    
 </body>
 </html>

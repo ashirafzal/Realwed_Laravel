@@ -51,15 +51,19 @@ Route::get('/signin', function () {
     return view('/signin');
 });
 
+Route::get('user-singin',"LoginController@index");
+
 Route::get('mylisting', 'MylistedItems@index');
 
 Route::get('myprofile', 'myprofile@index');
 
-Route::get('updateuser',"myprofile@save");
-
 Route::post('updatepassword',"myprofile@updatepassword");
 
+Route::get('updateuser',"myprofile@save");
+
 Route::get('editlisting/{id}', 'Editlisting@index');
+
+Route::get('deletelisting/{id}', 'MylistedItems@delete');
 
 Route::get('/dashboard', function () {
     return view('/dashboard');
@@ -79,7 +83,11 @@ Route::get('/sigin', 'LoginController@index')->name('signintocontinue');
 
 Route::get('addlisting-success', 'AddListingController@index');
 
+Route::get('editlisting-success', 'MylistedItems@index');
+
 Route::post('addlisting',"AddListingController@save");
+
+Route::post('updatelisting',"Editlisting@updatelist");
 
 Route::name('dashboard-overview')->get('/dashboard', 'DashboardController@index');
 

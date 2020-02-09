@@ -164,14 +164,19 @@
                             <strong>{{ $message }}</strong>
                         </div>
                         <br>
-                        @endif
-                        @foreach ($listing as $listing)
-                        <form id="addlistingform" action="addlisting" enctype="multipart/form-data" method="post">
+                        @endif                   
+                        <form id="addlistingform" action="{{ url('updatelisting') }}" enctype="multipart/form-data" method="post">
                             {{ csrf_field() }}
+                            @foreach ($listing as $listing)
                             <!-- Form Name -->
                             <div class="venue-form-info card-body">
                                 <div class="row">
                                     <!-- Text input-->
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            <input id="title" name="listid" value="{{ $listing->id }}" type="hidden" placeholder="" class="form-control ">
+                                        </div>
+                                    </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="form-group">
                                             <label class="control-label" for="title">Title</label>
@@ -460,12 +465,12 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <button class="btn btn-default" type="submit" name="submit">Submit New Item</button>
+                                        <button class="btn btn-default" type="submit" name="update">Submit New Item</button>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </form>
-                        @endforeach
                     </div>
                 </div>
             </div>
@@ -584,6 +589,9 @@
     if ($("#addlistingform").length > 0) {
         $("#addlistingform").validate({   
         rules: {
+            listid: {
+            required: false,
+        },    
             title: {
             required: true,
             maxlength: 50

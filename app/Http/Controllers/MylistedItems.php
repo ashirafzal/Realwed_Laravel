@@ -24,4 +24,9 @@ class MylistedItems extends Controller
         return view('mylisting',['users'=>$users , 'listing'=>$listing]);       
     }
 
+    public function delete($id){
+        DB::table('vendorlistings')->where('id',$id)->delete();
+        return Redirect::to("editlisting-success")->withSuccess('Listing deleted successfully');
+    }
+
 }

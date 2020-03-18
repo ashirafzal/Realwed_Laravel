@@ -166,7 +166,7 @@
                                   <div class="summary-icon"><i class="icon-051-wedding-arch"></i></div>
 
                             </div>
-                              <div class="card-footer text-center"><a href="#">View All</a></div>
+                              <div class="card-footer text-center"><a href="mylisting">View All</a></div>
                            
                         </div>
                     </div>

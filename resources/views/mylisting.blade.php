@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-xl-10 col-lg-8 col-md-8 col-sm-6 col-6">
                     <div class="header-logo">
-                        <a href="index-2.html"><img src="images/logo.png" alt="Weddings | Find A Wedding Venue &amp; Supplier WordPress Theme"></a>
+                        <a href="/"><img src="images/logo.png" alt="Weddings | Find A Wedding Venue &amp; Supplier WordPress Theme"></a>
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6">
@@ -175,12 +175,12 @@
                                 <div class="row">
                                     <div class="col-xl-2 col-lg-4 col-md-12 col-sm-12 col-12">
                                         <div class="dashboard-list-img">
-                                        <a href="#"><img src="userimage/{{$listing->filebutton}}" alt="Listing image" class="img-fluid"></a>
+                                        <a href="list-detail/{{$listing->id }}"><img style="height:150px;" src="userimage/{{$listing->filebutton}}" alt="Listing image" class="img-fluid"></a>
                                     </div>
                                     </div>
                                     <div class="col-xl-7 col-lg-5 col-md-6 col-sm-12 col-12 ">
                                         <div class="dashboard-list-content">
-                                            <h3 class="mb0"><a href="#" class="title">{{ $listing->title }}</a></h3>
+                                            <h3 class="mb0"><a href="list-detail/{{$listing->id }}" class="title">{{ $listing->title }}</a></h3>
                                             <p>{{ $listing->editordata }}</p>
                                         </div>
                                     </div>

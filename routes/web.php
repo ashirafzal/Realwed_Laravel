@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',"WelcomeController@index");
 
 Route::get('/Dresses', function () {
     return view('/Dresses');
@@ -50,6 +48,8 @@ Route::get('/register', function () {
 Route::get('/signin', function () {
     return view('/signin');
 });
+
+Route::get('list-detail/{id}',"ListDetail@index");
 
 Route::get('user-singin',"LoginController@index");
 

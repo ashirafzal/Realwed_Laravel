@@ -8,20 +8,20 @@
   	 
        <title> Wedding Vendor &amp; Supplier Directory HTML Template - RealWed </title>
        <!-- Bootstrap -->
-       <link href="css/bootstrap.min.css" rel="stylesheet">
+       <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
        <!-- Google Fonts -->
       <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
        <!-- FontAwesome icon -->
-       <link href="fontawesome/css/fontawesome-all.css" rel="stylesheet">
+       <link href="{{ asset('fontawesome/css/fontawesome-all.css') }}" rel="stylesheet">
        <!-- Fontello icon -->
-       <link href="fontello/css/fontello.css" rel="stylesheet">
+       <link href="{{ asset('fontello/css/fontello.css') }}" rel="stylesheet">
        <!-- OwlCarosuel CSS -->
-       <link href="css/owl.carousel.css" type="text/css" rel="stylesheet">
-       <link href="css/owl.theme.default.css" type="text/css" rel="stylesheet">
+       <link href="{{ asset('css/owl.carousel.css') }}" type="text/css" rel="stylesheet">
+       <link href="{{ asset('css/owl.theme.default.css') }}" type="text/css" rel="stylesheet">
        <!-- Favicon icon -->
-       <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+       <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
        <!-- Style CSS -->
-       <link href="css/style.css" rel="stylesheet">
+       <link href="{{ asset('css/style.css') }}" rel="stylesheet">
        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
        <!--[if lt IE 9]>
@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <nav class="navbar navbar-expand-lg navbar-classic">
-                        <a class="navbar-brand" href="/"> <img src="images/logo.png" alt=""></a>
+                        <a class="navbar-brand" href="/"> <img src="{{ asset('images/logo.png') }}" alt=""></a>
                         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar-classic" aria-controls="navbar-classic" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="icon-bar top-bar mt-0"></span>
                             <span class="icon-bar middle-bar"></span>
@@ -205,31 +205,32 @@
             </div>
             <div class="venue-thumbnail-carousel">
                 <div class="owl-carousel owl-theme owl-venue-thumb-second">
+                    @foreach($listing as $listing)
                     <div class="item">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="vendor-thumbnail">
                                 <!-- Vendor thumbnail -->
                                 <div class="vendor-img zoomimg">
                                     <!-- Vendor img -->
-                                    <a href="#"><img src="images/vendor-img-1.jpg" alt=""  class="img-fluid"></a>
+                                    <a href="list-detail/{{$listing->id}}"><img style="width:400px; height:250px;" src="{{asset('userimage')}}/{{$listing->filebutton}}" alt=""  class="img-fluid"></a>
                                     <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
                                 </div>
                                 <!-- /.Vendor img -->
                                 <div class="vendor-content">
                                     <!-- Vendor Content -->
-                                    <h2 class="vendor-title"><a href="#" class="title">Wedding Venue Title Name</a></h2>
-                                    <p class="vendor-address">Ahmedabad, Gujarat.</p>
+                                    <h2 class="vendor-title"><a href="list-detail/{{$listing->id}}" class="title">{{$listing->title}}</a></h2>
+                                    <p class="vendor-address">{{$listing->city}} , {{$listing->country}}</p>
                                 </div>
                                 <!-- /.Vendor Content -->
                                 <div class="vendor-meta">
                                     <div class="vendor-meta-item vendor-meta-item-bordered">
                                         <span class="vendor-price">
-                                    $150
+                                        {{$listing->price}}
                                 </span>
                                         <span class="vendor-text">Start From</span></div>
                                     <div class="vendor-meta-item vendor-meta-item-bordered">
                                         <span class="vendor-guest">
-                                    120+
+                                        {{$listing->seat}}
                                 </span>
                                         <span class="vendor-text">Guest</span>
                                     </div>
@@ -247,132 +248,7 @@
                             <!-- /.Vendor thumbnail -->
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="vendor-thumbnail">
-                                <!-- Vendor thumbnail -->
-                                <div class="vendor-img zoomimg">
-                                    <!-- Vendor img -->
-                                    <a href="#"><img src="images/vendor-img-2.jpg" alt="" class="img-fluid"></a>
-                                    <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
-                                </div>
-                                <!-- /.Vendor img -->
-                                <div class="vendor-content">
-                                    <!-- Vendor Content -->
-                                    <h2 class="vendor-title"><a href="#" class="title">Wedding Venue Title Name</a></h2>
-                                    <p class="vendor-address">Baroda, Gujarat.</p>
-                                </div>
-                                <!-- /.Vendor Content -->
-                                <div class="vendor-meta">
-                                    <div class="vendor-meta-item vendor-meta-item-bordered">
-                                        <span class="vendor-price">
-                                    $150
-                                </span>
-                                        <span class="vendor-text">Start From</span></div>
-                                    <div class="vendor-meta-item vendor-meta-item-bordered">
-                                        <span class="vendor-guest">
-                                    120+
-                                </span>
-                                        <span class="vendor-text">Guest</span>
-                                    </div>
-                                    <div class="vendor-meta-item vendor-meta-item-bordered">
-                                        <span class="rating-star">
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rate-mute"></i> 
-                                    </span>
-                                        <span class="rating-count vendor-text">(20)</span></div>
-                                </div>
-                            </div>
-                            <!-- /.Vendor thumbnail -->
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="vendor-thumbnail">
-                                <!-- Vendor thumbnail -->
-                                <div class="vendor-img zoomimg">
-                                    <!-- Vendor img -->
-                                    <a href="#"><img src="images/vendor-img-3.jpg" alt="" class="img-fluid"></a>
-                                    <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
-                                </div>
-                                <!-- /.Vendor img -->
-                                <div class="vendor-content">
-                                    <!-- Vendor Content -->
-                                    <h2 class="vendor-title"><a href="#" class="title">Wedding Venue Title Name</a></h2>
-                                    <p class="vendor-address">Bharuch, Gujarat.</p>
-                                </div>
-                                <!-- /.Vendor Content -->
-                                <div class="vendor-meta">
-                                    <div class="vendor-meta-item vendor-meta-item-bordered">
-                                        <span class="vendor-price">
-                                    $150
-                                </span>
-                                        <span class="vendor-text">Start From</span></div>
-                                    <div class="vendor-meta-item vendor-meta-item-bordered">
-                                        <span class="vendor-guest">
-                                    120+
-                                </span>
-                                        <span class="vendor-text">Guest</span>
-                                    </div>
-                                    <div class="vendor-meta-item vendor-meta-item-bordered">
-                                        <span class="rating-star">
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rate-mute"></i> 
-                                    </span>
-                                        <span class="rating-count vendor-text">(20)</span></div>
-                                </div>
-                            </div>
-                            <!-- /.Vendor thumbnail -->
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="vendor-thumbnail">
-                                <!-- Vendor thumbnail -->
-                                <div class="vendor-img zoomimg">
-                                    <!-- Vendor img -->
-                                    <a href="#"><img src="images/vendor-img-2.jpg" alt="" class="img-fluid"></a>
-                                    <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
-                                </div>
-                                <!-- /.Vendor img -->
-                                <div class="vendor-content">
-                                    <!-- Vendor Content -->
-                                    <h2 class="vendor-title"><a href="#" class="title">Wedding Venue Title Name</a></h2>
-                                    <p class="vendor-address">Morbi, Gujarat.</p>
-                                </div>
-                                <!-- /.Vendor Content -->
-                                <div class="vendor-meta">
-                                    <div class="vendor-meta-item vendor-meta-item-bordered">
-                                        <span class="vendor-price">
-                                    $150
-                                </span>
-                                        <span class="vendor-text">Start From</span></div>
-                                    <div class="vendor-meta-item vendor-meta-item-bordered">
-                                        <span class="vendor-guest">
-                                    120+
-                                </span>
-                                        <span class="vendor-text">Guest</span>
-                                    </div>
-                                    <div class="vendor-meta-item vendor-meta-item-bordered">
-                                        <span class="rating-star">
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rate-mute"></i> 
-                                    </span>
-                                        <span class="rating-count vendor-text">(20)</span></div>
-                                </div>
-                            </div>
-                            <!-- /.Vendor thumbnail -->
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -395,7 +271,7 @@
                 <!-- venue-categoris-block-->
                 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
                     <div class="venue-categories-block zoomimg">
-                        <div class="venue-categories-img"> <a href="#"><img src="images/venue_categories_img_1.jpg" alt="" class="img-fluid"></a>
+                        <div class="venue-categories-img"> <a href="#"><img src="{{ asset('images/venue_categories_img_1.jpg') }}" alt="" class="img-fluid"></a>
                             <div class="venue-categories-overlay">
                                 <h3 class="mb0"><a href="#" class="venue-categories-title">Castles (20)</a></h3>
                             </div>
@@ -406,7 +282,7 @@
                 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
                     <!-- venue-categoris-block-->
                     <div class="venue-categories-block">
-                        <div class="venue-categories-img zoomimg"> <a href="#"><img src="images/venue_categories_img_2.jpg" alt="" class="img-fluid"></a>
+                        <div class="venue-categories-img zoomimg"> <a href="#"><img src="{{ asset('images/venue_categories_img_2.jpg') }}" alt="" class="img-fluid"></a>
                             <div class="venue-categories-overlay">
                                 <h3 class="mb0"><a href="#" class="venue-categories-title">Stately Homes (10)</a></h3>
                             </div>
@@ -417,7 +293,7 @@
                 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
                     <!-- venue-categoris-block-->
                     <div class="venue-categories-block">
-                        <div class="venue-categories-img zoomimg"> <a href="#"><img src="images/venue_categories_img_3.jpg" alt="" class="img-fluid"></a>
+                        <div class="venue-categories-img zoomimg"> <a href="#"><img src="{{ asset('images/venue_categories_img_3.jpg') }}" alt="" class="img-fluid"></a>
                             <div class="venue-categories-overlay">
                                 <h3 class="mb0"><a href="#" class="venue-categories-title">Barns (12)</a></h3>
                             </div>
@@ -428,7 +304,7 @@
                 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
                     <!-- venue-categoris-block-->
                     <div class="venue-categories-block ">
-                        <div class="venue-categories-img zoomimg"> <a href="#"><img src="images/venue_categories_img_4.jpg" alt="" class="img-fluid"></a>
+                        <div class="venue-categories-img zoomimg"> <a href="#"><img src="{{ asset('images/venue_categories_img_4.jpg') }}" alt="" class="img-fluid"></a>
                             <div class="venue-categories-overlay">
                                 <h3 class="mb0"><a href="#" class="venue-categories-title">Outdoors (18)</a></h3>
                             </div>
@@ -439,7 +315,7 @@
                 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
                     <!-- venue-categoris-block-->
                     <div class="venue-categories-block ">
-                        <div class="venue-categories-img zoomimg"> <a href="#"><img src="images/venue_categories_img_5.jpg" alt="" class="img-fluid"></a>
+                        <div class="venue-categories-img zoomimg"> <a href="#"><img src="{{ asset('images/venue_categories_img_5.jpg') }}" alt="" class="img-fluid"></a>
                             <div class="venue-categories-overlay">
                                 <h3 class="mb0"><a href="#" class="venue-categories-title">Landmarks(12)</a></h3>
                             </div>
@@ -450,7 +326,7 @@
                 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
                     <!-- venue-categoris-block-->
                     <div class="venue-categories-block">
-                        <div class="venue-categories-img zoomimg "> <a href="#"><img src="images/venue_categories_img_6.jpg" alt="" class="img-fluid"></a>
+                        <div class="venue-categories-img zoomimg "> <a href="#"><img src="{{ asset('images/venue_categories_img_6.jpg') }}" alt="" class="img-fluid"></a>
                             <div class="venue-categories-overlay">
                                 <h3 class="mb0"><a href="#" class="venue-categories-title">Restaurant (11)</a></h3>
                             </div>
@@ -490,7 +366,7 @@
                         <!-- real wedding block -->
                         <div class="real-wedding-img zoomimg">
                             <!-- real wedding img -->
-                            <a href="#"><img src="images/real-wedding-img-1.jpg" alt="Wedding Vendor & Supplier Directory HTML Template "  class="img-fluid"></a>
+                            <a href="#"><img src="{{ asset('images/real-wedding-img-1.jpg') }}" alt="Wedding Vendor & Supplier Directory HTML Template "  class="img-fluid"></a>
                         </div>
                         <!-- /.real wedding img -->
                         <div class="real-wedding-content ">
@@ -509,7 +385,7 @@
                         <!-- real wedding block -->
                         <div class="real-wedding-img zoomimg">
                             <!-- real wedding img -->
-                            <a href="#"><img src="images/real-wedding-img-4.jpg" alt="Wedding Vendor & Supplier Directory HTML Template "  class="img-fluid"></a>
+                            <a href="#"><img src="{{ asset('images/real-wedding-img-4.jpg') }}" alt="Wedding Vendor & Supplier Directory HTML Template "  class="img-fluid"></a>
                         </div>
                         <!-- /.real wedding img -->
                         <div class="real-wedding-content">
@@ -528,7 +404,7 @@
                         <!-- real wedding block -->
                         <div class="real-wedding-img zoomimg">
                             <!-- real wedding img -->
-                            <a href="#"><img src="images/real-wedding-img-2.jpg" alt="Wedding Vendor & Supplier Directory HTML Template "  class="img-fluid"></a>
+                            <a href="#"><img src="{{ asset('images/real-wedding-img-2.jpg') }}" alt="Wedding Vendor & Supplier Directory HTML Template "  class="img-fluid"></a>
                         </div>
                         <!-- /.real wedding img -->
                         <div class="real-wedding-content">
@@ -624,7 +500,7 @@
                         <div class="testimonial-icon"> <i class="fa fa-quote-right fa-default"></i></div>
                         <h3 class="testimonial-name">Barbara J. Gonzalez</h3>
                         <p class="testimonial-text">“Cras non maximus velit. Nam eleifend nibh eget erat gravida, ac fermentum turpis iaculis. Aliquam hendrerit ornare dui, rutrum luctus ipsum aliquam non. Cras non maximus velit.”</p>
-                        <div class="testimonial-pic"><img src="images/testimonial-1.jpg" class="rounded-circle" alt=""></div>
+                        <div class="testimonial-pic"><img src="{{ asset('images/testimonial-1.jpg') }}" class="rounded-circle" alt=""></div>
                         <div class="testimonial-meta">
                             <h5 class="mb0">Venue Vendor</h5>
                             <p class="testimonial-small-text mb0">Ahmedabad </p>
@@ -645,7 +521,7 @@
                         <div class="testimonial-icon"> <i class="fa fa-quote-right fa-default"></i></div>
                         <h3 class="testimonial-name">Katrina Masterpole</h3>
                         <p class="testimonial-text">“Nam eleifend nibh eget erat gravida, ac fermentum turpis iaculis. Aliquam hendrerit ornare dui, rutrum luctus ipsum aliquam stibulum ut dignissim sem. Cras non maximus velit. ”</p>
-                        <div class="testimonial-pic"><img src="images/testimonial-2.jpg" class="rounded-circle" alt=""></div>
+                        <div class="testimonial-pic"><img src="{{ asset('images/testimonial-2.jpg') }}" class="rounded-circle" alt=""></div>
                         <div class="testimonial-meta">
                             <h5 class="mb0">Photography Vendor</h5>
                             <p class="testimonial-small-text mb0">Baroda </p>
@@ -666,7 +542,7 @@
                         <div class="testimonial-icon"> <i class="fa fa-quote-right fa-default"></i></div>
                         <h3 class="testimonial-name">Amanda Tibma</h3>
                         <p class="testimonial-text">“Vestibulum ut dignissim sem. Cras non maximus velit. Nam eleifend nibh eget erat gravida, ac fermentum turpis iaculis. Aliquam hendrerit lorem ispuimi, um aliquam non.”</p>
-                        <div class="testimonial-pic"><img src="images/testimonial-3.jpg" class="rounded-circle" alt=""></div>
+                        <div class="testimonial-pic"><img src="{{ asset('images/testimonial-3.jpg') }}" class="rounded-circle" alt=""></div>
                         <div class="testimonial-meta">
                             <h5 class="mb0">Florist Vendor</h5>
                             <p class="testimonial-small-text mb0">Bhavnagar </p>
@@ -702,7 +578,7 @@
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="post-block-small text-center">
                         <div class="post-img mb30 zoomimg rounded">
-                            <a href="#"><img src="images/post-img-1.jpg" alt="" class="img-fluid "></a>
+                            <a href="#"><img src="{{ asset('images/post-img-1.jpg') }}" alt="" class="img-fluid "></a>
                         </div>
                         <h4><a href="#" class="title">Top 10 Wedding Tips for Groom & Bride</a></h4>
                         <!-- post block -->
@@ -714,7 +590,7 @@
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 rounded">
                     <div class="post-block-small text-center">
                         <div class="post-img mb30 zoomimg rounded">
-                            <a href="#"><img src="images/post-img-2.jpg" alt="" class="img-fluid "></a>
+                            <a href="#"><img src="{{ asset('images/post-img-2.jpg') }}" alt="" class="img-fluid "></a>
                         </div>
                         <h4><a href="#" class="title">Top 10 Wedding Dress Expert Collections</a></h4>
                         <!-- post block -->
@@ -726,7 +602,7 @@
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="post-block-small text-center">
                         <div class="post-img mb30 zoomimg  rounded">
-                            <a href="#"><img src="images/post-img-3.jpg" alt="" class="img-fluid  "></a>
+                            <a href="#"><img src="{{ asset('images/post-img-3.jpg') }}" alt="" class="img-fluid  "></a>
                         </div>
                         <h4><a href="#" class="title">Best Wedding Destination & Venues 2019</a></h4>
                         <!-- post block -->
@@ -738,7 +614,7 @@
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 ">
                     <div class="post-block-small text-center">
                         <div class="post-img mb30 zoomimg  rounded">
-                            <a href="#"><img src="images/post-img-4.jpg" alt="" class="img-fluid "></a>
+                            <a href="#"><img src="{{ asset('images/post-img-4.jpg') }}" alt="" class="img-fluid "></a>
                         </div>
                         <h4><a href="#" class="title">Happy Wedding Couple  Smile Enjoying  Wine</a></h4>
                         <!-- post block -->
@@ -778,7 +654,7 @@
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                     <!-- footer-widget -->
                     <div class="footer-widget">
-                        <a href="#"><img src="images/footer-logo.png" alt="" class="mb20"></a>
+                        <a href="#"><img src="{{ asset('images/footer-logo.png') }}" alt="" class="mb20"></a>
                         <p class="mb10">Vestibulum ante elit, convallis quis nibh in, vulputate rhoncus massa. In hac habitasse platea dictumst.</p>
                         <p>In hac habitasse platea dictumst simple dummy content here.</p>
                     </div>
@@ -840,16 +716,16 @@
     <!-- /.tiny-footer-section -->
     <a href="javascript:" id="return-to-top"><i class="fa fa-angle-up"></i></a>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
    
     <!-- owl-carousel js -->
-    <script src="js/owl.carousel.min.js"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <!-- nice-select js -->
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/fastclick.js"></script>
-    <script src="js/custom-script.js"></script>
-    <script src="js/return-to-top.js"></script>
+    <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('js/fastclick.js') }}"></script>
+    <script src="{{ asset('js/custom-script.js') }}"></script>
+    <script src="{{ asset('js/return-to-top.js') }}"></script>
     </body>
 </html>

@@ -1,33 +1,31 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta name="description" content="wedding vendor directory HTML template">
-  	 
-       <title> Wedding Vendor &amp; Supplier Directory HTML Template - RealWed </title>
-       <!-- Bootstrap -->
-       <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-       <!-- Google Fonts -->
-      <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-       <!-- FontAwesome icon -->
-       <link href="{{ asset('fontawesome/css/fontawesome-all.css') }}" rel="stylesheet">
-       <!-- Fontello icon -->
-       <link href="{{ asset('fontello/css/fontello.css') }}" rel="stylesheet">
-       <!-- OwlCarosuel CSS -->
-       <link href="{{ asset('css/owl.carousel.css') }}" type="text/css" rel="stylesheet">
-       <link href="{{ asset('css/owl.theme.default.css') }}" type="text/css" rel="stylesheet">
-       <!-- Favicon icon -->
-       <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
-       <!-- Style CSS -->
-       <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-       <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-       <!--[if lt IE 9]>
-         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-       <![endif]-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>RealWed | Vendor Dashboard - Request List</title>
+    <!-- Bootstrap -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <!-- FontAwesome icon -->
+    <link href="{{ asset('fontawesome/css/fontawesome-all.css') }}" rel="stylesheet">
+    <!-- Fontello icon -->
+    <link href="{{ asset('fontello/css/fontello.css') }}" rel="stylesheet">
+
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
+    <!-- Style CSS -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/offcanvas.css') }}" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body class="body-bg">
      <div class="dashboard-header">
@@ -147,52 +145,58 @@
         <div class="dashboard-content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-xl-12 col-lg-10 col-md-9 col-sm-12 col-12">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="dashboard-page-header">
-
-                            <h3 class="dashboard-page-title">Hi, Vendor.</h3>
-                            <p class="d-block">Here’s what’s happening with your wedding venue business today.</p>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h3 class="dashboard-page-title">Request List</h3>
+                                    <p>Check your request quote.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                        <div class="card card-summary">
-                            <div class="card-body">
-                                <div class="float-left">
-                                    <div class="summary-count">{{ $listing }}</div>
-                                <p>Total Listed Item</p>
+                        <div class="dashboard-filter-row mb20">
+                            <div class="row">
+                                <div class="col-xl-3">
+                                    <select class="form-control wide" id="exampleFormControlSelect1">
+                                        <option>Select Your Listing</option>
+                                        <option>Select Your Listing #1</option>
+                                        <option>Select Your Listing #2</option>
+                                        <option>Select Your Listing #3</option>
+                                        <option>Select Your Listing #4</option>
+                                    </select>
+                                </div>
                             </div>
-                                  <div class="summary-icon"><i class="icon-051-wedding-arch"></i></div>
-
-                            </div>
-                              <div class="card-footer text-center"><a href="mylisting">View All</a></div>
-                           
                         </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                        <div class="card card-summary">
-                            <div class="card-body">
-                                <div class="float-left">
-                                <div class="summary-count">2</div>
-                                <p>Request Quote</p>
+                        @if ($message = Session::get('success'))
+                            <div class="alert alert-success alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <strong>{{ $message }}</strong>
                             </div>
-                                  <div class="summary-icon"><i class="icon-021-love-1"></i></div>
-                            </div>
-                            <div class="card-footer text-center"><a href="#">View All</a></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                        <div class="card card-summary">
-                            <div class="card-body">
-                                <div class="float-left">
-                                <div class="summary-count">1</div>
-                                <p>Your Reviews</p>
-
-                            </div>
-                              <div class="summary-icon"><i class="icon-004-chat"></i></div>
-                            </div>
-                            <div class="card-footer text-center"><a href="#">View All</a></div>
+                            <br>
+                        @endif
+                        <div class="card request-list-table table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Wedding Date</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($requestquote as $requestquote)
+                                    <tr>
+                                        <td class="requester-name">{{ $requestquote->name }}</td>
+                                        <td class="wedding-date">{{ $requestquote->weddingdate }}</td>
+                                        <td class="requester-id">{{ $requestquote->email }}</td>
+                                        <td class="requester-phone">{{ $requestquote->phone }}</td>
+                                        <td class="requester-action"><a href="delete-requestquote/{{$requestquote->id}}" class="btn btn-outline-pink btn-xs">delete</a></td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -204,8 +208,11 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{ asset('js/menumaker.min.js') }}"></script>
     <script src="{{ asset('js/custom-script.js') }}"></script>
-     <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
+     <!-- nice-select js -->
+    <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('js/fastclick.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/offcanvas.js') }}"></script>    
+    <script src="{{ asset('js/offcanvas.js') }}"></script>
+    <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>    
 </body>
 </html>

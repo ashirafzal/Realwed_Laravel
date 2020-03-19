@@ -31,7 +31,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
 <body>
   <!-- header -->
   @foreach ($listing as $listing)
@@ -477,37 +476,52 @@
                     <div class="sidebar-venue" >
                         <div class="card">
                             <div class="card-body">
-                                <form>
+                                <form action="/requestquote" id="requestquote" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                                    {{ csrf_field() }}
+                                    @if ($message = Session::get('success'))
+                                        <div class="alert alert-info alert-block">
+                                            <button type="button" class="close" data-dismiss="alert">×</button>
+                                            <strong>{{ $message }}</strong>
+                                        </div>
+                                        <br>
+                                    @endif
                                     <div class="row">
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                             <h3 class="mb20">Request Quote</h3>
                                         </div>
+                                        <!-- Time field -->
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <input id="localtime" name="localtime" type="hidden" class="form-control input-md" required="">
+                                            </div>
+                                        </div>
+                                        <!-- Time Field end -->
                                         <!-- Text input-->
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                             <div class="form-group">
                                                 <label class="control-label sr-only" for="name1">Name</label>
-                                                <input id="name1" name="name1" type="text" placeholder="Name" class="form-control input-md" required="">
+                                                <input id="requestquote_name" name="requestquote_name" type="text" placeholder="Name" class="form-control input-md" required="">
                                             </div>
                                         </div>
                                         <!-- Text input-->
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                             <div class="form-group">
                                                 <label class=" control-label sr-only" for="email1">Email</label>
-                                                <input id="email1" name="email1" type="text" placeholder="Email" class="form-control input-md" required="">
+                                                <input id="requestquote_email" name="requestquote_email" type="text" placeholder="Email" class="form-control input-md" required="">
                                             </div>
                                         </div>
                                         <!-- Text input-->
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                             <div class="form-group">
                                                 <label class=" control-label sr-only" for="phone">Phone</label>
-                                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control input-md" required="">
+                                                <input id="requestquote_phone" name="requestquote_phone" type="text" placeholder="Phone" class="form-control input-md" required="">
                                             </div>
                                         </div>
                                         <!-- Text input-->
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                             <div class="form-group">
                                                 <label class="control-label sr-only" for="weddingdate">Wedding Date</label>
-                                                <input id="weddingdate" name="weddingdate" type="text" placeholder="Wedding Date" class="form-control weddingdate" required="">
+                                                <input id="requestquote_weddingdate" name="requestquote_weddingdate" type="text" placeholder="Wedding Date" class="form-control weddingdate" required="">
                                                 <div class="venue-form-calendar"><i class="far fa-calendar-alt"></i></div>
                                             </div>
                                         </div>
@@ -515,12 +529,12 @@
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                             <div class="form-group">
                                                 <label class="control-label sr-only" for="comments">Comment</label>
-                                                <textarea class="form-control" id="comments" name="comments" rows="3" placeholder="Write Comment"></textarea>
+                                                <textarea class="form-control" id="requestquote_comments" name="requestquote_comments" rows="3" placeholder="Write Comment"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-default btn-block">Submit Quote</button>
+                                                <button type="submit" id="requestquote_submit" name="requestquote_submit" class="btn btn-default btn-block">Submit Quote</button>
                                             </div>
                                         </div>
                                     </div>
@@ -715,7 +729,6 @@
     <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
     <script src="{{ asset('js/custom-script.js') }}"></script>
-   
     <script>
     function initMap() {
         var uluru = {
@@ -745,8 +758,67 @@
 
     });
     </script>
+    <script type="text/javascript">
+        var currentTime = new Date();
+        document.getElementById("localtime").value = currentTime;
+    </script>
+     <script type="text/javascript">
+    if ($("#requestquote").length > 0) {
+        $("#requestquote").validate({   
+            requestquote_name: {
+                required: true,
+                minlength: 3,
+                maxlength: 50,
+            },
+            requestquote_email: {
+            required: true,
+            maxlength: 50,
+            },
+            requestquote_phone: {
+            required: true,
+            maxlength: 50,
+            },
+            requestquote_weddingdate: {
+            required: true,
+            minlength: 6,
+            maxlength: 50,
+            },
+            requestquote_comments: {
+            required: true,
+            minlength: 6,
+            maxlength: 50,
+            },
+        },
+        messages: {
+            requestquote_name: {
+                required: "Please enter name",
+                minlength: "Your username minlength should be more than 3 characters long."
+                maxlength: "Your username maxlength should not be more than 50 characters long."
+                requestquote_name: "Please enter name",
+            },
+            requestquote_email: {
+                required: "Please enter email",
+                requestquote_email: "Please enter email",
+                requestquote_email: "Please enter email",
+            },
+            requestquote_phone: {
+                required: "Please enter your phone number",
+                requestquote_phone: "Please enter your phone number",
+                 },
+            requestquote_weddingdate: {
+                required: "Please select wedding date",
+                requestquote_weddingdate: "Please select wedding date",
+                 },
+            requestquote_comments: {
+                required: "Please enter comments",
+                requestquote_comments: "Please enter comments",
+                 },
+            },
+        })
+    }
+    </script>
     <script src="{{ asset('js/return-to-top.js') }}"></script>
-    @endforeach
-    @endforeach
+            @endforeach
+        @endforeach
 </body>
 </html>

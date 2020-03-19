@@ -104,7 +104,7 @@
                                         <a class="dropdown-item" href="/dashboard">Dashboard</a>
                                         <a class="dropdown-item" href="mylisting"> My Listed Item </a>
                                         <a class="dropdown-item" href="vendor-dashboard-pricing.html">Pricing Plan</a>
-                                        <a class="dropdown-item" href="vendor-dashboard-request-quote.html">Request Quotes</a>
+                                        <a class="dropdown-item" href="requestquote-view">Request Quotes</a>
                                         <a class="dropdown-item" href="vendor-dashboard-reviews.html">Reviews </a>
                                         <a class="dropdown-item" href="myprofile">My Profile </a>
                                         <a class="dropdown-item" href="/logout">Log Out</a>
@@ -138,7 +138,7 @@
                     <li><a href="/dashboard"><span class="dash-nav-icon"><i class="fas fa-compass"></i></span>Dashboard</a></li>
                     <li class="active"><a href="mylisting"><span class="dash-nav-icon"><i class="fas fa-list-alt"></i> </span> My Listed Item </a></li>
                     <li><a href="vendor-dashboard-pricing.html"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Pricing Plan</a></li>
-                    <li><a href="vendor-dashboard-request-quote.html"><span class="dash-nav-icon"><i class="fas fa-edit"></i></span>Request Quotes</a></li>
+                    <li><a href="requestquote-view"><span class="dash-nav-icon"><i class="fas fa-edit"></i></span>Request Quotes</a></li>
                     <li><a href="vendor-dashboard-reviews.html"><span class="dash-nav-icon"><i class="fas fa-comments"></i></span>Reviews </a></li>
                     <li><a href="myprofile"><span class="dash-nav-icon"><i class="fas fa-user-circle"></i></span>My Profile </a></li>
                     <li><a href="/logout"><span class="dash-nav-icon"><i class="fas fa-sign-out-alt"></i></span>Logout </a></li>

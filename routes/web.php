@@ -49,6 +49,12 @@ Route::get('/signin', function () {
     return view('/signin');
 });
 
+Route::get('delete-requestquote/{id}',"Requestquote@delete");
+
+Route::get('requestquote-view',"Requestquote@index");
+
+Route::post('requestquote',"ListDetail@requestquote");
+
 Route::get('list-detail/{id}',"ListDetail@index");
 
 Route::get('user-singin',"LoginController@index");

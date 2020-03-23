@@ -18,12 +18,28 @@ class ListDetail extends Controller
         $useremail = Session::get('useremail');
         $usertype = Session::get('usertype');
 
+        $qualityservices = DB::table('listing_review')->where('listid', $id)->avg('qualityservices');
+        $faciliteis = DB::table('listing_review')->where('listid', $id)->avg('faciliteis');
+        $staff = DB::table('listing_review')->where('listid', $id)->avg('staff');
+        $flexibility = DB::table('listing_review')->where('listid', $id)->avg('flexibility');
+        $valueofmoney = DB::table('listing_review')->where('listid', $id)->avg('valueofmoney');
+        $overallrating = DB::table('listing_review')->where('listid', $id)->avg('overallrating');
+        $listing_review_count = DB::table('listing_review')->where('listid', $id)->get();
+        $listing_review_count = count($listing_review_count);
+
         $listing = DB::table('vendorlistings')->where('id', $id)->get();
         $listownerid = DB::table('vendorlistings')->where('id', $id)->value('vendorid');
-        $users = DB::table('appusers')->where('id',$listownerid)->get();
+        $listowner = DB::table('appusers')->where('id',$listownerid)->get();
+        $user = DB::table('appusers')->where('id',$userid)->get();
         $requestquote = DB::table('requestquote')->where('list_creator_id', $userid)->orderBy('id', 'desc')->get();
         $last3listing = DB::table('vendorlistings')->where('vendorid',$listownerid)->orderBy('id', 'desc')->take(3)->get();
-        return view('list-detail',['users'=>$users , 'listing'=>$listing , 'last3listing'=>$last3listing]);       
+        $listing_review = DB::table('listing_review')->where('listid', $id)->orderBy('id', 'desc')->take(5)->get();
+        return view('list-detail',['user'=>$user ,'listowner'=>$listowner ,
+        'listing'=>$listing , 'listing_review'=>$listing_review , 'qualityservices' => $qualityservices,
+        'faciliteis' => $faciliteis, 'staff' => $staff , 'flexibility' => $flexibility ,
+        'valueofmoney' => $valueofmoney, 'overallrating' => $overallrating, 
+        'listing_review_count' => $listing_review_count, 'last3listing' => $last3listing]);
+               
     }
 
     public function requestquote(Request $request){
@@ -33,7 +49,7 @@ class ListDetail extends Controller
             'requestquote_email' => 'required',
             'requestquote_phone' => 'required',
             'requestquote_weddingdate' => 'required',
-            'requestquote_comments' => 'required',
+            'requestquote_comments' => 'required'
         ]);
 
         $requestquote_name = $request->input('requestquote_name');
@@ -54,11 +70,82 @@ class ListDetail extends Controller
                    'weddingdate' => $requestquote_weddingdate,
                    'comments' => $requestquote_comments,
                    'time' => $localtime,
-                   'date' => $date,
+                   'date' => $date
                    )
            );
 
-           return Redirect::to("requestquote")->withSuccess('Your Quote has been submitted to the Vendor .We will contact you soon .');
+           echo json_encode(['success'=>'Your Quote has been submitted to the Vendor .We will contact you soon .']);
+    }
+
+    public function submitreview(Request $request){
+        
+        $userid = Session::get('userid');
+        $username = Session::get('username');
+        $useremail = Session::get('useremail');
+        $usertype = Session::get('usertype');
+
+        request()->validate([
+            'listownerid' => 'required',
+            'listid' => 'required',
+            'userid' => 'required',
+            'review_text' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'qualityservices' => 'required',
+            'faciliteis' => 'required',
+            'staff' => 'required',
+            'flexibility' => 'required',
+            'valueofmoney' => 'required',
+            'overallrating' => 'required'
+        ]);
+
+        $listownerid = $request->input('listownerid');
+        $listid = $request->input('listid');
+        $userid = Session::get('userid');
+        $username = Session::get('username');
+        $useremail = Session::get('useremail');
+        $usertype = Session::get('usertype');
+        $review_text = $request->input('review_text');
+        $review_name = $request->input('name');
+        $review_email = $request->input('email');
+        $qualityservices = $request->input('qualityservices');
+        $faciliteis = $request->input('faciliteis');
+        $staff = $request->input('staff');
+        $flexibility = $request->input('flexibility');
+        $valueofmoney = $request->input('valueofmoney');
+        $overallrating = $request->input('overallrating');
+        $date = date("Y/m/d");
+
+        $userimage = DB::table('appusers')->select('userimage')->where('id',$userid)->get();
+        
+        foreach($userimage as  $userimage){
+            $userimage = $userimage->userimage;
+        }
+        
+        DB::table('listing_review')->insert(
+            array(
+                   'listownerid' => $listownerid,
+                   'listid' => $listid,
+                   'userid' => $userid,
+                   'username' => $username,
+                   'userimage' => $userimage,
+                   'useremail' => $useremail,
+                   'usertype' => $usertype,
+                   'review_text' => $review_text,
+                   'review_name' => $review_name,
+                   'review_email' => $review_email,
+                   'qualityservices' => $qualityservices,
+                   'faciliteis' => $faciliteis,
+                   'staff' => $staff,
+                   'flexibility' => $flexibility,
+                   'valueofmoney' => $valueofmoney,
+                   'overallrating' => $overallrating,
+                   'date' => $date
+                   )
+           );
+
+           echo json_encode(['success'=>'Review addded successfully.']);
+
     }
 
 }

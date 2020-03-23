@@ -63,9 +63,11 @@ Route::get('mylisting', 'MylistedItems@index');
 
 Route::get('myprofile', 'myprofile@index');
 
+Route::post('submitreview',"ListDetail@submitreview");
+
 Route::post('updatepassword',"myprofile@updatepassword");
 
-Route::get('updateuser',"myprofile@save");
+Route::post('updateuser',"myprofile@save");
 
 Route::get('editlisting/{id}', 'Editlisting@index');
 

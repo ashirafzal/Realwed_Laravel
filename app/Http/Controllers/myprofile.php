@@ -75,7 +75,7 @@ class myprofile extends Controller
         'youtube'=>$youtube,
         ));
 
-       return Redirect::to("updateuser")->withSuccess('Profile updated successfully');
+       return Redirect::to("myprofile")->withSuccess('Profile updated successfully');
        
     }
 

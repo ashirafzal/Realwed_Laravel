@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_token" content="{{csrf_token()}}" />
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>RealWed | Vendor Dashboard - Add Listing</title>
     <!-- Bootstrap -->
@@ -176,17 +177,25 @@
                                 <div class="card">
                                     <div class="card-header">Profile</div>
                                     <div class="card-body">
-                                        @if ($message = Session::get('success'))
-                                        <div class="alert alert-info alert-block">
+                                        <div class="alert alert-info alert-block" style="display:none;">
                                             <button type="button" class="close" data-dismiss="alert">×</button>
-                                            <strong>{{ $message }}</strong>
+                                            <strong></strong>
                                         </div>
-                                        <br>
-                                        @endif
+                                        <div class="alert alert-danger alert-block" style="display:none;">
+                                            <button type="button" class="close" data-dismiss="alert">×</button>
+                                            <strong></strong>
+                                        </div>
                                         @foreach ($users as $user)
-                                        <form id="userupdateform" action="updateuser" enctype="multipart/form-data" method="post">
+                                        <form id="userupdateform" action="{{ url('updateuser') }}" method="post" enctype="multipart/form-data">
                                             {{ csrf_field() }}
                                             {{ method_field('POST') }}
+                                            @if ($message = Session::get('success'))
+                                                <div class="alert alert-success alert-block">
+                                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                                    <strong>{{ $message }}</strong>
+                                                </div>
+                                                <br>
+                                            @endif
                                             <!-- Form Name -->
                                             <div class="profile-upload-img">
                                                 <div class="row">
@@ -194,7 +203,7 @@
                                                         <div id="image-preview">
                                                         <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle">
                                                         </div>
-                                                        <input type="file" name="image" id="image-upload" class="upload-profile-input">
+                                                        <input type="file" name="image" id="image" class="upload-profile-input">
                                                     </div>
                                                 </div>
                                             </div>
@@ -232,7 +241,7 @@
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                         <div class="form-group">
                                                             <label class="control-label" for="summernote">Descriptions </label>
-                                                            <textarea class="form-control" id="summernote" name="editordata" rows="6" placeholder="Write Descriptions for your venue">{{$user->description}}</textarea>
+                                                            <textarea class="form-control" id="editordata" name="editordata" rows="6" placeholder="Write Descriptions for your venue">{{$user->description}}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -269,7 +278,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                        <button class="btn btn-default" type="submit">Update profile</button>
+                                                        <button class="btn btn-default" id="submit_profile" type="submit">Update profile</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -374,51 +383,7 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-    if ($("#userupdateform").length > 0) {
-        $("#userupdateform").validate({   
-        vendorid: {
-                required: true,
-            },
-        vendorname: {
-                required: true,
-                maxlength: 50,
-            },
-        email: {
-            required: true,
-            maxlength: 50,
-        },
-        phone: {
-            required: true,
-            maxlength: 50,
-        },
-        editordata: {
-            required: true,
-            maxlength: 500,
-        },
-            },
-        messages: {
-            vendorname: {
-                required: "Please enter vendorname",
-                maxlength: "Your vendorname maxlength should not be more than 50 characters long."
-                vendorname: "Please enter vendorname",
-            },
-            email: {
-                required: "Please enter email",
-                email: "Please enter email",
-            },
-            phone: {
-                required: "Please enter a phone number",
-                phone: "Please enter a phone number",
-                },
-            editordata: {
-                required: "Please enter description",
-                editordata: "Please enter description",
-                },
-            },
-        })
-    }
-    </script>
+    
     <script>
     if ($("#passwordupdate").length > 0) {
         $("#passwordupdate").validate({   

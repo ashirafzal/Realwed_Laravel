@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_token" content="{{csrf_token()}}" />
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>List Detail - RealWed</title>
     <!-- Bootstrap -->
@@ -34,7 +35,8 @@
 <body>
   <!-- header -->
   @foreach ($listing as $listing)
-    @foreach ($users as $user)
+    @foreach ($listowner as $listowner)
+    @foreach ($user as $user)
     <div class="header">
         <!-- header-top -->
         <!-- navigation start -->
@@ -60,7 +62,7 @@
                                                 <div class="list-group">
                                                     <a href="#" class="list-group-item list-group-item-action active">
                                                         <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                            <div class="notification-list-user-img"><img src="{{ asset('images/avatar-2.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
                                                             <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
                                                                 <div class="notification-date">2 min ago</div>
                                                             </div>
@@ -68,7 +70,7 @@
                                                     </a>
                                                     <a href="#" class="list-group-item list-group-item-action">
                                                         <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                            <div class="notification-list-user-img"><img src="{{ asset('images/avatar-3.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
                                                             <div class="notification-list-user-block"><span class="notification-list-user-name">John Deo</span>is now following you
                                                                 <div class="notification-date">2 days ago</div>
                                                             </div>
@@ -76,7 +78,7 @@
                                                     </a>
                                                     <a href="#" class="list-group-item list-group-item-action">
                                                         <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                            <div class="notification-list-user-img"><img src="{{ asset('images/avatar-4.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
                                                             <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
                                                                 <div class="notification-date">2 min ago</div>
                                                             </div>
@@ -84,7 +86,7 @@
                                                     </a>
                                                     <a href="#" class="list-group-item list-group-item-action">
                                                         <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                            <div class="notification-list-user-img"><img src="{{ asset('images/avatar-4.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
                                                             <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
                                                                 <div class="notification-date">2 min ago</div>
                                                             </div>
@@ -173,7 +175,7 @@
                                     <i class="fa fa-star rated"></i>
                                     <i class="fa fa-star rate-mute"></i> 
                                     </span>
-                            <span class="rating-count vendor-text">(20)</span>
+                            <span class="rating-count vendor-text">({{$listing_review_count}})</span>
                         </div>
                     </div>
                     <div class="mt20">
@@ -268,10 +270,98 @@
                                                 <!-- review-sidebar -->
                                                 <div class="review-sidebar">
                                                     
-                                                        <div class="review-total">4.8 </div>
+                                                        <div class="review-total">{{$listing_review_count}}</div>
                                                         <div class="review-text">Reviews</div>
-                                                        <span class="rated"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa  fa-star"></i> <i class="fa fa-star"></i> </span>
-                                                        <p>4.4 average based on 1 ratings.</p>
+                                                        @if($overallrating >= 4.9)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star"></i> 
+                                                                <i class="fa  fa-star"></i>
+                                                            </span>
+                                                        @elseif($overallrating >= 4.5 && $overallrating < 5)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star"></i> 
+                                                                <i class="fa  fa-star-half"></i>
+                                                            </span>
+                                                        @elseif($overallrating >= 4)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($overallrating >= 3.5 && $overallrating < 4)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star-half"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($overallrating >= 3)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($overallrating >= 2.5 && $overallrating < 3)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star-half"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($overallrating >= 2)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($overallrating >= 1.5 && $overallrating < 2)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star-half"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($overallrating >= 1)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($overallrating >= 0.5 && $overallrating < 1)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star-half"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @else
+                                                            <span class="rated">
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @endif
+                                                        <p>{{ number_format($overallrating,1)/5 }} average based on 1 ratings.</p>
                                                     </div>
                                                 
                                                 <!-- /.review-sidebar -->
@@ -281,36 +371,486 @@
                                                 <!-- review-list -->
                                                 <div class="review-list">
                                                     <div class="review-for">Quality Service</div>
-                                                    <div class="review-rating"><span class="rated"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="far fa-star"></i> <i class="far  fa-star"></i> </span></div>
-                                                    <div class="review-number">3.0</div>
+                                                    <div class="review-rating">
+                                                    @if($qualityservices == 5)
+                                                        <span class="rated">
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa  fa-star"></i> 
+                                                            <i class="fa  fa-star"></i>
+                                                        </span>
+                                                    @elseif($qualityservices >= 4.5 && $qualityservices < 5)
+                                                        <span class="rated">
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa  fa-star"></i> 
+                                                            <i class="fa  fa-star-half"></i>
+                                                        </span>
+                                                    @elseif($qualityservices >= 4)
+                                                        <span class="rated">
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa  fa-star"></i> 
+                                                            <i class="far  fa-star"></i>
+                                                        </span>
+                                                    @elseif($qualityservices >= 3.5 && $qualityservices < 4)
+                                                        <span class="rated">
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa  fa-star-half"></i> 
+                                                            <i class="far  fa-star"></i>
+                                                        </span>
+                                                    @elseif($qualityservices >= 3)
+                                                        <span class="rated">
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="far  fa-star"></i> 
+                                                            <i class="far  fa-star"></i>
+                                                        </span>
+                                                    @elseif($qualityservices >= 2.5 && $qualityservices < 3)
+                                                        <span class="rated">
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star-half"></i> 
+                                                            <i class="far  fa-star"></i> 
+                                                            <i class="far  fa-star"></i>
+                                                        </span>
+                                                    @elseif($qualityservices >= 2)
+                                                        <span class="rated">
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="far fa-star"></i> 
+                                                            <i class="far  fa-star"></i> 
+                                                            <i class="far  fa-star"></i>
+                                                        </span>
+                                                    @elseif($qualityservices >= 1.5 && $qualityservices < 2)
+                                                        <span class="rated">
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="fa fa-star-half"></i> 
+                                                            <i class="far fa-star"></i> 
+                                                            <i class="far  fa-star"></i> 
+                                                            <i class="far  fa-star"></i>
+                                                        </span>
+                                                    @elseif($qualityservices >= 1)
+                                                        <span class="rated">
+                                                            <i class="fa fa-star"></i> 
+                                                            <i class="far fa-star"></i> 
+                                                            <i class="far fa-star"></i> 
+                                                            <i class="far  fa-star"></i> 
+                                                            <i class="far  fa-star"></i>
+                                                        </span>
+                                                    @elseif($qualityservices >= 0.5 && $qualityservices < 1)
+                                                        <span class="rated">
+                                                            <i class="fa fa-star-half"></i> 
+                                                            <i class="far fa-star"></i> 
+                                                            <i class="far fa-star"></i> 
+                                                            <i class="far  fa-star"></i> 
+                                                            <i class="far  fa-star"></i>
+                                                        </span>
+                                                    @else
+                                                        <span class="rated">
+                                                            <i class="far fa-star"></i> 
+                                                            <i class="far fa-star"></i> 
+                                                            <i class="far fa-star"></i> 
+                                                            <i class="far  fa-star"></i> 
+                                                            <i class="far  fa-star"></i>
+                                                        </span>
+                                                    @endif
+                                                    </div>
+                                                    <div class="review-number">{{ number_format($qualityservices,1) }}</div>
                                                 </div>
                                                 <!-- /.review-list -->
                                                 <!-- review-list -->
                                                 <div class="review-list">
                                                     <div class="review-for">Facilities</div>
-                                                    <div class="review-rating"><span class="rated"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="far fa-star"></i> </span></div>
-                                                    <div class="review-number">4.0</div>
+                                                    <div class="review-rating">
+                                                        @if($faciliteis == 5)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star"></i> 
+                                                                <i class="fa  fa-star"></i>
+                                                            </span>
+                                                        @elseif($faciliteis >= 4.5 && $faciliteis < 5)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star"></i> 
+                                                                <i class="fa  fa-star-half"></i>
+                                                            </span>
+                                                        @elseif($faciliteis >= 4)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($faciliteis >= 3.5 && $faciliteis < 4)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star-half"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($faciliteis >= 3)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($faciliteis >= 2.5 && $faciliteis < 3)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star-half"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($faciliteis >= 2)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($faciliteis >= 1.5 && $faciliteis < 2)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star-half"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($faciliteis >= 1)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($faciliteis >= 0.5 && $faciliteis < 1)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star-half"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @else
+                                                            <span class="rated">
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                    <div class="review-number">{{ number_format($faciliteis,1) }}</div>
                                                 </div>
                                                 <!-- /.review-list -->
                                                 <!-- review-list -->
                                                 <div class="review-list">
                                                     <div class="review-for">Staff</div>
-                                                    <div class="review-rating"><span class="rated"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> </span></div>
-                                                    <div class="review-number">3.0</div>
+                                                    <div class="review-rating">
+                                                    @if($staff == 5)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star"></i> 
+                                                                <i class="fa  fa-star"></i>
+                                                            </span>
+                                                        @elseif($staff >= 4.5 && $staff < 5)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star"></i> 
+                                                                <i class="fa  fa-star-half"></i>
+                                                            </span>
+                                                        @elseif($staff >= 4)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($staff >= 3.5 && $staff < 4)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star-half"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($staff >= 3)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($staff >= 2.5 && $staff < 3)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star-half"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($staff >= 2)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($staff >= 1.5 && $staff < 2)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star-half"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($staff >= 1)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($staff >= 0.5 && $staff < 1)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star-half"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @else
+                                                            <span class="rated">
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @endif
+                                                </div>
+                                                    <div class="review-number">{{ number_format($staff,1) }}</div>
                                                 </div>
                                                 <!-- /.review-list -->
                                                 <!-- review-list -->
                                                 <div class="review-list">
                                                     <div class="review-for">Flexibility</div>
-                                                    <div class="review-rating"><span class="rated"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> </span></div>
-                                                    <div class="review-number">3.0</div>
+                                                    <div class="review-rating">
+                                                    @if($flexibility == 5)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star"></i> 
+                                                                <i class="fa  fa-star"></i>
+                                                            </span>
+                                                        @elseif($flexibility >= 4.5 && $flexibility < 5)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star"></i> 
+                                                                <i class="fa  fa-star-half"></i>
+                                                            </span>
+                                                        @elseif($flexibility >= 4)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($flexibility >= 3.5 && $flexibility < 4)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star-half"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($flexibility >= 3)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($flexibility >= 2.5 && $flexibility < 3)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star-half"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($flexibility >= 2)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($flexibility >= 1.5 && $flexibility < 2)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star-half"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($flexibility >= 1)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($flexibility >= 0.5 && $flexibility < 1)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star-half"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @else
+                                                            <span class="rated">
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                    <div class="review-number">{{ number_format($flexibility,1) }}</div>
                                                 </div>
                                                 <!-- /.review-list -->
                                                 <!-- review-list -->
                                                 <div class="review-list">
                                                     <div class="review-for">Value of money</div>
-                                                    <div class="review-rating"><span class="rated"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="far fa-star"></i> </span></div>
-                                                    <div class="review-number">4.0</div>
+                                                    <div class="review-rating">
+                                                    @if($valueofmoney == 5)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star"></i> 
+                                                                <i class="fa  fa-star"></i>
+                                                            </span>
+                                                        @elseif($valueofmoney >= 4.5 && $valueofmoney < 5)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star"></i> 
+                                                                <i class="fa  fa-star-half"></i>
+                                                            </span>
+                                                        @elseif($valueofmoney >= 4)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($valueofmoney >= 3.5 && $valueofmoney < 4)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa  fa-star-half"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($valueofmoney >= 3)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($valueofmoney >= 2.5 && $valueofmoney < 3)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star-half"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($valueofmoney >= 2)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($valueofmoney >= 1.5 && $valueofmoney < 2)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="fa fa-star-half"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($valueofmoney >= 1)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @elseif($valueofmoney >= 0.5 && $valueofmoney < 1)
+                                                            <span class="rated">
+                                                                <i class="fa fa-star-half"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @else
+                                                            <span class="rated">
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far fa-star"></i> 
+                                                                <i class="far  fa-star"></i> 
+                                                                <i class="far  fa-star"></i>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                    <div class="review-number">{{ number_format($valueofmoney,1) }}</div>
                                                 </div>
                                                 <!-- /.review-list -->
                                             </div>
@@ -320,16 +860,66 @@
                                 </div>
                             </div>
                         </div>
+                        @foreach($listing_review as $listing_review)
                         <!-- /.review-block -->
                         <div class="card border card-shadow-none ">
                             <!-- review-user -->
                             <div class="card-header bg-white mb0">
                                 <div class="review-user">
-                                    <div class="user-img"> <img src="{{ asset('images/review-pic-1.jpg') }}" alt="star rating jquery" class="rounded-circle"></div>
+                                    <div class="user-img"> <img style="width:50px;height:50px;" src="{{ asset('userimage') }}/{{$listing_review->userimage}}" alt="star rating jquery" class="rounded-circle"></div>
                                     <div class="user-meta">
-                                        <h5 class="user-name mb-0">Eric M. Rahn  <span class="user-review-date">14 May, 2018</span></h5>
+                                        <h5 class="user-name mb-0">{{ $listing_review->username }}<span class="user-review-date">Date : {{ $listing_review->date }}</span></h5>
                                         <div class="given-review">
-                                            <span class="rated"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="far  fa-star"></i> <i class="far  fa-star"></i></span></div>
+                                            @if($listing_review->overallrating == 25)
+                                                <span class="rated">
+                                                    <i class="fa fa-star"></i> 
+                                                    <i class="fa fa-star"></i> 
+                                                    <i class="fa fa-star"></i> 
+                                                    <i class="fa  fa-star"></i> 
+                                                    <i class="fa  fa-star"></i>
+                                                </span>
+                                            @elseif($listing_review->overallrating >= 20)
+                                                <span class="rated">
+                                                    <i class="fa fa-star"></i> 
+                                                    <i class="fa fa-star"></i> 
+                                                    <i class="fa fa-star"></i> 
+                                                    <i class="fa  fa-star"></i> 
+                                                    <i class="far  fa-star"></i>
+                                                </span>
+                                            @elseif($listing_review->overallrating >= 15)
+                                                <span class="rated">
+                                                    <i class="fa fa-star"></i> 
+                                                    <i class="fa fa-star"></i> 
+                                                    <i class="fa fa-star"></i> 
+                                                    <i class="far  fa-star"></i> 
+                                                    <i class="far  fa-star"></i>
+                                                </span>
+                                            @elseif($listing_review->overallrating >= 10)
+                                                <span class="rated">
+                                                    <i class="fa fa-star"></i> 
+                                                    <i class="fa fa-star"></i> 
+                                                    <i class="far fa-star"></i> 
+                                                    <i class="far  fa-star"></i> 
+                                                    <i class="far  fa-star"></i>
+                                                </span>
+                                            @elseif($listing_review->overallrating >= 5)
+                                                <span class="rated">
+                                                    <i class="fa fa-star"></i> 
+                                                    <i class="far fa-star"></i> 
+                                                    <i class="far fa-star"></i> 
+                                                    <i class="far  fa-star"></i> 
+                                                    <i class="far  fa-star"></i>
+                                                </span>
+                                                @else
+                                                <span class="rated">
+                                                    <i class="far fa-star"></i> 
+                                                    <i class="far fa-star"></i> 
+                                                    <i class="far fa-star"></i> 
+                                                    <i class="far  fa-star"></i> 
+                                                    <i class="far  fa-star"></i>
+                                                </span>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -337,62 +927,13 @@
                             <div class="card-body">
                                 <!-- review-descripttions -->
                                 <div class="review-descriptions">
-                                    <p>Morbi pharetra mollis tortor ac maximus. Nunc dapibus bibendum urna, in egestas dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra.Fusce ullamcorper sit amet augue a volutpat. Cras ultrices dictum ante vel iaculis.Donec accumsan consequat massa non gravida. Aenean molestie molestie elementum. Nullam semper vel mauris et semper. </p>
+                                    <p>{{ $listing_review->review_text }}</p>
                                 </div>
                                 <!-- /.review-descripttions -->
                             </div>
                         </div>
+                        @endforeach
                         <!-- /.review-content -->
-                        <!-- /.review-block -->
-                        <div class="card border card-shadow-none ">
-                            <!-- review-user -->
-                            <div class="card-header bg-white mb0">
-                                <!-- review-user -->
-                                <div class="review-user">
-                                    <div class="user-img"> <img src="{{ asset('images/review-pic-2.jpg') }}" alt="star rating jquery" class="rounded-circle"></div>
-                                    <div class="user-meta">
-                                        <h5 class="user-name mb-0">Jolene E. Cochran <span class="user-review-date">14 May, 2018</span></h5>
-                                        <div class="given-review">
-                                            <span class="rated"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="far  fa-star"></i> <i class="far  fa-star"></i> 
-
-                                                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.review-user -->
-                            </div>
-                            <div class="card-body">
-                                <!-- review-descripttions -->
-                                <div class="review-descriptions">
-                                    <p>Donec accumsan consequat massa non gravida. Morbi pharetra mollis tortor ac maximus. Nunc dapibus bibendum urna, in egestas dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra.Fusce ullamcorper sit amet augue a volutpat. Cras ultrices dictum ante vel iaculis. Aenean molestie molestie elementum. Nullam semper vel mauris et semper. </p>
-                                </div>
-                                <!-- /.review-descripttions -->
-                            </div>
-                        </div>
-                        <!-- /.review-block -->
-                        <div class="card border card-shadow-none ">
-                            <!-- review-user -->
-                            <div class="card-header bg-white mb0">
-                                <!-- review-user -->
-                                <div class="review-user">
-                                    <div class="user-img"> <img src="{{ asset('images/review-pic-3.jpg') }}" alt="star rating jquery" class="rounded-circle"></div>
-                                    <div class="user-meta">
-                                        <h5 class="user-name mb-0">Raymond S. Wilson<span class="user-review-date">12 May, 2018</span></h5>
-                                        <div class="given-review">
-                                            <span class="rated"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="far  fa-star"></i> <i class="far  fa-star"></i>                                                         </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.review-user -->
-                            <div class="card-body">
-                                <!-- review-descripttions -->
-                                <div class="review-descriptions">
-                                    <p>Mauris ut efficitur lorem, at mattis libero. Suspendisse viverra eu libero eget dapibus. Suspendisse potenti. Aenean ex ex, efficitur a porta ac, pulvinar at elit. Pellentesque suscipit at lacus sit amet tincidunt. Vivamus quis pellentesque dolor. Donec dignissim pharetra accumsan. </p>
-                                </div>
-                                <!-- /.review-descripttions -->
-                            </div>
-                        </div>
                     </div>
                     <!-- /.review-content -->
                     <!-- review-form -->
@@ -404,48 +945,84 @@
                         <div class="card-body">
                             <div class="review-rating-select">
                                 <div class="rate-selection">
-                                    <span class="text-dark">Quality Service</span>
-                                    <span id="rateYo1"></span>
+                                    <span class="text-dark">Quality Service </span>
+                                    <span class="rated">
+                                        <i class="far fa-star" id="qstar" onclick="change()"></i>
+                                        <i class="far fa-star" id="qstar2" onclick="change2()"></i> 
+                                        <i class="far fa-star" id="qstar3" onclick="change3()"></i> 
+                                        <i class="far fa-star" id="qstar4" onclick="change4()"></i> 
+                                        <i class="far  fa-star" id="qstar5" onclick="change5()"></i> 
+                                    </span>
+                                    <!--<span id="rateYo1"></span>-->
                                 </div>
                                 <div class="rate-selection">
-                                    <span class="text-dark">Facilities</span>
-                                    <span id="rateYo2"></span>
+                                    <span class="text-dark">Facilities </span>
+                                        <i class="far fa-star" id="qstar6" onclick="change6()"></i>
+                                        <i class="far fa-star" id="qstar7" onclick="change7()"></i> 
+                                        <i class="far fa-star" id="qstar8" onclick="change8()"></i> 
+                                        <i class="far fa-star" id="qstar9" onclick="change9()"></i> 
+                                        <i class="far  fa-star" id="qstar10" onclick="change10()"></i> 
+                                    <!--<span id="rateYo2"></span>-->
                                 </div>
                                 <div class="rate-selection">
                                     <span class="text-dark">Staff</span>
-                                    <span id="rateYo3"></span>
+                                        <i class="far fa-star" id="qstar11" onclick="change11()"></i>
+                                        <i class="far fa-star" id="qstar12" onclick="change12()"></i> 
+                                        <i class="far fa-star" id="qstar13" onclick="change13()"></i> 
+                                        <i class="far fa-star" id="qstar14" onclick="change14()"></i> 
+                                        <i class="far  fa-star" id="qstar15" onclick="change15()"></i>
+                                    <!--<span id="rateYo3"></span>-->
                                 </div>
                                 <div class="rate-selection">
                                     <span class="text-dark">Flexibility</span>
-                                    <span id="rateYo4"></span>
+                                        <i class="far fa-star" id="qstar16" onclick="change16()"></i>
+                                        <i class="far fa-star" id="qstar17" onclick="change17()"></i> 
+                                        <i class="far fa-star" id="qstar18" onclick="change18()"></i> 
+                                        <i class="far fa-star" id="qstar19" onclick="change19()"></i> 
+                                        <i class="far  fa-star" id="qstar20" onclick="change20()"></i>
+                                    <!--<span id="rateYo4"></span>-->
                                 </div>
                                 <div class="rate-selection">
                                     <span class="text-dark">Value of money</span>
-                                    <span id="rateYo5"></span>
+                                    <i class="far fa-star" id="qstar21" onclick="change21()"></i>
+                                        <i class="far fa-star" id="qstar22" onclick="change22()"></i> 
+                                        <i class="far fa-star" id="qstar23" onclick="change23()"></i> 
+                                        <i class="far fa-star" id="qstar24" onclick="change24()"></i> 
+                                        <i class="far  fa-star" id="qstar25" onclick="change25()"></i>
+                                    <!--<span id="rateYo5"></span>-->
                                 </div>
                             </div>
-                            
-                            <form>
+                            <form id="submitreview">
+                            {{ csrf_field() }}
                                 <div class="row">
+                                    <div class="alert alert-success" style="display:none">
+                                    </div>
+                                    <div class="alert alert-danger" style="display:none">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                        <div class="form-group">
+                                            <input id="userid" name="userid" type="hidden" value="{{$user->id}}" class="form-control input-md" required="">
+                                        </div>
                                     <!-- Textarea -->
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt30">
                                         <div class="form-group">
                                             <label class="control-label" for="review">Write Your Review</label>
-                                            <textarea class="form-control" id="review" name="review" rows="5" placeholder="Write Review"></textarea>
+                                            <textarea class="form-control" id="review_text" name="review_text" rows="5" placeholder="Write Review"></textarea>
                                         </div>
                                     </div>
                                     <!-- Text input-->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="form-group">
                                             <label class="control-label" for="name">Name</label>
-                                            <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md" required="">
+                                            <input id="review_name" name="review_name" type="text" placeholder="Name" class="form-control input-md">
                                         </div>
                                     </div>
                                     <!-- Text input-->
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="form-group">
                                             <label class="control-label" for="email">Email</label>
-                                            <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md" required="">
+                                            <input id="review_email" name="review_email" type="text" placeholder="Email" class="form-control input-md">
                                         </div>
                                     </div>
                                     <!-- Button -->
@@ -476,15 +1053,17 @@
                     <div class="sidebar-venue" >
                         <div class="card">
                             <div class="card-body">
-                                <form action="/requestquote" id="requestquote" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                                <form id="requestquote" class="needs-validation" novalidate>
                                     {{ csrf_field() }}
-                                    @if ($message = Session::get('success'))
-                                        <div class="alert alert-info alert-block">
+                                        <div class="alert alert-info alert-block" style="display:none;">
                                             <button type="button" class="close" data-dismiss="alert">×</button>
-                                            <strong>{{ $message }}</strong>
+                                            <strong></strong>
+                                        </div>
+                                        <div class="alert alert-danger" id="danger" style="display:none">
+                                            <button type="button" class="close" data-dismiss="alert">×</button>
+                                            <strong></strong>
                                         </div>
                                         <br>
-                                    @endif
                                     <div class="row">
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                             <h3 class="mb20">Request Quote</h3>
@@ -544,14 +1123,14 @@
                         <!-- venue-admin -->
                         <div class="vendor-owner-profile mb30">
                             <div class="vendor-owner-profile-head">
-                                <div class="vendor-owner-profile-img"><img style="width:150px; height:150px;" src="{{ asset('userimage') }}/{{$user->userimage}}" class="rounded-circle" alt=""></div>
-                                <h4 class="vendor-owner-name mb0">{{ $user->name }}</h4>
+                                <div class="vendor-owner-profile-img"><img style="width:150px; height:150px;" src="{{ asset('userimage') }}/{{$listowner->userimage}}" class="rounded-circle" alt=""></div>
+                                <h4 class="vendor-owner-name mb0">{{ $listowner->name }}</h4>
                             </div>
                             <div class="vendor-owner-profile-content">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><span class="mr-2"><i class="fas fa-align-justify"></i></span>{{ $user->description }}</li>
-                                    <li class="list-group-item"><span class="mr-2"><i class="fas fa-fw fa-phone"></i></span>{{ $user->phone }}</li>
-                                    <li class="list-group-item"><span class="mr-2"><i class="fab fa-facebook-f"></i></span>{{ $user->facebook }}/li>
+                                    <li class="list-group-item"><span class="mr-2"><i class="fas fa-align-justify"></i></span>{{ $listowner->description }}</li>
+                                    <li class="list-group-item"><span class="mr-2"><i class="fas fa-fw fa-phone"></i></span>{{ $listowner->phone }}</li>
+                                    <li class="list-group-item"><span class="mr-2"><i class="fab fa-facebook-f"></i></span>{{ $listowner->facebook }}/li>
                                 </ul>
                             </div>
                         </div>
@@ -619,7 +1198,7 @@
                                     <i class="fa fa-star rated"></i>
                                     <i class="fa fa-star rate-mute"></i> 
                                     </span>
-                                <span class="rating-count vendor-text">(20)</span></div>
+                                <span class="rating-count vendor-text">(X)</span></div>
                         </div>
                         <!-- /.Vendor Content -->
                     </div>
@@ -728,7 +1307,458 @@
     <!-- popup gallery -->
     <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
-    <script src="{{ asset('js/custom-script.js') }}"></script>
+    <!--<script src="{{ asset('js/custom-script.js') }}"></script>-->
+    <script type="text/javascript">
+        function change()
+        {
+            if(document.getElementById("qstar").className == "far fa-star"){
+                document.getElementById("qstar").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar").className = "far fa-star"
+            }
+        }
+        function change2()
+        {
+            if(document.getElementById("qstar2").className == "far fa-star"){
+                document.getElementById("qstar2").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar2").className = "far fa-star"
+            }
+        }
+        function change3()
+        {
+            if(document.getElementById("qstar3").className == "far fa-star"){
+                document.getElementById("qstar3").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar3").className = "far fa-star"
+            }
+        }
+        function change4()
+        {
+            if(document.getElementById("qstar4").className == "far fa-star"){
+                document.getElementById("qstar4").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar4").className = "far fa-star"
+            }
+        }
+        function change5()
+        {
+            if(document.getElementById("qstar5").className == "far fa-star"){
+                document.getElementById("qstar5").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar5").className = "far fa-star"
+            }
+        }
+        function change6()
+        {
+            if(document.getElementById("qstar6").className == "far fa-star"){
+                document.getElementById("qstar6").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar6").className = "far fa-star"
+            }
+        }
+        function change7()
+        {
+            if(document.getElementById("qstar7").className == "far fa-star"){
+                document.getElementById("qstar7").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar7").className = "far fa-star"
+            }
+        }
+        function change8()
+        {
+            if(document.getElementById("qstar8").className == "far fa-star"){
+                document.getElementById("qstar8").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar8").className = "far fa-star"
+            }
+        }
+        function change9()
+        {
+            if(document.getElementById("qstar9").className == "far fa-star"){
+                document.getElementById("qstar9").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar9").className = "far fa-star"
+            }
+        }
+        function change10()
+        {
+            if(document.getElementById("qstar10").className == "far fa-star"){
+                document.getElementById("qstar10").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar10").className = "far fa-star"
+            }
+        }
+        function change11()
+        {
+            if(document.getElementById("qstar11").className == "far fa-star"){
+                document.getElementById("qstar11").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar11").className = "far fa-star"
+            }
+        }
+        function change12()
+        {
+            if(document.getElementById("qstar12").className == "far fa-star"){
+                document.getElementById("qstar12").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar12").className = "far fa-star"
+            }
+        }
+        function change13()
+        {
+            if(document.getElementById("qstar13").className == "far fa-star"){
+                document.getElementById("qstar13").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar13").className = "far fa-star"
+            }
+        }
+        function change14()
+        {
+            if(document.getElementById("qstar14").className == "far fa-star"){
+                document.getElementById("qstar14").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar14").className = "far fa-star"
+            }
+        }
+        function change15()
+        {
+            if(document.getElementById("qstar15").className == "far fa-star"){
+                document.getElementById("qstar15").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar15").className = "far fa-star"
+            }
+        }
+        function change16()
+        {
+            if(document.getElementById("qstar16").className == "far fa-star"){
+                document.getElementById("qstar16").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar16").className = "far fa-star"
+            }
+        }
+        function change17()
+        {
+            if(document.getElementById("qstar17").className == "far fa-star"){
+                document.getElementById("qstar17").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar17").className = "far fa-star"
+            }
+        }
+        function change18()
+        {
+            if(document.getElementById("qstar18").className == "far fa-star"){
+                document.getElementById("qstar18").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar18").className = "far fa-star"
+            }
+        }
+        function change19()
+        {
+            if(document.getElementById("qstar19").className == "far fa-star"){
+                document.getElementById("qstar19").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar19").className = "far fa-star"
+            }
+        }
+        function change20()
+        {
+            if(document.getElementById("qstar20").className == "far fa-star"){
+                document.getElementById("qstar20").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar20").className = "far fa-star"
+            }
+        }
+        function change21()
+        {
+            if(document.getElementById("qstar21").className == "far fa-star"){
+                document.getElementById("qstar21").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar21").className = "far fa-star"
+            }
+        }
+        function change22()
+        {
+            if(document.getElementById("qstar22").className == "far fa-star"){
+                document.getElementById("qstar22").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar22").className = "far fa-star"
+            }
+        }
+        function change23()
+        {
+            if(document.getElementById("qstar23").className == "far fa-star"){
+                document.getElementById("qstar23").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar23").className = "far fa-star"
+            }
+        }
+        function change24()
+        {
+            if(document.getElementById("qstar24").className == "far fa-star"){
+                document.getElementById("qstar24").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar24").className = "far fa-star"
+            }
+        }
+        function change25()
+        {
+            if(document.getElementById("qstar25").className == "far fa-star"){
+                document.getElementById("qstar25").className = "fa fa-star"
+            }else{
+                document.getElementById("qstar25").className = "far fa-star"
+            }
+        }
+    </script>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+</script>
+<script>
+        jQuery(document).ready(function(){
+            jQuery('#requestquote_submit').click(function(e){
+               e.preventDefault();
+               $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+              });
+
+              if ($.trim($("#requestquote_name").val()) === "" || $.trim($("#requestquote_email").val()) === ""
+                || $.trim($("#requestquote_phone").val()) === "" || $.trim($("#requestquote_weddingdate").val()) === ""
+                || $.trim($("#requestquote_comments").val()) === ""){
+                    $("#danger").css('display','block');
+                    $("#danger").html('All Fields required. Make sure you fill up all fields');
+                    return false;
+            }else{                      
+                        jQuery.ajax({
+                        url: "{{ url('requestquote') }}",
+                        method: 'post',
+                        data: {
+                            localtime: jQuery('#localtime').val(),
+                            requestquote_name: jQuery('#requestquote_name').val(),
+                            requestquote_email: jQuery('#requestquote_email').val(),
+                            requestquote_phone: jQuery('#requestquote_phone').val(),
+                            requestquote_weddingdate: jQuery('#requestquote_weddingdate').val(),
+                            requestquote_comments: jQuery('#requestquote_comments').val()
+                        },
+                            success: function(result){
+                                $(".alert-info").css('display','block');
+                                $(".alert-info").html(result);
+                            }
+
+                        });
+                    }                    
+                });
+            });
+</script>
+<script>
+         jQuery(document).ready(function(){
+            jQuery('#submit').click(function(e){
+               e.preventDefault();
+               $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+              });
+
+              if ($.trim($("#review_text").val()) === "" || $.trim($("#review_name").val()) === ""
+                || $.trim($("#review_email").val()) === ""){
+                    $(".alert-danger").css('display','block');
+                    $(".alert-danger").html('All Fields required. Make sure you fill up all fields');
+                    return false;
+			}else{
+
+                if($( "#qstar" ).hasClass( "fa fa-star" )){
+                    var qstar = 1.0;
+                }else{
+                    var qstar = 0.0;
+                }
+
+                if($( "#qstar2" ).hasClass( "fa fa-star" )){
+                    var qstar2 = 1.0;
+                }else{
+                    var qstar2 = 0.0;
+                }
+
+                if($( "#qstar3" ).hasClass( "fa fa-star" )){
+                    var qstar3 = 1.0;
+                }else{
+                    var qstar3 = 0.0;
+                }
+
+                if($( "#qstar4" ).hasClass( "fa fa-star" )){
+                    var qstar4 = 1.0;
+                }else{
+                    var qstar4 = 0.0;
+                }
+
+                if($( "#qstar5" ).hasClass( "fa fa-star" )){
+                    var qstar5 = 1.0;
+                }else{
+                    var qstar5 = 0.0;
+                }
+
+                if($( "#qstar6" ).hasClass( "fa fa-star" )){
+                    var qstar6 = 1.0;
+                }else{
+                    var qstar6 = 0.0;
+                }
+
+                if($( "#qstar7" ).hasClass( "fa fa-star" )){
+                    var qstar7 = 1.0;
+                }else{
+                    var qstar7 = 0.0;
+                }
+
+                if($( "#qstar8" ).hasClass( "fa fa-star" )){
+                    var qstar8 = 1.0;
+                }else{
+                    var qstar8 = 0.0;
+                }
+
+                if($( "#qstar9" ).hasClass( "fa fa-star" )){
+                    var qstar9 = 1.0;
+                }else{
+                    var qstar9 = 0.0;
+                }
+
+                if($( "#qstar10" ).hasClass( "fa fa-star" )){
+                    var qstar10 = 1.0;
+                }else{
+                    var qstar10 = 0.0;
+                }
+
+                if($( "#qstar11" ).hasClass( "fa fa-star" )){
+                    var qstar11 = 1.0;
+                }else{
+                    var qstar11 = 0.0;
+                }
+
+                if($( "#qstar12" ).hasClass( "fa fa-star" )){
+                    var qstar12 = 1.0;
+                }else{
+                    var qstar12 = 0.0;
+                }
+
+                if($( "#qstar13" ).hasClass( "fa fa-star" )){
+                    var qstar13 = 1.0;
+                }else{
+                    var qstar13 = 0.0;
+                }
+
+                if($( "#qstar14" ).hasClass( "fa fa-star" )){
+                    var qstar14 = 1.0;
+                }else{
+                    var qstar14 = 0.0;
+                }
+
+                if($( "#qstar15" ).hasClass( "fa fa-star" )){
+                    var qstar15 = 1.0;
+                }else{
+                    var qstar15 = 0.0;
+                }
+
+                if($( "#qstar16" ).hasClass( "fa fa-star" )){
+                    var qstar16 = 1.0;
+                }else{
+                    var qstar16 = 0.0;
+                }
+
+                if($( "#qstar17" ).hasClass( "fa fa-star" )){
+                    var qstar17 = 1.0;
+                }else{
+                    var qstar17 = 0.0;
+                }
+
+                if($( "#qstar18" ).hasClass( "fa fa-star" )){
+                    var qstar18 = 1.0;
+                }else{
+                    var qstar18 = 0.0;
+                }
+
+                if($( "#qstar19" ).hasClass( "fa fa-star" )){
+                    var qstar19 = 1.0;
+                }else{
+                    var qstar19 = 0.0;
+                }
+
+                if($( "#qstar20" ).hasClass( "fa fa-star" )){
+                    var qstar20 = 1.0;
+                }else{
+                    var qstar20 = 0.0;
+                }
+
+                if($( "#qstar21" ).hasClass( "fa fa-star" )){
+                    var qstar21 = 1.0;
+                }else{
+                    var qstar21 = 0.0;
+                }
+
+                if($( "#qstar22" ).hasClass( "fa fa-star" )){
+                    var qstar22 = 1.0;
+                }else{
+                    var qstar22 = 0.0;
+                }
+
+                if($( "#qstar23" ).hasClass( "fa fa-star" )){
+                    var qstar23 = 1.0;
+                }else{
+                    var qstar23 = 0.0;
+                }
+
+                if($( "#qstar24" ).hasClass( "fa fa-star" )){
+                    var qstar24 = 1.0;
+                }else{
+                    var qstar24 = 0.0;
+                }
+
+                if($( "#qstar25" ).hasClass( "fa fa-star" )){
+                    var qstar25 = 1.0;
+                }else{
+                    var qstar25 = 0.0;
+                }
+                
+                var listownerid = {{ $listowner->id }};
+                var listid = {{ $listing->id }};
+                var userid = $("input[name='userid']").val();
+                var review_text = $("textarea[name='review_text']").val();
+                var name = $("input[name='review_name']").val();
+                var email = $("input[name='review_email']").val();       
+                var qualityservices = qstar+qstar2+qstar3+qstar4+qstar5;
+                var faciliteis = qstar6+qstar7+qstar8+qstar9+qstar10;
+                var staff = qstar11+qstar12+qstar13+qstar14+qstar15;
+                var flexibility = qstar16+qstar17+qstar18+qstar19+qstar20;
+                var valueofmoney = qstar21+qstar22+qstar23+qstar24+qstar25;
+                /*Overall Rating*/
+                var overallrating = qualityservices+faciliteis+staff+flexibility+valueofmoney;
+            
+                            jQuery.ajax({
+                            url: "{{ url('submitreview') }}",
+                            method: 'post',
+                            data: {
+                                listownerid: listownerid,
+                                listid: listid,
+                                userid: userid,
+                                review_text: jQuery('#review_text').val(),
+                                name: jQuery('#review_name').val(),
+                                email: jQuery('#review_email').val(),
+                                qualityservices:qualityservices,
+                                faciliteis:faciliteis,
+                                staff:staff,
+                                flexibility:flexibility,
+                                valueofmoney:valueofmoney,
+                                overallrating:overallrating,
+                            },
+                                success: function(result){
+                                    $(".alert-success").css('display','block');
+                                    $(".alert-success").html(result);
+                                }
+                            });
+                        }                    
+                });
+                });
+    </script>
     <script>
     function initMap() {
         var uluru = {
@@ -742,7 +1772,7 @@
         var marker = new google.maps.Marker({
             position: uluru,
             map: map,
-            icon: 'images/map-pin.png'
+            icon: '{{ asset('images') }}/map-pin.jpg',
         });
     }
     </script>
@@ -762,63 +1792,9 @@
         var currentTime = new Date();
         document.getElementById("localtime").value = currentTime;
     </script>
-     <script type="text/javascript">
-    if ($("#requestquote").length > 0) {
-        $("#requestquote").validate({   
-            requestquote_name: {
-                required: true,
-                minlength: 3,
-                maxlength: 50,
-            },
-            requestquote_email: {
-            required: true,
-            maxlength: 50,
-            },
-            requestquote_phone: {
-            required: true,
-            maxlength: 50,
-            },
-            requestquote_weddingdate: {
-            required: true,
-            minlength: 6,
-            maxlength: 50,
-            },
-            requestquote_comments: {
-            required: true,
-            minlength: 6,
-            maxlength: 50,
-            },
-        },
-        messages: {
-            requestquote_name: {
-                required: "Please enter name",
-                minlength: "Your username minlength should be more than 3 characters long."
-                maxlength: "Your username maxlength should not be more than 50 characters long."
-                requestquote_name: "Please enter name",
-            },
-            requestquote_email: {
-                required: "Please enter email",
-                requestquote_email: "Please enter email",
-                requestquote_email: "Please enter email",
-            },
-            requestquote_phone: {
-                required: "Please enter your phone number",
-                requestquote_phone: "Please enter your phone number",
-                 },
-            requestquote_weddingdate: {
-                required: "Please select wedding date",
-                requestquote_weddingdate: "Please select wedding date",
-                 },
-            requestquote_comments: {
-                required: "Please enter comments",
-                requestquote_comments: "Please enter comments",
-                 },
-            },
-        })
-    }
-    </script>
     <script src="{{ asset('js/return-to-top.js') }}"></script>
             @endforeach
         @endforeach
+    @endforeach
 </body>
 </html>

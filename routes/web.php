@@ -89,6 +89,8 @@ Route::get('/logout', function () {
 
 Route::get('/sigin', 'LoginController@index')->name('signintocontinue');
 
+Route::get('Reviews', 'Reviews@index');
+
 Route::get('addlisting-success', 'AddListingController@index');
 
 Route::get('editlisting-success', 'MylistedItems@index');

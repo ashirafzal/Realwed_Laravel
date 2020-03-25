@@ -109,9 +109,9 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <a class="dropdown-item" href="/dashboard">Dashboard</a>
                                         <a class="dropdown-item" href="mylisting"> My Listed Item </a>
-                                        <a class="dropdown-item" href="vendor-dashboard-pricing.html">Pricing Plan</a>
-                                        <a class="dropdown-item" href="vendor-dashboard-request-quote.html">Request Quotes</a>
-                                        <a class="dropdown-item" href="vendor-dashboard-reviews.html">Reviews </a>
+                                        <a class="dropdown-item" href="#">Pricing Plan</a>
+                                        <a class="dropdown-item" href="requestquote-view">Request Quotes</a>
+                                        <a class="dropdown-item" href="Reviews">Reviews </a>
                                         <a class="dropdown-item" href="myprofile">My Profile </a>
                                         <a class="dropdown-item" href="/logout">Log Out</a>
                                     </div>
@@ -269,7 +269,6 @@
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <!-- review-sidebar -->
                                                 <div class="review-sidebar">
-                                                    
                                                         <div class="review-total">{{$listing_review_count}}</div>
                                                         <div class="review-text">Reviews</div>
                                                         @if($overallrating >= 4.9)
@@ -760,7 +759,7 @@
                                                 <div class="review-list">
                                                     <div class="review-for">Value of money</div>
                                                     <div class="review-rating">
-                                                    @if($valueofmoney == 5)
+                                                        @if($valueofmoney == 5)
                                                             <span class="rated">
                                                                 <i class="fa fa-star"></i> 
                                                                 <i class="fa fa-star"></i> 

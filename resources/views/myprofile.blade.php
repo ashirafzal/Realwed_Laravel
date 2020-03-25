@@ -108,13 +108,13 @@
                                     @endforeach
                                     <span class="user-vendor-name"><?php {{ echo $username = Session::get('username'); }} ?></span></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="/dashboard">Dashboard</a>
-                                <a class="dropdown-item" href="mylisting"> My Listed Item </a>
-                                <a class="dropdown-item" href="vendor-dashboard-pricing.html">Pricing Plan</a>
-                                <a class="dropdown-item" href="requestquote-view">Request Quotes</a>
-                                <a class="dropdown-item" href="vendor-dashboard-reviews.html">Reviews </a>
-                                <a class="dropdown-item" href="myprofile">My Profile </a>
-                                <a class="dropdown-item" href="/logout">Log Out</a>
+                                        <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                                        <a class="dropdown-item" href="mylisting"> My Listed Item </a>
+                                        <a class="dropdown-item" href="#">Pricing Plan</a>
+                                        <a class="dropdown-item" href="requestquote-view">Request Quotes</a>
+                                        <a class="dropdown-item" href="Reviews">Reviews </a>
+                                        <a class="dropdown-item" href="myprofile">My Profile </a>
+                                        <a class="dropdown-item" href="/logout">Log Out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -144,9 +144,9 @@
                 <ul class="list-unstyled">
                     <li><a href="/dashboard"><span class="dash-nav-icon"><i class="fas fa-compass"></i></span>Dashboard</a></li>
                     <li><a href="mylisting"><span class="dash-nav-icon"><i class="fas fa-list-alt"></i> </span> My Listed Item </a></li>
-                    <li><a href="vendor-dashboard-pricing.html"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Pricing Plan</a></li>
+                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Pricing Plan</a></li>
                     <li><a href="requestquote-view"><span class="dash-nav-icon"><i class="fas fa-edit"></i></span>Request Quotes</a></li>
-                    <li><a href="vendor-dashboard-reviews.html"><span class="dash-nav-icon"><i class="fas fa-comments"></i></span>Reviews </a></li>
+                    <li><a href="Reviews"><span class="dash-nav-icon"><i class="fas fa-comments"></i></span>Reviews </a></li>
                     <li class="active"><a href="myprofile"><span class="dash-nav-icon"><i class="fas fa-user-circle"></i></span>My Profile </a></li>
                     <li><a href="/logout"><span class="dash-nav-icon"><i class="fas fa-sign-out-alt"></i></span>Logout </a></li>
                 </ul>

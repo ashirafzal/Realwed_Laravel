@@ -25,7 +25,13 @@ class DashboardController extends Controller
             $users = DB::table('appusers')->where('id',$userid)->get();
             $listing = DB::table('vendorlistings')->where('vendorid',$userid)->get();
             $listing = count($listing);
-            return view('dashboard',['users'=>$users, 'listing'=>$listing]); 
+            $listing_review_count = DB::table('listing_review')->where('listownerid', $userid)->get();
+            $listing_review_count = count($listing_review_count);
+            $requestquote_count = DB::table('requestquote')->where('list_creator_id', $userid)->orderBy('id', 'desc')->get();
+            $requestquote_count = count($requestquote_count);
+            return view('dashboard',['users'=>$users, 'listing'=>$listing,
+            'listing_review_count'=>$listing_review_count, 
+            'requestquote_count'=>$requestquote_count]); 
         }        
     }
 }

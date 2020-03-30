@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-xl-10 col-lg-8 col-md-8 col-sm-6 col-6">
                     <div class="header-logo">
-                        <a href="index-2.html"><img src="images/logo.png" alt="Weddings | Find A Wedding Venue &amp; Supplier WordPress Theme"></a>
+                        <a href="/"><img src="{{ asset('images/logo.png') }}" alt="Weddings | Find A Wedding Venue &amp; Supplier WordPress Theme"></a>
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6">
@@ -106,7 +106,7 @@
                     <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle"></div>
                 @endforeach
                 <h3 class="vendor-profile-name"><?php echo Session::get('username'); ?></h3>
-                <a href="#" class="edit-link">edit profile</a>
+                <a href="myprofile" class="edit-link">edit profile</a>
             </div>
             <div class="dashboard-nav">
                 <ul class="list-unstyled">

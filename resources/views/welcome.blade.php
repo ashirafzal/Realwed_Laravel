@@ -102,7 +102,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <a href="/sigin" class="btn btn-default btn-sm">Get Started Now</a>
+                            <a href="/signin" class="btn btn-default btn-sm">Get Started Now</a>
                         </div>
                     </nav>
                 </div>

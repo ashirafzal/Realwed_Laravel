@@ -8,20 +8,20 @@
   	 
        <title> Wedding Vendor &amp; Supplier Directory HTML Template - RealWed </title>
        <!-- Bootstrap -->
-       <link href="css/bootstrap.min.css" rel="stylesheet">
+       <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
        <!-- Google Fonts -->
       <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
        <!-- FontAwesome icon -->
-       <link href="fontawesome/css/fontawesome-all.css" rel="stylesheet">
+       <link href="{{ asset('fontawesome/css/fontawesome-all.css') }}" rel="stylesheet">
        <!-- Fontello icon -->
-       <link href="fontello/css/fontello.css" rel="stylesheet">
+       <link href="{{ asset('fontello/css/fontello.css') }}" rel="stylesheet">
        <!-- OwlCarosuel CSS -->
-       <link href="css/owl.carousel.css" type="text/css" rel="stylesheet">
-       <link href="css/owl.theme.default.css" type="text/css" rel="stylesheet">
+       <link href="{{ asset('css/owl.carousel.css') }}" type="text/css" rel="stylesheet">
+       <link href="{{ asset('css/owl.theme.default.css') }}" type="text/css" rel="stylesheet">
        <!-- Favicon icon -->
-       <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+       <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
        <!-- Style CSS -->
-       <link href="css/style.css" rel="stylesheet">
+       <link href="{{ asset('css/style.css') }}" rel="stylesheet">
        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
        <!--[if lt IE 9]>
@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-xl-10 col-lg-8 col-md-8 col-sm-6 col-6">
                     <div class="header-logo">
-                        <a href="index-2.html"><img src="images/logo.png" alt="Weddings | Find A Wedding Venue &amp; Supplier WordPress Theme"></a>
+                        <a href="/"><img src="{{ asset('images/logo.png') }}" alt="Weddings | Find A Wedding Venue &amp; Supplier WordPress Theme"></a>
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6">
@@ -52,32 +52,8 @@
                                                 <div class="list-group">
                                                     <a href="#" class="list-group-item list-group-item-action active">
                                                         <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                            <div class="notification-list-user-img"><img src="{{ asset('images/avatar-2.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
                                                             <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
-                                                                <div class="notification-date">2 min ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="list-group-item list-group-item-action">
-                                                        <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                            <div class="notification-list-user-block"><span class="notification-list-user-name">John Deo</span>is now following you
-                                                                <div class="notification-date">2 days ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="list-group-item list-group-item-action">
-                                                        <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                            <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
-                                                                <div class="notification-date">2 min ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="list-group-item list-group-item-action">
-                                                        <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                            <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
                                                                 <div class="notification-date">2 min ago</div>
                                                             </div>
                                                         </div>
@@ -92,16 +68,23 @@
                                 </li>
                                 <li class="nav-item dropdown dropleft user-vendor ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="user-icon"> <img src="images/dashboard-profile-couple.jpg" alt="" class="rounded-circle mb10"></span><span class="user-vendor-name">Eva J. Giles</span></a>
+                                        <span class="user-icon">
+                                            <!--<img src="{{ asset('images/dashboard-profile-couple.jpg') }}" alt="" class="rounded-circle mb10">-->
+                                        </span>
+                                        <span class="user-vendor-name"><?php echo Session::get('username'); ?>
+                                        </span>
+                                    </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="couple-dashboard-overview.html">Dashboard</a>
-                                        <a class="dropdown-item" href="couple-dashboard-mywishlist.html">My Wishlist </a>
-                                        <a class="dropdown-item" href="couple-dashboard-todolist.html">To Do List</a>
-                                        <a class="dropdown-item" href="couple-dashboard-budget.html">Budget</a>
-                                        <a class="dropdown-item" href="couple-dashboard-guest-manager.html">Guestlist </a>
-                                        <a class="dropdown-item" href="couple-dashboard-table-planner.html">Seating Table </a>
-                                        <a class="dropdown-item" href="couple-dashboard-profile.html">My Profile </a>
-                                        <a class="dropdown-item" href="index-2.html">Log Out </a>
+                                        <a class="dropdown-item" href="couple-dashboard-overview">
+                                            Dashboard
+                                        </a>
+                                        <a class="dropdown-item" href="#">My Wishlist </a>
+                                        <a class="dropdown-item" href="#">To Do List</a>
+                                        <a class="dropdown-item" href="#">Budget</a>
+                                        <a class="dropdown-item" href="#">Guestlist </a>
+                                        <a class="dropdown-item" href="#">Seating Table </a>
+                                        <a class="dropdown-item" href="#">My Profile </a>
+                                        <a class="dropdown-item" href="#">Log Out </a>
                                     </div>
                                 </li>
                             </ul>
@@ -120,22 +103,22 @@
         <div class="dashboard-sidebar offcanvas-collapse">
             <div class="vendor-user-profile">
                 <div class="vendor-profile-img">
-                    <img src="images/dashboard-profile-couple.jpg" alt="" class="rounded-circle"></div>
-                <h3 class="vendor-profile-name">Eva J. Giles</h3>
+                    <img src="{{ asset('images/dashboard-profile-couple.jpg') }}" alt="" class="rounded-circle"></div>
+                <h3 class="vendor-profile-name"><?php echo Session::get('username'); ?></h3>
                 <a href="#" class="edit-link">edit profile</a>
             </div>
             <div class="dashboard-nav">
                 <ul class="list-unstyled">
-                    <li class="active"><a href="couple-dashboard-overview.html"><span class="dash-nav-icon"><i class="fas fa-compass"></i></span>Dashboard</a></li>
-                    <li><a href="couple-dashboard-mywishlist.html"><span class="dash-nav-icon"><i class="fas fa-heart"></i> </span> My Wishlist </a></li>
-                    <li><a href="couple-dashboard-todolist.html"><span class="dash-nav-icon"><i class="fas fa-list-ul"></i></span>To Do List</a></li>
-                    <li><a href="couple-dashboard-budget.html"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Budget</a></li>
-                    <li><a href="couple-dashboard-guest-manager.html"><span class="dash-nav-icon"><i class="fas fa-users"></i></span>Guestlist </a></li>
-                    <li><a href="couple-dashboard-table-planner.html"><span class="dash-nav-icon"><i class="fas fa-table"></i></span>Seating Table </a></li>
-                     <li><a href="couple-dashboard-website.html"><span class="dash-nav-icon"><i class="fas fa-link"></i></span>Wedding Website </a></li>
-                       <li><a href="couple-dashboard-realwedding.html"><span class="dash-nav-icon"><i class="fas fa-images"></i></span>Real Wedding </a></li>
-                    <li><a href="couple-dashboard-profile.html"><span class="dash-nav-icon"><i class="fas fa-user-circle"></i></span>My Profile </a></li>
-                    <li><a href="index-2.html"><span class="dash-nav-icon"><i class="fas fa-sign-out-alt"></i></span>Log Out </a></li>
+                    <li class="active"><a href="couple-dashboard-overview"><span class="dash-nav-icon"><i class="fas fa-compass"></i></span>Dashboard</a></li>
+                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-heart"></i> </span> My Wishlist </a></li>
+                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-list-ul"></i></span>To Do List</a></li>
+                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Budget</a></li>
+                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-users"></i></span>Guestlist </a></li>
+                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-table"></i></span>Seating Table </a></li>
+                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-link"></i></span>Wedding Website </a></li>
+                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-images"></i></span>Real Wedding </a></li>
+                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-user-circle"></i></span>My Profile </a></li>
+                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-sign-out-alt"></i></span>Log Out </a></li>
                 </ul>
             </div>
         </div>
@@ -205,12 +188,12 @@
         </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/menumaker.min.js"></script>
-    <script src="js/custom-script.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/offcanvas.js"></script>
-    <script src="js/jquery.slimscroll.js"></script>   
+    <script src="{{ asset('js/menumaker.min.js') }}"></script>
+    <script src="{{ asset('js/custom-script.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/offcanvas.js') }}"></script>
+    <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>   
 </body>
 </html>

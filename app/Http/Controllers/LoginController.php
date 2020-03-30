@@ -44,7 +44,7 @@ class LoginController extends Controller
             if($usertype == 'Vendor'){
                 return redirect()->route('dashboard-overview');
             }else{
-                return view('/coupledashboard');
+                return redirect()->route('couple-dashboard');
             }
         }else{
             return Redirect::to("loginuser")->withSuccess('username or password incorrect');

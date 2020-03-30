@@ -95,7 +95,7 @@ Route::get('/forgotpassword', function () {
     return view('/forgot-password');
 });
 
-Route::get('/sigin', 'LoginController@index')->name('signintocontinue');
+Route::get('/signin', 'LoginController@index')->name('signintocontinue');
 
 Route::get('pricing', 'Pricing@index');
 
@@ -110,6 +110,8 @@ Route::post('addlisting',"AddListingController@save");
 Route::post('updatelisting',"Editlisting@updatelist");
 
 Route::name('dashboard-overview')->get('/dashboard', 'DashboardController@index');
+
+Route::get('/coupledashboard','CoupleDashboard@index')->name('couple-dashboard');
 
 Route::name('login')->get('/signin', 'LoginController@index');
 

@@ -58,30 +58,6 @@
                                                             </div>
                                                         </div>
                                                     </a>
-                                                    <a href="#" class="list-group-item list-group-item-action">
-                                                        <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                            <div class="notification-list-user-block"><span class="notification-list-user-name">John Deo</span>is now following you
-                                                                <div class="notification-date">2 days ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="list-group-item list-group-item-action">
-                                                        <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                            <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
-                                                                <div class="notification-date">2 min ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="list-group-item list-group-item-action">
-                                                        <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                            <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
-                                                                <div class="notification-date">2 min ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
                                                 </div>
                                             </div>
                                         </li>
@@ -94,20 +70,20 @@
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="user-icon">
                                         @foreach ($users as $user)
-                                        <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle mb10">
+                                            <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle mb10">
                                         @endforeach
                                         </span>
                                         <span class="user-vendor-name">
                                             <?php echo Session::get('username'); ?>
                                         </span></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                              <a class="dropdown-item" href="/dashboard">Dashboard</a>
-                                            <a class="dropdown-item" href="mylisting"> My Listed Item </a>
-                                            <a class="dropdown-item" href="#">Pricing Plan</a>
-                                            <a class="dropdown-item" href="requestquote-view">Request Quotes</a>
-                                            <a class="dropdown-item" href="Reviews">Reviews </a>
-                                            <a class="dropdown-item" href="myprofile">My Profile </a>
-                                            <a class="dropdown-item" href="/logout">Log Out</a>
+                                        <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                                        <a class="dropdown-item" href="mylisting"> My Listed Item </a>
+                                        <a class="dropdown-item" href="pricing">Pricing Plan</a>
+                                        <a class="dropdown-item" href="requestquote-view">Request Quotes</a>
+                                        <a class="dropdown-item" href="Reviews">Reviews </a>
+                                        <a class="dropdown-item" href="myprofile">My Profile </a>
+                                        <a class="dropdown-item" href="/logout">Log Out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -136,11 +112,11 @@
                 <ul class="list-unstyled">
                     <li class="active"><a href="/dashboard"><span class="dash-nav-icon"><i class="fas fa-compass"></i></span>Dashboard</a></li>
                     <li><a href="mylisting"><span class="dash-nav-icon"><i class="fas fa-list-alt"></i> </span> My Listed Item </a>
-                        <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Pricing Plan</a></li>
-                        <li><a href="requestquote-view"><span class="dash-nav-icon"><i class="fas fa-edit"></i></span>Request Quotes</a></li>
-                        <li><a href="Reviews"><span class="dash-nav-icon"><i class="fas fa-comments"></i></span>Reviews </a></li>
-                        <li><a href="myprofile"><span class="dash-nav-icon"><i class="fas fa-user-circle"></i></span>My Profile </a></li>
-                        <li><a href="/logout"><span class="dash-nav-icon"><i class="fas fa-sign-out-alt"></i></span>Logout </a></li>
+                    <li><a href="pricing"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Pricing Plan</a></li>
+                    <li><a href="requestquote-view"><span class="dash-nav-icon"><i class="fas fa-edit"></i></span>Request Quotes</a></li>
+                    <li><a href="Reviews"><span class="dash-nav-icon"><i class="fas fa-comments"></i></span>Reviews </a></li>
+                    <li><a href="myprofile"><span class="dash-nav-icon"><i class="fas fa-user-circle"></i></span>My Profile </a></li>
+                    <li><a href="/logout"><span class="dash-nav-icon"><i class="fas fa-sign-out-alt"></i></span>Logout </a></li>
                 </ul>
             </div>
         </div>

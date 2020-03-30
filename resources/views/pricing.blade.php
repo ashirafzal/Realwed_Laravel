@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>RealWed | Vendor Dashboard - Request List</title>
+    <title>RealWed | Vendor Dashboard - Pricing </title>
     <!-- Bootstrap -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Google Fonts -->
@@ -14,7 +14,6 @@
     <link href="{{ asset('fontawesome/css/fontawesome-all.css') }}" rel="stylesheet">
     <!-- Fontello icon -->
     <link href="{{ asset('fontello/css/fontello.css') }}" rel="stylesheet">
-
     <!-- Favicon icon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
     <!-- Style CSS -->
@@ -28,12 +27,13 @@
     <![endif]-->
 </head>
 <body class="body-bg">
-     <div class="dashboard-header">
+    @foreach($users as $user)
+    <div class="dashboard-header">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-10 col-lg-8 col-md-8 col-sm-6 col-6">
                     <div class="header-logo">
-                        <a href="index-2.html"><img src="images/logo.png" alt="Weddings | Find A Wedding Venue &amp; Supplier WordPress Theme"></a>
+                        <a href="/"><img src="{{ asset('images/logo.png') }}" alt="Weddings | Find A Wedding Venue &amp; Supplier WordPress Theme"></a>
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6">
@@ -64,16 +64,12 @@
                                         </li>
                                     </ul>
                                 </li>
-                               <li class="nav-item dropdown dropleft user-vendor ">
+                           <li class="nav-item dropdown dropleft user-vendor ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="user-icon">
-                                        @foreach ($users as $user)
-                                        <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle mb10">
-                                        @endforeach
-                                        </span>
-                                        <span class="user-vendor-name">
-                                            <?php echo Session::get('username'); ?>
-                                        </span></a>
+                                    <span class="user-icon">
+                                        <img src="{{ asset('userimage') }}/{{$user->userimage}}" alt="" class="rounded-circle mb10">
+                                    </span>
+                                    <span class="user-vendor-name"><?php {{ echo $username = Session::get('username'); }} ?></span></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <a class="dropdown-item" href="/dashboard">Dashboard</a>
                                         <a class="dropdown-item" href="mylisting"> My Listed Item </a>
@@ -98,7 +94,7 @@
     </div>
     <div class="dashboard-wrapper">
         <div class="dashboard-sidebar offcanvas-collapse">
-            <div class="vendor-user-profile">
+        <div class="vendor-user-profile">
                 <div class="vendor-profile-img">
                 @foreach ($users as $user)
                     <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle"></div>
@@ -110,11 +106,11 @@
                 <ul class="list-unstyled">
                     <li class="active"><a href="/dashboard"><span class="dash-nav-icon"><i class="fas fa-compass"></i></span>Dashboard</a></li>
                     <li><a href="mylisting"><span class="dash-nav-icon"><i class="fas fa-list-alt"></i> </span> My Listed Item </a>
-                        <li><a href="pricing"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Pricing Plan</a></li>
-                        <li><a href="requestquote-view"><span class="dash-nav-icon"><i class="fas fa-edit"></i></span>Request Quotes</a></li>
-                        <li><a href="Reviews"><span class="dash-nav-icon"><i class="fas fa-comments"></i></span>Reviews </a></li>
-                        <li><a href="myprofile"><span class="dash-nav-icon"><i class="fas fa-user-circle"></i></span>My Profile </a></li>
-                        <li><a href="/logout"><span class="dash-nav-icon"><i class="fas fa-sign-out-alt"></i></span>Logout </a></li>
+                    <li><a href="pricing"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Pricing Plan</a></li>
+                    <li><a href="requestquote-view"><span class="dash-nav-icon"><i class="fas fa-edit"></i></span>Request Quotes</a></li>
+                    <li><a href="Reviews"><span class="dash-nav-icon"><i class="fas fa-comments"></i></span>Reviews </a></li>
+                    <li><a href="myprofile"><span class="dash-nav-icon"><i class="fas fa-user-circle"></i></span>My Profile </a></li>
+                    <li><a href="/logout"><span class="dash-nav-icon"><i class="fas fa-sign-out-alt"></i></span>Logout </a></li>
                 </ul>
             </div>
         </div>
@@ -123,58 +119,91 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="dashboard-page-header">
-                            <div class="row">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <h3 class="dashboard-page-title">Request List</h3>
-                                    <p>Check your request quote.</p>
-                                </div>
+                            <h3 class="dashboard-page-title">Pricing Plan</h3>
+                            <p>Choose wisely your pricing plan.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12 ">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="mb0">Plan Type:</h5>
+                                <p>Free - Basic</p>
                             </div>
                         </div>
-                        <!--
-                        <div class="dashboard-filter-row mb20">
-                            <div class="row">
-                                <div class="col-xl-3">
-                                    <select class="form-control wide" id="exampleFormControlSelect1">
-                                        <option>Select Your Listing</option>
-                                        <option>Select Your Listing #1</option>
-                                        <option>Select Your Listing #2</option>
-                                        <option>Select Your Listing #3</option>
-                                        <option>Select Your Listing #4</option>
-                                    </select>
-                                </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12 ">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="mb0">Time Duration </h5>
+                                <p>Started: Aug 18, 2018 - <span class="text-danger">Expired: Aug 18, 2019</span></p>
                             </div>
                         </div>
-                        -->
-                        @if ($message = Session::get('success'))
-                            <div class="alert alert-success alert-block">
-                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                <strong>{{ $message }}</strong>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="mb0"> Status </h5>
+                                <p><span class="dot-badge badge-success"></span> Active</p>
+
                             </div>
-                            <br>
-                        @endif
-                        <div class="card request-list-table table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Wedding Date</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($requestquote as $requestquote)
-                                    <tr>
-                                        <td class="requester-name">{{ $requestquote->name }}</td>
-                                        <td class="wedding-date">{{ $requestquote->weddingdate }}</td>
-                                        <td class="requester-id">{{ $requestquote->email }}</td>
-                                        <td class="requester-phone">{{ $requestquote->phone }}</td>
-                                        <td class="requester-action"><a href="delete-requestquote/{{$requestquote->id}}" class="btn btn-outline-pink btn-xs">delete</a></td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-pricing">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-4 col-12">
+                            <div class="pricing-box pricing-basic">
+                                <!-- pricing box -->
+                                <a href="#" class="dashboard-price-badge badge badge-success">Current Active</a>
+                                <h4 class="pricing-name">Basic</h4>
+                                <div class="price">FREE</div>
+                                <div class="price-feature">
+                                    <ul class="listnone">
+                                        <li>One Listing</li>
+                                        <li><strong>30 Days </strong> Availability</li>
+                                        <li>Standard Listing</li>
+                                        <li>Limited Support</li>
+                                    </ul>
+                                </div>
+                                <a href="#" class="btn btn-primary">Get One Month Free</a>
+                            </div>
+                            <!-- /.pricing box -->
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-4 col-12">
+                            <div class="pricing-box pricing-standard">
+                                <!-- pricing box -->
+                                <h4 class="pricing-name">standard</h4>
+                                <div class="price"><span class="price-sign">$</span> 10</div>
+                                <div class="price-feature">
+                                    <ul class="listnone">
+                                        <li>10 Listing</li>
+                                        <li>Unlimited Availability</li>
+                                        <li>Featured In the Results</li>
+                                        <li>24/7 Support</li>
+                                    </ul>
+                                </div>
+                                <a href="#" class="btn btn-white">Select Plan</a>
+                            </div>
+                            <!-- /.pricing box -->
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-4 col-12">
+                            <div class="pricing-box pricing-premium">
+                                <!-- pricing box -->
+                                <h4 class="pricing-name">premium</h4>
+                                <div class="price"><span class="price-sign">$</span> 30</div>
+                                <div class="price-feature">
+                                    <ul class="listnone">
+                                        <li>Unlimited Listings</li>
+                                        <li>Unlimited Availability</li>
+                                        <li>Featured In Top 10 Results</li>
+                                        <li>24/7 Priority Support</li>
+                                    </ul>
+                                </div>
+                                <a href="#" class="btn btn-primary">Select Plan</a>
+                            </div>
+                            <!-- /.pricing box -->
                         </div>
                     </div>
                 </div>
@@ -184,13 +213,11 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{ asset('js/menumaker.min.js') }}"></script>
-    <script src="{{ asset('js/custom-script.js') }}"></script>
-     <!-- nice-select js -->
-    <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
-    <script src="{{ asset('js/fastclick.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/offcanvas.js') }}"></script>
-    <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>    
+    <script src="{{ asset('js/menumaker.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('js/custom-script.js') }}"></script>
+    <script src="{{ asset('js/offcanvas.js') }}"></script>   
+    @endforeach
 </body>
 </html>

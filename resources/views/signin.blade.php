@@ -148,6 +148,7 @@
                         <div class="text-center search-head">
                             <p class="d-none d-xl-block d-lg-block d-sm-block text-white">
                                 <a class="text-white" href="/register">Don't have an account ? Register Yourelf</a>
+                                <br/>
                                 <a class="text-white" href="/forgotpassword">Forgot your password?</a>
                             </p>
                         </div>

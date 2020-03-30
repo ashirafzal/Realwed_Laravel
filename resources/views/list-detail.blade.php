@@ -68,30 +68,6 @@
                                                             </div>
                                                         </div>
                                                     </a>
-                                                    <a href="#" class="list-group-item list-group-item-action">
-                                                        <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="{{ asset('images/avatar-3.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
-                                                            <div class="notification-list-user-block"><span class="notification-list-user-name">John Deo</span>is now following you
-                                                                <div class="notification-date">2 days ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="list-group-item list-group-item-action">
-                                                        <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="{{ asset('images/avatar-4.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
-                                                            <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
-                                                                <div class="notification-date">2 min ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="list-group-item list-group-item-action">
-                                                        <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="{{ asset('images/avatar-4.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
-                                                            <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
-                                                                <div class="notification-date">2 min ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
                                                 </div>
                                             </div>
                                         </li>
@@ -103,7 +79,7 @@
                                 <li class="nav-item dropdown dropleft user-vendor ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="user-icon">
-                                        <img src="{{ asset('userimage') }}/{{$user->userimage}}" alt="" class="rounded-circle mb10">
+                                            <img src="{{ asset('userimage') }}/{{$user->userimage}}" alt="" class="rounded-circle mb10">
                                         </span>
                                         <span class="user-vendor-name"><?php {{ echo $username = Session::get('username'); }} ?></span></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -1545,7 +1521,7 @@
                                 $(".alert-info").css('display','block');
                                 $(".alert-info").html(result);
                             }
-
+                            return false;
                         });
                     }                    
                 });

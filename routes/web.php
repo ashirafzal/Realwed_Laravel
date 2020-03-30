@@ -49,6 +49,10 @@ Route::get('/signin', function () {
     return view('/signin');
 });
 
+Route::post('otp-validation','ForgotPassword@otp_validation');
+
+Route::post('email-validate','MailSend@mailsend');
+
 Route::get('delete-requestquote/{id}',"Requestquote@delete");
 
 Route::get('requestquote-view',"Requestquote@index");
@@ -87,7 +91,13 @@ Route::get('/logout', function () {
     return redirect()->route('killsession');
 });
 
+Route::get('/forgotpassword', function () {
+    return view('/forgot-password');
+});
+
 Route::get('/sigin', 'LoginController@index')->name('signintocontinue');
+
+Route::get('pricing', 'Pricing@index');
 
 Route::get('Reviews', 'Reviews@index');
 

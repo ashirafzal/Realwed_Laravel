@@ -1,13 +1,17 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
+use DB;
+use Session;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 
 class CoupleDashboard extends Controller
 {
-    public function index(){
+    public function index(Request $request){
 
         $userid = Session::get('userid');
         $username = Session::get('username');
@@ -19,12 +23,6 @@ class CoupleDashboard extends Controller
         }else{
             
             $users = DB::table('appusers')->where('id',$userid)->get();
-            foreach($users as $users){
-                echo $user->name;
-                echo $user->email;
-                echo $user->type;
-                echo $user->userpassword;
-            }
             return view('coupledashboard',['users'=>$users]); 
         }
 

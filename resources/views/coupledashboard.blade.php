@@ -69,22 +69,22 @@
                                 <li class="nav-item dropdown dropleft user-vendor ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="user-icon">
-                                            <!--<img src="{{ asset('images/dashboard-profile-couple.jpg') }}" alt="" class="rounded-circle mb10">-->
+                                            @foreach ($users as $user)
+                                                <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle mb10">
+                                            @endforeach
                                         </span>
                                         <span class="user-vendor-name"><?php echo Session::get('username'); ?>
                                         </span>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="couple-dashboard-overview">
-                                            Dashboard
-                                        </a>
+                                        <a class="dropdown-item" href="/coupledashboard">Dashboard</a>
                                         <a class="dropdown-item" href="#">My Wishlist </a>
-                                        <a class="dropdown-item" href="#">To Do List</a>
+                                        <a class="dropdown-item" href="todo-list">To Do List</a>
                                         <a class="dropdown-item" href="#">Budget</a>
                                         <a class="dropdown-item" href="#">Guestlist </a>
                                         <a class="dropdown-item" href="#">Seating Table </a>
-                                        <a class="dropdown-item" href="#">My Profile </a>
-                                        <a class="dropdown-item" href="#">Log Out </a>
+                                        <a class="dropdown-item" href="couple-profile">My Profile </a>
+                                        <a class="dropdown-item" href="/logout">Log Out </a>
                                     </div>
                                 </li>
                             </ul>
@@ -103,22 +103,25 @@
         <div class="dashboard-sidebar offcanvas-collapse">
             <div class="vendor-user-profile">
                 <div class="vendor-profile-img">
-                    <img src="{{ asset('images/dashboard-profile-couple.jpg') }}" alt="" class="rounded-circle"></div>
+                @foreach ($users as $user)
+                    <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle mb10">
+                @endforeach
+                </div>
                 <h3 class="vendor-profile-name"><?php echo Session::get('username'); ?></h3>
                 <a href="#" class="edit-link">edit profile</a>
             </div>
             <div class="dashboard-nav">
                 <ul class="list-unstyled">
-                    <li class="active"><a href="couple-dashboard-overview"><span class="dash-nav-icon"><i class="fas fa-compass"></i></span>Dashboard</a></li>
+                    <li class="active"><a href="/coupledashboard"><span class="dash-nav-icon"><i class="fas fa-compass"></i></span>Dashboard</a></li>
                     <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-heart"></i> </span> My Wishlist </a></li>
-                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-list-ul"></i></span>To Do List</a></li>
+                    <li><a href="todo-list"><span class="dash-nav-icon"><i class="fas fa-list-ul"></i></span>To Do List</a></li>
                     <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Budget</a></li>
                     <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-users"></i></span>Guestlist </a></li>
                     <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-table"></i></span>Seating Table </a></li>
                     <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-link"></i></span>Wedding Website </a></li>
                     <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-images"></i></span>Real Wedding </a></li>
-                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-user-circle"></i></span>My Profile </a></li>
-                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-sign-out-alt"></i></span>Log Out </a></li>
+                    <li><a href="couple-profile"><span class="dash-nav-icon"><i class="fas fa-user-circle"></i></span>My Profile </a></li>
+                    <li><a href="/logout"><span class="dash-nav-icon"><i class="fas fa-sign-out-alt"></i></span>Log Out </a></li>
                 </ul>
             </div>
         </div>

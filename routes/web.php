@@ -59,6 +59,8 @@ Route::get('requestquote-view',"Requestquote@index");
 
 Route::post('requestquote',"ListDetail@requestquote");
 
+Route::post('add-task',"ToDoList@addtask");
+
 Route::get('list-detail/{id}',"ListDetail@index");
 
 Route::get('user-singin',"LoginController@index");
@@ -66,6 +68,8 @@ Route::get('user-singin',"LoginController@index");
 Route::get('mylisting', 'MylistedItems@index');
 
 Route::get('myprofile', 'myprofile@index');
+
+Route::get('couple-profile', 'myprofile@couple_profile');
 
 Route::post('submitreview',"ListDetail@submitreview");
 
@@ -104,6 +108,8 @@ Route::get('Reviews', 'Reviews@index');
 Route::get('addlisting-success', 'AddListingController@index');
 
 Route::get('editlisting-success', 'MylistedItems@index');
+
+Route::get('todo-list', 'ToDoList@index');
 
 Route::post('addlisting',"AddListingController@save");
 

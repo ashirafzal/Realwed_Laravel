@@ -24,6 +24,18 @@ class myprofile extends Controller
         return view('myprofile',['users'=>$users]);       
     }
 
+    public function couple_profile(){
+
+        $userid = Session::get('userid');
+        $username = Session::get('username');
+        $useremail = Session::get('useremail');
+        $usertype = Session::get('usertype');
+
+        $users = DB::table('appusers')->where('id',$userid)->get();
+
+        return view('couple_profile',['users'=>$users]);       
+    }
+
     public function save(Request $request)
     {
         $userid = Session::get('userid');

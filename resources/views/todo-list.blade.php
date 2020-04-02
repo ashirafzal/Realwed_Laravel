@@ -335,7 +335,7 @@
      <script src="http://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-    <script>
+    <script type="text/javascript">
         jQuery(document).ready(function(){
             jQuery('#submittask').click(function(e){
                e.preventDefault();
@@ -345,10 +345,13 @@
                   }
               });
 
+              $(".alert-danger").css('display','none');
+              $(".alert-success").css('display','none');
+
               if ($.trim($("#tasktitle").val()) === "" || $.trim($("#taskdate").val()) === ""
                 || $.trim($("#taskstatus").val()) === ""){
-                    $("#danger").css('display','block');
-                    $("#danger").html('All Fields required. Make sure you fill up all fields');
+                    $(".alert-danger").css('display','block');
+                    $(".alert-danger").html('All Fields required. Make sure you fill up all fields');
                     return false;
                 }else{                      
                             jQuery.ajax({
@@ -360,8 +363,8 @@
                                 taskstatus: jQuery('#taskstatus').val(),
                             },
                                 success: function(result){
-                                    $(".alert-info").css('display','block');
-                                    $(".alert-info").html(result);
+                                    $(".alert-success").css('display','block');
+                                    $(".alert-success").html(result);
                                 }
                             });
                         }                    

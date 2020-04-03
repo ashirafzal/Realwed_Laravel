@@ -103,7 +103,7 @@
         <div class="dashboard-sidebar offcanvas-collapse">
             <div class="vendor-user-profile">
                 <div class="vendor-profile-img">
-                    <img src="images/dashboard-profile-couple.jpg" alt="" class="rounded-circle"></div>
+                    <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle"></div>
                 <h3 class="vendor-profile-name">Eva J. Giles</h3>
                 <a href="#" class="edit-link">edit profile</a>
             </div>
@@ -180,7 +180,7 @@
                         <div class="card card-summary">
                             <div class="card-body">
                                 <div class="float-left">
-                                    <div class="summary-count">80</div>
+                                    <div class="summary-count">{{ $addtask_completed }}</div>
                                     <p>Completed Task</p>
                                 </div>
                             </div>
@@ -190,7 +190,7 @@
                         <div class="card card-summary">
                             <div class="card-body">
                                 <div class="float-left">
-                                    <div class="summary-count">20</div>
+                                    <div class="summary-count">{{ $addtask_due }}</div>
                                     <p>Due Task </p>
                                 </div>
                             </div>
@@ -200,23 +200,20 @@
                         <div class="card card-summary">
                             <div class="card-body">
                                 <div class="float-left">
-                                    <div class="summary-count">20</div>
-                                    <p>Pending </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
-                        <div class="card card-summary">
-                            <div class="card-body">
-                                <div class="float-left">
-                                    <div class="summary-count">120</div>
+                                    <div class="summary-count">{{ $addtask_total }}</div>
                                     <p>Total Task </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                @if ($message = Session::get('error'))
+                    <div class="alert alert-danger alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{{ $message }}</strong>
+                    </div>
+                    <br>
+                @endif
                 <!-- accordions -->
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -226,22 +223,15 @@
                                 <div class="accordion-card-header" id="headingOne">
                                     <h5 class="mb-0">
                                     <a role="button" href="#" class="accordion-card-title" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                 Janurary (9)<span class="fas fa-plus float-right"></span></a></h5>
+                                 All Task<span class="fas fa-plus float-right"></span></a></h5>
                                 </div>
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="card-body">
                                         <!-- to do header -->
                                         <div class="todo-thead">
                                             <div class="row">
-                                                <div class="col-xl-6 col-lg-10 col-md-8 col-sm-12 col-12">
-                                                    <div class=" ">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="customCheckAll">
-                                                            <label class="custom-control-label" for="customCheckAll">
-                                                                All
-                                                            </label>
-                                                        </div>
-                                                    </div>
+                                                <div style="text-align:center;" class="col-xl-6 col-lg-10 col-md-8 col-sm-12 col-12">
+                                                <span class=" ">Task Name</span>
                                                 </div>
                                                 <div class="col-xl-2">
                                                     <span class=" ">Task Date</span>
@@ -257,59 +247,50 @@
                                         <!-- /.to do header -->
                                         <div class="todo-list">
                                             <ul class="list-unstyled">
+                                            @foreach ($addtask as $addtask)
+                                                @if($addtask->taskstatus == 'Completed')
                                                 <li>
                                                     <div class="row">
-                                                        <div class="col-xl-6 col-lg-10 col-md-8 col-sm-12 col-12">
-                                                            <div class="todo-list-content">
-                                                                <div class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                                    <label class="custom-control-label" for="customCheck1">
-                                                                        Nulla efficitur quam consectetur pretium semper.
-                                                                    </label>
-                                                                </div>
-                                                            </div>
+                                                        <div style="text-align:center;" class="col-xl-6 col-lg-10 col-md-8 col-sm-12 col-12">
+                                                            {{ $addtask->tasktitle }}
                                                         </div>
                                                         <div class="col-xl-2">
-                                                            <span class="todo-date">03 January 2019</span>
+                                                            <span class="todo-date">{{ $addtask->taskdate }}</span>
                                                         </div>
                                                         <div class="col-xl-2">
-                                                            <span class="to-do-status"><span class="badge badge-success">Complete</span></span>
+                                                            <span class="to-do-status"><span class="badge badge-success">Completed</span></span>
                                                         </div>
                                                         <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12 col-12">
                                                             <div class="todo-list-btn">
-                                                                <a href="#" class="btn btn-outline-violate btn-xs">edit</a>
-                                                                <a href="# " class="btn btn-outline-pink btn-xs">delete</a>
+                                                                <a href="edit-task/{{$addtask->id}}" class="btn btn-outline-violate btn-xs">edit</a>
+                                                                <a href="delete-task/{{$addtask->id}}" class="btn btn-outline-pink btn-xs">delete</a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </li>
+                                                @else
                                                 <li>
                                                     <div class="row">
-                                                        <div class="col-xl-6 col-lg-10 col-md-8 col-sm-12 col-12">
-                                                            <div class="todo-list-content">
-                                                                <div class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                                                    <label class="custom-control-label" for="customCheck2">
-                                                                        Orci varius natoque penatibus et magnius.
-                                                                    </label>
-                                                                </div>
-                                                            </div>
+                                                        <div style="text-align:center;" class="col-xl-6 col-lg-10 col-md-8 col-sm-12 col-12">
+                                                            {{ $addtask->tasktitle }}
                                                         </div>
                                                         <div class="col-xl-2">
-                                                            <span class="todo-date">03 January 2019</span>
+                                                            <span class="todo-date">{{ $addtask->taskdate }}</span>
                                                         </div>
                                                         <div class="col-xl-2">
                                                             <span class="to-do-status"><span class="badge badge-danger">Due</span></span>
                                                         </div>
                                                         <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12 col-12">
                                                             <div class="todo-list-btn">
-                                                                <a href="#" class="btn btn-outline-violate btn-xs">edit</a>
-                                                                <a href="# " class="btn btn-outline-pink btn-xs">delete</a>
+                                                                <a href="edit-task/{{$addtask->id}}" class="btn btn-outline-violate btn-xs">edit</a>
+                                                                <a href="delete-task/{{$addtask->id}}" class="btn btn-outline-pink btn-xs">delete</a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </li>
+                                                @endif
                                             </ul>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -363,6 +344,9 @@
                                 taskstatus: jQuery('#taskstatus').val(),
                             },
                                 success: function(result){
+                                    $('#tasktitle').val("");
+                                    $('#taskdate').val("");
+                                    $('#taskstatus').val("");
                                     $(".alert-success").css('display','block');
                                     $(".alert-success").html(result);
                                 }

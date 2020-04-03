@@ -23,7 +23,15 @@ class ToDoList extends Controller
         }else{
             
             $users = DB::table('appusers')->where('id',$userid)->get();
-            return view('todo-list',['users'=>$users]); 
+            $addtask = DB::table('addtask')->where('coupleid',$userid)->get();
+            $addtask_due = DB::table('addtask')->where('taskstatus','Completed')->get();
+            $addtask_due = count($addtask_due);
+            $addtask_completed = DB::table('addtask')->where('taskstatus','Due')->get();
+            $addtask_completed = count($addtask_completed);
+            $addtask_total = DB::table('addtask')->where('coupleid', $userid)->get();
+            $addtask_total = count($addtask_total);
+            return view('todo-list',['users'=>$users ,'addtask'=>$addtask ,'addtask_total'=>$addtask_total
+            , 'addtask_completed'=>$addtask_completed ,'addtask_due'=>$addtask_due]); 
         }
     }
 
@@ -50,6 +58,16 @@ class ToDoList extends Controller
            );
 
            echo json_encode(['success'=>'Task added successfully']);
+    }
+
+
+    public function Edit($id){
+        echo 'Edit id : '.$id;
+    }
+
+    public function Delete($id){
+        DB::table('addtask')->where('id',$id)->delete();
+        return Redirect::to("todo-list")->withError('Task deleted successfully');
     }
 
 }

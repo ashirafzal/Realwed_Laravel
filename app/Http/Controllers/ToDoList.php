@@ -61,8 +61,28 @@ class ToDoList extends Controller
     }
 
 
-    public function Edit($id){
-        echo 'Edit id : '.$id;
+    public function Edit(Request $request){
+        request()->validate([
+            'edittaskid' => 'required',
+            'edittasktitle' => 'required',
+            'edittaskdate' => 'required',
+            'edittaskstatus' => 'required',
+        ]);
+
+        $userid = Session::get('userid');
+        $edittaskid = $request->input('edittaskid');
+        $edittasktitle = $request->input('edittasktitle');
+        $edittaskdate = $request->input('edittaskdate');
+        $edittaskstatus = $request->input('edittaskstatus');
+
+        DB::table('addtask')->where('id',$edittaskid)->update(array(
+            'coupleid'=>$userid,
+            'tasktitle'=>$edittasktitle,
+            'taskdate'=>$edittaskdate,
+            'taskstatus'=>$edittaskstatus
+            ));
+
+            echo json_encode(['success'=>'Task Edited successfully']);
     }
 
     public function Delete($id){

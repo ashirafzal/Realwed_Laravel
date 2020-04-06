@@ -104,7 +104,7 @@
             <div class="vendor-user-profile">
                 <div class="vendor-profile-img">
                     <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle"></div>
-                <h3 class="vendor-profile-name">Eva J. Giles</h3>
+                <h3 class="vendor-profile-name"><?php echo Session::get('username'); ?></h3>
                 <a href="#" class="edit-link">edit profile</a>
             </div>
             <div class="dashboard-nav">
@@ -160,7 +160,7 @@
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="form-group">
-                                            <label class="control-label" for="taskdate">Task Status</label>
+                                            <label class="control-label" for="taskdate">Task Status (Due / Completed)</label>
                                             <input id="taskstatus" name="taskstatus" type="text" placeholder="Task status" class="form-control">
                                         </div>
                                     </div>
@@ -175,6 +175,71 @@
                         <a href="#" class="btn btn-default" id='trigger'>Add New Task</a>
                     </div>
                 </div>
+                <!-- Edit Task Form Start-->
+                <div class="row" id="edittaskblock" style="display:none;">
+                    <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                <div class="card">
+                                    <div class="card-header">Edit Task</div>
+                                    <div class="card-body">
+
+                                        <form id="edittask">
+                                            {{ csrf_field() }}
+                                            {{ method_field('POST') }}
+                                                <div id="edittasksuccess" class="alert alert-success alert-block" style="display:none;">
+                                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                                    <strong id="edittask_success_msg">Task Edited successfully</strong>
+                                                </div>
+                                                <div id="edittaskdanger" class="alert alert-danger alert-block" style="display:none;">
+                                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                                    <strong id="edittask_danger_msg">Error editing task</strong>
+                                                </div>
+                                            <!-- Form Name -->
+                                            <div class="personal-form-info">
+                                                <div class="row">
+                                                    <div style="display:none;" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="form-group">
+                                                            <input id="edittaskid" name="edittaskid" type="hidden" value="" placeholder="" class="form-control ">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="tasktitle">Task Tittle</label>
+                                                            <input id="edittasktitle" name="edittasktitle" type="text" value="" placeholder="" class="form-control ">
+                                                        </div>
+                                                    </div>
+                                                    <!-- Text input-->
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="taskdate">Task Date</label>
+                                                            <input id="edittaskdate" name="edittaskdate" type="text" value="" placeholder="" class="form-control ">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="taskstatus">Task Status (Due / Completed)</label>
+                                                            <input id="edittaskstatus" name="edittaskstatus" type="text" value="" placeholder="" class="form-control ">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="social-form-info mb-0">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <button class="btn btn-default" id="submit_edittask" type="submit">Edit Task</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!--Edit Task Form Ends-->
                 <div class="row">
                     <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
                         <div class="card card-summary">
@@ -214,6 +279,10 @@
                     </div>
                     <br>
                 @endif
+                <div class="alert alert-danger alert-block" id="edittask_danger" style="display:none;">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong id="edittask_js_error"></strong>
+                </div>
                 <!-- accordions -->
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -227,71 +296,54 @@
                                 </div>
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="card-body">
+                                    <div class="table-responsive text-nowrap">
+                                            <!--Table-->
+                                            <table  id="table1" class="table table-bordered text-center">
+                                            <!--Table head-->
+                                            <thead>
+                                                <tr>
+                                                    <th>Select Task</th>
+                                                    <th style="display:none;">Task ID</th>
+                                                    <th>Task Name</th>
+                                                    <th>Task Date</th>
+                                                    <th>Task Status</th>
+                                                    <th>Edit Task</th>
+                                                    <th>Delete Task</th>
+                                                </tr>
+                                            </thead>
+                                            <!--Table head-->
+                                            <!--Table body-->
+                                            <tbody>
+                                                @foreach($addtask as $addtask)
+                                                    @if($addtask->taskstatus == 'Completed')
+                                                    <tr>
+                                                        <td><input type="checkbox" id="check-tab1" name="check-tab1"></td>
+                                                        <td style="display:none;">{{ $addtask->id }}</td>
+                                                        <td>{{ $addtask->tasktitle }}</td>
+                                                        <td>{{ $addtask->taskdate }}</td>
+                                                        <td><span class="to-do-status"><span class="badge badge-success">Completed</span></span></td>
+                                                        <td><a href="javascript:edittask()" onclick="edittask()" class="btn btn-outline-violate btn-xs">Edit</a></td>
+                                                        <td><a href="delete-task/{{$addtask->id}}" class="btn btn-outline-violate btn-xs">Delete</a></td>
+                                                    </tr>
+                                                    @else
+                                                    <tr>
+                                                        <td><input type="checkbox" id="check-tab1" name="check-tab1"></td>
+                                                        <td style="display:none;">{{ $addtask->id }}</td>
+                                                        <td>{{ $addtask->tasktitle }}</td>
+                                                        <td>{{ $addtask->taskdate }}</td>
+                                                        <td><span class="to-do-status"><span class="badge badge-danger">Due</span></span></td>
+                                                        <td><a href="javascript:edittask()" onclick="edittask()" class="btn btn-outline-violate btn-xs">Edit</a></td>
+                                                        <td><a href="delete-task/{{$addtask->id}}" class="btn btn-outline-violate btn-xs">Delete</a></td>
+                                                    </tr>
+                                                    @endif
+                                                @endforeach
+                                            </tbody>
+                                            <!--Table body-->
+                                        </table>
+                                        <!--Table-->
+                                    </div>
                                         <!-- to do header -->
-                                        <div class="todo-thead">
-                                            <div class="row">
-                                                <div style="text-align:center;" class="col-xl-6 col-lg-10 col-md-8 col-sm-12 col-12">
-                                                <span class=" ">Task Name</span>
-                                                </div>
-                                                <div class="col-xl-2">
-                                                    <span class=" ">Task Date</span>
-                                                </div>
-                                                <div class="col-xl-2">
-                                                    <span class=" "> Status </span>
-                                                </div>
-                                                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12 col-12">
-                                                    Action
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /.to do header -->
-                                        <div class="todo-list">
-                                            <ul class="list-unstyled">
-                                            @foreach ($addtask as $addtask)
-                                                @if($addtask->taskstatus == 'Completed')
-                                                <li>
-                                                    <div class="row">
-                                                        <div style="text-align:center;" class="col-xl-6 col-lg-10 col-md-8 col-sm-12 col-12">
-                                                            {{ $addtask->tasktitle }}
-                                                        </div>
-                                                        <div class="col-xl-2">
-                                                            <span class="todo-date">{{ $addtask->taskdate }}</span>
-                                                        </div>
-                                                        <div class="col-xl-2">
-                                                            <span class="to-do-status"><span class="badge badge-success">Completed</span></span>
-                                                        </div>
-                                                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12 col-12">
-                                                            <div class="todo-list-btn">
-                                                                <a href="edit-task/{{$addtask->id}}" class="btn btn-outline-violate btn-xs">edit</a>
-                                                                <a href="delete-task/{{$addtask->id}}" class="btn btn-outline-pink btn-xs">delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                @else
-                                                <li>
-                                                    <div class="row">
-                                                        <div style="text-align:center;" class="col-xl-6 col-lg-10 col-md-8 col-sm-12 col-12">
-                                                            {{ $addtask->tasktitle }}
-                                                        </div>
-                                                        <div class="col-xl-2">
-                                                            <span class="todo-date">{{ $addtask->taskdate }}</span>
-                                                        </div>
-                                                        <div class="col-xl-2">
-                                                            <span class="to-do-status"><span class="badge badge-danger">Due</span></span>
-                                                        </div>
-                                                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12 col-12">
-                                                            <div class="todo-list-btn">
-                                                                <a href="edit-task/{{$addtask->id}}" class="btn btn-outline-violate btn-xs">edit</a>
-                                                                <a href="delete-task/{{$addtask->id}}" class="btn btn-outline-pink btn-xs">delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                @endif
-                                            </ul>
-                                            @endforeach
-                                        </div>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -312,10 +364,94 @@
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
     <script src="{{ asset('js/offcanvas.js') }}"></script>
     <script src="{{ asset('js/jquery.slidereveal.js') }}"></script>
-     <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
-     <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
+    <script type="text/javascript">
+        function edittask(){
+
+            var checkboxlength = $("#check-tab1:checked").length;
+
+            if(checkboxlength > 1){
+                document.getElementById("edittask_danger").style.display = "block";
+                document.getElementById("edittask_js_error").innerHTML = "Cannot select more than one task to edit at a time";
+            }
+            else if(checkboxlength < 1){
+                document.getElementById("edittask_danger").style.display = "block";
+                document.getElementById("edittask_js_error").innerHTML = "select task to edit";
+            }
+            else{
+
+                document.getElementById("edittaskblock").style.display = "block";
+                
+                var table1 = document.getElementById("table1");
+
+                var edittaskid = document.getElementById("edittaskid");
+                var edittasktittle = document.getElementById("edittasktittle");
+                var edittaskdate = document.getElementById("edittaskdate");
+                var edittaskstatus = document.getElementById("edittaskstatus");
+
+                checkboxes = document.getElementsByName("check-tab1");
+
+                for(var i = 0; i < checkboxes.length; i++){
+                    if(checkboxes[i].checked)
+                    {                    
+                        document.getElementById("edittaskid").value = table1.rows[i+1].cells[1].innerHTML;
+                        document.getElementById("edittasktitle").value = table1.rows[i+1].cells[2].innerHTML;
+                        document.getElementById("edittaskdate").value = table1.rows[i+1].cells[3].innerHTML;
+                        var checkstatus = table1.rows[i+1].cells[4].innerHTML;
+
+                        if(checkstatus.indexOf('Completed') > -1){
+                            document.getElementById("edittaskstatus").value = "Completed";
+                        }else{
+                            document.getElementById("edittaskstatus").value = "Due";
+                        }
+                    }
+                }
+            }           
+            
+        } 
+    </script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+        <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery('#submit_edittask').click(function(e){
+               e.preventDefault();
+               $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+              });
+
+              if ($.trim($("#edittasktitle").val()) === "" || $.trim($("#edittaskdate").val()) === ""
+                || $.trim($("#edittaskstatus").val()) === ""){
+                    $("#edittaskdanger").css('display','block');
+                    $("#edittask_danger_msg").html('All Fields required. Make sure you fill up all fields');
+                    return false;
+                }else{           
+                            var edittaskid = jQuery('#edittaskid').val();           
+                            jQuery.ajax({
+                            url: "{{ url('edit-task') }}"+"/"+edittaskid,
+                            method: 'post',
+                            data: {
+                                edittaskid: jQuery('#edittaskid').val(),
+                                edittasktitle: jQuery('#edittasktitle').val(),
+                                edittaskdate: jQuery('#edittaskdate').val(),
+                                edittaskstatus: jQuery('#edittaskstatus').val()
+                            },
+                                success: function(result){
+                                    $('#edittaskid').val("");
+                                    $('#edittasktitle').val("");
+                                    $('#edittaskdate').val("");
+                                    $('#edittaskstatus').val("");
+                                    $("#edittasksuccess").css('display','block');
+                                    $("edittask_success_msg").html(result);
+                                }
+                            });
+                        }                    
+                    });
+                });
+    </script>
     <script type="text/javascript">
         jQuery(document).ready(function(){
             jQuery('#submittask').click(function(e){

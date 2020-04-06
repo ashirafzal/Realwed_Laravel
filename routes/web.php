@@ -61,7 +61,7 @@ Route::post('requestquote',"ListDetail@requestquote");
 
 Route::post('add-task',"ToDoList@addtask");
 
-Route::get('edit-task/{id}',"ToDoList@Edit");
+Route::post('edit-task/{id}',"ToDoList@Edit");
 
 Route::get('delete-task/{id}',"ToDoList@Delete");
 

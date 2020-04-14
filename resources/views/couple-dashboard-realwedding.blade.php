@@ -138,6 +138,14 @@
                         </div>
                     </div>
                 </div>
+                <div id="success" class="alert alert-success alert-block" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong id="success_msg">Task Edited successfully</strong>
+                </div>
+                <div id="info_success" class="alert alert-info alert-block" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong id="info_success_msg">Task Edited successfully</strong>
+                </div>
                 <div class="row">
                     <div class="col-xl-12 col-lg-8 col-md-8 col-sm-12 col-12">
                         <div class="card">
@@ -147,7 +155,7 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-center">Show Private
                                         <div class="switch-notification">
                                             <label class="switch">
-                                                <input name="showprivate" type="checkbox">
+                                                <input id="showprivate" type="checkbox">
                                                 <span class="slider"></span>
                                             </label>
                                         </div>
@@ -169,7 +177,6 @@
                                     </div>
                                 </div>
                                 <div class="alert alert-danger alert-block" id="edittask_danger" style="display:none;">
-
                                 </div>
                                 <div class="card-body border-top">
                                     <div class="row">
@@ -381,6 +388,49 @@
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous">
+    </script>
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            $("#showprivate").click(function(){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                $("#success").css('display','none');
+                $("#info_success").css('display','none');
+
+                if($(this).is(":checked"))
+                {
+                    var checked = "checked";
+                    jQuery.ajax({
+                        url: "{{ url('show-realwedding') }}",
+                        method: 'post',
+                        data:{
+                            checked: checked,
+                        },
+                        success: function(result){
+                            $("#success").css('display','block');
+                            $("#success_msg").html("Real wedding will be shown");
+                        }
+                    });
+                }
+                else{
+                    var checked = "not checked";
+                    jQuery.ajax({
+                        url: "{{ url('dont-show-realwedding') }}",
+                        method: 'post',
+                        data:{
+                            checked: checked,
+                        },
+                        success: function(result){
+                            $("#info_success").css('display','block');
+                            $("#info_success_msg").html("Real wedding will not be shown");
+                        }
+                    });
+                }
+            });
+        });
     </script>
     <script>
         jQuery(document).ready(function(){

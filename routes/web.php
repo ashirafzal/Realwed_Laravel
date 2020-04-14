@@ -49,6 +49,12 @@ Route::get('/signin', function () {
     return view('/signin');
 });
 
+Route::get('couple-website', 'CoupleWebsite@index');
+
+Route::post('show-realwedding', 'RealWedding@Showprofile');
+
+Route::post('dont-show-realwedding', 'RealWedding@Dontshowprofile');
+
 Route::post('save-real-wedding', 'RealWedding@SaveRealWedding');
 
 Route::get('RealWedding', 'RealWedding@index');

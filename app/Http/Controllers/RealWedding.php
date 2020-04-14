@@ -134,6 +134,59 @@ class RealWedding extends Controller
        );
 
        echo json_encode(['success'=>'Real wedding details saved']);
-      
+    }
+
+    public function Showprofile(Request $request){
+
+        $userid = Session::get('userid');
+
+        $showrealwedding = DB::select("select * from showrealwedding where coupleid = '$userid' ");
+
+        $count = count($showrealwedding);
+        $showprofile = "show";
+
+        if($count > 0){
+            DB::table('showrealwedding')->where('coupleid',$userid)->update
+                (array(
+                    'coupleid' => $userid,
+                    'showprofile' => $showprofile,
+                ));
+        }else{
+            DB::table('showrealwedding')->insert(
+                array(
+                       'coupleid' => $userid,
+                       'showprofile' => $showprofile,
+                )
+           );
+        }
+
+        echo json_encode(['success'=>'Real wedding will be shown']);
+    }
+
+    public function Dontshowprofile(Request $request){
+
+        $userid = Session::get('userid');
+
+        $showrealwedding = DB::select("select * from showrealwedding where coupleid = '$userid' ");
+
+        $count = count($showrealwedding);
+        $showprofile = "notshow";
+
+        if($count > 0){
+            DB::table('showrealwedding')->where('coupleid',$userid)->update
+                (array(
+                    'coupleid' => $userid,
+                    'showprofile' => $showprofile,
+                ));
+        }else{
+            DB::table('showrealwedding')->insert(
+                array(
+                       'coupleid' => $userid,
+                       'showprofile' => $showprofile,
+                )
+           );
+        }
+
+        echo json_encode(['success'=>'Real wedding will not be shown']);
     }
 }

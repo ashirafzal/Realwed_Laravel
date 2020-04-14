@@ -49,6 +49,10 @@ Route::get('/signin', function () {
     return view('/signin');
 });
 
+Route::post('save-real-wedding', 'RealWedding@SaveRealWedding');
+
+Route::get('RealWedding', 'RealWedding@index');
+
 Route::post('otp-validation','ForgotPassword@otp_validation');
 
 Route::post('email-validate','MailSend@mailsend');

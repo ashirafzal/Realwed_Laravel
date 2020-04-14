@@ -183,7 +183,6 @@
                                 <div class="card">
                                     <div class="card-header">Edit Task</div>
                                     <div class="card-body">
-
                                         <form id="edittask">
                                             {{ csrf_field() }}
                                             {{ method_field('POST') }}

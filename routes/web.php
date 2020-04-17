@@ -51,6 +51,10 @@ Route::get('/signin', function () {
 
 Route::get('couple-website', 'CoupleWebsite@index');
 
+Route::get('couple-website/{id}',"CoupleWebsite@website");
+
+Route::post('submit-website', 'CoupleWebsite@submit_website');
+
 Route::post('show-realwedding', 'RealWedding@Showprofile');
 
 Route::post('dont-show-realwedding', 'RealWedding@Dontshowprofile');

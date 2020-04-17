@@ -190,9 +190,9 @@
                                                 <option value="Resort">Resort</option>
                                                 <option value="Church">Church</option>
                                                 <option value="In Door">In Door</option>
-                                                <option value="">Florist</option>
-                                                <option value="">Dj</option>
-                                                  <option value="">Cake</option>
+                                                <option value="Florist">Florist</option>
+                                                <option value="Dj">Dj</option>
+                                                <option value="Cake">Cake</option>
                                             </select>
                                         </div>
                                     </div>

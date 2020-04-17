@@ -118,7 +118,7 @@
                     <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Budget</a></li>
                     <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-users"></i></span>Guestlist </a></li>
                     <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-table"></i></span>Seating Table </a></li>
-                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-link"></i></span>Wedding Website </a></li>
+                    <li><a href="couple-website"><span class="dash-nav-icon"><i class="fas fa-link"></i></span>Wedding Website </a></li>
                     <li><a href="RealWedding"><span class="dash-nav-icon"><i class="fas fa-images"></i></span>Real Wedding </a></li>
                     <li><a href="couple-profile"><span class="dash-nav-icon"><i class="fas fa-user-circle"></i></span>My Profile </a></li>
                     <li><a href="/logout"><span class="dash-nav-icon"><i class="fas fa-sign-out-alt"></i></span>Log Out </a></li>
@@ -141,11 +141,16 @@
                             <div class="card-header">Settings</div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-xl-2">Website URL</div>
+                                    <div class="col-xl-2">Websites URL</div>
                                     <div class="col-xl-8">
-                                        <p class="text-primary">https://wporganic.com/theme/realwed/couple/bhoomika</p>
+                                        <p class="text-primary">
+                                            @foreach($couplewebsite as $couplewebsite)
+                                                <a href="http://127.0.0.1:8000/couple-website/{{ $couplewebsite->id }}">http://127.0.0.1:8000/couple-website/{{ $couplewebsite->id }}</a>
+                                                <br/>
+                                            @endforeach
+                                        </p>
                                     </div>
-                                    <div class="col-xl-2 text-right "><a href="#" class="btn btn-default btn-xs">Copy URL</a></div>
+                                    <!--<div class="col-xl-2 text-right "><a href="#" class="btn btn-default btn-xs">Copy URL</a></div>-->
                                 </div>
                             </div>
                         </div>
@@ -180,37 +185,78 @@
                                             <div class="">
                                                 <div class="form-group">
                                                     <label class="control-label" for="">Couple Name</label>
-                                                    <input id="couplename" name="couplename" type="text" placeholder="" class="form-control ">
+                                                    <input id="couplename" name="couplename" type="text" placeholder="Your couple name" class="form-control ">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label" for="">Wedding Date</label>
-                                                    <input id="weddingdate" name="weddingdate" type="text" placeholder="" class="form-control">
+                                                    <input id="weddingdate" name="weddingdate" type="text" placeholder="Your wedding date" class="form-control">
                                                     <div class="venue-form-calendar"><i class="far fa-calendar-alt"></i></div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label" for="">Contact Email</label>
-                                                    <input id="contactemail" name="contactemail" type="text" placeholder="" class="form-control ">
+                                                    <label class="control-label" for="">Wedding city & country</label>
+                                                    <input id="weddingplace" name="weddingplace" type="text" placeholder="Your wedding city & country" class="form-control ">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label" for="">Contact Phone#</label>
-                                                    <input id="contactnumber" name="contactnumber" type="number" placeholder="" class="form-control ">
+                                                    <label class="control-label" for="">Wedding address</label>
+                                                    <input id="weddingaddress" name="weddingaddress" type="text" placeholder="Your wedding address" class="form-control ">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">Contact Email</label>
+                                                    <input id="contactemail" name="contactemail" type="email" placeholder="Your contact email" class="form-control ">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">Phone Number</label>
+                                                    <input id="contactnumber" name="contactnumber" type="number" placeholder="Your phone number" class="form-control ">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label" for="">Whatsapp Contact</label>
-                                                    <input id="whatsapp" name="whatsapp" type="number" placeholder="" class="form-control ">
+                                                    <input id="whatsapp" name="whatsapp" type="number" placeholder="Your whatsapp contact" class="form-control ">
                                                 </div>
-                                                <h5>Header Image</h5>
+                                                <div class="form-group">
+                                                    <label class="control-label" for="summernote">Your Wedding Story</label>
+                                                    <textarea class="form-control" id="yourstory" name="yourstory" placeholder="Write your wedding story here ..."></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label" for="summernote">Your Proposal</label>
+                                                    <textarea class="form-control" id="yourproposal" name="yourproposal" placeholder="Write your wedding story here ..."></textarea>
+                                                </div>
+                                                <h2 class="text-danger">Header Image</h2>
                                                 <div class="custom-file">
-                                                    <input type="file" name="rsvpformpic" onchange="readURL(this);" class="custom-file-input" id="customFile">
+                                                    <input type="file" name="rsvpformpic" name="filebutton" id="filebutton" onchange="readURL(this);" class="custom-file-input" id="customFile">
                                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                                 </div>
                                                 <div class="couple-form-image-section">
                                                     <img id="image" name="image" src="{{ asset('images/couple-form-image.jpg') }}" alt="" class="img-fluid">
                                                 </div>
+                                                <br/>
+                                                <h2 class="text-danger">Add 3 wedding gallery images</h2>
+                                                <div class="form-group">
+                                                    <input id="filebutton2" name="filebutton2" onchange="readURL2(this);" class="btn btn-primary btn-block" type="file">
+                                                    <input id="filebutton3" name="filebutton3" onchange="readURL3(this);" class="btn btn-primary btn-block" type="file">
+                                                    <input id="filebutton4" name="filebutton4" onchange="readURL4(this);" class="btn btn-primary btn-block" type="file">
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="gallery-upload-img">
+                                                        <img src="" id="image2" alt="" class="img-fluid">
+                                                        <span class="delete-gallery-img"> <a href="#"><i class="fa  fa-times-circle"></i></a></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="gallery-upload-img">
+                                                        <img src="" id="image3" alt="" class="img-fluid">
+                                                        <span class="delete-gallery-img"> <a href="#"><i class="fa  fa-times-circle"></i></a></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="gallery-upload-img">
+                                                        <img src="" id="image4" alt="" class="img-fluid">
+                                                        <span class="delete-gallery-img"> <a href="#"><i class="fa  fa-times-circle"></i></a></span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                            <button class="btn btn-default" id="submitrsvp" type="submit">Save</button>
+                                            <button class="btn btn-default" id="submitrsvp" type="submit">Create Wedding Wed Page</button>
                                         </div>
                                     </form>
                                 </div>                             
@@ -231,8 +277,62 @@
                 {
                     $('#image')
                         .attr('src', e.target.result)
-                        .width(400)
-                        .height(250);
+                        .width("100%")
+                        .height(500);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL2(input) 
+        {
+            if (input.files && input.files[0])
+            {
+                var reader = new FileReader();
+
+                reader.onload = function (e) 
+                {
+                    $('#image2')
+                        .attr('src', e.target.result)
+                        .width("100%")
+                        .height(350);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL3(input) 
+        {
+            if (input.files && input.files[0])
+            {
+                var reader = new FileReader();
+
+                reader.onload = function (e) 
+                {
+                    $('#image3')
+                        .attr('src', e.target.result)
+                        .width("100%")
+                        .height(350);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL4(input) 
+        {
+            if (input.files && input.files[0])
+            {
+                var reader = new FileReader();
+
+                reader.onload = function (e) 
+                {
+                    $('#image4')
+                        .attr('src', e.target.result)
+                        .width("100%")
+                        .height(350);
                 };
 
                 reader.readAsDataURL(input.files[0]);
@@ -242,6 +342,61 @@
      <script src="http://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous">
+    </script>
+    <script>
+        jQuery(document).ready(function(){
+            jQuery('#rsvp-form').submit(function(e){
+               e.preventDefault();
+               $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+              });
+
+              $(".alert-danger").css('display','none');
+
+                if($('#filebutton').get(0).files.length === 0){
+                    $(".alert-danger").css('display','block');
+                    $(".alert-danger").html('Header image required');
+                }
+                    else{
+                            if ($('#filebutton2').get(0).files.length === 0 ||
+                                $('#filebutton3').get(0).files.length === 0 ||
+                                $('#filebutton4').get(0).files.length === 0)
+                            {
+                                $(".alert-danger").css('display','block');
+                                $(".alert-danger").html('Wedding gallery images required');
+                                return false;
+                            }else
+                            {   
+                                if ($.trim($("#couplename").val()) === "" || $.trim($("#weddingdate").val()) === "" ||
+                                    $.trim($("#weddingplace").val()) === "" || $.trim($("#weddingaddress").val()) === "" ||
+                                    $.trim($("#contactemail").val()) === "" || $.trim($("#contactnumber").val()) === "" ||
+                                    $.trim($("#whatsapp").val()) === "" || $.trim($("#yourstory").val()) === "" ||
+                                    $.trim($("#yourproposal").val()) === ""){
+                                    $(".alert-danger").css('display','block');
+                                    $(".alert-danger").html('Text feilds cannot be blank');
+                                }
+                                else{                                    
+                                    var formData = new FormData($('#rsvp-form')[0]);
+
+                                    jQuery.ajax({
+                                    url: "{{ url('submit-website') }}",
+                                    method: 'post',
+                                    data:   formData,
+                                    cache:  false,
+                                    
+                                    processData: false,
+                                    contentType: false, 
+                                        success: function(result){
+                                            alert(result);
+                                        }
+                                    });                                                                              
+                                }                                               
+                            }
+                        }                    
+                    });
+                });
     </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>

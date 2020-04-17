@@ -49,6 +49,14 @@ Route::get('/signin', function () {
     return view('/signin');
 });
 
+Route::get('couple-guestlist', 'Guestlist@index');
+
+Route::post('single-guestlist-submit', 'Guestlist@submit_singlelist');
+
+Route::post('couple-guestlist-submit', 'Guestlist@submit_couplelist');
+
+Route::post('household-guestlist-submit', 'Guestlist@submit_householdlist');
+
 Route::get('couple-website', 'CoupleWebsite@index');
 
 Route::get('couple-website/{id}',"CoupleWebsite@website");

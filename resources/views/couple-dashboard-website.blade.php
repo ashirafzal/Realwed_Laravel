@@ -81,7 +81,7 @@
                                         <a class="dropdown-item" href="#">My Wishlist </a>
                                         <a class="dropdown-item" href="todo-list">To Do List</a>
                                         <a class="dropdown-item" href="#">Budget</a>
-                                        <a class="dropdown-item" href="#">Guestlist </a>
+                                        <a class="dropdown-item" href="couple-guestlist">Guestlist </a>
                                         <a class="dropdown-item" href="#">Seating Table </a>
                                         <a class="dropdown-item" href="couple-profile">My Profile </a>
                                         <a class="dropdown-item" href="/logout">Log Out </a>
@@ -116,7 +116,7 @@
                     <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-heart"></i> </span> My Wishlist </a></li>
                     <li><a href="todo-list"><span class="dash-nav-icon"><i class="fas fa-list-ul"></i></span>To Do List</a></li>
                     <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Budget</a></li>
-                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-users"></i></span>Guestlist </a></li>
+                    <li><a href="couple-guestlist"><span class="dash-nav-icon"><i class="fas fa-users"></i></span>Guestlist </a></li>
                     <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-table"></i></span>Seating Table </a></li>
                     <li><a href="couple-website"><span class="dash-nav-icon"><i class="fas fa-link"></i></span>Wedding Website </a></li>
                     <li><a href="RealWedding"><span class="dash-nav-icon"><i class="fas fa-images"></i></span>Real Wedding </a></li>
@@ -339,7 +339,7 @@
             }
         }
     </script>
-     <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous">
     </script>

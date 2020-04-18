@@ -251,6 +251,10 @@
                             </div>
                             <div class="tab-pane fade" id="couple-guest" role="tabpanel" aria-labelledby="couple-guest-tab">
                                 <form id="couple_guest">
+                                    <div class="alert alert-danger alert-block" id="couple_danger_msg" style="display:none;">
+                                    </div>
+                                    <div class="alert alert-success alert-block" id="couple_success_msg" style="display:none;">
+                                    </div>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -260,31 +264,31 @@
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="firstname">First Name</label>
-                                                    <input id="firstname" name="firstname" type="text" placeholder="" class="form-control">
+                                                    <input id="couple_firstname" name="couple_firstname" type="text" placeholder="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="lastname">Last Name</label>
-                                                    <input id="lastname" name="lastname" type="text" placeholder="" class="form-control">
+                                                    <input id="couple_lastname" name="couple_lastname" type="text" placeholder="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="partnerfname">Partner First Name</label>
-                                                    <input id="partnerfname" name="partnerfname" type="text" placeholder="" class="form-control">
+                                                    <input id="couple_partnerfname" name="couple_partnerfname" type="text" placeholder="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="partnerlname">Partner Last Name</label>
-                                                    <input id="partnerlname" name="partnerlname" type="text" placeholder="" class="form-control">
+                                                    <input id="couple_partnerlname" name="couple_partnerlname" type="text" placeholder="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label class="control-label"  id="family2" >Group/Family</label>
-                                                    <select class="wide" for="family2">
+                                                    <select class="wide" id="couple_group" name="couple_group" for="family2">
                                                         <option value="Groom Sister">Groom Sister</option>
                                                         <option value="Bride Friend">Bride Friend</option>
                                                         <option value="Groom Friend">Groom Friend</option>
@@ -300,25 +304,25 @@
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="address3">Address Line 1</label>
-                                                    <input id="address3" name="address3" type="text" placeholder="" class="form-control">
+                                                    <input id="couple_address" name="couple_address" type="text" placeholder="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="address4">Address Line 2</label>
-                                                    <input id="address4" name="address4" type="text" placeholder="" class="form-control">
+                                                    <input id="couple_address2" name="couple_address2" type="text" placeholder="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="emailsecond">Email</label>
-                                                    <input id="emailsecond" name="email1" type="email" placeholder="" class="form-control ">
+                                                    <input id="couple_email" name="couple_email" type="email" placeholder="" class="form-control ">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="city1">City</label>
-                                                    <select class="wide" id="city1">
+                                                    <select class="wide" name="couple_city" id="couple_city">
                                                         <option value="Karachi">Karachi</option>
                                                         <option value="Lahore">Lahore</option>
                                                         <option value="Islamabad">Islamabad</option>
@@ -328,7 +332,7 @@
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="country">Country</label>
-                                                    <select class="wide" id="country">
+                                                    <select class="wide" name="couple_country" id="couple_country">
                                                         <option value="Pakistan">Pakistan</option>
                                                         <option value="UK">UK</option>
                                                         <option value="US">US</option>
@@ -338,7 +342,7 @@
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="postcode1">Postcode</label>
-                                                    <input id="postcode" name="postcode" type="text" placeholder="" class="form-control">
+                                                    <input id="couple_postcode" name="couple_postcode" type="text" placeholder="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
@@ -350,6 +354,10 @@
                             </div>
                             <div class="tab-pane fade" id="household" role="tabpanel" aria-labelledby="household-tab">
                                 <form id="household_guest">
+                                    <div class="alert alert-danger alert-block" id="household_danger_msg" style="display:none;">
+                                    </div>
+                                    <div class="alert alert-success alert-block" id="household_success_msg" style="display:none;">
+                                    </div>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -360,14 +368,14 @@
                                                 <div class="row">
                                                     <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-12">
                                                         <div class="form-group">
-                                                            <label class="control-label" for="fname2">First Name</label>
-                                                            <input id="fname2" name="fname2" type="text" placeholder="" class="form-control">
+                                                            <label class="control-label" for="fname">First Name</label>
+                                                            <input id="household_fname" name="household_fname" type="text" placeholder="" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-12">
                                                         <div class="form-group">
-                                                            <label class="control-label" for="lname2">Last Name</label>
-                                                            <input id="lname2" name="lname2" type="text" placeholder="" class="form-control">
+                                                            <label class="control-label" for="lname">Last Name</label>
+                                                            <input id="household_lname" name="household_lname" type="text" placeholder="" class="form-control">
                                                         </div>
                                                     </div>
                                                     <!--
@@ -384,8 +392,8 @@
                                             -->
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mt30 mb30">
                                                 <div class="form-group">
-                                                    <label class="control-label" for="family3">Group/Family</label>
-                                                    <select class="wide" id="family3">
+                                                    <label class="control-label" for="family">Group/Family</label>
+                                                    <select class="wide" name="household_family" id="household_family">
                                                         <option value="Groom Sister">Groom Sister</option>
                                                         <option value="Bride Friend">Bride Friend</option>
                                                         <option value="Groom Friend">Groom Friend</option>
@@ -400,26 +408,26 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
-                                                    <label class="control-label" for="address5">Address Line 1</label>
-                                                    <input id="address5" name="address5" type="text" placeholder="" class="form-control">
+                                                    <label class="control-label" for="address">Address Line 1</label>
+                                                    <input id="household_address" name="household_address" type="text" placeholder="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="address6">Address Line 2</label>
-                                                    <input id="address6" name="address6" type="text" placeholder="" class="form-control">
+                                                    <input id="household_address2" name="household_address2" type="text" placeholder="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
-                                                    <label class="control-label" for="emailthird">Email</label>
-                                                    <input id="emailthird" name="emailthird" type="email" placeholder="" class="form-control ">
+                                                    <label class="control-label" for="email">Email</label>
+                                                    <input id="household_email" name="household_email" type="email" placeholder="" class="form-control ">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
-                                                    <label class="control-label" for="city1">City</label>
-                                                    <select class="wide" id="city1">
+                                                    <label class="control-label" for="city">City</label>
+                                                    <select class="wide" name="household_city" id="household_city">
                                                         <option value="Karachi">Karachi</option>
                                                         <option value="Lahore">Lahore</option>
                                                         <option value="Islamabad">Islamabad</option>
@@ -429,7 +437,7 @@
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="country">Country</label>
-                                                    <select class="wide" id="country">
+                                                    <select class="wide" name="household_country" id="household_country">
                                                         <option value="Pakistan">Pakistan</option>
                                                         <option value="UK">UK</option>
                                                         <option value="US">US</option>
@@ -438,8 +446,8 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
-                                                    <label class="control-label" for="postcode3">Postcode</label>
-                                                    <input id="postcode3" name="postcode3" type="text" placeholder="" class="form-control">
+                                                    <label class="control-label" for="postcode">Postcode</label>
+                                                    <input id="household_postcode" name="household_postcode" type="text" placeholder="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
@@ -461,6 +469,7 @@
     </script>
     <script>
         jQuery(document).ready(function(){
+            /* Single Guest */
             jQuery('#single_guest').submit(function(e){
                e.preventDefault();
                $.ajaxSetup({
@@ -473,9 +482,9 @@
               $(".alert-success").css('display','none');
 
                     if ($.trim($("#fname").val()) === "" || $.trim($("#lname").val()) === "" ||
-                        $.trim($("#address").val()) === "" || $.trim($("#address2").val()) === "" ||
-                        $.trim($("#email").val()) === "" || $.trim($("#city").val()) === "" ||
-                        $.trim($("#country").val()) === "" || $.trim($("#postcode").val()) === "" ){
+                        $.trim($("#address").val()) === "" || $.trim($("#email").val()) === "" || 
+                        $.trim($("#city").val()) === "" || $.trim($("#country").val()) === "" ||
+                        $.trim($("#postcode").val()) === "" ){
                             $(".alert-danger").css('display','block');
                             $(".alert-danger").html('Text feilds cannot be blank');
                         }
@@ -498,6 +507,89 @@
                         }                                                                 
                     });
                 });
+    </script>
+    <script>
+        jQuery(document).ready(function(){
+            /* Couple Guest */
+            jQuery('#couple_guest').submit(function(e){
+               e.preventDefault();
+               $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+              });
+
+              $("#couple_danger_msg").css('display','none');
+              $("#couple_success_msg").css('display','none');
+
+                    if ($.trim($("#couple_firstname").val()) === "" || $.trim($("#couple_lastname").val()) === "" ||
+                        $.trim($("#couple_partnerfname").val()) === "" || $.trim($("#couple_partnerlname").val()) === "" ||
+                        $.trim($("#couple_group").val()) === "" || $.trim($("#couple_address").val()) === "" ||
+                        $.trim($("#couple_email").val()) === "" || $.trim($("#couple_city").val()) === "" ||
+                        $.trim($("#couple_country").val()) === "" || $.trim($("#couple_postcode").val()) === ""){
+                            $("#couple_danger_msg").css('display','block');
+                            $("#couple_danger_msg").html('Text feilds cannot be blank');
+                        }
+                        else{                                    
+                            var formData = new FormData($('#couple_guest')[0]);
+
+                            jQuery.ajax({
+                            url: "{{ url('couple-guestlist-submit') }}",
+                            method: 'post',
+                            data:   formData,
+                            cache:  false,
+                            
+                            processData: false,
+                            contentType: false, 
+                                success: function(result){
+                                    $("#couple_success_msg").css('display','block');
+                                    $("#couple_success_msg").html('Couple guest list submitted successful.');
+                                }
+                        });                                                                              
+                    }                                                                 
+                });
+            });
+    </script>
+     <script>
+        jQuery(document).ready(function(){
+            /* Household Guest */
+            jQuery('#household_guest').submit(function(e){
+               e.preventDefault();
+               $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+              });
+
+              $("#household_danger_msg").css('display','none');
+              $("#household_success_msg").css('display','none');
+
+                    if ($.trim($("#household_fname").val()) === "" || $.trim($("#household_lname").val()) === "" ||
+                        $.trim($("#household_family").val()) === "" || $.trim($("#household_address").val()) === "" ||
+                        $.trim($("#household_email").val()) === "" || $.trim($("#household_city").val()) === "" ||
+                        $.trim($("#household_country").val()) === "" || $.trim($("#household_postcode").val()) === ""){
+                            $("#household_danger_msg").css('display','block');
+                            $("#household_danger_msg").html('Text feilds cannot be blank');
+                        }
+                        else{                                    
+                            var formData = new FormData($('#household_guest')[0]);
+
+                            jQuery.ajax({
+                            url: "{{ url('household-guestlist-submit') }}",
+                            method: 'post',
+                            data:   formData,
+                            cache:  false,
+                            
+                            processData: false,
+                            contentType: false, 
+                                success: function(result){
+                                    $("#household_success_msg").css('display','block');
+                                    $("#household_success_msg").html('Household guest list submitted successful.');
+                                }
+                        });                                                                              
+                    }                                                                 
+                });
+            });
     </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>

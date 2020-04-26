@@ -52,7 +52,7 @@ class CoupleWebsite extends Controller
             if($request->hasFile('rsvpformpic'))
             {
                 $file = $request->file('rsvpformpic');
-                $extention = $file->getClientOriginalExtension();
+                $extention = $file->clientExtension();
                 $filename = time().'.'.$extention;
                 $file->move('userimage',$filename);
                 $rsvpformpic = $filename;
@@ -61,28 +61,28 @@ class CoupleWebsite extends Controller
             if($request->hasFile('filebutton2'))
             {
                 $file = $request->file('filebutton2');
-                $extention = $file->getClientOriginalExtension();
-                $filename3 = time().'.'.$extention;
-                $file->move('userimage',$filename3);
-                $filebutton2 = $filename3;
+                $extention = $file->clientExtension();
+                $filename = time().'.'.$extention;
+                $file->move('userimage',$filename);
+                $filebutton2 = $filename;
             }
     
             if($request->hasFile('filebutton3'))
             {
                 $file = $request->file('filebutton3');
-                $extention = $file->getClientOriginalExtension();
-                $filename4 = time().'.'.$extention;
-                $file->move('userimage',$filename4);
-                $filebutton3 = $filename4;
+                $extention = $file->clientExtension();
+                $filename = time().'.'.$extention;
+                $file->move('userimage',$filename);
+                $filebutton3 = $filename;
             }
     
             if($request->hasFile('filebutton4'))
             {
                 $file = $request->file('filebutton4');
-                $extention = $file->getClientOriginalExtension();
-                $filename5 = time().'.'.$extention;
-                $file->move('userimage',$filename5);
-                $filebutton4 = $filename5;
+                $extention = $file->clientExtension();
+                $filename = time().'.'.$extention;
+                $file->move('userimage',$filename);
+                $filebutton4 = $filename;
             }
 
             $userid = Session::get('userid');
@@ -113,7 +113,8 @@ class CoupleWebsite extends Controller
     }
 
     public function website($id){
-        echo $id;
+        $weddingwebsite = DB::table('couplewebsite')->where('id', $id)->get();
+        return view('weddingwebsite',['weddingwebsite'=>$weddingwebsite]); 
     }
 
 }

@@ -49,6 +49,8 @@ Route::get('/signin', function () {
     return view('/signin');
 });
 
+Route::get('couple-table-planner', 'tableplanner@index');
+
 Route::get('couple-guestlist', 'Guestlist@index');
 
 Route::post('single-guestlist-submit', 'Guestlist@submit_singlelist');

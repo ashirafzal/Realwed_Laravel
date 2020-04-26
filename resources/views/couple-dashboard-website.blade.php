@@ -117,7 +117,7 @@
                     <li><a href="todo-list"><span class="dash-nav-icon"><i class="fas fa-list-ul"></i></span>To Do List</a></li>
                     <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Budget</a></li>
                     <li><a href="couple-guestlist"><span class="dash-nav-icon"><i class="fas fa-users"></i></span>Guestlist </a></li>
-                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-table"></i></span>Seating Table </a></li>
+                    <li><a href="couple-table-planner"><span class="dash-nav-icon"><i class="fas fa-table"></i></span>Seating Table </a></li>
                     <li><a href="couple-website"><span class="dash-nav-icon"><i class="fas fa-link"></i></span>Wedding Website </a></li>
                     <li><a href="RealWedding"><span class="dash-nav-icon"><i class="fas fa-images"></i></span>Real Wedding </a></li>
                     <li><a href="couple-profile"><span class="dash-nav-icon"><i class="fas fa-user-circle"></i></span>My Profile </a></li>
@@ -165,7 +165,8 @@
                                 RSVP Setting
                             </div>                             
                                 <div class="rsvp-create-form">
-                                    <form id="rsvp-form">
+                                    <form id="rsvp-form" method="post" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
                                         <div class="card-body">
                                             <h5>RSVP Form</h5>
                                             <div class="alert alert-danger alert-block" id="danger_msg" style="display:none;">
@@ -231,9 +232,9 @@
                                                 <br/>
                                                 <h2 class="text-danger">Add 3 wedding gallery images</h2>
                                                 <div class="form-group">
-                                                    <input id="filebutton2" name="filebutton2" onchange="readURL2(this);" class="btn btn-primary btn-block" type="file">
-                                                    <input id="filebutton3" name="filebutton3" onchange="readURL3(this);" class="btn btn-primary btn-block" type="file">
-                                                    <input id="filebutton4" name="filebutton4" onchange="readURL4(this);" class="btn btn-primary btn-block" type="file">
+                                                    <input type="file" id="filebutton2" name="filebutton2" onchange="readURL2(this);" class="btn btn-primary btn-block" type="file">
+                                                    <input type="file" id="filebutton3" name="filebutton3" onchange="readURL3(this);" class="btn btn-primary btn-block" type="file">
+                                                    <input type="file" id="filebutton4" name="filebutton4" onchange="readURL4(this);" class="btn btn-primary btn-block" type="file">
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="gallery-upload-img">
@@ -365,10 +366,9 @@
                                 $('#filebutton4').get(0).files.length === 0)
                             {
                                 $(".alert-danger").css('display','block');
-                                $(".alert-danger").html('Wedding gallery images required');
-                                return false;
+                                $(".alert-danger").html('Wedding gallery images required');                            
                             }else
-                            {   
+                            {                                   
                                 if ($.trim($("#couplename").val()) === "" || $.trim($("#weddingdate").val()) === "" ||
                                     $.trim($("#weddingplace").val()) === "" || $.trim($("#weddingaddress").val()) === "" ||
                                     $.trim($("#contactemail").val()) === "" || $.trim($("#contactnumber").val()) === "" ||
@@ -376,6 +376,7 @@
                                     $.trim($("#yourproposal").val()) === ""){
                                     $(".alert-danger").css('display','block');
                                     $(".alert-danger").html('Text feilds cannot be blank');
+                                    return false;
                                 }
                                 else{                                    
                                     var formData = new FormData($('#rsvp-form')[0]);
@@ -385,13 +386,12 @@
                                     method: 'post',
                                     data:   formData,
                                     cache:  false,
-                                    
                                     processData: false,
                                     contentType: false, 
                                         success: function(result){
                                             alert(result);
                                         }
-                                    });                                                                              
+                                    });
                                 }                                               
                             }
                         }                    

@@ -141,12 +141,11 @@
                                 <div class="col-xl-5 col-lg-4 col-md-4 col-sm-12 col-12">
                                     <!-- select -->
                                     <select class="wide">
-                                        <option value="Ahmedabad" data-display="Ahmedabad">Ahmedabad</option>
-                                        <option value="Surat">Surat</option>
-                                        <option value="Rajkot">Rajkot</option>
-                                        <option value="Vadodara">Vadodara</option>
-                                        <option value="Vapi">Vapi</option>
-                                        <option value="Bhavnagar">Bhavnagar</option>
+                                        <option value="Karachi" data-display="Karachi">Karachi</option>
+                                        <option value="Lahore">Lahore</option>
+                                        <option value="Islamabad">Islamabad</option>
+                                        <option value="Rawalpindi">Rawalpindi</option>
+                                        <option value="Hyderabad">Hyderabad</option>
                                     </select>
                                 </div>
                                 <!-- button -->
@@ -361,64 +360,27 @@
                     </div>
                 </div>
                 <div class="row">
-                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                    <div class="real-wedding-block">
-                        <!-- real wedding block -->
-                        <div class="real-wedding-img zoomimg">
-                            <!-- real wedding img -->
-                            <a href="#"><img src="{{ asset('images/real-wedding-img-1.jpg') }}" alt="Wedding Vendor & Supplier Directory HTML Template "  class="img-fluid"></a>
-                        </div>
-                        <!-- /.real wedding img -->
-                        <div class="real-wedding-content ">
-                            <!-- real wedding content -->
-                            <h3 class="real-wedding-title"><a href="#" class="title">Vanessa & Ryan</a></h3>
-                            <div class="real-wedding-meta"><span class="real-wedding-date">07 May, 2018</span> 
-                            <span class="real-wedding-place pl-3"><i class="fas fa-map-marker-alt pr-1"></i>Surat</span>
+                    @foreach($couplewebsite as $couplewebsite)
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                        <div class="real-wedding-block">
+                            <!-- real wedding block -->
+                            <div class="real-wedding-img zoomimg">
+                                <!-- real wedding img -->
+                                <a href="#"><img src="{{asset('userimage')}}/{{$couplewebsite->rsvpformpic}}" style="height:300px;" class="img-fluid"></a>
                             </div>
+                            <!-- /.real wedding img -->
+                            <div class="real-wedding-content ">
+                                <!-- real wedding content -->
+                                <h3 class="real-wedding-title"><a href="http://127.0.0.1:8000/couple-website/{{ $couplewebsite->id }}" class="title">{{ $couplewebsite->couplename }}</a></h3>
+                                <div class="real-wedding-meta"><span class="real-wedding-date">{{ $couplewebsite->weddingdate }}</span> 
+                                <span class="real-wedding-place pl-3"><i class="fas fa-map-marker-alt pr-1"></i>{{ $couplewebsite->weddingplace }}</span>
+                                </div>
+                            </div>
+                            <!-- /.real wedding img -->
                         </div>
-                        <!-- /.real wedding img -->
+                        <!-- /.real wedding block -->                   
                     </div>
-                    <!-- /.real wedding block -->
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                    <div class="real-wedding-block">
-                        <!-- real wedding block -->
-                        <div class="real-wedding-img zoomimg">
-                            <!-- real wedding img -->
-                            <a href="#"><img src="{{ asset('images/real-wedding-img-4.jpg') }}" alt="Wedding Vendor & Supplier Directory HTML Template "  class="img-fluid"></a>
-                        </div>
-                        <!-- /.real wedding img -->
-                        <div class="real-wedding-content">
-                            <!-- real wedding content -->
-                            <h3 class="real-wedding-title"><a href="#" class="title">Rahul & Pooja</a></h3>
-                           <div class="real-wedding-meta"><span class="real-wedding-date">10 May, 2018</span> 
-                            <span class="real-wedding-place pl-3"><i class="fas fa-map-marker-alt pr-1"></i>Ahmedabad</span>
-                           </div>
-                        </div>
-                        <!-- /.real wedding img -->
-                    </div>
-                    <!-- /.real wedding block -->
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                    <div class="real-wedding-block">
-                        <!-- real wedding block -->
-                        <div class="real-wedding-img zoomimg">
-                            <!-- real wedding img -->
-                            <a href="#"><img src="{{ asset('images/real-wedding-img-2.jpg') }}" alt="Wedding Vendor & Supplier Directory HTML Template "  class="img-fluid"></a>
-                        </div>
-                        <!-- /.real wedding img -->
-                        <div class="real-wedding-content">
-                            <!-- real wedding content -->
-                            <h3 class="real-wedding-title"><a href="#" class="title">Shreena & Dhanesh</a></h3>
-                         <div class="real-wedding-meta"><span class="real-wedding-date">12 May, 2018</span> 
-                            <span class="real-wedding-place pl-3"><i class="fas fa-map-marker-alt pr-1"></i>Pune</span>
-                        
-                         </div>
-                        </div>
-                        <!-- /.real wedding img -->
-                    </div>
-                    <!-- /.real wedding block -->
-                </div>
+                    @endforeach
                 </div>
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
@@ -498,19 +460,11 @@
                     <div class="testimonial-block">
                         <!-- testimonial block -->
                         <div class="testimonial-icon"> <i class="fa fa-quote-right fa-default"></i></div>
-                        <h3 class="testimonial-name">Barbara J. Gonzalez</h3>
-                        <p class="testimonial-text">“Cras non maximus velit. Nam eleifend nibh eget erat gravida, ac fermentum turpis iaculis. Aliquam hendrerit ornare dui, rutrum luctus ipsum aliquam non. Cras non maximus velit.”</p>
-                        <div class="testimonial-pic"><img src="{{ asset('images/testimonial-1.jpg') }}" class="rounded-circle" alt=""></div>
+                        <h3 class="testimonial-name">Saima Alvi</h3>
+                        <p class="testimonial-text">“And I knew exactly how old Walt Disney’s Cinderella felt when she found her prince.”</p>
+                        <div class="testimonial-pic"><img src="{{ asset('images/weddingimg.jpg') }}" class="rounded-circle" style="height:100px;width:100px;" alt=""></div>
                         <div class="testimonial-meta">
-                            <h5 class="mb0">Venue Vendor</h5>
-                            <p class="testimonial-small-text mb0">Ahmedabad </p>
-                            <span class="rating-star">
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i> 
-                                    </span>
+                            <p class="testimonial-small-text mb0">Karachi</p>
                         </div>
                         <!-- /.testimonial block -->
                     </div>
@@ -519,19 +473,11 @@
                     <div class="testimonial-block">
                         <!-- testimonial block -->
                         <div class="testimonial-icon"> <i class="fa fa-quote-right fa-default"></i></div>
-                        <h3 class="testimonial-name">Katrina Masterpole</h3>
-                        <p class="testimonial-text">“Nam eleifend nibh eget erat gravida, ac fermentum turpis iaculis. Aliquam hendrerit ornare dui, rutrum luctus ipsum aliquam stibulum ut dignissim sem. Cras non maximus velit. ”</p>
-                        <div class="testimonial-pic"><img src="{{ asset('images/testimonial-2.jpg') }}" class="rounded-circle" alt=""></div>
+                        <h3 class="testimonial-name">Zohra Javaid</h3>
+                        <p class="testimonial-text">“In the arithmetic of love, one plus one equals everything, and two minus one equals nothing.”</p>
+                        <div class="testimonial-pic"><img src="{{ asset('images/weddingimg2.jpg') }}" class="rounded-circle" style="height:100px;width:100px;" alt=""></div>
                         <div class="testimonial-meta">
-                            <h5 class="mb0">Photography Vendor</h5>
-                            <p class="testimonial-small-text mb0">Baroda </p>
-                            <span class="rating-star">
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i> 
-                                    </span>
+                            <p class="testimonial-small-text mb0">Lahore</p>
                         </div>
                         <!-- /.testimonial block -->
                     </div>
@@ -540,19 +486,11 @@
                     <div class="testimonial-block">
                         <!-- testimonial block -->
                         <div class="testimonial-icon"> <i class="fa fa-quote-right fa-default"></i></div>
-                        <h3 class="testimonial-name">Amanda Tibma</h3>
-                        <p class="testimonial-text">“Vestibulum ut dignissim sem. Cras non maximus velit. Nam eleifend nibh eget erat gravida, ac fermentum turpis iaculis. Aliquam hendrerit lorem ispuimi, um aliquam non.”</p>
-                        <div class="testimonial-pic"><img src="{{ asset('images/testimonial-3.jpg') }}" class="rounded-circle" alt=""></div>
+                        <h3 class="testimonial-name">Mahira Zafar</h3>
+                        <p class="testimonial-text">“Oh the heart that has truly loved never forgets, But as truly loves on to the close.”</p>
+                        <div class="testimonial-pic"><img src="{{ asset('images/weddingimg3.jpg') }}" class="rounded-circle" style="height:100px;width:100px;" alt=""></div>
                         <div class="testimonial-meta">
-                            <h5 class="mb0">Florist Vendor</h5>
-                            <p class="testimonial-small-text mb0">Bhavnagar </p>
-                            <span class="rating-star">
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i> 
-                                    </span>
+                            <p class="testimonial-small-text mb0">Islamabad</p>
                         </div>
                         <!-- /.testimonial block -->
                     </div>

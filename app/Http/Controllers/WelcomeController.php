@@ -15,7 +15,8 @@ class WelcomeController extends Controller
     public function index()
     {
         $listing = DB::table('vendorlistings')->orderBy('id')->take(10)->get();
-        return view('welcome',['listing'=>$listing]);       
+        $couplewebsite = DB::table('couplewebsite')->orderBy('id')->take(10)->get();
+        return view('welcome',['listing'=>$listing , 'couplewebsite'=>$couplewebsite]);       
     }
 
 }

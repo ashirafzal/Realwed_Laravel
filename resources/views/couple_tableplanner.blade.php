@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_token" content="{{csrf_token()}}" />
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>RealWed | Couple Dashboard - Table Planner</title>
     <!-- Bootstrap -->
@@ -28,6 +29,50 @@
     <![endif]-->
 </head>
 <body class="body-bg">
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+</script>
+<script>
+        jQuery(document).ready(function(){
+            /* Single Guest */
+            jQuery('#createtable').submit(function(e){
+               e.preventDefault();
+               $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+              });
+
+              $(".alert-danger").css('display','none');
+              $(".alert-success").css('display','none');
+
+                    if ($.trim($("#tablename").val()) === ""){
+                            $(".alert-danger").css('display','block');
+                            $(".alert-danger").html('Text feilds cannot be blank');
+                            alert("Text feilds cannot be blank");
+                        }
+                        else{                                    
+                            var formData = new FormData($('#createtable')[0]);
+
+                            jQuery.ajax({
+                            url: "{{ url('create-table') }}",
+                            method: 'post',
+                            data:   formData,
+                            cache:  false,
+                            
+                            processData: false,
+                            contentType: false, 
+                                success: function(result){
+                                    alert(result);
+                                    $(".alert-success").css('display','block');
+                                    $(".alert-success").html('Table created successful.');
+                                }
+                            });                                                                              
+                        }                                                                 
+                    });
+                });
+</script>
 <div class="dashboard-header">
         <div class="container-fluid">
             <div class="row">
@@ -130,49 +175,36 @@
                         <div class="dashboard-page-header">
                             <h3 class="dashboard-page-title">Table Seating Planner</h3>
                             <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-                        </div>
+                        </div>                      
                     </div>
                 </div>
                 <div class="row">
                     <div class="offset-xl-8 col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 text-right mb20">
                         <div id='slide-panel' class="slide-panel-light">
                             <h3>Create Table</h3>
-                            <form>
+                            <form id="createtable">
                                 <div class="row">
-                                    <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6 mb20">
-                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                            <label class="btn btn-secondary">
-                                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Circle
-                                            </label>
-                                            <label class="btn btn-secondary">
-                                                <input type="radio" name="options" id="option2" autocomplete="off"> Rectangle
-                                            </label>
-                                            <label class="btn btn-secondary">
-                                                <input type="radio" name="options" id="option3" autocomplete="off"> Square
-                                            </label>
-                                        </div>
-                                    </div> -->
-                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6 ">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-12">
                                         <div class="form-group">
-                                            <label class="control-label" for="tablename">Table Name </label>
-                                            <input id="tablename" name="tablename" type="text" placeholder="Table name here" class="form-control " required="">
+                                            <label class="control-label" for="tablename">Table Name</label>
+                                            <input id="tablename" name="tablename" type="text" placeholder="Table name here" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="form-group">
-                                            <label class="control-label" for="seating">Seating</label>
-                                            <input id="seating" name="seating" type="text" placeholder="2" class="form-control " required="">
+                                            <label class="control-label" for="seating">Select seating capacity</label>
+                                            <input id="ms2" name="seating_capacity" type="text" placeholder="" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="form-group">
                                             <label class="control-label" for="seating">Select Guest</label>
-                                            <input id="ms1" name="seating" type="text" placeholder="" class="form-control" required="">
+                                            <input id="ms1" name="seating" type="text" placeholder="" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-default">Create Table </button>
+                                            <button type="submit" class="btn btn-default">Create Table</button>
                                         </div>
                                     </div>
                                 </div>
@@ -220,46 +252,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="card seating-table-list">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th colspan="2" class="seating-table-name">
-                                                <span class="mb0">Family Table B</span></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="seating-guest-name">Joey Stevenson</td>
-                                            <td class="seating-table-action"><a href="#" class="btn btn-outline-violate btn-xs mr10">edit</a><a href="#" class="btn btn-outline-pink btn-xs">delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="seating-guest-name">Robyn Armstrong</td>
-                                            <td class="seating-table-action"><a href="#" class="btn btn-outline-violate btn-xs mr10">edit</a><a href="#" class="btn btn-outline-pink btn-xs ">delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="seating-guest-name">Michael Mullenax</td>
-                                            <td class="seating-table-action"><a href="#" class="btn btn-outline-violate btn-xs mr10">edit</a><a href="#" class="btn btn-outline-pink btn-xs ">delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="seating-guest-name">John Center</td>
-                                            <td class="seating-table-action"><a href="#" class="btn btn-outline-violate btn-xs mr10">edit</a><a href="#" class="btn btn-outline-pink btn-xs ">delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="seating-guest-name">Helen Couch </td>
-                                            <td class="seating-table-action"><a href="#" class="btn btn-outline-violate btn-xs mr10">edit</a><a href="#" class="btn btn-outline-pink btn-xs ">delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="seating-guest-name">Edward Toles</td>
-                                            <td class="seating-table-action"><a href="#" class="btn btn-outline-violate btn-xs mr10">edit</a><a href="#" class="btn btn-outline-pink btn-xs ">delete</a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- -->
                 </div>
             </div>
         </div>
@@ -273,15 +266,28 @@
     <script src="{{ asset('js/magicsuggest.js') }}"></script>
     <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
     <script>
-    </script>
-    <script>
         $(function() {
-            var ms1 = $('#ms1').magicSuggest({
-                data: [
-                    'Eugene H. Rivera',
-                    'Eugene H. Rivera',
-                    'Michael S. Foster',
-                ]
+            var ms1 = $('#ms1').magicSuggest({                
+                data: [                   
+                    @foreach($guestlist_single as $guestlist_single)
+                    '{{$guestlist_single->fname}}'+' '+'{{$guestlist_single->lname}}',  
+                    @endforeach
+                    @foreach($guestlist_couple as $guestlist_couple)
+                    '{{$guestlist_couple->couple_firstname}}'+' '+'{{$guestlist_couple->couple_lastname}}',
+                    @endforeach
+                    @foreach($guestlist_household as $guestlist_household)
+                    '{{$guestlist_household->household_fname}}'+' '+'{{$guestlist_household->household_lname}}',  
+                    @endforeach                                                                                 
+                ]                
+            });
+        });
+        $(function() {
+            var ms1 = $('#ms2').magicSuggest({                
+                data: [                   
+                    '4',
+                    '8',
+                    '12',                                                                       
+                ]                
             });
         });
     </script>

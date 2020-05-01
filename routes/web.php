@@ -55,6 +55,12 @@ Route::get('couple-guestlist', 'Guestlist@index');
 
 Route::post('create-table', 'tableplanner@createtable');
 
+Route::post('four-seat-edit', 'tableplanner@fourseatedit');
+
+Route::post('eight-seat-edit', 'tableplanner@eightseatedit');
+
+Route::post('twelve-seat-edit', 'tableplanner@twelveseatedit');
+
 Route::post('single-guestlist-submit', 'Guestlist@submit_singlelist');
 
 Route::post('couple-guestlist-submit', 'Guestlist@submit_couplelist');

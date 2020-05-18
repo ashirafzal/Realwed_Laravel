@@ -29,4 +29,15 @@ class Whislist extends Controller
               
         }
     }
+
+    public function cancel(Request $request){
+
+        $userid = Session::get('userid');
+        $wishlistid = $request->input('wishlistid');
+
+        DB::table('wishlist')->where('id',$wishlistid)->delete();
+
+        echo json_encode(['success'=>'success']);
+    }
+
 }

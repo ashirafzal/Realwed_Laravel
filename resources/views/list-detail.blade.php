@@ -151,13 +151,95 @@
                             <span class="vendor-text">Guest</span>
                         </div>
                         <div class="vendor-meta-item vendor-meta-item-bordered">
-                            <span class="rating-star">
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rate-mute"></i> 
-                                    </span>
+                        @if($overallrating >= 24.9)
+                                <span class="rated">
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa  fa-star"></i> 
+                                    <i class="fa  fa-star"></i>
+                                </span>
+                            @elseif($overallrating >= 22.5 && $overallrating < 25)
+                                <span class="rated">
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa  fa-star"></i> 
+                                    <i class="fa  fa-star-half"></i>
+                                </span>
+                            @elseif($overallrating >= 20)
+                                <span class="rated">
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa  fa-star"></i> 
+                                    <i class="far  fa-star"></i>
+                                </span>
+                            @elseif($overallrating >= 17.5 && $overallrating < 20)
+                                <span class="rated">
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa  fa-star-half"></i> 
+                                    <i class="far  fa-star"></i>
+                                </span>
+                            @elseif($overallrating >= 15)
+                                <span class="rated">
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa fa-star"></i> 
+                                    <i class="far  fa-star"></i> 
+                                    <i class="far  fa-star"></i>
+                                </span>
+                            @elseif($overallrating >= 12.5 && $overallrating < 15)
+                                <span class="rated">
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa fa-star-half"></i> 
+                                    <i class="far  fa-star"></i> 
+                                    <i class="far  fa-star"></i>
+                                </span>
+                            @elseif($overallrating >= 10)
+                                <span class="rated">
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa fa-star"></i> 
+                                    <i class="far fa-star"></i> 
+                                    <i class="far  fa-star"></i> 
+                                    <i class="far  fa-star"></i>
+                                </span>
+                            @elseif($overallrating >= 7.5 && $overallrating < 10)
+                                <span class="rated">
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa fa-star-half"></i> 
+                                    <i class="far fa-star"></i> 
+                                    <i class="far  fa-star"></i> 
+                                    <i class="far  fa-star"></i>
+                                </span>
+                            @elseif($overallrating >= 5)
+                                <span class="rated">
+                                    <i class="fa fa-star"></i> 
+                                    <i class="far fa-star"></i> 
+                                    <i class="far fa-star"></i> 
+                                    <i class="far  fa-star"></i> 
+                                    <i class="far  fa-star"></i>
+                                </span>
+                            @elseif($overallrating >= 2.5 && $overallrating < 5)
+                                <span class="rated">
+                                    <i class="fa fa-star-half"></i> 
+                                    <i class="far fa-star"></i> 
+                                    <i class="far fa-star"></i> 
+                                    <i class="far  fa-star"></i> 
+                                    <i class="far  fa-star"></i>
+                                </span>
+                            @else
+                                <span class="rated">
+                                    <i class="far fa-star"></i> 
+                                    <i class="far fa-star"></i> 
+                                    <i class="far fa-star"></i> 
+                                    <i class="far  fa-star"></i> 
+                                    <i class="far  fa-star"></i>
+                                </span>
+                            @endif
                             <span class="rating-count vendor-text">({{$listing_review_count}})</span>
                         </div>
                     </div>
@@ -254,7 +336,7 @@
                                                 <div class="review-sidebar">
                                                         <div class="review-total">{{$listing_review_count}}</div>
                                                         <div class="review-text">Reviews</div>
-                                                        @if($overallrating >= 4.9)
+                                                        @if($overallrating >= 24.9)
                                                             <span class="rated">
                                                                 <i class="fa fa-star"></i> 
                                                                 <i class="fa fa-star"></i> 
@@ -262,7 +344,7 @@
                                                                 <i class="fa  fa-star"></i> 
                                                                 <i class="fa  fa-star"></i>
                                                             </span>
-                                                        @elseif($overallrating >= 4.5 && $overallrating < 5)
+                                                        @elseif($overallrating >= 22.5 && $overallrating < 25)
                                                             <span class="rated">
                                                                 <i class="fa fa-star"></i> 
                                                                 <i class="fa fa-star"></i> 
@@ -270,7 +352,7 @@
                                                                 <i class="fa  fa-star"></i> 
                                                                 <i class="fa  fa-star-half"></i>
                                                             </span>
-                                                        @elseif($overallrating >= 4)
+                                                        @elseif($overallrating >= 20)
                                                             <span class="rated">
                                                                 <i class="fa fa-star"></i> 
                                                                 <i class="fa fa-star"></i> 
@@ -278,7 +360,7 @@
                                                                 <i class="fa  fa-star"></i> 
                                                                 <i class="far  fa-star"></i>
                                                             </span>
-                                                        @elseif($overallrating >= 3.5 && $overallrating < 4)
+                                                        @elseif($overallrating >= 17.5 && $overallrating < 20)
                                                             <span class="rated">
                                                                 <i class="fa fa-star"></i> 
                                                                 <i class="fa fa-star"></i> 
@@ -286,7 +368,7 @@
                                                                 <i class="fa  fa-star-half"></i> 
                                                                 <i class="far  fa-star"></i>
                                                             </span>
-                                                        @elseif($overallrating >= 3)
+                                                        @elseif($overallrating >= 15)
                                                             <span class="rated">
                                                                 <i class="fa fa-star"></i> 
                                                                 <i class="fa fa-star"></i> 
@@ -294,7 +376,7 @@
                                                                 <i class="far  fa-star"></i> 
                                                                 <i class="far  fa-star"></i>
                                                             </span>
-                                                        @elseif($overallrating >= 2.5 && $overallrating < 3)
+                                                        @elseif($overallrating >= 12.5 && $overallrating < 15)
                                                             <span class="rated">
                                                                 <i class="fa fa-star"></i> 
                                                                 <i class="fa fa-star"></i> 
@@ -302,7 +384,7 @@
                                                                 <i class="far  fa-star"></i> 
                                                                 <i class="far  fa-star"></i>
                                                             </span>
-                                                        @elseif($overallrating >= 2)
+                                                        @elseif($overallrating >= 10)
                                                             <span class="rated">
                                                                 <i class="fa fa-star"></i> 
                                                                 <i class="fa fa-star"></i> 
@@ -310,7 +392,7 @@
                                                                 <i class="far  fa-star"></i> 
                                                                 <i class="far  fa-star"></i>
                                                             </span>
-                                                        @elseif($overallrating >= 1.5 && $overallrating < 2)
+                                                        @elseif($overallrating >= 7.5 && $overallrating < 10)
                                                             <span class="rated">
                                                                 <i class="fa fa-star"></i> 
                                                                 <i class="fa fa-star-half"></i> 
@@ -318,7 +400,7 @@
                                                                 <i class="far  fa-star"></i> 
                                                                 <i class="far  fa-star"></i>
                                                             </span>
-                                                        @elseif($overallrating >= 1)
+                                                        @elseif($overallrating >= 5)
                                                             <span class="rated">
                                                                 <i class="fa fa-star"></i> 
                                                                 <i class="far fa-star"></i> 
@@ -326,7 +408,7 @@
                                                                 <i class="far  fa-star"></i> 
                                                                 <i class="far  fa-star"></i>
                                                             </span>
-                                                        @elseif($overallrating >= 0.5 && $overallrating < 1)
+                                                        @elseif($overallrating >= 2.5 && $overallrating < 5)
                                                             <span class="rated">
                                                                 <i class="fa fa-star-half"></i> 
                                                                 <i class="far fa-star"></i> 
@@ -1773,7 +1855,7 @@
                     },
                     success: function(result){
                         $("#alertsuccess1").css('display','block');
-                        $("#alertsuccess1").html('Added to wish list');
+                        $("#alertsuccess1").html(result);
                     }
                 });
             });
@@ -1834,7 +1916,7 @@
                     },
                     success: function(result){
                         $("#alertsuccess2").css('display','block');
-                        $("#alertsuccess2").html('Added to wish list');
+                        $("#alertsuccess2").html(result);
                         }
                     });
                 });

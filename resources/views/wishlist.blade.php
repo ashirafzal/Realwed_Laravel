@@ -133,7 +133,8 @@
                         </div>
                     </div>
                 </div>
-                    <div class="row">
+                <div style="display:none;" class="alert alert-danger alert-block" id="alertsuccess1"></div>
+                <div class="row">
                     @foreach($wishlist as $wishlist)
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-4 col-12">
                             <!-- /.Vendor thumbnail -->
@@ -141,8 +142,9 @@
                                 <!-- Vendor thumbnail -->
                                 <div class="vendor-img">
                                     <!-- Vendor img -->
+                                    <input style="display:none;" id="wishlistid" name="wishlistid" type="text" value="{{$wishlist->id}}">
                                     <a href="list-detail/{{$wishlist->listingid}}"><img style="height:230px;" src="{{ asset('userimage') }}/{{$wishlist->image}}" alt="" class="img-fluid"></a>
-                                    <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa fa-times"></i></a></div>
+                                    <div class="wishlist-sign"><button id="wishlistcancel" class="btn-wishlist"><i class="fa fa fa-times"></i></button></div>
                                 </div>
                                 <!-- /.Vendor img -->
                                 <div class="vendor-content">
@@ -175,6 +177,35 @@
             </div>
         </div>
     </div>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+    <script>
+        jQuery(document).ready(function(){
+            jQuery('#wishlistcancel').click(function(e){
+               e.preventDefault();
+               $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+              });
+                  
+            jQuery.ajax({
+            url: "{{ url('listdetail-wishlist-cancel') }}",
+            method: 'post',
+            data: {
+                wishlistid : jQuery('#wishlistid').val(),
+            },
+                success: function(result){
+                    $("#alertsuccess1").css('display','block');
+                    $("#alertsuccess1").html("List has been removed from wishlist");
+                }
+            });
+                                
+        });
+    });
+    </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

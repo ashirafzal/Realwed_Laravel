@@ -51,6 +51,8 @@ Route::get('/signin', function () {
 
 Route::get('wishlist', 'Whislist@index');
 
+Route::post('listdetail-wishlist-cancel', 'Whislist@cancel');
+
 Route::post('listdetail-wishlist-save', 'ListDetail@wishlistsave');
 
 Route::get('couple-budget', 'Budget@index');

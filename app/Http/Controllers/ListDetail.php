@@ -176,37 +176,49 @@ class ListDetail extends Controller
         $userid = Session::get('userid');
         $listingid = $request->input('listingid');
 
-        $listing_review_count = DB::table('listing_review')->where('listid', $listingid)->get();
-        $listing_review_count = count($listing_review_count);
+        $alreadysavedchecking = DB::select("select * from wishlist where userid = '$userid' and listingid = '$listingid' ");
+        $alreadysavedchecking_count = count($alreadysavedchecking);
 
-        $listing = DB::table('vendorlistings')->where('id', $listingid)->get();
-
-        foreach($listing as $listing)
+        if($alreadysavedchecking_count > 0)
         {
-            $name = $listing->title;
-            $image = $listing->filebutton;
-            $city = $listing->city;
-            $state = $listing->state;
-            $price = $listing->price;
-            $seat = $listing->seat;
-            $listing_review_count = $listing_review_count;
+            echo json_encode('List already saved');
         }
-        
-        DB::table('wishlist')->insert(
-            array(
-                   'userid' => $userid,
-                   'listingid' => $listingid,
-                   'name' => $name,
-                   'image' => $image,
-                   'city' => $city,
-                   'state' => $state,
-                   'price' => $price,
-                   'seat' => $seat,
-                   'listing_review_count' => $listing_review_count
-            )
-       );
+        else
+        {
 
-        echo json_encode(['success'=>'success']);
+            $listing_review_count = DB::table('listing_review')->where('listid', $listingid)->get();
+            $listing_review_count = count($listing_review_count);
+    
+            $listing = DB::table('vendorlistings')->where('id', $listingid)->get();
+    
+            foreach($listing as $listing)
+            {
+                $name = $listing->title;
+                $image = $listing->filebutton;
+                $city = $listing->city;
+                $state = $listing->state;
+                $price = $listing->price;
+                $seat = $listing->seat;
+                $listing_review_count = $listing_review_count;
+            }
+            
+            DB::table('wishlist')->insert(
+                array(
+                       'userid' => $userid,
+                       'listingid' => $listingid,
+                       'name' => $name,
+                       'image' => $image,
+                       'city' => $city,
+                       'state' => $state,
+                       'price' => $price,
+                       'seat' => $seat,
+                       'listing_review_count' => $listing_review_count
+                )
+           );
+
+            echo json_encode(['Added to wish list']);
+        }      
+
     }
 
 }

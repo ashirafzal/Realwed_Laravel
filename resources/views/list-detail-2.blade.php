@@ -31,80 +31,162 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        #list{
+            z-index:1;
+        }
+        #signinform{
+            z-index:999;
+            position:absolute;
+            width:100%;
+            display:none;
+            height:100%;
+        }
+    </style>
 </head>
 <body>
-  <!-- header -->
-  @foreach ($listing as $listing)
-    @foreach ($listowner as $listowner)
-      @foreach ($user as $user)
-    <div class="header">
-        <!-- header-top -->
-        <!-- navigation start -->
-        <div class="dashboard-header">
-        <div class="container-fluid">
+<script type="text/javascript">
+    function whistlist(){
+        document.getElementById("list").style.display="none";
+        document.getElementById("signinform").style.display="block";
+    }
+</script>
+  <div id="signinform">
+        <!-- hero-section -->
+    <div class="hero-section">
+        <div class="container">
             <div class="row">
-                <div class="col-xl-10 col-lg-8 col-md-8 col-sm-6 col-6">
-                    <div class="header-logo">
-                        <a href="/"><img src="{{ asset('images/logo.png') }}" alt="Weddings | Find A Wedding Venue &amp; Supplier WordPress Theme"></a>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6">
-                    <nav class="navbar navbar-expand-lg float-right db-nav-list">
-                        <div>
-                            <ul class="navbar-nav">
-                                <li class="nav-item dropdown dropleft notification ">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="notification-icon"> <i class="fas fa-bell"></i></span><span class="user-vendor-name"></span></a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-                                        <li>
-                                            <div class="notification-title"> Notification</div>
-                                            <div class="notification-list">
-                                                <div class="list-group">
-                                                    <a href="#" class="list-group-item list-group-item-action active">
-                                                        <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="{{ asset('images/avatar-2.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
-                                                            <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
-                                                                <div class="notification-date">2 min ago</div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="list-footer"> <a href="#">View all notifications</a></div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown dropleft user-vendor ">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="user-icon">
-                                            <img src="{{ asset('userimage') }}/{{$user->userimage}}" alt="" class="rounded-circle mb10">
-                                        </span>
-                                        <span class="user-vendor-name"><?php {{ echo $username = Session::get('username'); }} ?></span></a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="/dashboard">Dashboard</a>
-                                        <a class="dropdown-item" href="mylisting"> My Listed Item </a>
-                                        <a class="dropdown-item" href="#">Pricing Plan</a>
-                                        <a class="dropdown-item" href="requestquote-view">Request Quotes</a>
-                                        <a class="dropdown-item" href="Reviews">Reviews </a>
-                                        <a class="dropdown-item" href="myprofile">My Profile </a>
-                                        <a class="dropdown-item" href="/logout">Log Out</a>
-                                    </div>
-                                </li>
-                            </ul>
+                <div class="offset-xl-1 col-xl-10 offset-lg-1 col-lg-10 col-md-12 col-sm-12 col-12">
+                    <!-- search-block -->
+                    <div class="">
+                        <div class="text-center search-head">
+                            <h1 class="search-head-title">Find Local Wedding Vendors</h1>
+                            <p class="d-none d-xl-block d-lg-block d-sm-block text-white">Browse the best wedding vendors in your area — from venues and photographers, to wedding planners, caterers, florists and more by registering yourself.</p>
                         </div>
-                    </nav>
+                        <!-- /.search-block -->
+                        <!-- search-form -->
+                        <form action="/userlogin" id="loginuser" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+                            {{ csrf_field() }}
+                            <div class="form-group">                              
+                                <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Enter your username" required>
+                                <div class="invalid-feedback">Please enter a valid username.</div>
+                            </div>                            
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Enter your password" required>
+                                <div class="invalid-feedback">Please enter your new password to continue.</div>
+                            </div>
+                            <button type="submit" name="login" class="btn btn-default btn-block">Sign in</button>
+                        </form>
+                        <!-- /.search-form -->
+                        <br/>
+                        <!-- Sign in text -->
+                        <div class="text-center search-head">
+                            <p class="d-none d-xl-block d-lg-block d-sm-block text-white">
+                                <a class="text-white" href="/register">Don't have an account ? Register Yourelf</a>
+                                <br/>
+                                <a class="text-white" href="/forgotpassword">Forgot your password?</a>
+                            </p>
+                        </div>
+                        <!-- /. Sign in text -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-        <!-- navigation close -->
-        <!--/.header-top -->
-        
+    <!-- /.hero-section -->
+    <!-- social-media-section -->
+    <div class="social-media-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-7 col-lg-7 col-md-6 col-sm-6 col-12">
+                    <h3 class="text-white mb0 mt10">Would you like to connect with us</h3>
+                </div>
+                <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12 text-right">
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com" class="icon-square"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.twitter.com" class="icon-square"><i class="fab fa-twitter"></i> </a>
+                        <a href="https://www.google.com" class="icon-square"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="https://www.instagram.com" class="icon-square"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com" class="icon-square"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.header -->
-    <!-- page-header -->
+    <!-- /.social-media-section -->
+    <!-- footer-section -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                    <!-- footer-widget -->
+                    <div class="footer-widget">
+                        <a href="#"><img src="{{ asset('images/footer-logo.png') }}" alt="" class="mb20"></a>
+                        <p class="mb10">Vestibulum ante elit, convallis quis nibh in, vulputate rhoncus massa. In hac habitasse platea dictumst.</p>
+                        <p>In hac habitasse platea dictumst simple dummy content here.</p>
+                    </div>
+                </div>
+                <!-- /.footer-widget -->
+                <!-- footer-widget -->
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+                    <div class="footer-widget">
+                        <h3 class="widget-title">
+                            Contact Address
+                        </h3>
+                        <p>4998 Elk Creek Road Canton,
+                            <br> GA 30114</p>
+                        <p class="mb0 text-default">+0-800-1234-123</p>
+                        <p class="mb0 text-default">info@realwed.com</p>
+                    </div>
+                </div>
+                <!-- /.footer-widget -->
+                <!-- footer-widget -->
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12">
+                    <div class="footer-widget">
+                        <h3 class="widget-title">
+                            About Company
+                        </h3>
+                        <ul class="listnone">
+                            <li><a href="/about-us">About us</a></li>
+                            <li><a href="/contact-us">Contact us</a></li>
+                            <li><a href="/faq">Faq</a></li>
+                            <li><a href="#">Pricing Plan</a></li>
+                            <li><a href="#">Meet The Team</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.footer-widget -->
+                <!-- /.footer-widget -->
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-6 col-12">
+                    <div class="footer-widget">
+                        <h3 class="widget-title">
+                            List you Business
+                        </h3>
+                        <p>Are you vendor ? List your venue and service get more from listing business.</p>
+                        <a href="/signin" class="btn btn-default">List your Business</a>
+                    </div>
+                </div>
+                <!-- /.footer-widget -->
+            </div>
+        </div>
+    </div>
+    <!-- tiny-footer-section -->
+    <div class="tiny-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-right">
+                    <p>© 2018 RealWed. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.tiny-footer-section -->
+  </div>
+  <div id="list">
+         <!-- header -->
+  @foreach ($listing as $listing)
+    @foreach ($listowner as $listowner)
+    <!-- header end -->
     <div style="background-image: url( {{asset('userimage')}}/{{$listing->filebutton}} );" class="venue-pageheader">
         <div class="container">
             <div class="row align-items-end page-section">
@@ -117,22 +199,14 @@
                 <div class="col-xl-5 text-lg-right">
                      <div class="mt-xl-4">
                         <a href="#" class="btn btn-primary" id="open-popup">View Gallery</a>
-                        <!--
-                        <a href="javascript:wishlist()" id="wishlist_click" class="btn-default-wishlist"><i class="fa fa-heart"></i> <span class="pl-1">Add To Wishlist</span></a>
-                        -->
-                        <button id="wishlist_click" class="btn-default-wishlist"> <i class="fa fa-heart"></i><span class="pl-1">Add To Wishlist</span></button>
+                        <a href="javascript:whistlist()" class="btn-default-wishlist"><i class="fa fa-heart"></i> <span class="pl-1">Add To Wishlist</span></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- /.page-header -->
-    <!-- page-header -->
-    <br/>
-    <div style="display:none;" class="alert alert-success alert-block" id="alertsuccess1">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>Added to wish list</strong>
-    </div>    
+    <!-- page-header --> 
     <div class="vendor-content-wrapper">
         <div class="container">
             <div class="row">
@@ -984,7 +1058,7 @@
                                 </div>
                                 <div class="row">
                                         <div class="form-group">
-                                            <input id="userid" name="userid" type="hidden" value="{{$user->id}}" class="form-control input-md" required="">
+                                            <input id="userid" name="userid" type="hidden" value="" class="form-control input-md" required="">
                                         </div>
                                     <!-- Textarea -->
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt30">
@@ -1010,7 +1084,7 @@
                                     <!-- Button -->
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="form-group">
-                                            <button id="submit" name="submit" class="btn btn-default">Submit review</button>
+                                            <button onclick="whistlist()" name="submit" class="btn btn-default">Submit review</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1050,8 +1124,8 @@
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                             <h3 class="mb20">Request Quote</h3>
                                         </div>
-                                        <!-- Time field -->
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                         <!-- Time field -->
+                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                             <div class="form-group">
                                                 <input id="localtime" name="localtime" type="hidden" class="form-control input-md" required="">
                                             </div>
@@ -1150,11 +1224,6 @@
                     <h2>Latest listings from this vendor</h2>
                 </div>
             </div>
-            <br/>
-            <div style="display:none;" class="alert alert-success alert-block" id="alertsuccess2">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>hahahha</strong>
-            </div>
             <div class="row">
             @foreach ($last3listing as $last3listing)
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
@@ -1163,8 +1232,7 @@
                         <div class="vendor-img zoomimg">
                             <!-- Vendor img -->
                             <a href="{{$last3listing->id }}"><img style="width:400px; height:250px;" src="{{ asset('userimage') }}/{{$last3listing->filebutton}}" alt="" class="img-fluid"></a>
-                            <!--<div class="wishlist-sign"><a href="#" id="wishlist{{$last3listing->id}}" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>-->
-                            <div class="wishlist-sign"><button id="wishlist{{$last3listing->id}}" class="btn-wishlist"><i class="fa fa-heart"></i></button></div>
+                            <div class="wishlist-sign"><a href="javascript:whistlist()" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
                         </div>
                         <!-- /.Vendor img -->
                         <div class="vendor-content">
@@ -1289,6 +1357,7 @@
             </div>
         </div>
     </div>
+  </div>
     <!-- /.tiny-footer-section -->
     <a href="javascript:" id="return-to-top"><i class="fa fa-angle-up"></i></a>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -1540,242 +1609,25 @@
                             success: function(result){
                                 $(".alert-info").css('display','block');
                                 $(".alert-info").html(result);
-                            }
-                        });
-                    }                    
-                });
+                        }
+                    });
+                }                    
             });
+        });
+</script>
+<script type="text/javascript">
+        var currentTime = new Date();
+        document.getElementById("localtime").value = currentTime;
 </script>
 <script>
-         jQuery(document).ready(function(){
+        jQuery(document).ready(function(){
             jQuery('#submit').click(function(e){
                e.preventDefault();
                $.ajaxSetup({
                   headers: {
                       'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                  }
-              });
-
-              if ($.trim($("#review_text").val()) === "" || $.trim($("#review_name").val()) === ""
-                || $.trim($("#review_email").val()) === ""){
-                    $(".alert-danger").css('display','block');
-                    $(".alert-danger").html('All Fields required. Make sure you fill up all fields');
-                    return false;
-			}else{
-
-                if($( "#qstar" ).hasClass( "fa fa-star" )){
-                    var qstar = 1.0;
-                }else{
-                    var qstar = 0.0;
-                }
-
-                if($( "#qstar2" ).hasClass( "fa fa-star" )){
-                    var qstar2 = 1.0;
-                }else{
-                    var qstar2 = 0.0;
-                }
-
-                if($( "#qstar3" ).hasClass( "fa fa-star" )){
-                    var qstar3 = 1.0;
-                }else{
-                    var qstar3 = 0.0;
-                }
-
-                if($( "#qstar4" ).hasClass( "fa fa-star" )){
-                    var qstar4 = 1.0;
-                }else{
-                    var qstar4 = 0.0;
-                }
-
-                if($( "#qstar5" ).hasClass( "fa fa-star" )){
-                    var qstar5 = 1.0;
-                }else{
-                    var qstar5 = 0.0;
-                }
-
-                if($( "#qstar6" ).hasClass( "fa fa-star" )){
-                    var qstar6 = 1.0;
-                }else{
-                    var qstar6 = 0.0;
-                }
-
-                if($( "#qstar7" ).hasClass( "fa fa-star" )){
-                    var qstar7 = 1.0;
-                }else{
-                    var qstar7 = 0.0;
-                }
-
-                if($( "#qstar8" ).hasClass( "fa fa-star" )){
-                    var qstar8 = 1.0;
-                }else{
-                    var qstar8 = 0.0;
-                }
-
-                if($( "#qstar9" ).hasClass( "fa fa-star" )){
-                    var qstar9 = 1.0;
-                }else{
-                    var qstar9 = 0.0;
-                }
-
-                if($( "#qstar10" ).hasClass( "fa fa-star" )){
-                    var qstar10 = 1.0;
-                }else{
-                    var qstar10 = 0.0;
-                }
-
-                if($( "#qstar11" ).hasClass( "fa fa-star" )){
-                    var qstar11 = 1.0;
-                }else{
-                    var qstar11 = 0.0;
-                }
-
-                if($( "#qstar12" ).hasClass( "fa fa-star" )){
-                    var qstar12 = 1.0;
-                }else{
-                    var qstar12 = 0.0;
-                }
-
-                if($( "#qstar13" ).hasClass( "fa fa-star" )){
-                    var qstar13 = 1.0;
-                }else{
-                    var qstar13 = 0.0;
-                }
-
-                if($( "#qstar14" ).hasClass( "fa fa-star" )){
-                    var qstar14 = 1.0;
-                }else{
-                    var qstar14 = 0.0;
-                }
-
-                if($( "#qstar15" ).hasClass( "fa fa-star" )){
-                    var qstar15 = 1.0;
-                }else{
-                    var qstar15 = 0.0;
-                }
-
-                if($( "#qstar16" ).hasClass( "fa fa-star" )){
-                    var qstar16 = 1.0;
-                }else{
-                    var qstar16 = 0.0;
-                }
-
-                if($( "#qstar17" ).hasClass( "fa fa-star" )){
-                    var qstar17 = 1.0;
-                }else{
-                    var qstar17 = 0.0;
-                }
-
-                if($( "#qstar18" ).hasClass( "fa fa-star" )){
-                    var qstar18 = 1.0;
-                }else{
-                    var qstar18 = 0.0;
-                }
-
-                if($( "#qstar19" ).hasClass( "fa fa-star" )){
-                    var qstar19 = 1.0;
-                }else{
-                    var qstar19 = 0.0;
-                }
-
-                if($( "#qstar20" ).hasClass( "fa fa-star" )){
-                    var qstar20 = 1.0;
-                }else{
-                    var qstar20 = 0.0;
-                }
-
-                if($( "#qstar21" ).hasClass( "fa fa-star" )){
-                    var qstar21 = 1.0;
-                }else{
-                    var qstar21 = 0.0;
-                }
-
-                if($( "#qstar22" ).hasClass( "fa fa-star" )){
-                    var qstar22 = 1.0;
-                }else{
-                    var qstar22 = 0.0;
-                }
-
-                if($( "#qstar23" ).hasClass( "fa fa-star" )){
-                    var qstar23 = 1.0;
-                }else{
-                    var qstar23 = 0.0;
-                }
-
-                if($( "#qstar24" ).hasClass( "fa fa-star" )){
-                    var qstar24 = 1.0;
-                }else{
-                    var qstar24 = 0.0;
-                }
-
-                if($( "#qstar25" ).hasClass( "fa fa-star" )){
-                    var qstar25 = 1.0;
-                }else{
-                    var qstar25 = 0.0;
-                }
-                
-                var listownerid = {{ $listowner->id }};
-                var listid = {{ $listing->id }};
-                var userid = $("input[name='userid']").val();
-                var review_text = $("textarea[name='review_text']").val();
-                var name = $("input[name='review_name']").val();
-                var email = $("input[name='review_email']").val();       
-                var qualityservices = qstar+qstar2+qstar3+qstar4+qstar5;
-                var faciliteis = qstar6+qstar7+qstar8+qstar9+qstar10;
-                var staff = qstar11+qstar12+qstar13+qstar14+qstar15;
-                var flexibility = qstar16+qstar17+qstar18+qstar19+qstar20;
-                var valueofmoney = qstar21+qstar22+qstar23+qstar24+qstar25;
-                /*Overall Rating*/
-                var overallrating = qualityservices+faciliteis+staff+flexibility+valueofmoney;
-            
-                            jQuery.ajax({
-                            url: "{{ url('submitreview') }}",
-                            method: 'post',
-                            data: {
-                                listownerid: listownerid,
-                                listid: listid,
-                                userid: userid,
-                                review_text: jQuery('#review_text').val(),
-                                name: jQuery('#review_name').val(),
-                                email: jQuery('#review_email').val(),
-                                qualityservices:qualityservices,
-                                faciliteis:faciliteis,
-                                staff:staff,
-                                flexibility:flexibility,
-                                valueofmoney:valueofmoney,
-                                overallrating:overallrating,
-                            },
-                                success: function(result){
-                                    $(".alert-success").css('display','block');
-                                    $(".alert-success").html(result);
-                                }
-                            });
-                        }                    
-                });
-                });
-    </script>
-    <script type="text/javascript">
-        jQuery(document).ready(function(){
-            jQuery('#wishlist_click').click(function(e){
-
-                $("#alertsuccess1").css('display','none');
-
-                $.ajaxSetup({
-                  headers: {
-                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                        }
-                    });
-                
-                    jQuery.ajax({
-                    url: "{{ url('listdetail-wishlist-save') }}",
-                    method: 'post',
-                    data: {
-                        listingid: {{ $listing->id }},
-                    },
-                    success: function(result){
-                        $("#alertsuccess1").css('display','block');
-                        $("#alertsuccess1").html('Added to wish list');
                     }
-                });
+                });                                
             });
         });
     </script>
@@ -1808,40 +1660,7 @@
 
     });
     </script>
-    <script type="text/javascript">
-        var currentTime = new Date();
-        document.getElementById("localtime").value = currentTime;
-    </script>
     <script src="{{ asset('js/return-to-top.js') }}"></script>
-    @foreach ($listingloop as $listingloop)
-    <script type="text/javascript">
-        jQuery(document).ready(function(){
-            jQuery('#wishlist{{$listingloop->id}}').click(function(e){
-
-                $("#alertsuccess2").css('display','none');
-
-                $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                        }
-                    });
-                
-                    jQuery.ajax({
-                    url: "{{ url('listdetail-wishlist-save') }}",
-                    method: 'post',
-                    data: {
-                        listingid: {{$listingloop->id}},
-                    },
-                    success: function(result){
-                        $("#alertsuccess2").css('display','block');
-                        $("#alertsuccess2").html('Added to wish list');
-                        }
-                    });
-                });
-            });
-    </script>
-                @endforeach
-            @endforeach
         @endforeach
     @endforeach
 </body>

@@ -28,10 +28,14 @@ class tableplanner extends Controller
             $guestlist_household = DB::table('guestlist_household')->where('coupleid',$userid)->get();
             $seatingfour = DB::table('seatingfour')->where('coupleid',$userid)->get();
             $seatingeight = DB::table('seatingeight')->where('coupleid',$userid)->get();
-            $seatingtwelve = DB::table('seatingtwelve')->where('coupleid',$userid)->get();      
+            $seatingtwelve = DB::table('seatingtwelve')->where('coupleid',$userid)->get(); 
+            $seatingfour2 = DB::table('seatingfour')->where('coupleid',$userid)->get();
+            $seatingeight2 = DB::table('seatingeight')->where('coupleid',$userid)->get();
+            $seatingtwelve2 = DB::table('seatingtwelve')->where('coupleid',$userid)->get();      
             return view('couple_tableplanner',['users'=>$users , 'guestlist_single'=>$guestlist_single ,
             'guestlist_couple'=>$guestlist_couple ,'guestlist_household'=>$guestlist_household,
-            'seatingfour'=>$seatingfour,'seatingeight'=>$seatingeight,'seatingtwelve'=>$seatingtwelve]);
+            'seatingfour'=>$seatingfour,'seatingeight'=>$seatingeight,'seatingtwelve'=>$seatingtwelve,
+            'seatingfour2'=>$seatingfour2,'seatingeight2'=>$seatingeight2,'seatingtwelve2'=>$seatingtwelve2]);
         }
     }
 

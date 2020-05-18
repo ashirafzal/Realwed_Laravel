@@ -235,11 +235,11 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <a class="dropdown-item" href="/coupledashboard">Dashboard</a>
-                                        <a class="dropdown-item" href="#">My Wishlist </a>
+                                        <a class="dropdown-item" href="wishlist">My Wishlist </a>
                                         <a class="dropdown-item" href="todo-list">To Do List</a>
-                                        <a class="dropdown-item" href="#">Budget</a>
-                                        <a class="dropdown-item" href="#">Guestlist </a>
-                                        <a class="dropdown-item" href="#">Seating Table </a>
+                                        <a class="dropdown-item" href="couple-budget">Budget</a>
+                                        <a class="dropdown-item" href="couple-guestlist">Guestlist </a>
+                                        <a class="dropdown-item" href="couple-table-planner">Seating Table </a>
                                         <a class="dropdown-item" href="couple-profile">My Profile </a>
                                         <a class="dropdown-item" href="/logout">Log Out </a>
                                     </div>
@@ -270,9 +270,9 @@
             <div class="dashboard-nav">
                 <ul class="list-unstyled">
                     <li class="active"><a href="/coupledashboard"><span class="dash-nav-icon"><i class="fas fa-compass"></i></span>Dashboard</a></li>
-                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-heart"></i> </span> My Wishlist </a></li>
+                    <li><a href="wishlist"><span class="dash-nav-icon"><i class="fas fa-heart"></i> </span> My Wishlist </a></li>
                     <li><a href="todo-list"><span class="dash-nav-icon"><i class="fas fa-list-ul"></i></span>To Do List</a></li>
-                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Budget</a></li>
+                    <li><a href="couple-budget"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Budget</a></li>
                     <li><a href="couple-guestlist"><span class="dash-nav-icon"><i class="fas fa-users"></i></span>Guestlist </a></li>
                     <li><a href="couple-table-planner"><span class="dash-nav-icon"><i class="fas fa-table"></i></span>Seating Table </a></li>
                     <li><a href="couple-website"><span class="dash-nav-icon"><i class="fas fa-link"></i></span>Wedding Website </a></li>
@@ -647,7 +647,7 @@
                     @foreach($seatingfour as $seatingfour)
                     <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card seating-table-list table-responsive">
-                            <table class="table" id="table1">
+                            <table class="table" id="table1{{$seatingfour->id}}">
                                 <thead>
                                     <tr>
                                         <th colspan="2" class="seating-table-name">
@@ -665,7 +665,7 @@
                                         <td class="seating-guest-name">{{$seatingfour->guest2}}</td>
                                         <td class="seating-guest-name">{{$seatingfour->guest3}}</td>
                                         <td class="seating-guest-name">{{$seatingfour->guest4}}</td>
-                                        <td class="seating-table-action"><a href="javascript:edittask()" onclick="edittask()" class="btn btn-outline-violate btn-xs mr10">edit</a><a href="#" class="btn btn-outline-pink btn-xs ">delete</a></td>
+                                        <td class="seating-table-action"><a href="javascript:edittask()" onclick="edittask1{{$seatingfour->id}}()" class="btn btn-outline-violate btn-xs mr10">edit</a><a href="#" class="btn btn-outline-pink btn-xs ">delete</a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -676,7 +676,7 @@
                     @foreach($seatingeight as $seatingeight)
                     <div class="col-xl-12">
                         <div class="card seating-table-list table-responsive">
-                            <table class="table" id="table2">
+                            <table class="table" id="table2{{$seatingeight->id}}">
                                 <thead>
                                     <tr>
                                         <th colspan="2" class="seating-table-name">
@@ -698,7 +698,7 @@
                                         <td class="seating-guest-name">{{$seatingeight->guest6}}</td>
                                         <td class="seating-guest-name">{{$seatingeight->guest7}}</td>
                                         <td class="seating-guest-name">{{$seatingeight->guest8}}</td>
-                                        <td class="seating-guest-name"><a href="javascript:edittask2()" onclick="edittask2()" class="btn btn-outline-violate btn-xs mr10">edit</a></td>
+                                        <td class="seating-guest-name"><a href="javascript:edittask2()" onclick="edittask2{{$seatingeight->id}}()" class="btn btn-outline-violate btn-xs mr10">edit</a></td>
                                         <td class="seating-guest-name"><a href="#" class="btn btn-outline-pink btn-xs ">delete</a></td>
                                     </tr>
                                 </tbody>
@@ -710,7 +710,7 @@
                     @foreach($seatingtwelve as $seatingtwelve)
                     <div class="col-xl-12">
                         <div class="card seating-table-list table-responsive">
-                            <table class="table" id="table3">
+                            <table class="table" id="table3{{$seatingtwelve->id}}">
                                 <thead>
                                     <tr>
                                         <th colspan="2" class="seating-table-name">
@@ -736,7 +736,7 @@
                                         <td class="seating-guest-name">{{$seatingtwelve->guest10}}</td>
                                         <td class="seating-guest-name">{{$seatingtwelve->guest11}}</td>
                                         <td class="seating-guest-name">{{$seatingtwelve->guest12}}</td>
-                                        <td class="seating-guest-name"><a href="javascript:edittask3()" onclick="edittask3()" class="btn btn-outline-violate btn-xs mr10">edit</a></td>
+                                        <td class="seating-guest-name"><a href="javascript:edittask3()" onclick="edittask3{{$seatingtwelve->id}}()" class="btn btn-outline-violate btn-xs mr10">edit</a></td>
                                         <td class="seating-guest-name"><a href="#" class="btn btn-outline-pink btn-xs ">delete</a></td>
                                     </tr>
                                 </tbody>
@@ -757,59 +757,66 @@
     <script src="{{ asset('js/magicsuggest.js') }}"></script>
     <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
     <script type="text/javascript">
-        function edittask(){
-            document.getElementById("row1").style.display = "block";
-            var table1 = document.getElementById("table1");
+    @foreach($seatingfour2 as $seatingfour2)
+        function edittask1{{$seatingfour2->id}}(){
+            document.getElementById("row1").style.display = "block";            
+            var table1{{$seatingfour2->id}} = document.getElementById("table1{{$seatingfour2->id}}");            
 
-            document.getElementById("4seattableid").value = table1.rows[1].cells[0].innerHTML;
-            document.getElementById("4seatcoupleid").value = table1.rows[1].cells[1].innerHTML;
-            document.getElementById("4seattablename").value = table1.rows[1].cells[2].innerHTML;
-            document.getElementById("4seatcapacity").value = table1.rows[1].cells[3].innerHTML;
-            document.getElementById("4seatguest1").value = table1.rows[1].cells[4].innerHTML;
-            document.getElementById("4seatguest2").value = table1.rows[1].cells[5].innerHTML;
-            document.getElementById("4seatguest3").value = table1.rows[1].cells[6].innerHTML;
-            document.getElementById("4seatguest4").value = table1.rows[1].cells[7].innerHTML;
+            document.getElementById("4seattableid").value = table1{{$seatingfour2->id}}.rows[1].cells[0].innerHTML;
+            document.getElementById("4seatcoupleid").value = table1{{$seatingfour2->id}}.rows[1].cells[1].innerHTML;
+            document.getElementById("4seattablename").value = table1{{$seatingfour2->id}}.rows[1].cells[2].innerHTML;
+            document.getElementById("4seatcapacity").value = table1{{$seatingfour2->id}}.rows[1].cells[3].innerHTML;
+            document.getElementById("4seatguest1").value = table1{{$seatingfour2->id}}.rows[1].cells[4].innerHTML;
+            document.getElementById("4seatguest2").value = table1{{$seatingfour2->id}}.rows[1].cells[5].innerHTML;
+            document.getElementById("4seatguest3").value = table1{{$seatingfour2->id}}.rows[1].cells[6].innerHTML;
+            document.getElementById("4seatguest4").value = table1{{$seatingfour2->id}}.rows[1].cells[7].innerHTML;           
         }
+    @endforeach
 
-        function edittask2(){
+    @foreach($seatingeight2 as $seatingeight2)
+        function edittask2{{$seatingeight2->id}}(){
             document.getElementById("row2").style.display = "block";
-            var table2 = document.getElementById("table2");
+            var table2{{$seatingeight2->id}} = document.getElementById("table2{{$seatingeight2->id}}");
 
-            document.getElementById("8seattableid").value = table2.rows[1].cells[0].innerHTML;
-            document.getElementById("8seatcoupleid").value = table2.rows[1].cells[1].innerHTML;
-            document.getElementById("8seattablename").value = table2.rows[1].cells[2].innerHTML;
-            document.getElementById("8seatcapacity").value = table2.rows[1].cells[3].innerHTML;
-            document.getElementById("8seatguest1").value = table2.rows[1].cells[4].innerHTML;
-            document.getElementById("8seatguest2").value = table2.rows[1].cells[5].innerHTML;
-            document.getElementById("8seatguest3").value = table2.rows[1].cells[6].innerHTML;
-            document.getElementById("8seatguest4").value = table2.rows[1].cells[7].innerHTML;
-            document.getElementById("8seatguest5").value = table2.rows[1].cells[8].innerHTML;
-            document.getElementById("8seatguest6").value = table2.rows[1].cells[9].innerHTML;
-            document.getElementById("8seatguest7").value = table2.rows[1].cells[10].innerHTML;
-            document.getElementById("8seatguest8").value = table2.rows[1].cells[11].innerHTML;
+            document.getElementById("8seattableid").value = table2{{$seatingeight2->id}}.rows[1].cells[0].innerHTML;
+            document.getElementById("8seatcoupleid").value = table2{{$seatingeight2->id}}.rows[1].cells[1].innerHTML;
+            document.getElementById("8seattablename").value = table2{{$seatingeight2->id}}.rows[1].cells[2].innerHTML;
+            document.getElementById("8seatcapacity").value = table2{{$seatingeight2->id}}.rows[1].cells[3].innerHTML;
+            document.getElementById("8seatguest1").value = table2{{$seatingeight2->id}}.rows[1].cells[4].innerHTML;
+            document.getElementById("8seatguest2").value = table2{{$seatingeight2->id}}.rows[1].cells[5].innerHTML;
+            document.getElementById("8seatguest3").value = table2{{$seatingeight2->id}}.rows[1].cells[6].innerHTML;
+            document.getElementById("8seatguest4").value = table2{{$seatingeight2->id}}.rows[1].cells[7].innerHTML;
+            document.getElementById("8seatguest5").value = table2{{$seatingeight2->id}}.rows[1].cells[8].innerHTML;
+            document.getElementById("8seatguest6").value = table2{{$seatingeight2->id}}.rows[1].cells[9].innerHTML;
+            document.getElementById("8seatguest7").value = table2{{$seatingeight2->id}}.rows[1].cells[10].innerHTML;
+            document.getElementById("8seatguest8").value = table2{{$seatingeight2->id}}.rows[1].cells[11].innerHTML;
         }
+    @endforeach
 
-        function edittask3(){
+    @foreach($seatingtwelve2 as $seatingtwelve2)
+        function edittask3{{$seatingtwelve2->id}}(){
             document.getElementById("row3").style.display = "block";
-            var table3 = document.getElementById("table3");
+            var table3 = document.getElementById("table3{{$seatingtwelve2->id}}");
 
-            document.getElementById("12seattableid").value = table3.rows[1].cells[0].innerHTML;
-            document.getElementById("12seatcoupleid").value = table3.rows[1].cells[1].innerHTML;
-            document.getElementById("12seattablename").value = table3.rows[1].cells[2].innerHTML;
-            document.getElementById("12seatcapacity").value = table3.rows[1].cells[3].innerHTML;
-            document.getElementById("12seatguest1").value = table3.rows[1].cells[4].innerHTML;
-            document.getElementById("12seatguest2").value = table3.rows[1].cells[5].innerHTML;
-            document.getElementById("12seatguest3").value = table3.rows[1].cells[6].innerHTML;
-            document.getElementById("12seatguest4").value = table3.rows[1].cells[7].innerHTML;
-            document.getElementById("12seatguest5").value = table3.rows[1].cells[8].innerHTML;
-            document.getElementById("12seatguest6").value = table3.rows[1].cells[9].innerHTML;
-            document.getElementById("12seatguest7").value = table3.rows[1].cells[10].innerHTML;
-            document.getElementById("12seatguest8").value = table3.rows[1].cells[11].innerHTML;
-            document.getElementById("12seatguest9").value = table3.rows[1].cells[12].innerHTML;
-            document.getElementById("12seatguest10").value = table3.rows[1].cells[13].innerHTML;
-            document.getElementById("12seatguest11").value = table3.rows[1].cells[14].innerHTML;
-            document.getElementById("12seatguest12").value = table3.rows[1].cells[15].innerHTML;
+            document.getElementById("12seattableid").value = table3{{$seatingtwelve2->id}}.rows[1].cells[0].innerHTML;
+            document.getElementById("12seatcoupleid").value = table3{{$seatingtwelve2->id}}.rows[1].cells[1].innerHTML;
+            document.getElementById("12seattablename").value = table3{{$seatingtwelve2->id}}.rows[1].cells[2].innerHTML;
+            document.getElementById("12seatcapacity").value = table3{{$seatingtwelve2->id}}.rows[1].cells[3].innerHTML;
+            document.getElementById("12seatguest1").value = table3{{$seatingtwelve2->id}}.rows[1].cells[4].innerHTML;
+            document.getElementById("12seatguest2").value = table3{{$seatingtwelve2->id}}.rows[1].cells[5].innerHTML;
+            document.getElementById("12seatguest3").value = table3{{$seatingtwelve2->id}}.rows[1].cells[6].innerHTML;
+            document.getElementById("12seatguest4").value = table3{{$seatingtwelve2->id}}.rows[1].cells[7].innerHTML;
+            document.getElementById("12seatguest5").value = table3{{$seatingtwelve2->id}}.rows[1].cells[8].innerHTML;
+            document.getElementById("12seatguest6").value = table3{{$seatingtwelve2->id}}.rows[1].cells[9].innerHTML;
+            document.getElementById("12seatguest7").value = table3{{$seatingtwelve2->id}}.rows[1].cells[10].innerHTML;
+            document.getElementById("12seatguest8").value = table3{{$seatingtwelve2->id}}.rows[1].cells[11].innerHTML;
+            document.getElementById("12seatguest9").value = table3{{$seatingtwelve2->id}}.rows[1].cells[12].innerHTML;
+            document.getElementById("12seatguest10").value = table3{{$seatingtwelve2->id}}.rows[1].cells[13].innerHTML;
+            document.getElementById("12seatguest11").value = table3{{$seatingtwelve2->id}}.rows[1].cells[14].innerHTML;
+            document.getElementById("12seatguest12").value = table3{{$seatingtwelve2->id}}.rows[1].cells[15].innerHTML;
         }
+    @endforeach
+
     </script>
     <script>
         $(function() {

@@ -1,36 +1,34 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta name="description" content="wedding vendor directory HTML template">
-  	 
-       <title> Wedding Vendor &amp; Supplier Directory HTML Template - RealWed </title>
-       <!-- Bootstrap -->
-       <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-       <!-- Google Fonts -->
-      <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-       <!-- FontAwesome icon -->
-       <link href="{{ asset('fontawesome/css/fontawesome-all.css') }}" rel="stylesheet">
-       <!-- Fontello icon -->
-       <link href="{{ asset('fontello/css/fontello.css') }}" rel="stylesheet">
-       <!-- OwlCarosuel CSS -->
-       <link href="{{ asset('css/owl.carousel.css') }}" type="text/css" rel="stylesheet">
-       <link href="{{ asset('css/owl.theme.default.css') }}" type="text/css" rel="stylesheet">
-       <!-- Favicon icon -->
-       <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
-       <!-- Style CSS -->
-       <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-       <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-       <!--[if lt IE 9]>
-         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-       <![endif]-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_token" content="{{csrf_token()}}"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>RealWed | Couple Dashboard - My Wishlist</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <!-- FontAwesome icon -->
+    <link href="fontawesome/css/fontawesome-all.css" rel="stylesheet">
+    <!-- Fontello icon -->
+    <link href="fontello/css/fontello.css" rel="stylesheet">
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- Style CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/offcanvas.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body class="body-bg">
-    <div class="dashboard-header">
+<div class="dashboard-header">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-10 col-lg-8 col-md-8 col-sm-6 col-6">
@@ -78,7 +76,7 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <a class="dropdown-item" href="/coupledashboard">Dashboard</a>
-                                        <a class="dropdown-item" href="wishlist">My Wishlist </a>
+                                        <a class="dropdown-item" href="#">My Wishlist </a>
                                         <a class="dropdown-item" href="todo-list">To Do List</a>
                                         <a class="dropdown-item" href="couple-budget">Budget</a>
                                         <a class="dropdown-item" href="couple-guestlist">Guestlist </a>
@@ -113,7 +111,7 @@
             <div class="dashboard-nav">
                 <ul class="list-unstyled">
                     <li class="active"><a href="/coupledashboard"><span class="dash-nav-icon"><i class="fas fa-compass"></i></span>Dashboard</a></li>
-                    <li><a href="wishlist"><span class="dash-nav-icon"><i class="fas fa-heart"></i> </span> My Wishlist </a></li>
+                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-heart"></i> </span> My Wishlist </a></li>
                     <li><a href="todo-list"><span class="dash-nav-icon"><i class="fas fa-list-ul"></i></span>To Do List</a></li>
                     <li><a href="couple-budget"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Budget</a></li>
                     <li><a href="couple-guestlist"><span class="dash-nav-icon"><i class="fas fa-users"></i></span>Guestlist </a></li>
@@ -130,73 +128,60 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="dashboard-page-header">
-                            <h3 class="dashboard-page-title">Couple Dashboard</h3>
-                            <p>Welcome couple. You can check and manage your wishlist, checklist, budget and guestlist overview.</p>
+                            <h3 class="dashboard-page-title">My Wishlist</h3>
+                            <p>Hello Couple! The wishlist is great way to keep track your wedding vendor and their service availablity in your wishlist board.</p>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card summary-block summary-vendor-wishlist">
-                            <div class=" card-body summary-content">
-                                <h3 class="summary-title ">Vendors Wishlist</h3>
-                                <div class="summary-count">10</div>
-                                <p class="summary-text">Compare & Finalize</p>
+                    <div class="row">
+                    @foreach($wishlist as $wishlist)
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-4 col-12">
+                            <!-- /.Vendor thumbnail -->
+                            <div class="vendor-thumbnail">
+                                <!-- Vendor thumbnail -->
+                                <div class="vendor-img">
+                                    <!-- Vendor img -->
+                                    <a href="list-detail/{{$wishlist->listingid}}"><img style="height:230px;" src="{{ asset('userimage') }}/{{$wishlist->image}}" alt="" class="img-fluid"></a>
+                                    <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa fa-times"></i></a></div>
+                                </div>
+                                <!-- /.Vendor img -->
+                                <div class="vendor-content">
+                                    <!-- Vendor Content -->
+                                    <h2 class="vendor-title"><a href="list-detail/{{$wishlist->listingid}}" class="title">{{$wishlist->name}}</a></h2>
+                                    <p class="vendor-address">{{$wishlist->city}}, {{$wishlist->state}}.</p>
+                                </div>
+                                <div class="vendor-meta">
+                                    <div class="vendor-meta-item vendor-meta-item-bordered">
+                                        <span class="vendor-price">
+                                            {{$wishlist->price}}
+                                        </span>
+                                        <span class="vendor-text">Start From</span></div>
+                                    <div class="vendor-meta-item vendor-meta-item-bordered">
+                                        <span class="vendor-guest">
+                                            {{$wishlist->seat}}
+                                        </span>
+                                        <span class="vendor-text">Guest</span>
+                                    </div>
+                                    <div class="vendor-meta-item vendor-meta-item-bordered">
+                                        <span class="vendor-guest">{{$wishlist->listing_review_count}}</span>
+                                        <span class="vendor-text">Reviews</span>
+                                    </div>
+                                </div>
+                                <!-- /.Vendor Content -->
                             </div>
-                            <div class="card-footer text-center"><a href="#">View All</a></div>
                         </div>
+                        @endforeach
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card summary-block summary-table-seating">
-                            <div class="card-body summary-content">
-                                <h3 class="summary-title ">Table Seating</h3>
-                                <div class="summary-count">300</div>
-                                <p class="summary-text"><span class="text-primary">15</span> Seat remain</p>
-                            </div>
-                            <div class="card-footer text-center"><a href="#">View All</a></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card summary-block summary-guest-list">
-                            <div class="card-body summary-content">
-                                <h3 class="summary-title ">Guest List</h3>
-                                <div class="summary-count">120</div>
-                                <p class="summary-text">0 Accepted <span class="ml5">0 Declined</span></p>
-                            </div>
-                            <div class="card-footer text-center"><a href="#">View All</a></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card summary-block summary-budget">
-                            <div class=" card-body summary-content">
-                                <h3 class="summary-title ">Budget</h3>
-                                <div class="summary-count">$12000</div>
-                                <p class="summary-text">Spent $ 2000 out of $10,000 so far.</p>
-                            </div>
-                            <div class="card-footer text-center"><a href="#">View All</a></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card summary-block summary-todo">
-                            <div class="card-body summary-content">
-                                <h3 class="summary-title ">Total To Do</h3>
-                                <div class="summary-count">12</div>
-                                <p class="summary-text">5 Complete <span class="ml5">7 remain</span></p>
-                            </div>
-                            <div class="card-footer text-center"><a href="#">View All</a></div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{ asset('js/menumaker.min.js') }}"></script>
-    <script src="{{ asset('js/custom-script.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/offcanvas.js') }}"></script>
-    <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>   
+    <script src="js/menumaker.min.js"></script>
+    <script src="js/custom-script.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/offcanvas.js"></script>
+     <script src="js/jquery.slimscroll.js"></script>
 </body>
 </html>

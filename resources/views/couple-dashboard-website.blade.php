@@ -78,11 +78,11 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <a class="dropdown-item" href="/coupledashboard">Dashboard</a>
-                                        <a class="dropdown-item" href="#">My Wishlist </a>
+                                        <a class="dropdown-item" href="wishlist">My Wishlist </a>
                                         <a class="dropdown-item" href="todo-list">To Do List</a>
-                                        <a class="dropdown-item" href="#">Budget</a>
+                                        <a class="dropdown-item" href="couple-budget">Budget</a>
                                         <a class="dropdown-item" href="couple-guestlist">Guestlist </a>
-                                        <a class="dropdown-item" href="#">Seating Table </a>
+                                        <a class="dropdown-item" href="couple-table-planner">Seating Table </a>
                                         <a class="dropdown-item" href="couple-profile">My Profile </a>
                                         <a class="dropdown-item" href="/logout">Log Out </a>
                                     </div>
@@ -113,9 +113,9 @@
             <div class="dashboard-nav">
                 <ul class="list-unstyled">
                     <li class="active"><a href="/coupledashboard"><span class="dash-nav-icon"><i class="fas fa-compass"></i></span>Dashboard</a></li>
-                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-heart"></i> </span> My Wishlist </a></li>
+                    <li><a href="wishlist"><span class="dash-nav-icon"><i class="fas fa-heart"></i> </span> My Wishlist </a></li>
                     <li><a href="todo-list"><span class="dash-nav-icon"><i class="fas fa-list-ul"></i></span>To Do List</a></li>
-                    <li><a href="#"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Budget</a></li>
+                    <li><a href="couple-budget"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Budget</a></li>
                     <li><a href="couple-guestlist"><span class="dash-nav-icon"><i class="fas fa-users"></i></span>Guestlist </a></li>
                     <li><a href="couple-table-planner"><span class="dash-nav-icon"><i class="fas fa-table"></i></span>Seating Table </a></li>
                     <li><a href="couple-website"><span class="dash-nav-icon"><i class="fas fa-link"></i></span>Wedding Website </a></li>

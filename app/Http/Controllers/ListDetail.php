@@ -18,28 +18,52 @@ class ListDetail extends Controller
         $useremail = Session::get('useremail');
         $usertype = Session::get('usertype');
 
-        $qualityservices = DB::table('listing_review')->where('listid', $id)->avg('qualityservices');
-        $faciliteis = DB::table('listing_review')->where('listid', $id)->avg('faciliteis');
-        $staff = DB::table('listing_review')->where('listid', $id)->avg('staff');
-        $flexibility = DB::table('listing_review')->where('listid', $id)->avg('flexibility');
-        $valueofmoney = DB::table('listing_review')->where('listid', $id)->avg('valueofmoney');
-        $overallrating = DB::table('listing_review')->where('listid', $id)->avg('overallrating');
-        $listing_review_count = DB::table('listing_review')->where('listid', $id)->get();
-        $listing_review_count = count($listing_review_count);
-
-        $listing = DB::table('vendorlistings')->where('id', $id)->get();
-        $listownerid = DB::table('vendorlistings')->where('id', $id)->value('vendorid');
-        $listowner = DB::table('appusers')->where('id',$listownerid)->get();
-        $user = DB::table('appusers')->where('id',$userid)->get();
-        $requestquote = DB::table('requestquote')->where('list_creator_id', $userid)->orderBy('id', 'desc')->get();
-        $last3listing = DB::table('vendorlistings')->where('vendorid',$listownerid)->orderBy('id', 'desc')->take(3)->get();
-        $listing_review = DB::table('listing_review')->where('listid', $id)->orderBy('id', 'desc')->take(5)->get();
-        return view('list-detail',['user'=>$user ,'listowner'=>$listowner ,
-        'listing'=>$listing , 'listing_review'=>$listing_review , 'qualityservices' => $qualityservices,
-        'faciliteis' => $faciliteis, 'staff' => $staff , 'flexibility' => $flexibility ,
-        'valueofmoney' => $valueofmoney, 'overallrating' => $overallrating, 
-        'listing_review_count' => $listing_review_count, 'last3listing' => $last3listing]);
-               
+        if(session()->has('userid')) {
+            $qualityservices = DB::table('listing_review')->where('listid', $id)->avg('qualityservices');
+            $faciliteis = DB::table('listing_review')->where('listid', $id)->avg('faciliteis');
+            $staff = DB::table('listing_review')->where('listid', $id)->avg('staff');
+            $flexibility = DB::table('listing_review')->where('listid', $id)->avg('flexibility');
+            $valueofmoney = DB::table('listing_review')->where('listid', $id)->avg('valueofmoney');
+            $overallrating = DB::table('listing_review')->where('listid', $id)->avg('overallrating');
+            $listing_review_count = DB::table('listing_review')->where('listid', $id)->get();
+            $listing_review_count = count($listing_review_count);
+    
+            $listing = DB::table('vendorlistings')->where('id', $id)->get();
+            $listownerid = DB::table('vendorlistings')->where('id', $id)->value('vendorid');
+            $listowner = DB::table('appusers')->where('id',$listownerid)->get();
+            $user = DB::table('appusers')->where('id',$userid)->get();
+            $requestquote = DB::table('requestquote')->where('list_creator_id', $userid)->orderBy('id', 'desc')->get();
+            $last3listing = DB::table('vendorlistings')->where('vendorid',$listownerid)->orderBy('id', 'desc')->take(3)->get();
+            $listingloop = DB::table('vendorlistings')->where('vendorid',$listownerid)->orderBy('id', 'desc')->take(3)->get();
+            $listing_review = DB::table('listing_review')->where('listid', $id)->orderBy('id', 'desc')->take(5)->get();
+            return view('list-detail',['user'=>$user ,'listowner'=>$listowner ,
+            'listing'=>$listing , 'listing_review'=>$listing_review , 'qualityservices' => $qualityservices,
+            'faciliteis' => $faciliteis, 'staff' => $staff , 'flexibility' => $flexibility ,
+            'valueofmoney' => $valueofmoney, 'overallrating' => $overallrating, 
+            'listing_review_count' => $listing_review_count, 'last3listing' => $last3listing,
+            'listingloop' => $listingloop]);
+        }else{
+            $qualityservices = DB::table('listing_review')->where('listid', $id)->avg('qualityservices');
+            $faciliteis = DB::table('listing_review')->where('listid', $id)->avg('faciliteis');
+            $staff = DB::table('listing_review')->where('listid', $id)->avg('staff');
+            $flexibility = DB::table('listing_review')->where('listid', $id)->avg('flexibility');
+            $valueofmoney = DB::table('listing_review')->where('listid', $id)->avg('valueofmoney');
+            $overallrating = DB::table('listing_review')->where('listid', $id)->avg('overallrating');
+            $listing_review_count = DB::table('listing_review')->where('listid', $id)->get();
+            $listing_review_count = count($listing_review_count);
+    
+            $listing = DB::table('vendorlistings')->where('id', $id)->get();
+            $listownerid = DB::table('vendorlistings')->where('id', $id)->value('vendorid');
+            $listowner = DB::table('appusers')->where('id',$listownerid)->get();
+            $requestquote = DB::table('requestquote')->where('list_creator_id', $userid)->orderBy('id', 'desc')->get();
+            $last3listing = DB::table('vendorlistings')->where('vendorid',$listownerid)->orderBy('id', 'desc')->take(3)->get();
+            $listing_review = DB::table('listing_review')->where('listid', $id)->orderBy('id', 'desc')->take(5)->get();
+            return view('list-detail-2',['listowner'=>$listowner ,
+            'listing'=>$listing , 'listing_review'=>$listing_review , 'qualityservices' => $qualityservices,
+            'faciliteis' => $faciliteis, 'staff' => $staff , 'flexibility' => $flexibility ,
+            'valueofmoney' => $valueofmoney, 'overallrating' => $overallrating, 
+            'listing_review_count' => $listing_review_count, 'last3listing' => $last3listing]);
+        }               
     }
 
     public function requestquote(Request $request){
@@ -52,6 +76,7 @@ class ListDetail extends Controller
             'requestquote_comments' => 'required'
         ]);
 
+        $list_creator_id = $request->input('requestquote_creatorid');
         $requestquote_name = $request->input('requestquote_name');
         $requestquote_email = $request->input('requestquote_email');
         $requestquote_phone = $request->input('requestquote_phone');
@@ -59,7 +84,6 @@ class ListDetail extends Controller
         $requestquote_comments = $request->input('requestquote_comments');
         $date = date("Y/m/d");
         $localtime = $request->input('localtime');
-        $list_creator_id = Session::get('userid');
 
         DB::table('requestquote')->insert(
             array(
@@ -145,7 +169,44 @@ class ListDetail extends Controller
            );
 
            echo json_encode(['success'=>'Review addded successfully.']);
+    }
 
+    public function wishlistsave(Request $request){
+
+        $userid = Session::get('userid');
+        $listingid = $request->input('listingid');
+
+        $listing_review_count = DB::table('listing_review')->where('listid', $listingid)->get();
+        $listing_review_count = count($listing_review_count);
+
+        $listing = DB::table('vendorlistings')->where('id', $listingid)->get();
+
+        foreach($listing as $listing)
+        {
+            $name = $listing->title;
+            $image = $listing->filebutton;
+            $city = $listing->city;
+            $state = $listing->state;
+            $price = $listing->price;
+            $seat = $listing->seat;
+            $listing_review_count = $listing_review_count;
+        }
+        
+        DB::table('wishlist')->insert(
+            array(
+                   'userid' => $userid,
+                   'listingid' => $listingid,
+                   'name' => $name,
+                   'image' => $image,
+                   'city' => $city,
+                   'state' => $state,
+                   'price' => $price,
+                   'seat' => $seat,
+                   'listing_review_count' => $listing_review_count
+            )
+       );
+
+        echo json_encode(['success'=>'success']);
     }
 
 }

@@ -49,6 +49,16 @@ Route::get('/signin', function () {
     return view('/signin');
 });
 
+Route::get('wishlist', 'Whislist@index');
+
+Route::post('listdetail-wishlist-save', 'ListDetail@wishlistsave');
+
+Route::get('couple-budget', 'Budget@index');
+
+Route::post('save-budget', 'Budget@savebudget');
+
+Route::post('delete-budget', 'Budget@deletebudget');
+
 Route::get('couple-table-planner', 'tableplanner@index');
 
 Route::get('couple-guestlist', 'Guestlist@index');

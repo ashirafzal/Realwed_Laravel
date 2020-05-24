@@ -140,7 +140,11 @@
                         <div class="card summary-block summary-vendor-wishlist">
                             <div class=" card-body summary-content">
                                 <h3 class="summary-title ">Vendors Wishlist</h3>
-                                <div class="summary-count">10</div>
+                                @if($wishlist == '')
+                                    <div class="summary-count">0</div>
+                                @else
+                                    <div class="summary-count">{{ $wishlist }}</div>
+                                @endif
                                 <p class="summary-text">Compare & Finalize</p>
                             </div>
                             <div class="card-footer text-center"><a href="#">View All</a></div>
@@ -150,7 +154,11 @@
                         <div class="card summary-block summary-table-seating">
                             <div class="card-body summary-content">
                                 <h3 class="summary-title ">Table Seating</h3>
-                                <div class="summary-count">300</div>
+                                @if($tableseatingtotal == '')
+                                <div class="summary-count">0</div>
+                                @else
+                                <div class="summary-count">{{ $tableseatingtotal }}</div>
+                                @endif
                                 <p class="summary-text"><span class="text-primary">15</span> Seat remain</p>
                             </div>
                             <div class="card-footer text-center"><a href="#">View All</a></div>
@@ -160,7 +168,11 @@
                         <div class="card summary-block summary-guest-list">
                             <div class="card-body summary-content">
                                 <h3 class="summary-title ">Guest List</h3>
-                                <div class="summary-count">120</div>
+                                @if($guestlisttotal == '')
+                                <div class="summary-count">0</div>
+                                @else
+                                <div class="summary-count">{{ $guestlisttotal }}</div>
+                                @endif
                                 <p class="summary-text">0 Accepted <span class="ml5">0 Declined</span></p>
                             </div>
                             <div class="card-footer text-center"><a href="#">View All</a></div>

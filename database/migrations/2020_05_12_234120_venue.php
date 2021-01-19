@@ -16,20 +16,21 @@ class Venue extends Migration
         Schema::create('venue', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('coupleid');
-            $table->string('locationfees');
-            $table->string('locationfees_estimate');
-            $table->string('locationfees_actual');
-            $table->string('locationfees_paid');
-            $table->string('locationfees_pending');
-            $table->string('carexpense');
-            $table->string('carexpense_estimate');
-            $table->string('carexpense_actual');
-            $table->string('carexpense_paid');
-            $table->string('carexpense_pending');
-            $table->string('estimate_total');
-            $table->string('actual_total');
-            $table->string('paid_total');
-            $table->string('pending_total');
+            $table->string('locationfees')->nullable();
+            $table->string('locationfees_estimate')->nullable();
+            $table->string('locationfees_actual')->nullable();
+            $table->string('locationfees_paid')->nullable();
+            $table->string('locationfees_pending')->nullable();
+            $table->string('carexpense')->nullable();
+            $table->string('carexpense_estimate')->nullable();
+            $table->string('carexpense_actual')->nullable();
+            $table->string('carexpense_paid')->nullable();
+            $table->string('carexpense_pending')->nullable();
+            $table->string('estimate_total')->nullable();
+            $table->string('actual_total')->nullable();
+            $table->string('paid_total')->nullable();
+            $table->string('pending_total')->nullable();
+            $table->timestamps();
         });
     }
 

@@ -13,19 +13,20 @@ class Seatingeight extends Migration
      */
     public function up()
     {
-        Schema::create('seatingeight', function (Blueprint $table) {
+        Schema::create('seating_eight', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('coupleid');
-            $table->string('tablename');
-            $table->string('seatingcapacity');
-            $table->string('guest1');
-            $table->string('guest2');
-            $table->string('guest3');
-            $table->string('guest4');
-            $table->string('guest5');
-            $table->string('guest6');
-            $table->string('guest7');
-            $table->string('guest8');
+            $table->string('couple_id');
+            $table->string('table_name');
+            $table->string('seating_capacity');
+            $table->string('guest1')->nullable();
+            $table->string('guest2')->nullable();
+            $table->string('guest3')->nullable();
+            $table->string('guest4')->nullable();
+            $table->string('guest5')->nullable();
+            $table->string('guest6')->nullable();
+            $table->string('guest7')->nullable();
+            $table->string('guest8')->nullable();
+            $table->timestamps();
         });
     }
 

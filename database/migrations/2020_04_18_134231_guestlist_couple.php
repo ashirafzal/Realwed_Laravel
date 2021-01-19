@@ -13,18 +13,19 @@ class GuestlistCouple extends Migration
      */
     public function up()
     {
-        Schema::create('guestlist_couple', function (Blueprint $table) {
+        Schema::create('guest_list_couple', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('coupleid');
-            $table->string('couple_firstname');
-            $table->string('couple_lastname');
-            $table->string('couple_partnerfname');
-            $table->string('couple_partnerlname');
-            $table->string('couple_group');
+            $table->string('couple_id');
+            $table->string('couple_first_name');
+            $table->string('couple_last_name');
+            $table->string('couple_partner_fname');
+            $table->string('couple_partner_lname');
+            $table->string('couple_group')->nullable();
             $table->string('couple_address');
-            $table->string('couple_address2');
+            $table->string('couple_address2')->nullable();
             $table->string('couple_country');
-            $table->string('couple_postcode');
+            $table->string('couple_postcode')->nullable();
+            $table->timestamps();
         });
     }
 

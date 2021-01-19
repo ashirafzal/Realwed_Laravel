@@ -13,15 +13,16 @@ class Seatingfour extends Migration
      */
     public function up()
     {
-        Schema::create('seatingfour', function (Blueprint $table) {
+        Schema::create('seating_four', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('coupleid');
-            $table->string('tablename');
-            $table->string('seatingcapacity');
-            $table->string('guest1');
-            $table->string('guest2');
-            $table->string('guest3');
-            $table->string('guest4');
+            $table->string('couple_id');
+            $table->string('table_name')->nullable();
+            $table->string('seating_capacity')->nullable();
+            $table->string('guest1')->nullable();
+            $table->string('guest2')->nullable();
+            $table->string('guest3')->nullable();
+            $table->string('guest4')->nullable();
+            $table->timestamps();
         });
     }
 

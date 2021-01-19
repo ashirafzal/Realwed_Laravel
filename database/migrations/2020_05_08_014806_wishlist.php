@@ -13,10 +13,11 @@ class Wishlist extends Migration
      */
     public function up()
     {
-        Schema::create('wishlist', function (Blueprint $table) {
+        Schema::create('wish_list', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('userid');
-            $table->string('listingid');
+            $table->string('user_id');
+            $table->string('listing_id');
+            $table->timestamps();
         });
     }
 

@@ -13,18 +13,19 @@ class GuestlistHousehold extends Migration
      */
     public function up()
     {
-        Schema::create('guestlist_household', function (Blueprint $table) {
+        Schema::create('guest_list_household', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('coupleid');
+            $table->string('couple_id');
             $table->string('household_fname');
             $table->string('household_lname');
             $table->string('household_family');
             $table->string('household_address');
-            $table->string('household_address2');
+            $table->string('household_address2')->nullable();
             $table->string('household_email');
-            $table->string('household_city');
+            $table->string('household_city')->nullable();
             $table->string('household_country');
-            $table->string('household_postcode');
+            $table->string('household_postcode')->nullable();
+            $table->timestamps();
         });
     }
 

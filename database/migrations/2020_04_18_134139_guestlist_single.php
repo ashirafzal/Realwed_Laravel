@@ -13,17 +13,18 @@ class GuestlistSingle extends Migration
      */
     public function up()
     {
-        Schema::create('guestlist_single', function (Blueprint $table) {
+        Schema::create('guest_list_single', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('coupleid');
-            $table->string('fname');
-            $table->string('lname');
+            $table->string('fname')->nullable();
+            $table->string('lname')->nullable();
             $table->string('address');
-            $table->string('address2');
+            $table->string('address2')->nullable();
             $table->string('email');
-            $table->string('city');
-            $table->string('country');
-            $table->string('postcode');
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+            $table->string('postcode')->nullable();
+            $table->timestamps();
         });
     }
 

@@ -10,12 +10,13 @@ class Addtask extends Migration
 
     public function up()
     {
-        Schema::create('addtask', function (Blueprint $table) {
+        Schema::create('add_task', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('coupleid');
-            $table->string('tasktitle');
-            $table->string('taskdate');
-            $table->string('taskstatus');
+            $table->string('couple_id');
+            $table->string('task_title');
+            $table->string('task_date')->nullable();
+            $table->string('task_status');
+            $table->timestamps();
         });
     }
 

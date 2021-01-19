@@ -15,10 +15,11 @@ class OtpUserRequest extends Migration
     {
         Schema::create('otp_user_request', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('username');
+            $table->string('user_name')->nullable();
             $table->string('email');
             $table->string('phone');
             $table->string('otp');
+            $table->timestamps();
         });
     }
 

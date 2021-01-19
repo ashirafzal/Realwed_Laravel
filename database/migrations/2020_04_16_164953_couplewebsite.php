@@ -9,23 +9,24 @@ class Couplewebsite extends Migration
     /*** Run the migrations.** @return void*/
     public function up()
     {
-        Schema::create('couplewebsite', function (Blueprint $table) {
+        Schema::create('couple_website', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('coupleid');
-            $table->string('coupleemail');
-            $table->string('couplename');
-            $table->string('weddingdate');
-            $table->string('weddingplace');
-            $table->string('weddingaddress');
-            $table->string('contactemail');
-            $table->string('contactnumber');
-            $table->string('whatsapp');
-            $table->string('yourstory');
-            $table->string('yourproposal');
-            $table->string('rsvpformpic');
-            $table->string('filebutton2');
-            $table->string('filebutton3');
-            $table->string('filebutton4');
+            $table->string('couple_id');
+            $table->string('couple_email');
+            $table->string('couple_name');
+            $table->string('wedding_date');
+            $table->string('wedding_place')->nullable();
+            $table->string('wedding_address')->nullable();
+            $table->string('contact_email');
+            $table->string('contact_number')->nullable();
+            $table->string('whatsapp')->nullable();
+            $table->string('your_story')->nullable();
+            $table->string('your_proposal')->nullable();
+            $table->string('rsvp_form_pic')->nullable();
+            $table->string('file_button2')->nullable();
+            $table->string('file_button3')->nullable();
+            $table->string('file_button4')->nullable();
+            $table->timestamps();
         });
     }
 

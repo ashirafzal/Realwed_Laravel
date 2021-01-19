@@ -9,21 +9,22 @@ class Realwedding extends Migration
     /*** Run the migrations.** @return void */
     public function up()
     {
-        Schema::create('realwedding', function (Blueprint $table) {
+        Schema::create('real_wedding', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('coupleid');
-            $table->string('coupleemail');
-            $table->string('featured_image');
-            $table->string('filebutton');
-            $table->string('filebutton2');
-            $table->string('filebutton3');
-            $table->string('filebutton4');
-            $table->string('filebutton5');
-            $table->string('filebutton6');
-            $table->string('fromwebsite');
-            $table->string('fromoutside');
-            $table->string('both');
-            $table->string('textarea');
+            $table->string('couple_id');
+            $table->string('couple_email');
+            $table->string('featured_image')->nullable();
+            $table->string('file_button')->nullable();
+            $table->string('file_button2')->nullable();
+            $table->string('file_button3')->nullable();
+            $table->string('file_button4')->nullable();
+            $table->string('file_button5')->nullable();
+            $table->string('file_button6')->nullable();
+            $table->string('from_website')->nullable();
+            $table->string('from_outside')->nullable();
+            $table->string('both')->nullable();
+            $table->string('textarea')->nullable();
+            $table->timestamps();
         });
     }
 

@@ -9,10 +9,11 @@ class Showrealwedding extends Migration
     /*** Run the migrations.** @return void*/
     public function up()
     {
-        Schema::create('showrealwedding', function (Blueprint $table) {
+        Schema::create('show_real_wedding', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('coupleid');
-            $table->string('showprofile');
+            $table->string('couple_id');
+            $table->string('show_profile');
+            $table->timestamps();
         });
     }
 

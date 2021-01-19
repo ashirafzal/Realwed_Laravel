@@ -13,7 +13,7 @@ class CreateVendorlistingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vendorlistings', function (Blueprint $table) {
+        Schema::create('vendor_listings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('vendorid');
             $table->string('name');
@@ -25,36 +25,36 @@ class CreateVendorlistingsTable extends Migration
             $table->string('price');
             $table->string('address');
             $table->string('city');
-            $table->string('postcode');
-            $table->string('state');
+            $table->string('postcode')->nullable();
+            $table->string('state')->nullable();
             $table->string('country');
-            $table->string('editordata');
-            $table->string('latitude');
-            $table->string('longitude');
-            $table->string('groomlounge');
-            $table->string('bridalsuite');
-            $table->string('tableandchairs');
-            $table->string('getreadyrooms');
-            $table->string('eventrentals');
-            $table->string('outsidevendors');
-            $table->string('barservices');
-            $table->string('cateringservices');
-            $table->string('cleanup');
-            $table->string('eventplanner');
-            $table->string('wifi');
-            $table->string('petfriendly');
-            $table->string('accommodations');
-            $table->string('filebutton');
-            $table->string('filebutton2');
-            $table->string('filebutton3');
-            $table->string('filebutton4');
-            $table->string('filebutton5');
-            $table->string('filebutton6');
-            $table->string('video');
-            $table->string('facebook');
-            $table->string('twitter');
-            $table->string('instagram');
-            $table->string('youtube');
+            $table->string('editordata')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('groomlounge')->nullable();
+            $table->string('bridalsuite')->nullable();
+            $table->string('tableandchairs')->nullable();
+            $table->string('getreadyrooms')->nullable();
+            $table->string('eventrentals')->nullable();
+            $table->string('outsidevendors')->nullable();
+            $table->string('barservices')->nullable();
+            $table->string('cateringservices')->nullable();
+            $table->string('cleanup')->nullable();
+            $table->string('eventplanner')->nullable();
+            $table->string('wifi')->nullable();
+            $table->string('petfriendly')->nullable();
+            $table->string('accommodations')->nullable();
+            $table->string('filebutton')->nullable();
+            $table->string('filebutton2')->nullable();
+            $table->string('filebutton3')->nullable();
+            $table->string('filebutton4')->nullable();
+            $table->string('filebutton5')->nullable();
+            $table->string('filebutton6')->nullable();
+            $table->string('video')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('youtube')->nullable();
             $table->timestamps();
         });
     }

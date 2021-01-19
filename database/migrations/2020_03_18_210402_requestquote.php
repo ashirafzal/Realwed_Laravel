@@ -13,16 +13,17 @@ class Requestquote extends Migration
      */
     public function up()
     {
-        Schema::create('requestquote', function (Blueprint $table) {
+        Schema::create('request_quotes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('list_creator_id');
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('weddingdate');
-            $table->string('comments');
-            $table->string('time');
-            $table->string('date');
+            $table->string('weddingdate')->nullable();
+            $table->string('comments')->nullable();
+            $table->string('time')->nullable();
+            $table->string('date')->nullable();
+            $table->timestamps();
         });
     }
 

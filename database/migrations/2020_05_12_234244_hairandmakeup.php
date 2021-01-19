@@ -13,18 +13,19 @@ class Hairandmakeup extends Migration
      */
     public function up()
     {
-        Schema::create('hairandmakeup', function (Blueprint $table) {
+        Schema::create('hair_and_makeup', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('coupleid');
-            $table->string('hairandmakeup');
-            $table->string('hairandmakeup_estimate');
-            $table->string('hairandmakeup_actual');
-            $table->string('hairandmakeup_paid');
-            $table->string('hairandmakeup_pending');
-            $table->string('estimate_total');
-            $table->string('actual_total');
-            $table->string('paid_total');
-            $table->string('pending_total');
+            $table->string('couple_id');
+            $table->string('hair_and_makeup')->nullable();
+            $table->string('hair_and_makeup_estimate')->nullable();
+            $table->string('hair_and_makeup_actual')->nullable();
+            $table->string('hair_and_makeup_paid')->nullable();
+            $table->string('hair_and_makeup_pending')->nullable();
+            $table->string('estimate_total')->nullable();
+            $table->string('actual_total')->nullable();
+            $table->string('paid_total')->nullable();
+            $table->string('pending_total')->nullable();
+            $table->timestamps();
         });
     }
 

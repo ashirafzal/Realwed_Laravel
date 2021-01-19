@@ -15,16 +15,17 @@ class Cake extends Migration
     {
         Schema::create('cake', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('coupleid');
-            $table->string('cakecuttingfee');
-            $table->string('cakecuttingfee_estimate');
-            $table->string('cakecuttingfee_actual');
-            $table->string('cakecuttingfee_paid');
-            $table->string('cakecuttingfee_pending');
-            $table->string('estimate_total');
-            $table->string('actual_total');
-            $table->string('paid_total');
-            $table->string('pending_total');
+            $table->string('couple_id');
+            $table->string('cake_cutting_fee')->nullable();
+            $table->string('cake_cutting_fee_estimate')->nullable();
+            $table->string('cake_cutting_fee_actual')->nullable();
+            $table->string('cake_cutting_fee_paid')->nullable();
+            $table->string('cake_cuttingfee_pending')->nullable();
+            $table->string('estimate_total')->nullable();
+            $table->string('actual_total')->nullable();
+            $table->string('paid_total')->nullable();
+            $table->string('pending_total')->nullable();
+            $table->timestamps();
         });
     }
 

@@ -16,25 +16,26 @@ class Photography extends Migration
         Schema::create('photography', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('coupleid');
-            $table->string('photographer');
-            $table->string('photographer_estimate');
-            $table->string('photographer_actual');
-            $table->string('photographer_paid');
-            $table->string('photographer_pending');
-            $table->string('videographer');
-            $table->string('videographer_estimate');
-            $table->string('videographer_actual');
-            $table->string('videographer_paid');
-            $table->string('videographer_pending');
-            $table->string('extraprints');
-            $table->string('extraprints_estimate');
-            $table->string('extraprints_actual');
-            $table->string('extraprints_paid');
-            $table->string('extraprints_pending');
-            $table->string('estimate_total');
-            $table->string('actual_total');
-            $table->string('paid_total');
-            $table->string('pending_total');
+            $table->string('photographer')->nullable();
+            $table->string('photographer_estimate')->nullable();
+            $table->string('photographer_actual')->nullable();
+            $table->string('photographer_paid')->nullable();
+            $table->string('photographer_pending')->nullable();
+            $table->string('videographer')->nullable();
+            $table->string('videographer_estimate')->nullable();
+            $table->string('videographer_actual')->nullable();
+            $table->string('videographer_paid')->nullable();
+            $table->string('videographer_pending')->nullable();
+            $table->string('extraprints')->nullable();
+            $table->string('extraprints_estimate')->nullable();
+            $table->string('extraprints_actual')->nullable();
+            $table->string('extraprints_paid')->nullable();
+            $table->string('extraprints_pending')->nullable();
+            $table->string('estimate_total')->nullable();
+            $table->string('actual_total')->nullable();
+            $table->string('paid_total')->nullable();
+            $table->string('pending_total')->nullable();
+            $table->timestamps();
         });
     }
 

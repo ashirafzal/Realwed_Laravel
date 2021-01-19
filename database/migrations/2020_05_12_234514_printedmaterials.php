@@ -13,28 +13,29 @@ class Printedmaterials extends Migration
      */
     public function up()
     {
-        Schema::create('printedmaterials', function (Blueprint $table) {
+        Schema::create('printed_materials', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('coupleid');
-            $table->string('savethedates');
-            $table->string('savethedates_estimate');
-            $table->string('savethedates_actual');
-            $table->string('savethedates_paid');
-            $table->string('savethedates_pending');
-            $table->string('invitations');
-            $table->string('invitations_estimate');
-            $table->string('invitations_actual');
-            $table->string('invitations_paid');
-            $table->string('invitations_pending');
-            $table->string('weddingprograms');
-            $table->string('weddingprograms_estimate');
-            $table->string('weddingprograms_actual');
-            $table->string('weddingprograms_paid');
-            $table->string('weddingprograms_pending');
-            $table->string('estimate_total');
-            $table->string('actual_total');
-            $table->string('paid_total');
-            $table->string('pending_total');
+            $table->string('couple_id');
+            $table->string('save_the_dates')->nullable();
+            $table->string('save_the_dates_estimate')->nullable();
+            $table->string('save_the_dates_actual')->nullable();
+            $table->string('save_the_dates_paid')->nullable();
+            $table->string('save_the_dates_pending')->nullable();
+            $table->string('invitations')->nullable();
+            $table->string('invitations_estimate')->nullable();
+            $table->string('invitations_actual')->nullable();
+            $table->string('invitations_paid')->nullable();
+            $table->string('invitations_pending')->nullable();
+            $table->string('weddingprograms')->nullable();
+            $table->string('weddingprograms_estimate')->nullable();
+            $table->string('weddingprograms_actual')->nullable();
+            $table->string('weddingprograms_paid')->nullable();
+            $table->string('weddingprograms_pending')->nullable();
+            $table->string('estimate_total')->nullable();
+            $table->string('actual_total')->nullable();
+            $table->string('paid_total')->nullable();
+            $table->string('pending_total')->nullable();
+            $table->timestamps();
         });
     }
 

@@ -15,21 +15,22 @@ class Ceremony extends Migration
     {
         Schema::create('ceremony', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('coupleid');
-            $table->string('decorations');
-            $table->string('decorations_estimate');
-            $table->string('decorations_actual');
-            $table->string('decorations_paid');
-            $table->string('decorations_pending');
-            $table->string('locationfee');
-            $table->string('locationfee_estimate');
-            $table->string('locationfee_actual');
-            $table->string('locationfee_paid');
-            $table->string('locationfee_pending');
-            $table->string('estimate_total');
-            $table->string('actual_total');
-            $table->string('paid_total');
-            $table->string('pending_total');
+            $table->string('couple_id');
+            $table->string('decorations')->nullable();
+            $table->string('decorations_estimate')->nullable();
+            $table->string('decorations_actual')->nullable();
+            $table->string('decorations_paid')->nullable();
+            $table->string('decorations_pending')->nullable();
+            $table->string('locationfee')->nullable();
+            $table->string('locationfee_estimate')->nullable();
+            $table->string('locationfee_actual')->nullable();
+            $table->string('locationfee_paid')->nullable();
+            $table->string('locationfee_pending')->nullable();
+            $table->string('estimate_total')->nullable();
+            $table->string('actual_total')->nullable();
+            $table->string('paid_total')->nullable();
+            $table->string('pending_total')->nullable();
+            $table->timestamps();
         });
     }
 

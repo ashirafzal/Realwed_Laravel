@@ -15,7 +15,7 @@ class Venue extends Migration
     {
         Schema::create('venue', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('coupleid');
+            $table->string('couple_id');
             $table->string('locationfees')->nullable();
             $table->string('locationfees_estimate')->nullable();
             $table->string('locationfees_actual')->nullable();

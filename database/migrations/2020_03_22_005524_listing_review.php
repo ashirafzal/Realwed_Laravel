@@ -15,23 +15,24 @@ class ListingReview extends Migration
     {
         Schema::create('listing_review', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('listownerid');
-            $table->string('listid');
-            $table->string('userid');
-            $table->string('username');
-            $table->string('userimage');
-            $table->string('useremail');
-            $table->string('usertype');
-            $table->string('review_text');
-            $table->string('review_name');
-            $table->string('review_email');
-            $table->string('qualityservices');
-            $table->string('faciliteis');
-            $table->string('staff');
-            $table->string('flexibility');
-            $table->string('valueofmoney');
-            $table->string('overallrating');
+            $table->string('list_ownerid');
+            $table->string('list_id');
+            $table->string('user_id');
+            $table->string('user_name');
+            $table->string('user_image');
+            $table->string('user_email');
+            $table->string('user_type')->nullable();
+            $table->string('review_text')->nullable();
+            $table->string('review_name')->nullable();
+            $table->string('review_email')->nullable();
+            $table->string('quality_services')->nullable();
+            $table->string('faciliteis')->nullable();
+            $table->string('staff')->nullable();
+            $table->string('flexibility')->nullable();
+            $table->string('value_of_money')->nullable();
+            $table->string('overall_rating')->default(0);
             $table->string('date');
+            $table->timestamps();
         });
     }
 

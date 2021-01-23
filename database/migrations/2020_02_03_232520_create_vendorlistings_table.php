@@ -15,7 +15,7 @@ class CreateVendorlistingsTable extends Migration
     {
         Schema::create('vendor_listings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('vendorid');
+            $table->integer('vendor_id');
             $table->string('name');
             $table->string('email');
             $table->string('type');

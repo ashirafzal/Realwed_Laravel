@@ -2,16 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+use App\CoupleWebsite;
 use App\Http\Controllers\Controller;
+use App\VendorListing;
 
 class WelcomeController extends Controller
 {
     public function index()
     {
-        $listing = DB::table('vendor_listings')->orderBy('id')->take(10)->get();
-        $couplewebsite = DB::table('couple_website')->orderBy('id')->take(10)->get();
-        return view('welcome',['listing'=>$listing , 'couplewebsite'=>$couplewebsite]);       
-    }
+        $Listing = VendorListing::orderBy('id')
+            ->take(10)
+            ->get();
 
+        $CoupleWebsite = CoupleWebsite::orderBy('id')
+            ->take(10)
+            ->get();
+
+        return view('welcome', [
+            'listing' => $Listing,
+            'couplewebsite' => $CoupleWebsite,
+        ]);
+    }
 }

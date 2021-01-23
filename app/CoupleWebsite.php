@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class VendorListing extends Model
+class CoupleWebsite extends Model
 {
     use Notifiable;
 
@@ -15,16 +15,10 @@ class VendorListing extends Model
      * @var array
      */
     protected $fillable = [
-        'vendor_id',
-        'name',
-        'email',
-        'type',
-        'title',
-        'Category',
-        'seat',
-        'price',
-        'address',
-        'city',
-        'country'
+        'couple_id',
+        'couple_email',
+        'couple_name',
+        'wedding_date',
+        'contact_email',
     ];
 }

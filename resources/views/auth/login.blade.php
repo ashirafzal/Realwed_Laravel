@@ -123,68 +123,53 @@
                         </div>
                         <!-- /.search-block -->
                         <!-- search-form -->
-                        <form action="/create" id="register" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
-                            {{ csrf_field() }}
-                            @if ($message = Session::get('success'))
-                                <div class="alert alert-info alert-block">
-                                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                    <strong>{{ $message }}</strong>
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <div class="form-group">
+                                <label for="email" class="font-weight-bold">{{ __('E-Mail Address') }}</label>
+                            </div>
+                            <div class="form-group">                              
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="font-weight-bold">{{ __('Password') }}</label>
+                            </div>                            
+                            <div class="form-group">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Remember Me') }}
+                                    </label>
                                 </div>
-                                <br>
-                            @endif
-                            <div class="form-group">                              
-                                <input type="text" name="username" class="form-control" id="inputEmail" placeholder="Enter your username" required>
-                                <div class="invalid-feedback">Please enter a valid username.</div>
-                            </div>
-                            <div class="form-group">                              
-                                <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Enter your email" required>
-                                <div class="invalid-feedback">Please enter a valid email.</div>
                             </div>
                             <div class="form-group">
-                                <!-- select -->
-                                <select class="wide" name="type">
-                                    <option value="Select Type">Please select type</option>
-                                    <option value="Couple">Couple</option>
-                                    <option value="Vendor">Vendor</option>
-                                </select>
+                                    <button type="submit" class="btn btn-danger btn-block">
+                                        {{ __('Login') }}
+                                    </button>
                             </div>
-                            <div class="form-group">
-                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Enter new password" required>
-                                <div class="invalid-feedback">Please enter your new password to continue.</div>
-                            </div>
-                            <div class="form-group">
-                                <input type="password" name="confirmpassword" class="form-control" id="inputPassword" placeholder="Enter confirm password" required>
-                                <div class="invalid-feedback">Please enter your confirm password to continue.</div>
-                            </div>
-                            <div class="form-group">
-                                <input id="phone" name="phone" type="hidden" placeholder="" value="" class="form-control ">
-                            </div>
-                            <div style="display:none;" class="form-group">
-                                <textarea class="form-control" id="summernote" name="editordata" rows="6" placeholder="Write Descriptions for your venue"></textarea>
-                            </div>
-                            <div style="display:none;" class="form-group">
-                                <input type="file" name="image" id="image-upload" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input id="facebook" name="facebook" value="" type="hidden" placeholder="" class="form-control ">
-                            </div>
-                            <div class="form-group">
-                                <input id="twitter" name="twitter" value="" type="hidden" placeholder="" class="form-control ">
-                            </div>
-                            <div class="form-group">
-                                <input id="instagram" name="instagram" value="" type="hidden" placeholder="" class="form-control ">
-                            </div>
-                            <div class="form-group">
-                                <input id="youtube" name="youtube" value="" type="hidden" placeholder="" class="form-control ">
-                            </div>
-                            <button type="submit" name="register" class="btn btn-default btn-block">Register</button>
                         </form>
                         <!-- /.search-form -->
                         <br/>
                         <!-- Sign in text -->
                         <div class="text-center search-head">
-                            <p class="d-none d-xl-block d-lg-block d-sm-block text-white">Already have an account ?
-                                <a class="text-white" href="/signin"> Sign in</a>
+                            <p class="d-none d-xl-block d-lg-block d-sm-block text-white">
+                                <a class="text-white" href="/register">Don't have an account ? Register Yourelf</a>
+                                <br/>
+                                <a class="text-white" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
                             </p>
                         </div>
                         <!-- /. Sign in text -->
@@ -203,11 +188,11 @@
                 </div>
                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12 text-right">
                     <div class="social-icons">
-                        <a href="#" class="icon-square"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="icon-square"><i class="fab fa-twitter"></i> </a>
-                        <a href="#" class="icon-square"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="icon-square"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="icon-square"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com" class="icon-square"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.twitter.com" class="icon-square"><i class="fab fa-twitter"></i> </a>
+                        <a href="https://www.google.com" class="icon-square"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="https://www.instagram.com" class="icon-square"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com" class="icon-square"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -263,7 +248,7 @@
                             List you Business
                         </h3>
                         <p>Are you vendor ? List your venue and service get more from listing business.</p>
-                        <a href="/sigin" class="btn btn-default">List your Business</a>
+                        <a href="/signin" class="btn btn-default">List your Business</a>
                     </div>
                 </div>
                 <!-- /.footer-widget -->
@@ -286,6 +271,7 @@
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+   
     <!-- owl-carousel js -->
     <script src="js/owl.carousel.min.js"></script>
     <!-- nice-select js -->
@@ -293,66 +279,5 @@
     <script src="js/fastclick.js"></script>
     <script src="js/custom-script.js"></script>
     <script src="js/return-to-top.js"></script>
-    <script type="text/javascript">
-    if ($("#register").length > 0) {
-        $("#register").validate({   
-            username: {
-                required: true,
-                minlength: 6,
-                maxlength: 50,
-            },
-            email: {
-            required: true,
-            maxlength: 50,
-            },
-            type: {
-            required: true,
-            maxlength: 50,
-            },
-            password: {
-            required: true,
-            minlength: 6,
-            maxlength: 50,
-            },
-            confirmpassword: {
-            required: true,
-            minlength: 6,
-            maxlength: 50,
-            },
-        },
-        messages: {
-            username: {
-                required: "Please enter username",
-                minlength: "Your username minlength should be more than 6 characters long."
-                maxlength: "Your username maxlength should not be more than 50 characters long."
-                username: "Please enter username",
-            },
-            email: {
-                required: "Please enter email",
-                email: "Please enter email",
-                email: "Please enter email",
-            },
-            type: {
-                required: "Please select type",
-                type: "Please select type",
-                 },
-            password: {
-                required: "Please enter password",
-                password: "Please enter password",
-                minlength: "Your password minlength should be more than 6 characters long."
-                maxlength: "Your password maxlength should not be more than 50 characters long."
-                password: "Please enter password",
-                 },
-            confirmpassword: {
-                required: "Please enter confirm password",
-                confirmpassword: "Please enter confirm password",
-                minlength: "Your confirm password minlength should be more than 6 characters long."
-                maxlength: "Your confirm password maxlength should not be more than 50 characters long."
-                confirmpassword: "Please enter confirm password",
-                 },
-            },
-        })
-    }
-    </script>
     </body>
 </html>

@@ -45,12 +45,12 @@ class RegisterController extends Controller
         if($password != $confirmpassword){
             return Redirect::to("register")->withSuccess('Password and confirm password not matched');
         }else{
-            DB::table('appusers')->insert(
+            DB::table('users')->insert(
                 array(
                        'name' => $username,
                        'email' => $email,
                        'type' => $type,
-                       'userpassword' => $password,
+                       'password' => $password,
                        'description' => $editordata,
                        'userimage' => $image,
                        'facebook' => $facebook,

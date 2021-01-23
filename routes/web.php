@@ -174,3 +174,6 @@ Route::name('killsession')->get('/signin', 'LogoutController@index');
 Route::post('create',"RegisterController@insert");
 
 Route::post('userlogin',"LoginController@login");
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

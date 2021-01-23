@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta name="description" content="wedding vendor directory HTML template">
-  	 
-       <title> Wedding Vendor &amp; Supplier Directory HTML Template - RealWed </title>
-       <!-- Bootstrap -->
-       <link href="css/bootstrap.min.css" rel="stylesheet">
-       <!-- Google Fonts -->
-      <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-       <!-- FontAwesome icon -->
-       <link href="fontawesome/css/fontawesome-all.css" rel="stylesheet">
-       <!-- Fontello icon -->
-       <link href="fontello/css/fontello.css" rel="stylesheet">
-       <!-- OwlCarosuel CSS -->
-       <link href="css/owl.carousel.css" type="text/css" rel="stylesheet">
-       <link href="css/owl.theme.default.css" type="text/css" rel="stylesheet">
-       <!-- Favicon icon -->
-       <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-       <!-- Style CSS -->
-       <link href="css/style.css" rel="stylesheet">
-       <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-       <!--[if lt IE 9]>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="wedding vendor directory HTML template">
+
+    <title> Wedding Vendor &amp; Supplier Directory HTML Template - RealWed </title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <!-- FontAwesome icon -->
+    <link href="fontawesome/css/fontawesome-all.css" rel="stylesheet">
+    <!-- Fontello icon -->
+    <link href="fontello/css/fontello.css" rel="stylesheet">
+    <!-- OwlCarosuel CSS -->
+    <link href="css/owl.carousel.css" type="text/css" rel="stylesheet">
+    <link href="css/owl.theme.default.css" type="text/css" rel="stylesheet">
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- Style CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
        <![endif]-->
 </head>
+
 <body>
     <!-- header -->
     <div class="header">
@@ -62,11 +64,11 @@
                             <span class="icon-bar bottom-bar"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbar-classic">
-                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0 mr-3">
+                            <ul class="navbar-nav ml-auto mt-2 mt-lg-0 mr-3">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link" href="\" id="menu-1">
                                         Home
-                                    </a>                                   
+                                    </a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="menu-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -74,7 +76,7 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="menu-2">
                                         <li class="dropdown-submenu">
-                                            <a class="dropdown-item" href="/list">Listing</a>                                      
+                                            <a class="dropdown-item" href="/list">Listing</a>
                                         </li>
                                         <li><a class="dropdown-item" href="/vendor-by-category">
                                                 Vendor By Categories</a>
@@ -123,33 +125,57 @@
                         </div>
                         <!-- /.search-block -->
                         <!-- search-form -->
-                        <form action="/userlogin" id="loginuser" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
-                            {{ csrf_field() }}
-                            @if ($message = Session::get('success'))
-                                <div class="alert alert-info alert-block">
-                                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                    <strong>{{ $message }}</strong>
-                                </div>
-                                <br>
-                            @endif
-                            <div class="form-group">                              
-                                <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Enter your username" required>
-                                <div class="invalid-feedback">Please enter a valid username.</div>
-                            </div>                            
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf 
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Enter your password" required>
-                                <div class="invalid-feedback">Please enter your new password to continue.</div>
+                                <label for="name" class="font-weight-bold">{{ __('Name') }}</label>
                             </div>
-                            <button type="submit" name="login" class="btn btn-default btn-block">Sign in</button>
+                            <div class="form-group">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  autocomplete="name" autofocus>
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="font-weight-bold">{{ __('E-Mail Address') }}</label>
+                            </div>
+                            <div class="form-group">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email">
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="font-weight-bold">{{ __('Password') }}</label>
+                            </div>
+                            <div class="form-group">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password">
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="password-confirm" class="font-weight-bold">{{ __('Confirm Password') }}</label>
+                            </div>
+                            <div class="form-group">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  autocomplete="new-password">
+                            </div>
+                            <button type="submit" class="btn btn-danger btn-block">
+                                {{ __('Register') }}
+                            </button>
                         </form>
                         <!-- /.search-form -->
-                        <br/>
+                        <br />
                         <!-- Sign in text -->
                         <div class="text-center search-head">
-                            <p class="d-none d-xl-block d-lg-block d-sm-block text-white">
-                                <a class="text-white" href="/register">Don't have an account ? Register Yourelf</a>
-                                <br/>
-                                <a class="text-white" href="/forgotpassword">Forgot your password?</a>
+                            <p class="d-none d-xl-block d-lg-block d-sm-block text-white">Already have an account ?
+                                <a class="text-white" href="login"> Sign in</a>
                             </p>
                         </div>
                         <!-- /. Sign in text -->
@@ -168,11 +194,11 @@
                 </div>
                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-12 text-right">
                     <div class="social-icons">
-                        <a href="https://www.facebook.com" class="icon-square"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.twitter.com" class="icon-square"><i class="fab fa-twitter"></i> </a>
-                        <a href="https://www.google.com" class="icon-square"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="https://www.instagram.com" class="icon-square"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.youtube.com" class="icon-square"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="icon-square"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="icon-square"><i class="fab fa-twitter"></i> </a>
+                        <a href="#" class="icon-square"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class="icon-square"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="icon-square"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -199,7 +225,8 @@
                             Contact Address
                         </h3>
                         <p>4998 Elk Creek Road Canton,
-                            <br> GA 30114</p>
+                            <br> GA 30114
+                        </p>
                         <p class="mb0 text-default">+0-800-1234-123</p>
                         <p class="mb0 text-default">info@realwed.com</p>
                     </div>
@@ -228,7 +255,7 @@
                             List you Business
                         </h3>
                         <p>Are you vendor ? List your venue and service get more from listing business.</p>
-                        <a href="/signin" class="btn btn-default">List your Business</a>
+                        <a href="login" class="btn btn-default">List your Business</a>
                     </div>
                 </div>
                 <!-- /.footer-widget -->
@@ -251,7 +278,6 @@
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-   
     <!-- owl-carousel js -->
     <script src="js/owl.carousel.min.js"></script>
     <!-- nice-select js -->
@@ -259,29 +285,6 @@
     <script src="js/fastclick.js"></script>
     <script src="js/custom-script.js"></script>
     <script src="js/return-to-top.js"></script>
-    <script type="text/javascript">
-    if ($("#loginuser").length > 0) {
-        $("#loginuser").validate({   
-            email: {
-            required: true,
-            },
-            password: {
-            required: true,
-            },
-        },
-        messages: {
-            email: {
-                required: "Please enter email",
-                email: "Please enter email",
-                email: "Please enter email",
-            },
-            password: {
-                required: "Please enter password",
-                password: "Please enter password",
-                 },
-            },
-        })
-    }
-    </script>
-    </body>
+</body>
+
 </html>

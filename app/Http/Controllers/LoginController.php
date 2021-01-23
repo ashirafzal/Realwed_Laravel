@@ -25,7 +25,7 @@ class LoginController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
 
-        $users = DB::select("select * from appusers where email = '$email' and userpassword = '$password' ");
+        $users = DB::select("select * from users where email = '$email' and password = '$password' ");
 
         $count = count($users);
 
@@ -47,7 +47,7 @@ class LoginController extends Controller
                 return redirect()->route('couple-dashboard');
             }
         }else{
-            return Redirect::to("loginuser")->withSuccess('username or password incorrect');
+            return Redirect::to("/user-singin")->withSuccess('username or password incorrect');
         }
     }
 }

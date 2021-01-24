@@ -9,7 +9,7 @@ class Couplewebsite extends Migration
     /*** Run the migrations.** @return void*/
     public function up()
     {
-        Schema::create('couple_website', function (Blueprint $table) {
+        Schema::create('couple_websites', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('couple_id');
             $table->string('couple_email');

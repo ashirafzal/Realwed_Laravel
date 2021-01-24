@@ -13,7 +13,7 @@ class AddingDeletedAtToCoupleWebsite extends Migration
      */
     public function up()
     {
-        Schema::table('couple_website', function (Blueprint $table) {
+        Schema::table('couple_websites', function (Blueprint $table) {
             $table->softDeletes();
         });
     }
@@ -25,7 +25,7 @@ class AddingDeletedAtToCoupleWebsite extends Migration
      */
     public function down()
     {
-        Schema::table('couple_website', function (Blueprint $table) {
+        Schema::table('couple_websites', function (Blueprint $table) {
             //
         });
     }

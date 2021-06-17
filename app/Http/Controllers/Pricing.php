@@ -2,25 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use DB;
-use Session;
-use App\Http\Requests;
-use Validator,Redirect,Response;
-use App\Customer;
 use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class Pricing extends Controller
 {
-    public function index(){
+    public function index()
+    {
+        $user = Auth::user();
 
-        $userid = Session::get('userid');
-        $username = Session::get('username');
-        $useremail = Session::get('useremail');
-        $usertype = Session::get('usertype');
-
-        $users = DB::table('appusers')->where('id',$userid)->get();
-        return view('pricing',['users'=>$users]);
-
+        $user = User::where('id',$user->id)->first();
+        return view('vendor.pricing',['users'=>$user]);
     }   
 }

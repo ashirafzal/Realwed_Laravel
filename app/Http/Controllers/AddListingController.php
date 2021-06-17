@@ -3,72 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-use Session;
-use App\Http\Requests;
-use Validator,Redirect,Response;
-use App\Customer;
 use App\Http\Controllers\Controller;
+use App\VendorListing;
+use Illuminate\Support\Facades\Auth;
 
 class AddListingController extends Controller
 {
     public function index()
     {
-        $userid = Session::get('userid');
-        $username = Session::get('username');
-        $useremail = Session::get('useremail');
-        $usertype = Session::get('usertype');
- 
-        $users = DB::table('appusers')->where('id',$userid)->get();
-
-        return view('dashboardaddlisting',['users'=>$users]); 
+        $user = Auth::user();
+        return view('dashboardaddlisting',['users'=>$user]); 
     }
 
     public function save(Request $request)
-    {
-        request()->validate([
-        'title' => 'required',
-        'Category' => 'required',
-        'seat' => 'required',
-        'price' => 'required',
-        'address' => 'required',
-        'city' => 'required',
-        'postcode' => 'required',
-        'state' => 'required',
-        'country' => 'required',
-        'editordata' => 'required',
-        'latitude' => 'required',
-        'longitude' => 'required',
-        'groomlounge' => 'nullable',
-        'bridalsuite' => 'nullable',
-        'tableandchairs' => 'nullable',
-        'getreadyrooms' => 'nullable',
-        'eventrentals' => 'nullable',
-        'outsidevendors' => 'nullable',
-        'barservices' => 'nullable',
-        'cateringservices' => 'nullable',
-        'cleanup' => 'nullable',
-        'eventplanner' => 'nullable',
-        'wifi' => 'nullable',
-        'petfriendly' => 'nullable',
-        'accommodations' => 'nullable',
-        'filebutton' => 'nullable',
-        'filebutton2' => 'nullable',
-        'filebutton3' => 'nullable',
-        'filebutton4' => 'nullable',
-        'filebutton5' => 'nullable',
-        'filebutton6' => 'nullable',
-        'video' => 'nullable',
-        'facebook' => 'required',
-        'twitter' => 'nullable',
-        'instagram' => 'required',
-        'youtube' => 'nullable',
-        ]);
-        
-        $userid = Session::get('userid');
-        $username = Session::get('username');
-        $useremail = Session::get('useremail');
-        $usertype = Session::get('usertype');
+    {   
+        $user = Auth::user();
 
         if( empty($_POST["groomlounge"]) ) 
         { 
@@ -248,53 +197,52 @@ class AddListingController extends Controller
             $filebutton6 = $filename;
         }
         
+        $listing = new VendorListing();
 
-        DB::table('vendorlistings')->insert(
-            array(
-                   'vendorid'   =>   $userid,
-                   'name'   =>   $username,
-                   'email'   =>   $useremail,
-                   'type'   =>   $usertype,
-                   'title'   =>   $title,
-                   'Category'   =>   $Category,
-                   'seat'   =>   $seat,
-                   'price'   =>   $price,
-                   'address'   =>   $address,
-                   'city'   =>   $city,
-                   'postcode'   =>   $postcode,
-                   'state'   =>   $state,
-                   'country'   =>   $country,
-                   'editordata'   =>   $editordata,
-                   'latitude'   =>   $latitude,
-                   'longitude'   =>   $longitude,
-                   'groomlounge'   =>   $groomlounge,
-                   'bridalsuite'   =>   $bridalsuite,
-                   'tableandchairs'   =>   $tableandchairs,
-                   'getreadyrooms'   =>   $getreadyrooms,
-                   'eventrentals'   =>   $eventrentals,
-                   'outsidevendors'   =>   $outsidevendors,
-                   'barservices'   =>   $barservices,
-                   'cateringservices'   =>   $cateringservices,
-                   'cleanup'   =>   $cleanup,
-                   'eventplanner'   =>   $eventplanner,
-                   'wifi'   =>   $wifi,
-                   'petfriendly'   =>   $petfriendly,
-                   'accommodations'   =>   $accommodations,
-                   'filebutton'   =>   $filebutton,
-                   'filebutton2'   =>   $filebutton2,
-                   'filebutton3'   =>   $filebutton3,
-                   'filebutton4'   =>   $filebutton4,
-                   'filebutton5'   =>   $filebutton5,
-                   'filebutton6'   =>   $filebutton6,
-                   'video'   =>   $video,
-                   'facebook'   =>   $facebook,
-                   'twitter'   =>   $twitter,
-                   'instagram'   =>   $instagram,
-                   'youtube'   =>   $youtube,
-            )
-       );
+        $listing->vendorid = $user->id;
+        $listing->name = $user->name;
+        $listing->email = $user->email;
+        $listing->type = $user->type;
+        $listing->title = $title;
+        $listing->category = $Category;
+        $listing->seat = $seat;
+        $listing->price = $price;
+        $listing->address = $address;
+        $listing->city = $city;
+        $listing->postcode = $postcode;
+        $listing->state = $state;
+        $listing->country = $country;
+        $listing->editordata = $editordata;
+        $listing->latitude = $latitude;
+        $listing->longitude = $longitude;
+        $listing->groomlounge = $groomlounge;
+        $listing->bridalsuite = $bridalsuite;
+        $listing->tableandchairs = $tableandchairs;
+        $listing->getreadyrooms = $getreadyrooms;
+        $listing->eventrentals = $eventrentals;
+        $listing->outsidevendors = $outsidevendors;
+        $listing->barservices = $barservices;
+        $listing->cateringservices = $cateringservices;
+        $listing->cleanup = $cleanup;
+        $listing->eventplanner = $eventplanner;
+        $listing->wifi = $wifi;
+        $listing->petfriendly = $petfriendly;
+        $listing->accommodations = $accommodations;
+        $listing->filebutton = $filebutton;
+        $listing->filebutton2 = $filebutton2;
+        $listing->filebutton3 = $filebutton3;
+        $listing->filebutton4 = $filebutton4;
+        $listing-> filebutton5 = $filebutton5;
+        $listing->filebutton6 = $filebutton6;
+        $listing->video = $video;
+        $listing->facebook = $facebook;
+        $listing->twitter = $twitter;
+        $listing->instagram = $instagram;
+        $listing->youtube = $youtube;
 
-        return Redirect::to("addlisting-success")->withSuccess('Record saved successfully');
+        $listing->save();
+
+        return Redirect("addlisting-success")->withSuccess('Record saved successfully');
         
     }
 }

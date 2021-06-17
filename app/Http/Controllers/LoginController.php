@@ -11,11 +11,13 @@ use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('signin');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
         request()->validate([
             'email' => 'required',
@@ -29,8 +31,8 @@ class LoginController extends Controller
 
         $count = count($users);
 
-        if($count > 0){
-            foreach($users as $user){
+        if ($count > 0) {
+            foreach ($users as $user) {
                 $userid = $user->id;
                 $username = $user->name;
                 $useremail = $user->email;
@@ -38,18 +40,18 @@ class LoginController extends Controller
                 $userpass = $user->userpassword;
             }
 
-            session(['userid' => $userid,'username' => $username,'useremail' => $useremail,
-            'usertype' => $usertype,'userpass' => $userpass]);
+            session([
+                'userid' => $userid, 'username' => $username, 'useremail' => $useremail,
+                'usertype' => $usertype, 'userpass' => $userpass
+            ]);
 
-            if($usertype == 'Vendor'){
+            if ($usertype == 'Vendor') {
                 return redirect()->route('dashboard-overview');
-            }else{
+            } else {
                 return redirect()->route('couple-dashboard');
             }
-        }else{
+        } else {
             return Redirect::to("/user-singin")->withSuccess('username or password incorrect');
         }
     }
 }
-
-?>

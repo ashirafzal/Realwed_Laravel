@@ -2,31 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use DB;
-use Session;
-use App\Http\Requests;
-use Validator,Redirect,Response;
-use App\Customer;
 use App\Http\Controllers\Controller;
+use App\User;
+use App\VendorListing;
+use Illuminate\Support\Facades\Auth;
 
 class MylistedItems extends Controller
 {
     public function index(){
 
-        $userid = Session::get('userid');
-        $username = Session::get('username');
-        $useremail = Session::get('useremail');
-        $usertype = Session::get('usertype');
+        $user = Auth::user();
 
-        $users = DB::table('appusers')->where('id',$userid)->get();
-        $listing = DB::table('vendorlistings')->where('vendorid',$userid)->get();
-        return view('mylisting',['users'=>$users , 'listing'=>$listing]);       
+        $users = User::where('id',$user->id)->first();
+        $listing = VendorListing::where('vendor_id',$user->id)->get();
+        return view('vendor.mylisting',['users'=>$users , 'listing'=>$listing]);       
     }
 
     public function delete($id){
-        DB::table('vendorlistings')->where('id',$id)->delete();
-        return Redirect::to("editlisting-success")->withSuccess('Listing deleted successfully');
+
+        VendorListing::where('id',$id)->delete();
+        return Redirect("editlisting-success")->withSuccess('Listing deleted successfully');
     }
 
 }

@@ -1,43 +1,28 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>RealWed | Vendor Dashboard - Add Listing</title>
-    <!-- Bootstrap -->
+    <title>RealWed | Vendor Dashboard</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-    <!-- FontAwesome icon -->
     <link href="fontawesome/css/fontawesome-all.css" rel="stylesheet">
-    <!-- Fontello icon -->
     <link href="fontello/css/fontello.css" rel="stylesheet">
     <link href="css/summernote-bs4.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-    <!-- Style CSS -->
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/offcanvas.css">
-    <!-- External script links -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
-    <!-- -->
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link href="css/offcanvas.css" rel="stylesheet">
 </head>
+
 <body class="body-bg">
     <div class="dashboard-header">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-10 col-lg-8 col-md-8 col-sm-6 col-6">
                     <div class="header-logo">
-                        <a href="/"><img src="images/logo.png" alt="Weddings | Find A Wedding Venue &amp; Supplier WordPress Theme"></a>
+                        <a href="index-2.html"><img src="images/logo.png" alt="Weddings | Find A Wedding Venue &amp; Supplier WordPress Theme"></a>
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6">
@@ -95,11 +80,9 @@
                                 <li class="nav-item dropdown dropleft user-vendor ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="user-icon">
-                                        @foreach ($users as $user)
-                                        <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle mb10">
-                                        @endforeach
+                                            <img src="images/dashboard-profile.jpg" alt="" class="rounded-circle mb10">
                                         </span>
-                                        <span class="user-vendor-name"><?php {{ echo $username = Session::get('username'); }} ?></span></a>
+                                        <span class="user-vendor-name">{{ Auth::user()->name }}</span></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <a class="dropdown-item" href="/dashboard">Dashboard</a>
                                         <a class="dropdown-item" href="mylisting"> My Listed Item </a>
@@ -117,7 +100,7 @@
             </div>
         </div>
     </div>
-     <div class="navbar-expand-lg">
+    <div class="navbar-expand-lg">
         <button class="navbar-toggler" type="button" data-toggle="offcanvas">
             <span id="icon-toggle" class="fa fa-bars"></span>
         </button>
@@ -126,17 +109,15 @@
         <div class="dashboard-sidebar offcanvas-collapse">
             <div class="vendor-user-profile">
                 <div class="vendor-profile-img">
-                    @foreach ($users as $user)
-                    <img src="userimage/{{$user->userimage}}" alt="" class="rounded-circle">
-                    @endforeach
+                    <img src="images/dashboard-profile.jpg" alt="" class="rounded-circle">
                 </div>
-                <h3 class="vendor-profile-name"><?php {{ echo $username = Session::get('username'); }} ?></h3>
+                <h3 class="vendor-profile-name">{{ Auth::user()->name }}</h3>
                 <a href="#" class="edit-link">edit profile</a>
             </div>
             <div class="dashboard-nav">
                 <ul class="list-unstyled">
-                    <li><a href="/dashboard"><span class="dash-nav-icon"><i class="fas fa-compass"></i></span>Dashboard</a></li>
-                    <li class="active"><a href="mylisting"><span class="dash-nav-icon"><i class="fas fa-list-alt"></i> </span> My Listed Item </a></li>
+                    <li><a href="dashboard"><span class="dash-nav-icon"><i class="fas fa-compass"></i></span>Dashboard</a></li>
+                    <li><a href="mylisting"><span class="dash-nav-icon"><i class="fas fa-list-alt"></i> </span> My Listed Item </a>
                     <li><a href="pricing"><span class="dash-nav-icon"><i class="fas fa-calculator"></i></span>Pricing Plan</a></li>
                     <li><a href="requestquote-view"><span class="dash-nav-icon"><i class="fas fa-edit"></i></span>Request Quotes</a></li>
                     <li><a href="Reviews"><span class="dash-nav-icon"><i class="fas fa-comments"></i></span>Reviews </a></li>
@@ -145,67 +126,145 @@
                 </ul>
             </div>
         </div>
-        <div class="dashboard-content">
-            <div class="container-fluid">
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $message }}</strong>
-                    </div>
-                    <br>
-                @endif
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="dashboard-page-header">
-                            <h3 class="dashboard-page-title">My Listing</h3>
-                            <p>Lists present multiple line items vertically as a single continuous element.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-right mb20">
-                        <a href="/dashboardaddlisting" class="btn btn-default btn-sm">add new Listing</a>
-                    </div>
-                </div>
-                <div class="dashboard-vendor-list">
-                    <ul class="list-unstyled">
-                         @foreach ($listing as $listing)
-                        <li>
-                            <div class="dashboard-list-block">
-                                <div class="row">
-                                    <div class="col-xl-2 col-lg-4 col-md-12 col-sm-12 col-12">
-                                        <div class="dashboard-list-img">
-                                        <a href="list-detail/{{$listing->id }}"><img style="height:150px;" src="userimage/{{$listing->filebutton}}" alt="Listing image" class="img-fluid"></a>
-                                    </div>
-                                    </div>
-                                    <div class="col-xl-7 col-lg-5 col-md-6 col-sm-12 col-12 ">
-                                        <div class="dashboard-list-content">
-                                            <h3 class="mb0"><a href="list-detail/{{$listing->id }}" class="title">{{ $listing->title }}</a></h3>
-                                            <p>{{ $listing->editordata }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-                                        <div class="dashboard-list-btn">
-                                        <a href="editlisting/{{$listing->id }}" class="btn btn-outline-violate btn-xs mr10">edit</a>
-                                        <a href="deletelisting/{{$listing->id }}" class="btn btn-outline-pink btn-xs ">delete</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <main class="py-4">
+            @yield('content')
+        </main>
     </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
+
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/menumaker.min.js"></script>
     <script src="js/custom-script.js"></script>
-    <script src="js/jquery.slimscroll.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/fastclick.js"></script>
     <script src="js/offcanvas.js"></script>
-    
+    <script src="js/jquery.slimscroll.js"></script>
+    <script src="js/summernote-bs4.js"></script>
+    <!--- Other important scripts --->
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL2(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image2')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL3(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image3')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL4(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image4')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL5(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image5')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL6(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image6')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <script>
+        function initMap() {
+            var uluru = {
+                lat: 23.0732195,
+                lng: 72.5646902
+            };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 17,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                icon: 'images/map-pin.png'
+            });
+        }
+    </script>
+    <!--- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvZiQwPXkkIeXfAn-Cki9RZBj69mg-95M&amp;callback=initMap"></script> -->
+    <script>
+        $(document).ready(function() {
+            $.uploadPreview({
+                input_field: "#image-upload", // Default: .image-upload
+                preview_box: "#image-preview", // Default: .image-preview
+                label_field: "#image-label", // Default: .image-label
+                label_default: "Choose File", // Default: Choose File
+                label_selected: "Change File", // Default: Change File
+                no_label: false // Default: false
+            });
+        });
+    </script>
+    <script src="js/jquery.uploadPreview.js"></script>
 </body>
+
 </html>

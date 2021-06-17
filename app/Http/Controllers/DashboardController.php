@@ -2,36 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use DB;
-use Session;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
+use App\VendorListing;
+use Illuminate\Support\Facades\Auth;
+use App\ListingReview;
+use App\RequestQuotes;
 
 class DashboardController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $userid = Session::get('userid');
-        $username = Session::get('username');
-        $useremail = Session::get('useremail');
-        $usertype = Session::get('usertype');
+        $user = Auth::user();
 
-        if(! $request->session()->has('userid')) {
-            return Redirect::route('signintocontinue');
-        }else{
-            
-            $users = DB::table('appusers')->where('id',$userid)->get();
-            $listing = DB::table('vendorlistings')->where('vendorid',$userid)->get();
-            $listing = count($listing);
-            $listing_review_count = DB::table('listing_review')->where('listownerid', $userid)->get();
-            $listing_review_count = count($listing_review_count);
-            $requestquote_count = DB::table('requestquote')->where('list_creator_id', $userid)->orderBy('id', 'desc')->get();
-            $requestquote_count = count($requestquote_count);
-            return view('dashboard',['users'=>$users, 'listing'=>$listing,
-            'listing_review_count'=>$listing_review_count, 
-            'requestquote_count'=>$requestquote_count]); 
-        }        
+        if(!$user){
+            return redirect('home');
+        }
+
+        $listing = VendorListing::where('vendor_id', $user->id)->get();
+        $listing = count($listing);
+
+        $listing_review_count = ListingReview::where('list_ownerid', $user->id)->get();
+        $listing_review_count = count($listing_review_count);
+
+        $requestquote_count = RequestQuotes::where('list_creator_id', $user->id)->orderBy('id', 'desc')->get();
+        $requestquote_count = count($requestquote_count);
+
+        return view('vendor.dashboard', [
+            'users' => $user, 'listing' => $listing,
+            'listing_review_count' => $listing_review_count,
+            'requestquote_count' => $requestquote_count
+        ]);
     }
 }

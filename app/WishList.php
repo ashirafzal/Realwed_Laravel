@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class WishList extends Model
 {
     use SoftDeletes;
+
+    protected $table = 'wish_list';
 }

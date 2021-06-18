@@ -462,7 +462,7 @@
                         <div class="testimonial-icon"> <i class="fa fa-quote-right fa-default"></i></div>
                         <h3 class="testimonial-name">Saima Alvi</h3>
                         <p class="testimonial-text">“And I knew exactly how old Walt Disney’s Cinderella felt when she found her prince.”</p>
-                        <div class="testimonial-pic"><img src="{{ asset('images/weddingimg.jpg') }}" class="rounded-circle" style="height:100px;width:100px;" alt=""></div>
+                        <div class="testimonial-pic"><img src="{{ asset('images/testi-img-1.jpg') }}" class="rounded-circle" style="height:100px;width:100px;" alt=""></div>
                         <div class="testimonial-meta">
                             <p class="testimonial-small-text mb0">Karachi</p>
                         </div>
@@ -475,7 +475,7 @@
                         <div class="testimonial-icon"> <i class="fa fa-quote-right fa-default"></i></div>
                         <h3 class="testimonial-name">Zohra Javaid</h3>
                         <p class="testimonial-text">“In the arithmetic of love, one plus one equals everything, and two minus one equals nothing.”</p>
-                        <div class="testimonial-pic"><img src="{{ asset('images/weddingimg2.jpg') }}" class="rounded-circle" style="height:100px;width:100px;" alt=""></div>
+                        <div class="testimonial-pic"><img src="{{ asset('images/testi-img-2.jpg') }}" class="rounded-circle" style="height:100px;width:100px;" alt=""></div>
                         <div class="testimonial-meta">
                             <p class="testimonial-small-text mb0">Lahore</p>
                         </div>
@@ -488,7 +488,7 @@
                         <div class="testimonial-icon"> <i class="fa fa-quote-right fa-default"></i></div>
                         <h3 class="testimonial-name">Mahira Zafar</h3>
                         <p class="testimonial-text">“Oh the heart that has truly loved never forgets, But as truly loves on to the close.”</p>
-                        <div class="testimonial-pic"><img src="{{ asset('images/weddingimg3.jpg') }}" class="rounded-circle" style="height:100px;width:100px;" alt=""></div>
+                        <div class="testimonial-pic"><img src="{{ asset('images/testi-img-3.jpg') }}" class="rounded-circle" style="height:100px;width:100px;" alt=""></div>
                         <div class="testimonial-meta">
                             <p class="testimonial-small-text mb0">Islamabad</p>
                         </div>

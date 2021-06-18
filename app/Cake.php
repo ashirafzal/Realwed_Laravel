@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Cake extends Model
 {
     use SoftDeletes;
+
+    protected $table = 'cake'; 
+
 }

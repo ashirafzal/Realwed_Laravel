@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class GuestListSingle extends Model
 {
     use SoftDeletes;
+
+    protected $table = 'guest_list_single';
 }

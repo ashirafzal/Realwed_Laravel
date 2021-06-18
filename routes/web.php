@@ -15,27 +15,43 @@
 
 Route::get('/', "WelcomeController@index");
 
-Route::get('/Dresses', function () { return view('/Dresses'); });
+Route::get('/Dresses', function () {
+    return view('/Dresses');
+});
 
-Route::get('/vendor-by-category', function () { return view('/vendorbycategory'); });
+Route::get('/vendor-by-category', function () {
+    return view('/vendorbycategory');
+});
 
-Route::get('/vendor-by-location', function () { return view('/vendorbylocation'); });
+Route::get('/vendor-by-location', function () {
+    return view('/vendorbylocation');
+});
 
-Route::get('/contact-us', function () { return view('/contact-us'); });
+Route::get('/contact-us', function () {
+    return view('/contact-us');
+});
 
-Route::get('/about-us', function () { return view('/about-us'); });
+Route::get('/about-us', function () {
+    return view('/about-us');
+});
 
-Route::get('/faq', function () { return view('/faq'); });
+Route::get('/faq', function () {
+    return view('/faq');
+});
 
-Route::get('/register', function () { return view('/register'); });
+Route::get('/register', function () {
+    return view('/register');
+});
 
-Route::get('/signin', function () { return view('/signin'); });
+Route::get('/signin', function () {
+    return view('/signin');
+});
 
-Route::get('/forgotpassword', function () { return view('/forgot-password'); });
+Route::get('/forgotpassword', function () {
+    return view('/forgot-password');
+});
 
-Route::get('/logout', function () { return redirect()->route('killsession'); });
-
-Route::name('killsession')->get('/signin', 'LogoutController@index');
+Route::get('/logout', 'LogoutController@index');
 
 /** General Routes End */
 
@@ -43,7 +59,9 @@ Route::name('killsession')->get('/signin', 'LogoutController@index');
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/dashboard', function () { return view('/dashboard'); });
+    Route::get('/dashboard', function () {
+        return view('/dashboard');
+    });
 
     Route::name('dashboard-overview')->get('/dashboard', 'DashboardController@index');
 
@@ -58,22 +76,50 @@ Route::middleware('auth')->group(function () {
     Route::get('Reviews', 'Reviews@index');
 
     Route::get('myprofile', 'myprofile@index');
-
 });
 
 /** Vendor Routes End*/
 
+/** Couple Routes */
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/coupledashboard', 'CoupleDashboard@index')->name('couple-dashboard');
+
+    /** Wishlist routes */
+
+    Route::get('wishlist', 'Whislist@index');
+
+    Route::post('listdetail-wishlist-cancel', 'Whislist@cancel');
+
+    Route::post('listdetail-wishlist-save', 'ListDetail@wishlistsave');
+
+    /** Wishlist routes ends */
+
+    /** ToDo list routes */
+
+    Route::get('todo-list', 'ToDoList@index');
+
+    Route::post('add-task', "ToDoList@addtask");
+
+    Route::post('edit-task/{id}', "ToDoList@Edit");
+
+    Route::get('delete-task/{id}', "ToDoList@Delete");
+
+    /** ToDo list routes ends */
+
+    /** Budget routes */
+
+    Route::get('couple-budget', 'Budget@index');
+
+    /** Budget routes ends */
+});
+
+/** Couple Routes End */
+
 Route::get('/list', function () {
     return view('/list');
 });
-
-Route::get('wishlist', 'Whislist@index');
-
-Route::post('listdetail-wishlist-cancel', 'Whislist@cancel');
-
-Route::post('listdetail-wishlist-save', 'ListDetail@wishlistsave');
-
-Route::get('couple-budget', 'Budget@index');
 
 Route::post('save-budget', 'Budget@savebudget');
 
@@ -119,12 +165,6 @@ Route::get('delete-requestquote/{id}', "Requestquote@delete");
 
 Route::post('requestquote', "ListDetail@requestquote");
 
-Route::post('add-task', "ToDoList@addtask");
-
-Route::post('edit-task/{id}', "ToDoList@Edit");
-
-Route::get('delete-task/{id}', "ToDoList@Delete");
-
 Route::get('list-detail/{id}', "ListDetail@index");
 
 Route::get('user-singin', "LoginController@index");
@@ -141,9 +181,9 @@ Route::get('editlisting/{id}', 'Editlisting@index');
 
 Route::get('deletelisting/{id}', 'MylistedItems@delete');
 
-Route::get('/coupledashboard', function () {
-    return view('/coupledashboard');
-});
+// Route::get('/coupledashboard', function () {
+//     return view('/coupledashboard');
+// });
 
 Route::get('/signin', 'LoginController@index')->name('signintocontinue');
 
@@ -151,13 +191,9 @@ Route::get('addlisting-success', 'AddListingController@index');
 
 Route::get('editlisting-success', 'MylistedItems@index');
 
-Route::get('todo-list', 'ToDoList@index');
-
 Route::post('addlisting', "AddListingController@save");
 
 Route::post('updatelisting', "Editlisting@updatelist");
-
-Route::get('/coupledashboard', 'CoupleDashboard@index')->name('couple-dashboard');
 
 Route::name('login')->get('/signin', 'LoginController@index');
 

@@ -59,7 +59,12 @@ class myprofile extends Controller
 
         $user->save();
 
-        return Redirect("myprofile")->withSuccess('Profile updated successfully');
+        if($user->role === 'Vendor'){
+            return Redirect("myprofile")->withSuccess('Profile updated successfully');
+        }else{
+            return Redirect("couple-profile")->withSuccess('Profile updated successfully');
+        }
+
     }
 
     public function updatepassword(Request $request)

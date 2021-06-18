@@ -9,6 +9,7 @@ class CoupleWebsite extends Model
 {
     use Notifiable;
 
+    protected $table = 'couple_websites';
     /**
      * The attributes that are mass assignable.
      *

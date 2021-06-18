@@ -645,6 +645,133 @@
         }
     </script>
     <!--- Couple Budget Scripts end --->
+    <!--- Couple Website Scripts --->
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image')
+                        .attr('src', e.target.result)
+                        .width("100%")
+                        .height(500);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL2(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image2')
+                        .attr('src', e.target.result)
+                        .width("100%")
+                        .height(350);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL3(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image3')
+                        .attr('src', e.target.result)
+                        .width("100%")
+                        .height(350);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL4(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image4')
+                        .attr('src', e.target.result)
+                        .width("100%")
+                        .height(350);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <script>
+        jQuery(document).ready(function() {
+            jQuery('#rsvp-form').submit(function(e) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+
+                $(".alert-danger").css('display', 'none');
+
+                if ($('#filebutton').get(0).files.length === 0) {
+                    $(".alert-danger").css('display', 'block');
+                    $(".alert-danger").html('Header image required');
+                } else {
+                    if ($('#filebutton2').get(0).files.length === 0 ||
+                        $('#filebutton3').get(0).files.length === 0 ||
+                        $('#filebutton4').get(0).files.length === 0) {
+                        $(".alert-danger").css('display', 'block');
+                        $(".alert-danger").html('Wedding gallery images required');
+                    } else {
+                        if ($.trim($("#couplename").val()) === "" || $.trim($("#weddingdate").val()) === "" ||
+                            $.trim($("#weddingplace").val()) === "" || $.trim($("#weddingaddress").val()) === "" ||
+                            $.trim($("#contactemail").val()) === "" || $.trim($("#contactnumber").val()) === "" ||
+                            $.trim($("#whatsapp").val()) === "" || $.trim($("#yourstory").val()) === "" ||
+                            $.trim($("#yourproposal").val()) === "") {
+                            $(".alert-danger").css('display', 'block');
+                            $(".alert-danger").html('Text feilds cannot be blank');
+                            return false;
+                        } else {
+                            var formData = new FormData($('#rsvp-form')[0]);
+
+                            jQuery.ajax({
+                                url: "{{ url('submit-website') }}",
+                                method: 'post',
+                                data: formData,
+                                cache: false,
+                                processData: false,
+                                contentType: false,
+                                success: function(result) {
+                                    alert(result);
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    <!--- Couple Website Scripts end --->
+    <!--- Couple Profile Scripts --->
+    <script>
+        $(document).ready(function() {
+            $.uploadPreview({
+                input_field: "#image-upload", // Default: .image-upload
+                preview_box: "#image-preview", // Default: .image-preview
+                label_field: "#image-label", // Default: .image-label
+                label_default: "Choose File", // Default: Choose File
+                label_selected: "Change File", // Default: Change File
+                no_label: false // Default: false
+            });
+        });
+    </script>
+    <!--- Couple Profile Scripts ends --->
 </body>
 
 </html>

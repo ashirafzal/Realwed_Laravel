@@ -117,25 +117,25 @@ class Budget extends Controller
             $ceremony_paid_total = $decorations_paid + $locationfee_paid;
             $ceremony_pending_total = $decorations_pending + $locationfee_pending;
 
-            DB::table('ceremony')->insert(
-                array(
-                    'couple_id'   =>   $coupleid,
-                    'decorations'   =>   $decorations,
-                    'decorations_estimate'   =>   $decorations_estimate,
-                    'decorations_actual'   =>   $decorations_actual,
-                    'decorations_paid'   =>   $decorations_paid,
-                    'decorations_pending'   =>   $decorations_pending,
-                    'locationfee'   =>   $locationfee,
-                    'locationfee_estimate'   =>   $locationfee_estimate,
-                    'locationfee_actual'   =>   $locationfee_actual,
-                    'locationfee_paid'   =>   $locationfee_paid,
-                    'locationfee_pending'   =>   $locationfee_pending,
-                    'estimate_total'   =>   $ceremony_estimate_total,
-                    'actual_total'   =>   $ceremony_actual_total,
-                    'paid_total'   =>   $ceremony_paid_total,
-                    'pending_total'   =>   $ceremony_pending_total
-                )
-            );
+            $Ceremony = new Ceremony();
+
+            $Ceremony->couple_id = $coupleid;
+            $Ceremony->decorations = $decorations;
+            $Ceremony->decorations_estimate = $decorations_estimate;
+            $Ceremony->decorations_actual = $decorations_actual;
+            $Ceremony->decorations_paid = $decorations_paid;
+            $Ceremony->decorations_pending = $decorations_pending;
+            $Ceremony->locationfee = $locationfee;
+            $Ceremony->locationfee_estimate = $locationfee_estimate;
+            $Ceremony->locationfee_actual = $locationfee_actual;
+            $Ceremony->locationfee_paid = $locationfee_paid;
+            $Ceremony->locationfee_pending = $locationfee_pending;
+            $Ceremony->estimate_total = $ceremony_estimate_total;
+            $Ceremony->actual_total = $ceremony_actual_total;
+            $Ceremony->paid_total = $ceremony_paid_total;
+            $Ceremony->pending_total = $ceremony_pending_total;
+
+            $Ceremony->save();
 
             $hairandmakeup = $request->input('hairandmakeup');
             $hairandmakeup_estimate = $request->input('hairandmakeup_estimate');
@@ -148,20 +148,20 @@ class Budget extends Controller
             $hairandmakeup_paid_total = $hairandmakeup_paid;
             $hairandmakeup_pending_total = $hairandmakeup_pending;
 
-            DB::table('hairandmakeup')->insert(
-                array(
-                    'couple_id'   =>   $coupleid,
-                    'hairandmakeup'   =>   $hairandmakeup,
-                    'hairandmakeup_estimate'   =>   $hairandmakeup_estimate,
-                    'hairandmakeup_actual'   =>   $hairandmakeup_actual,
-                    'hairandmakeup_paid'   =>   $hairandmakeup_paid,
-                    'hairandmakeup_pending'   =>   $hairandmakeup_pending,
-                    'estimate_total'   =>   $hairandmakeup_estimate_total,
-                    'actual_total'   =>   $hairandmakeup_actual_total,
-                    'paid_total'   =>   $hairandmakeup_paid_total,
-                    'pending_total'   =>   $hairandmakeup_pending_total
-                )
-            );
+            $HairAndMakeup = new HairAndMakeup();
+
+            $HairAndMakeup->couple_id = $coupleid;
+            $HairAndMakeup->hairandmakeup = $hairandmakeup;
+            $HairAndMakeup->hairandmakeup_estimate = $hairandmakeup_estimate;
+            $HairAndMakeup->hairandmakeup_actual = $hairandmakeup_actual;
+            $HairAndMakeup->hairandmakeup_paid = $hairandmakeup_paid;
+            $HairAndMakeup->hairandmakeup_pending = $hairandmakeup_pending;
+            $HairAndMakeup->estimate_total = $hairandmakeup_estimate_total;
+            $HairAndMakeup->actual_total = $hairandmakeup_actual_total;
+            $HairAndMakeup->paid_total = $hairandmakeup_paid_total;
+            $HairAndMakeup->pending_total = $hairandmakeup_pending_total;
+
+            $HairAndMakeup->save();
 
             $bouquets = $request->input('bouquets');
             $bouquets_estimate = $request->input('bouquets_estimate');
@@ -180,25 +180,25 @@ class Budget extends Controller
             $flowers_paid_total = $bouquets_paid + $decorations2_paid;
             $flowers_pending_total = $bouquets_pending + $decorations2_pending;
 
-            DB::table('flowers')->insert(
-                array(
-                    'couple_id'   =>   $coupleid,
-                    'decorations2'   =>   $decorations2,
-                    'decorations2_estimate'   =>   $decorations2_estimate,
-                    'decorations2_actual'   =>   $decorations2_actual,
-                    'decorations2_paid'   =>   $decorations2_paid,
-                    'decorations2_pending'   =>   $decorations2_pending,
-                    'bouquets'   =>   $bouquets,
-                    'bouquets_estimate'   =>   $bouquets_estimate,
-                    'bouquets_actual'   =>   $bouquets_actual,
-                    'bouquets_paid'   =>   $bouquets_paid,
-                    'bouquets_pending'   =>   $bouquets_pending,
-                    'estimate_total'   =>   $ceremony_estimate_total,
-                    'actual_total'   =>   $ceremony_actual_total,
-                    'paid_total'   =>   $ceremony_paid_total,
-                    'pending_total'   =>   $ceremony_pending_total
-                )
-            );
+            $Flowers = new Flowers();
+
+            $Flowers->couple_id = $coupleid;
+            $Flowers->decorations2 = $decorations2;
+            $Flowers->decorations2_estimate = $decorations2_estimate;
+            $Flowers->decorations2_actual = $decorations2_actual;
+            $Flowers->decorations2_paid  = $decorations2_paid;
+            $Flowers->decorations2_pending = $decorations2_pending;
+            $Flowers->bouquets = $bouquets;
+            $Flowers->bouquets_estimate = $bouquets_estimate;
+            $Flowers->bouquets_actual = $bouquets_actual;
+            $Flowers->bouquets_paid = $bouquets_paid;
+            $Flowers->bouquets_pending = $bouquets_pending;
+            $Flowers->estimate_total = $ceremony_estimate_total;
+            $Flowers->actual_total = $ceremony_actual_total;
+            $Flowers->paid_total = $ceremony_paid_total;
+            $Flowers->pending_total = $ceremony_pending_total;
+
+            $Flowers->save();
 
             $photographer = $request->input('photographer');
             $photographer_estimate = $request->input('photographer_estimate');
@@ -223,30 +223,30 @@ class Budget extends Controller
             $photographer_paid_total = $photographer_paid + $videographer_paid + $extraprints_paid;
             $photographer_pending_total = $photographer_pending + $videographer_pending + $extraprints_pending;
 
-            DB::table('photography')->insert(
-                array(
-                    'coupleid'   =>   $coupleid,
-                    'photographer'   =>   $photographer,
-                    'photographer_estimate'   =>   $photographer_estimate,
-                    'photographer_actual'   =>   $photographer_actual,
-                    'photographer_paid'   =>   $photographer_paid,
-                    'photographer_pending'   =>   $photographer_pending,
-                    'videographer'   =>   $videographer,
-                    'videographer_estimate'   =>   $videographer_estimate,
-                    'videographer_actual'   =>   $videographer_actual,
-                    'videographer_paid'   =>   $videographer_paid,
-                    'videographer_pending'   =>   $videographer_pending,
-                    'extraprints'   =>   $extraprints,
-                    'extraprints_estimate'   =>   $extraprints_estimate,
-                    'extraprints_actual'   =>   $extraprints_actual,
-                    'extraprints_paid'   =>   $extraprints_paid,
-                    'extraprints_pending'   =>   $extraprints_pending,
-                    'estimate_total'   =>   $photographer_estimate_total,
-                    'actual_total'   =>   $photographer_actual_total,
-                    'paid_total'   =>   $photographer_paid_total,
-                    'pending_total'   =>   $photographer_pending_total
-                )
-            );
+            $Photography = new Photography();
+
+            $Photography->coupleid = $coupleid;
+            $Photography->photographer = $photographer;
+            $Photography->photographer_estimate = $photographer_estimate;
+            $Photography->photographer_actual = $photographer_actual;
+            $Photography->photographer_paid = $photographer_paid;
+            $Photography->photographer_pending = $photographer_pending;
+            $Photography->videographer = $videographer;
+            $Photography->videographer_estimate = $videographer_estimate;
+            $Photography->videographer_actual = $videographer_actual;
+            $Photography->videographer_paid = $videographer_paid;
+            $Photography->videographer_pending = $videographer_pending;
+            $Photography->extraprints = $extraprints;
+            $Photography->extraprints_estimate = $extraprints_estimate;
+            $Photography->extraprints_actual = $extraprints_actual;
+            $Photography->extraprints_paid = $extraprints_paid;
+            $Photography->extraprints_pending = $extraprints_pending;
+            $Photography->estimate_total = $photographer_estimate_total;
+            $Photography->actual_total = $photographer_actual_total;
+            $Photography->paid_total = $photographer_paid_total;
+            $Photography->pending_total = $photographer_pending_total;
+
+            $Photography->save();
 
             $savethedates = $request->input('savethedates');
             $savethedates_estimate = $request->input('savethedates_estimate');
@@ -271,30 +271,30 @@ class Budget extends Controller
             $printedmaterials_paid_total = $savethedates_paid + $invitations_paid + $weddingprograms_paid;
             $printedmaterials_pending_total = $savethedates_pending + $invitations_pending + $weddingprograms_pending;
 
-            DB::table('printedmaterials')->insert(
-                array(
-                    'couple_id'   =>   $coupleid,
-                    'savethedates'   =>   $savethedates,
-                    'savethedates_estimate'   =>   $savethedates_estimate,
-                    'savethedates_actual'   =>   $savethedates_actual,
-                    'savethedates_paid'   =>   $savethedates_paid,
-                    'savethedates_pending'   =>   $savethedates_pending,
-                    'invitations'   =>   $invitations,
-                    'invitations_estimate'   =>   $invitations_estimate,
-                    'invitations_actual'   =>   $invitations_actual,
-                    'invitations_paid'   =>   $invitations_paid,
-                    'invitations_pending'   =>   $invitations_pending,
-                    'weddingprograms'   =>   $weddingprograms,
-                    'weddingprograms_estimate'   =>   $weddingprograms_estimate,
-                    'weddingprograms_actual'   =>   $weddingprograms_actual,
-                    'weddingprograms_paid'   =>   $weddingprograms_paid,
-                    'weddingprograms_pending'   =>   $weddingprograms_pending,
-                    'estimate_total'   =>   $printedmaterials_estimate_total,
-                    'actual_total'   =>   $printedmaterials_actual_total,
-                    'paid_total'   =>   $printedmaterials_paid_total,
-                    'pending_total'   =>   $printedmaterials_pending_total
-                )
-            );
+            $PrintedMaterials = new PrintedMaterials();
+
+            $PrintedMaterials->couple_id = $coupleid;
+            $PrintedMaterials->savethedates = $savethedates;
+            $PrintedMaterials->savethedates_estimate = $savethedates_estimate;
+            $PrintedMaterials->savethedates_actual = $savethedates_actual;
+            $PrintedMaterials->savethedates_paid = $savethedates_paid;
+            $PrintedMaterials->savethedates_pending = $savethedates_pending;
+            $PrintedMaterials->invitations = $invitations;
+            $PrintedMaterials->invitations_estimate = $invitations_estimate;
+            $PrintedMaterials->invitations_actual = $invitations_actual;
+            $PrintedMaterials->invitations_paid = $invitations_paid;
+            $PrintedMaterials->invitations_pending = $invitations_pending;
+            $PrintedMaterials->weddingprograms = $weddingprograms;
+            $PrintedMaterials->weddingprograms_estimate = $weddingprograms_estimate;
+            $PrintedMaterials->weddingprograms_actual = $weddingprograms_actual;
+            $PrintedMaterials->weddingprograms_paid  = $weddingprograms_paid;
+            $PrintedMaterials->weddingprograms_pending = $weddingprograms_pending;
+            $PrintedMaterials->estimate_total = $printedmaterials_estimate_total;
+            $PrintedMaterials->actual_total = $printedmaterials_actual_total;
+            $PrintedMaterials->paid_total = $printedmaterials_paid_total;
+            $PrintedMaterials->pending_total = $printedmaterials_pending_total;
+
+            $PrintedMaterials->save();
 
             $cakecuttingfee = $request->input('cakecuttingfee');
             $cakecuttingfee_estimate = $request->input('cakecuttingfee_estimate');
@@ -307,20 +307,20 @@ class Budget extends Controller
             $cakecuttingfee_paid_total = $cakecuttingfee_paid;
             $cakecuttingfee_pending_total = $cakecuttingfee_pending;
 
-            DB::table('cake')->insert(
-                array(
-                    'couple_id'   =>   $coupleid,
-                    'cakecuttingfee'   =>   $cakecuttingfee,
-                    'cakecuttingfee_estimate'   =>   $cakecuttingfee_estimate,
-                    'cakecuttingfee_actual'   =>   $cakecuttingfee_actual,
-                    'cakecuttingfee_paid'   =>   $cakecuttingfee_paid,
-                    'cakecuttingfee_pending'   =>   $cakecuttingfee_pending,
-                    'estimate_total'   =>   $cakecuttingfee_estimate_total,
-                    'actual_total'   =>   $cakecuttingfee_actual_total,
-                    'paid_total'   =>   $cakecuttingfee_paid_total,
-                    'pending_total'   =>   $cakecuttingfee_pending_total
-                )
-            );
+            $Cake = new Cake();
+
+            $Cake->couple_id = $coupleid;
+            $Cake->cakecuttingfee =  $cakecuttingfee;
+            $Cake->cakecuttingfee_estimate = $cakecuttingfee_estimate;
+            $Cake->cakecuttingfee_actual = $cakecuttingfee_actual;
+            $Cake->cakecuttingfee_paid = $cakecuttingfee_paid;
+            $Cake->cakecuttingfee_pending = $cakecuttingfee_pending;
+            $Cake->estimate_total = $cakecuttingfee_estimate_total;
+            $Cake->actual_total = $cakecuttingfee_actual_total;
+            $Cake->paid_total = $cakecuttingfee_paid_total;
+            $Cake->pending_total = $cakecuttingfee_pending_total;
+
+            $Cake->save();
 
             echo json_encode(['success' => 'Budget details saved .']);
         }
@@ -346,4 +346,5 @@ class Budget extends Controller
             echo json_encode(['success' => 'Budget record not present.']);
         }
     }
+
 }

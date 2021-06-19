@@ -4,25 +4,21 @@
 
 Route::get('/', "WelcomeController@index");
 
-Route::get('/Dresses', function () { return view('/Dresses'); });
+Route::get('/Dresses', function () { return view('general.Dresses'); });
 
-Route::get('/vendor-by-category', function () { return view('/vendorbycategory'); });
+Route::get('/vendor-by-category', function () { return view('general.vendorbycategory'); });
 
-Route::get('/vendor-by-location', function () { return view('/vendorbylocation'); });
+Route::get('/vendor-by-location', function () { return view('general.vendorbylocation'); });
 
-Route::get('/contact-us', function () { return view('/contact-us'); });
+Route::get('/contact-us', function () { return view('general.contact-us'); });
 
-Route::get('/about-us', function () { return view('/about-us'); });
+Route::get('/about-us', function () { return view('general.about-us'); });
 
-Route::get('/faq', function () { return view('/faq'); });
+Route::get('/faq', function () { return view('general.faq'); });
 
-Route::get('/register', function () { return view('/register'); });
+Route::get('/forgotpassword', function () { return view('general.forgot-password'); });
 
-Route::get('/signin', function () { return view('/signin'); });
-
-Route::get('/forgotpassword', function () { return view('/forgot-password'); });
-
-Route::get('/list', function () { return view('/list'); });
+Route::get('/list', function () { return view('general.list'); });
 
 Route::get('list-detail/{id}', "ListDetail@index");
 Route::get('couple-website/{id}', "CoupleWebsite@website");
@@ -93,7 +89,7 @@ Route::middleware('auth')->group(function () {
 
     /** Budget routes */
     Route::get('couple-budget', 'Budget@index');
-    Route::post('save-budget', 'Budget@savebudget');
+Route::post('save-budget', 'Budget@savebudget');
     Route::post('delete-budget', 'Budget@deletebudget');
     /** Budget routes ends */
 

@@ -16,7 +16,7 @@ class Whislist extends Controller
         $wishlist = WishList::where('user_id', $user->id)->get();
 
         return view(
-            'wishlist',
+            'couples.wishlist',
             ['users' => $user, 'wishlist' => $wishlist]
         );
     }

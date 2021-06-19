@@ -43,7 +43,7 @@ class Budget extends Controller
             ->get();
 
         return view(
-            'couple_budget',
+            'couples.couple_budget',
             [
                 'users' => $user, 'venue' => $venue, 'ceremony' => $ceremony,
                 'printedmaterials' => $printedmaterials, 'photography' => $photography, 'flowers' => $flowers, 'hairandmakeup' => $hairandmakeup, 'cake' => $cake

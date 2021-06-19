@@ -2,35 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\GuestListCouple;
+use App\GuestListHousehold;
+use App\GuestListSingle;
 use Illuminate\Http\Request;
-use DB;
-use Session;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 class Guestlist extends Controller
 {
-    public function index(Request $request){
+    public function index()
+    {
 
-        $userid = Session::get('userid');
-        $username = Session::get('username');
-        $useremail = Session::get('useremail');
-        $usertype = Session::get('usertype');
-
-        if(!$request->session()->has('userid')) {
-            return Redirect::route('signintocontinue');
-        }else{
-            
-            $users = DB::table('appusers')->where('id',$userid)->get();
-            return view('couple-guestlist',['users'=>$users]); 
-        }
+        $user = Auth::user();
+        return view(
+            'couples.couple-guestlist',
+            ['users' => $user]
+        );
     }
 
-    public function submit_singlelist(Request $request){
+    public function submit_singlelist(Request $request)
+    {
 
-        $userid = Session::get('userid');
-        
+        $user = Auth::user();
+
         $fname = $request->input('fname');
         $lname = $request->input('lname');
         $address = $request->input('address');
@@ -40,27 +35,28 @@ class Guestlist extends Controller
         $country = $request->input('country');
         $postcode = $request->input('postcode');
 
-        DB::table('guestlist_single')->insert(
-            array(
-                   'coupleid'   =>   $userid,
-                   'fname'   =>   $fname,
-                   'lname'   =>   $lname,
-                   'address'   =>   $address,
-                   'address2'   =>   $address2,
-                   'email'   =>   $email,
-                   'city'   =>   $city,
-                   'country'   =>   $country,
-                   'postcode'   =>   $postcode
-            )
-       );
+        $GuestListSingle = new GuestListSingle();
 
-        echo json_encode(['success'=>'Single Guest list submitted succesfully']);
+        $GuestListSingle->coupleid = $user->id;
+        $GuestListSingle->fname = $fname;
+        $GuestListSingle->lname = $lname;
+        $GuestListSingle->address = $address;
+        $GuestListSingle->address2 = $address2;
+        $GuestListSingle->email = $email;
+        $GuestListSingle->city = $city;
+        $GuestListSingle->country = $country;
+        $GuestListSingle->postcode = $postcode;
+
+        $GuestListSingle->save();
+
+        echo json_encode(['success' => 'Single Guest list submitted succesfully']);
     }
 
-    public function submit_couplelist(Request $request){
+    public function submit_couplelist(Request $request)
+    {
 
-        $userid = Session::get('userid');
-        
+        $user = Auth::user();
+
         $couple_firstname = $request->input('couple_firstname');
         $couple_lastname = $request->input('couple_lastname');
         $couple_partnerfname = $request->input('couple_partnerfname');
@@ -71,28 +67,29 @@ class Guestlist extends Controller
         $couple_country = $request->input('couple_country');
         $couple_postcode = $request->input('couple_postcode');
 
-        DB::table('guestlist_couple')->insert(
-            array(
-                   'coupleid'   =>   $userid,
-                   'couple_firstname'   =>   $couple_firstname,
-                   'couple_lastname'   =>   $couple_lastname,
-                   'couple_partnerfname'   =>   $couple_partnerfname,
-                   'couple_partnerlname'   =>   $couple_partnerlname,
-                   'couple_group'   =>   $couple_group,
-                   'couple_address'   =>   $couple_address,
-                   'couple_address2'   =>   $couple_address2,
-                   'couple_country'   =>   $couple_country,
-                   'couple_postcode'   =>   $couple_postcode
-            )
-       );
+        $GuestListCouple = new GuestListCouple();
 
-        echo json_encode(['success'=>'Couple Guest list submitted succesfully']);
+        $GuestListCouple->couple_id = $user->id;
+        $GuestListCouple->couple_firstname = $couple_firstname;
+        $GuestListCouple->couple_lastname = $couple_lastname;
+        $GuestListCouple->couple_partnerfname = $couple_partnerfname;
+        $GuestListCouple->couple_partnerlname = $couple_partnerlname;
+        $GuestListCouple->couple_group = $couple_group;
+        $GuestListCouple->couple_address = $couple_address;
+        $GuestListCouple->couple_address2 = $couple_address2;
+        $GuestListCouple->couple_country = $couple_country;
+        $GuestListCouple->couple_postcode = $couple_postcode;
+
+        $GuestListCouple->save();
+
+        echo json_encode(['success' => 'Couple Guest list submitted succesfully']);
     }
 
-    public function submit_householdlist(Request $request){
+    public function submit_householdlist(Request $request)
+    {
 
-        $userid = Session::get('userid');
-        
+        $user = Auth::user();
+
         $household_fname = $request->input('household_fname');
         $household_lname = $request->input('household_lname');
         $household_family = $request->input('household_family');
@@ -103,21 +100,21 @@ class Guestlist extends Controller
         $household_country = $request->input('household_country');
         $household_postcode = $request->input('household_postcode');
 
-        DB::table('guestlist_household')->insert(
-            array(
-                   'coupleid'   =>   $userid,
-                   'household_fname'   =>   $household_fname,
-                   'household_lname'   =>   $household_lname,
-                   'household_family'   =>   $household_family,
-                   'household_address'   =>   $household_address,
-                   'household_address2'   =>   $household_address2,
-                   'household_email'   =>   $household_email,
-                   'household_city'   =>   $household_city,
-                   'household_country'   =>   $household_country,
-                   'household_postcode'   =>   $household_postcode
-            )
-       );
+        $GuestListhouseHold = new GuestListHousehold();
 
-        echo json_encode(['success'=>'Household Guest list submitted succesfully']);
+        $GuestListhouseHold->couple_id = $user->id;
+        $GuestListhouseHold->household_fname = $household_fname;
+        $GuestListhouseHold->household_lname = $household_lname;
+        $GuestListhouseHold->household_family = $household_family;
+        $GuestListhouseHold->household_address = $household_address;
+        $GuestListhouseHold->household_address2 = $household_address2;
+        $GuestListhouseHold->household_email = $household_email;
+        $GuestListhouseHold->household_city = $household_city;
+        $GuestListhouseHold->household_country = $household_country;
+        $GuestListhouseHold->household_postcode = $household_postcode;
+
+        $GuestListhouseHold->save();
+
+        echo json_encode(['success' => 'Household Guest list submitted succesfully']);
     }
 }

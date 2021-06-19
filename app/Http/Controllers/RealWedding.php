@@ -3,190 +3,177 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-use Session;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
+use App\RealWedding as AppRealWedding;
+use App\ShowRealWedding;
+use Illuminate\Support\Facades\Auth;
 
 class RealWedding extends Controller
 {
-    public function index(Request $request){
+    public function index()
+    {
+        $user = Auth::user();
 
-        $userid = Session::get('userid');
-        $username = Session::get('username');
-        $useremail = Session::get('useremail');
-        $usertype = Session::get('usertype');
-
-        if(!$request->session()->has('userid')) {
-            return Redirect::route('signintocontinue');
-        }else{
-            
-            $users = DB::table('appusers')->where('id',$userid)->get();
-            return view('couple-dashboard-realwedding',['users'=>$users]); 
-        }
+        return view(
+            'couples.couple-dashboard-realwedding',
+            ['users' => $user]
+        );
     }
 
-    public function SaveRealWedding(Request $request){
-        
+    public function SaveRealWedding(Request $request)
+    {
+
         $textarea = $request->input('textarea');
 
-        if(isset($_POST['fromwebsite'])){
+        if (isset($_POST['fromwebsite'])) {
             $formwebsite = 'checked';
-        }else{
+        } else {
             $formwebsite = 'not checked';
         }
 
-        if(isset($_POST['fromoutside'])){
+        if (isset($_POST['fromoutside'])) {
             $fromoutside = 'checked';
-        }else{
+        } else {
             $fromoutside = 'not checked';
         }
 
-        if(isset($_POST['both'])){
+        if (isset($_POST['both'])) {
             $both = 'checked';
-        }else{
+        } else {
             $both = 'not checked';
         }
 
-        if($request->hasFile('featured_image'))
-        {
+        if ($request->hasFile('featured_image')) {
             $file = $request->file('featured_image');
             $extention = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extention;
-            $file->move('userimage',$filename);
+            $filename = time() . '.' . $extention;
+            $file->move('userimage', $filename);
             $featured_image = $filename;
         }
 
-        if($request->hasFile('filebutton'))
-        {
+        if ($request->hasFile('filebutton')) {
             $file = $request->file('filebutton');
             $extention = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extention;
-            $file->move('userimage',$filename);
+            $filename = time() . '.' . $extention;
+            $file->move('userimage', $filename);
             $filebutton = $filename;
         }
 
-        if($request->hasFile('filebutton2'))
-        {
+        if ($request->hasFile('filebutton2')) {
             $file = $request->file('filebutton2');
             $extention = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extention;
-            $file->move('userimage',$filename);
+            $filename = time() . '.' . $extention;
+            $file->move('userimage', $filename);
             $filebutton2 = $filename;
         }
 
-        if($request->hasFile('filebutton3'))
-        {
+        if ($request->hasFile('filebutton3')) {
             $file = $request->file('filebutton3');
             $extention = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extention;
-            $file->move('userimage',$filename);
+            $filename = time() . '.' . $extention;
+            $file->move('userimage', $filename);
             $filebutton3 = $filename;
         }
 
-        if($request->hasFile('filebutton4'))
-        {
+        if ($request->hasFile('filebutton4')) {
             $file = $request->file('filebutton4');
             $extention = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extention;
-            $file->move('userimage',$filename);
+            $filename = time() . '.' . $extention;
+            $file->move('userimage', $filename);
             $filebutton4 = $filename;
         }
 
-        if($request->hasFile('filebutton5'))
-        {
+        if ($request->hasFile('filebutton5')) {
             $file = $request->file('filebutton5');
             $extention = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extention;
-            $file->move('userimage',$filename);
+            $filename = time() . '.' . $extention;
+            $file->move('userimage', $filename);
             $filebutton5 = $filename;
         }
 
-        if($request->hasFile('filebutton6'))
-        {
+        if ($request->hasFile('filebutton6')) {
             $file = $request->file('filebutton6');
             $extention = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extention;
-            $file->move('userimage',$filename);
+            $filename = time() . '.' . $extention;
+            $file->move('userimage', $filename);
             $filebutton6 = $filename;
         }
 
-        $userid = Session::get('userid');
-        $useremail = Session::get('useremail');
+        $user = Auth::user();
 
-        DB::table('realwedding')->insert(
-            array(
-                   'coupleid'   =>   $userid,
-                   'coupleemail'   =>   $useremail,
-                   'featured_image'   =>   $featured_image,
-                   'filebutton'   =>   $filebutton,
-                   'filebutton2'   =>   $filebutton2,
-                   'filebutton3'   =>   $filebutton3,
-                   'filebutton4'   =>   $filebutton4,
-                   'filebutton5'   =>   $filebutton5,
-                   'filebutton6'   =>   $filebutton6,
-                   'fromwebsite'   =>   $formwebsite,
-                   'fromoutside'   =>   $fromoutside,
-                   'both'   =>   $both,
-                   'textarea'   =>   $textarea,
-            )
-       );
+        $RealWedding = new AppRealWedding();
 
-       echo json_encode(['success'=>'Real wedding details saved']);
+        $RealWedding->couple_id = $user->id;
+        $RealWedding->couple_email = $user->email;
+        $RealWedding->featured_image = $featured_image;
+        $RealWedding->file_button = $filebutton;
+        $RealWedding->file_button2 = $filebutton2;
+        $RealWedding->file_button3 = $filebutton3;
+        $RealWedding->file_button4 = $filebutton4;
+        $RealWedding->file_button5 = $filebutton5;
+        $RealWedding->file_button6 = $filebutton6;
+        $RealWedding->from_website = $formwebsite;
+        $RealWedding->from_outside = $fromoutside;
+        $RealWedding->both = $both;
+        $RealWedding->textarea = $textarea;
+
+        $RealWedding->save();
+
+        echo json_encode(['success' => 'Real wedding details saved']);
     }
 
-    public function Showprofile(Request $request){
+    public function Showprofile()
+    {
+        $user = Auth::user();
 
-        $userid = Session::get('userid');
-
-        $showrealwedding = DB::select("select * from showrealwedding where coupleid = '$userid' ");
+        $showrealwedding = ShowRealWedding::where('couple_id', $user->id)->get();
 
         $count = count($showrealwedding);
         $showprofile = "show";
 
-        if($count > 0){
-            DB::table('showrealwedding')->where('coupleid',$userid)->update
-                (array(
-                    'coupleid' => $userid,
-                    'showprofile' => $showprofile,
-                ));
-        }else{
-            DB::table('showrealwedding')->insert(
-                array(
-                       'coupleid' => $userid,
-                       'showprofile' => $showprofile,
-                )
-           );
+        if ($count > 0) {
+
+            $showrealwedding->couple_id = $user->id;
+            $showrealwedding->show_profile = $showprofile;
+            $showrealwedding->save();
+        } else {
+
+            $NewShowRealWedding = new ShowRealWedding();
+
+            $NewShowRealWedding->couple_id = $user->id;
+            $NewShowRealWedding->show_profile = $showprofile;
+
+            $NewShowRealWedding->save();
         }
 
-        echo json_encode(['success'=>'Real wedding will be shown']);
+        echo json_encode(['success' => 'Real wedding will be shown']);
     }
 
-    public function Dontshowprofile(Request $request){
+    public function Dontshowprofile(Request $request)
+    {
 
-        $userid = Session::get('userid');
+        $user = Auth::user();;
 
-        $showrealwedding = DB::select("select * from showrealwedding where coupleid = '$userid' ");
+        $showrealwedding = ShowRealWedding::where('couple_id', $user->id)->get();
 
         $count = count($showrealwedding);
         $showprofile = "notshow";
 
-        if($count > 0){
-            DB::table('showrealwedding')->where('coupleid',$userid)->update
-                (array(
-                    'coupleid' => $userid,
-                    'showprofile' => $showprofile,
-                ));
-        }else{
-            DB::table('showrealwedding')->insert(
-                array(
-                       'coupleid' => $userid,
-                       'showprofile' => $showprofile,
-                )
-           );
+        if ($count > 0) {
+
+            $showrealwedding->couple_id = $user->id;
+            $showrealwedding->show_profile = $showprofile;
+            $showrealwedding->save();
+        } else {
+
+            $NewShowRealWedding = new ShowRealWedding();
+
+            $NewShowRealWedding->couple_id = $user->id;
+            $NewShowRealWedding->show_profile = $showprofile;
+
+            $NewShowRealWedding->save();
         }
 
-        echo json_encode(['success'=>'Real wedding will not be shown']);
+        echo json_encode(['success' => 'Real wedding will not be shown']);
     }
 }

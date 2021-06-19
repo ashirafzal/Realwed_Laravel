@@ -19,7 +19,7 @@ class myprofile extends Controller
     public function couple_profile()
     {
         $user = Auth::user();
-        return view('couple_profile', ['users' => $user]);
+        return view('couples.couple_profile', ['users' => $user]);
     }
 
     public function save(Request $request)

@@ -33,7 +33,7 @@ class ToDoList extends Controller
         $addtask_total = count($addtask_total);
 
         return view(
-            'todo-list',
+            'couples.todo-list',
             [
                 'users' => $user, 'addtask' => $addtask, 'addtask_total' => $addtask_total, 'addtask_completed' => $addtask_completed, 'addtask_due' => $addtask_due
             ]

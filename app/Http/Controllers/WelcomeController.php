@@ -18,7 +18,7 @@ class WelcomeController extends Controller
             ->take(10)
             ->get();
 
-        return view('welcome', [
+        return view('general.welcome', [
             'listing' => $Listing,
             'couplewebsite' => $CoupleWebsite,
         ]);

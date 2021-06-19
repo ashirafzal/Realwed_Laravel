@@ -14,12 +14,15 @@
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
     <link href="{{ asset('css/owl.carousel.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/owl.theme.default.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('css/summernote-bs4.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/magicsuggest.css') }}" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/offcanvas.css') }}">
 </head>
 
 <body class="body-bg">
+    <!--- /************************ */ Couple Budget Scripts /************************ */ --->
     <script>
         function opendeletebudget() {
             document.getElementById("deletesuccessmessage").style.display = "none";
@@ -31,6 +34,171 @@
             document.getElementById("deletediv").style.display = "none";
         }
     </script>
+    <!--- /************************ */ Couple Budget Scripts Ends /************************ */ --->
+    <!--- /************************ */ Couple Table Planner Scripts /************************ */ --->
+    <!--- Script One --->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+    </script>
+    <!--- Script One Ends --->
+    <!--- Script Two --->
+    <script>
+        jQuery(document).ready(function() {
+            /* 4 Seat Edit */
+            jQuery('#4seatedit').submit(function(e) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+
+                $(".alert-danger").css('display', 'none');
+                $("#4seatalertinfo").css('display', 'none');
+
+                if ($.trim($("#4seattablename").val()) === "") {
+                    $(".alert-danger").css('display', 'block');
+                    $(".alert-danger").html('Text feilds cannot be blank');
+                } else {
+                    var formData = new FormData($('#4seatedit')[0]);
+
+                    jQuery.ajax({
+                        url: "{{ url('four-seat-edit') }}",
+                        method: 'post',
+                        data: formData,
+                        cache: false,
+
+                        processData: false,
+                        contentType: false,
+                        success: function(result) {
+                            $("#4seatalertinfo").css('display', 'block');
+                            $("#4seatalertinfo").html('Table seating edited successfully');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <!--- Script Two Ends --->
+    <!--- Script Three --->
+    <script>
+        jQuery(document).ready(function() {
+            /* 8 Seat Edit */
+            jQuery('#8seatedit').submit(function(e) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+
+                $("#8seatalertdanger").css('display', 'none');
+                $("#8seatalertinfo").css('display', 'none');
+
+                if ($.trim($("#8seattablename").val()) === "") {
+                    $("#8seatalertdanger").css('display', 'block');
+                    $("#8seatalertdanger").html('Text feilds cannot be blank');
+                } else {
+                    var formData = new FormData($('#8seatedit')[0]);
+
+                    jQuery.ajax({
+                        url: "{{ url('eight-seat-edit') }}",
+                        method: 'post',
+                        data: formData,
+                        cache: false,
+
+                        processData: false,
+                        contentType: false,
+                        success: function(result) {
+                            $("#8seatalertinfo").css('display', 'block');
+                            $("#8seatalertinfo").html('Table seating edited successfully');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <!--- Script Three Ends --->
+    <!--- Script Four --->
+    <script>
+        jQuery(document).ready(function() {
+            /* 12 Seat Edit */
+            jQuery('#12seatedit').submit(function(e) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+
+                $("#12seatalertdanger").css('display', 'none');
+                $("#12seatalertinfo").css('display', 'none');
+
+                if ($.trim($("#12seattablename").val()) === "") {
+                    $("#12seatalertdanger").css('display', 'block');
+                    $("#12seatalertdanger").html('Text feilds cannot be blank');
+                } else {
+                    var formData = new FormData($('#12seatedit')[0]);
+
+                    jQuery.ajax({
+                        url: "{{ url('twelve-seat-edit') }}",
+                        method: 'post',
+                        data: formData,
+                        cache: false,
+
+                        processData: false,
+                        contentType: false,
+                        success: function(result) {
+                            $("#12seatalertinfo").css('display', 'block');
+                            $("#12seatalertinfo").html('Table seating edited successfully');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <!--- Script Four Ends --->
+    <!--- Script Five --->
+    <script>
+        jQuery(document).ready(function() {
+            /* Single Guest */
+            jQuery('#createtable').submit(function(e) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+
+                $(".alert-danger").css('display', 'none');
+                $(".alert-success").css('display', 'none');
+
+                if ($.trim($("#tablename").val()) === "") {
+                    $(".alert-danger").css('display', 'block');
+                    $(".alert-danger").html('Text feilds cannot be blank');
+                    alert("Text feilds cannot be blank");
+                } else {
+                    var formData = new FormData($('#createtable')[0]);
+
+                    jQuery.ajax({
+                        url: "{{ url('create-table') }}",
+                        method: 'post',
+                        data: formData,
+                        cache: false,
+
+                        processData: false,
+                        contentType: false,
+                        success: function(result) {
+                            alert(result);
+                            $(".alert-success").css('display', 'block');
+                            $(".alert-success").html('Table created successful.');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <!--- Script Five Ends --->
+    <!--- /************************ */ Couple Table Planner Scripts Ends /************************ */ --->
     <div class="dashboard-header">
         <div class="container-fluid">
             <div class="row">
@@ -137,9 +305,9 @@
     <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
     <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('js/fastclick.js') }}"></script>
-    <!--- Wish List Scripts--->
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
-    </script>
+    <script src="{{ asset('js/magicsuggest.js') }}"></script>
+    <!--- /************************ */ Wish List Scripts /************************ */ --->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
         jQuery(document).ready(function() {
             jQuery('#wishlistcancel').click(function(e) {
@@ -165,8 +333,9 @@
             });
         });
     </script>
-    <!--- Wish List Scripts end --->
-    <!--- Todo List Scripts --->
+    <!--- /************************ */ Wish List Scripts end /************************ */  --->
+    <!--- /************************ */ Todo List Scripts /************************ */ --->
+    <!--- Script One --->
     <script type="text/javascript">
         function edittask() {
 
@@ -209,7 +378,9 @@
 
         }
     </script>
+    <!--- Script One Ends --->
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!--- Script Two --->
     <script type="text/javascript">
         jQuery(document).ready(function() {
             jQuery('#submit_edittask').click(function(e) {
@@ -249,6 +420,8 @@
             });
         });
     </script>
+    <!--- Script Two Ends --->
+    <!--- Script Three --->
     <script type="text/javascript">
         jQuery(document).ready(function() {
             jQuery('#submittask').click(function(e) {
@@ -288,8 +461,10 @@
             });
         });
     </script>
-    <!--- Todo Lost Scripts end --->
-    <!--- Couple Budget Scripts --->
+    <!--- Script Three Ends --->
+    <!--- /************************ */ Todo Lost Scripts ends /************************ */ --->
+    <!--- /************************ */ Couple Budget Scripts /************************ */ --->
+    <!--- Script One --->
     <script>
         jQuery(document).ready(function() {
             /* Delete action */
@@ -317,6 +492,8 @@
             });
         });
     </script>
+    <!--- Script One Ends --->
+    <!--- Script Two --->
     <script type="text/javascript">
         jQuery(document).ready(function() {
             jQuery('#addexpense').click(function(e) {
@@ -429,6 +606,8 @@
             });
         });
     </script>
+    <!--- Script Two Ends --->
+    <!--- Script Three --->
     <script>
         function myFunction(val) {
             var locationfees_estimate = document.getElementById("locationfees_estimate").value;
@@ -596,6 +775,8 @@
             document.getElementById("printedmaterials-pending-total").innerHTML = pendingtotal;
         }
     </script>
+    <!--- Script Three Ends --->
+    <!--- Script Four --->
     <script type="text/javascript">
         $(function() {
             $("#venue-btn").bind("click", function() {
@@ -644,8 +825,10 @@
             return '<td><input name ="DynamicTextBox" type="text" value ="' + value + '" class="form-control form-control-sm" /></td>' + '<td><input name ="DynamicTextBox" type="text" value ="' + value + '" class="form-control form-control-sm" /></td>' + '<td><input name ="DynamicTextBox" type="text" value ="' + value + '" class="form-control form-control-sm" /></td>' + '<td><input name ="DynamicTextBox" type="text" value ="' + value + '" class="form-control form-control-sm" /></td>' + '<td><input name ="DynamicTextBox" type="text" value ="' + value + '" class="form-control form-control-sm" /></td>' + '<td><a href="javascript:void(0)" class="btn btn-outline-pink btn-xs remove">delete</a></td>'
         }
     </script>
-    <!--- Couple Budget Scripts end --->
-    <!--- Couple Website Scripts --->
+    <!--- Script four Ends --->
+    <!--- /************************ */ Couple Budget Scripts ends /************************ */ --->
+    <!--- /************************ */ Couple Website Scripts /************************ */ --->
+    <!--- Script One --->
     <script type="text/javascript">
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -707,6 +890,8 @@
             }
         }
     </script>
+    <!--- Script One Ends --->
+    <!--- Script Two --->
     <script>
         jQuery(document).ready(function() {
             jQuery('#rsvp-form').submit(function(e) {
@@ -757,8 +942,9 @@
             });
         });
     </script>
-    <!--- Couple Website Scripts end --->
-    <!--- Couple Profile Scripts --->
+    <!--- Script Two Ends --->
+    <!--- /************************ */ Couple Website Scripts end /************************ */ --->
+    <!--- /************************ */ Couple Profile Scripts /************************ */ --->
     <script>
         $(document).ready(function() {
             $.uploadPreview({
@@ -771,7 +957,363 @@
             });
         });
     </script>
-    <!--- Couple Profile Scripts ends --->
+    <!--- /************************ */ Couple Profile Scripts ends /************************ */ --->
+    <!--- /************************ */ Real Wedding Scripts /************************ */ --->
+    <!--- Script One --->
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL2(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image2')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL3(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image3')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL4(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image4')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL5(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image5')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function readURL6(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image6')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(250);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <!--- Script One ends --->
+    <!--- Script Two --->
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            $("#showprivate").click(function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                $("#success").css('display', 'none');
+                $("#info_success").css('display', 'none');
+
+                if ($(this).is(":checked")) {
+                    var checked = "checked";
+                    jQuery.ajax({
+                        url: "{{ url('show-realwedding') }}",
+                        method: 'post',
+                        data: {
+                            checked: checked,
+                        },
+                        success: function(result) {
+                            $("#success").css('display', 'block');
+                            $("#success_msg").html("Real wedding will be shown");
+                        }
+                    });
+                } else {
+                    var checked = "not checked";
+                    jQuery.ajax({
+                        url: "{{ url('dont-show-realwedding') }}",
+                        method: 'post',
+                        data: {
+                            checked: checked,
+                        },
+                        success: function(result) {
+                            $("#info_success").css('display', 'block');
+                            $("#info_success_msg").html("Real wedding will not be shown");
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <!--- Script Two ends --->
+    <!--- Script Three --->
+    <script>
+        jQuery(document).ready(function() {
+            jQuery('#RealWedding').submit(function(e) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+
+                $(".alert-danger").css('display', 'none');
+
+                if ($('#featured_image').get(0).files.length === 0) {
+                    $(".alert-danger").css('display', 'block');
+                    $(".alert-danger").html('Featured image required');
+                } else {
+                    if ($('#filebutton').get(0).files.length === 0 ||
+                        $('#filebutton2').get(0).files.length === 0 || $('#filebutton3').get(0).files.length === 0 ||
+                        $('#filebutton4').get(0).files.length === 0 || $('#filebutton5').get(0).files.length === 0 ||
+                        $('#filebutton6').get(0).files.length === 0) {
+                        $(".alert-danger").css('display', 'block');
+                        $(".alert-danger").html('Wedding gallery images required');
+                    } else {
+                        if ($.trim($("#textarea").val()) === "") {
+                            $(".alert-danger").css('display', 'block');
+                            $(".alert-danger").html('Text cannot be blank');
+                            return false;
+                        } else {
+
+                            if ($('#inlineRadio1').is(":checked") || $('#inlineRadio2').is(":checked") ||
+                                $('#inlineRadio3').is(":checked")) {
+                                var formData = new FormData($('#RealWedding')[0]);
+
+                                jQuery.ajax({
+                                    url: "{{ url('save-real-wedding') }}",
+                                    method: 'post',
+                                    data: formData,
+                                    cache: false,
+
+                                    processData: false,
+                                    contentType: false,
+                                    success: function(result) {
+                                        alert(result);
+                                    }
+                                });
+                            } else {
+                                $(".alert-danger").css('display', 'block');
+                                $(".alert-danger").html('Please check atleast one of the given options in the form');
+                            }
+                        }
+                    }
+                }
+
+            });
+        });
+    </script>
+    <!--- Script Three ends --->
+    <!--- Script Four --->
+    <script>
+        $(function() {
+            var VendorsCateogry = $('#VendorsCateogry').magicSuggest({
+                data: ['Photographer - Matrimony Wedding Photography',
+                    'Venue',
+                    'Cake',
+                    'Dresses',
+                    'Dj'
+
+                ]
+            });
+        });
+    </script>
+    <!--- Script Four ends --->
+    <!--- Script Five --->
+    <script>
+        $(document).ready(function() {
+            $('input[type="radio"]').click(function() {
+                var inputValue = $(this).attr("value");
+                var targetBox = $("." + inputValue);
+                $(".rw-vendor-list-info").not(targetBox).hide();
+                $(targetBox).show();
+            });
+        });
+    </script>
+    <!--- Script Five ends --->
+    <!--- /************************ */ Real Wedding Scripts ends /************************ */ --->
+    <!--- /************************ */ Guest List Scripts /************************ */ --->
+    <!--- Script One --->
+    <script>
+        jQuery(document).ready(function() {
+            /* Single Guest */
+            jQuery('#single_guest').submit(function(e) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+
+                $(".alert-danger").css('display', 'none');
+                $(".alert-success").css('display', 'none');
+
+                if ($.trim($("#fname").val()) === "" || $.trim($("#lname").val()) === "" ||
+                    $.trim($("#address").val()) === "" || $.trim($("#email").val()) === "" ||
+                    $.trim($("#city").val()) === "" || $.trim($("#country").val()) === "" ||
+                    $.trim($("#postcode").val()) === "") {
+                    $(".alert-danger").css('display', 'block');
+                    $(".alert-danger").html('Text feilds cannot be blank');
+                } else {
+                    var formData = new FormData($('#single_guest')[0]);
+
+                    jQuery.ajax({
+                        url: "{{ url('single-guestlist-submit') }}",
+                        method: 'post',
+                        data: formData,
+                        cache: false,
+
+                        processData: false,
+                        contentType: false,
+                        success: function(result) {
+                            $(".alert-success").css('display', 'block');
+                            $(".alert-success").html('Guest list submitted successful.');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <!--- Script One ends --->
+    <!--- Script Two --->
+    <script>
+        jQuery(document).ready(function() {
+            /* Couple Guest */
+            jQuery('#couple_guest').submit(function(e) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+
+                $("#couple_danger_msg").css('display', 'none');
+                $("#couple_success_msg").css('display', 'none');
+
+                if ($.trim($("#couple_firstname").val()) === "" || $.trim($("#couple_lastname").val()) === "" ||
+                    $.trim($("#couple_partnerfname").val()) === "" || $.trim($("#couple_partnerlname").val()) === "" ||
+                    $.trim($("#couple_group").val()) === "" || $.trim($("#couple_address").val()) === "" ||
+                    $.trim($("#couple_email").val()) === "" || $.trim($("#couple_city").val()) === "" ||
+                    $.trim($("#couple_country").val()) === "" || $.trim($("#couple_postcode").val()) === "") {
+                    $("#couple_danger_msg").css('display', 'block');
+                    $("#couple_danger_msg").html('Text feilds cannot be blank');
+                } else {
+                    var formData = new FormData($('#couple_guest')[0]);
+
+                    jQuery.ajax({
+                        url: "{{ url('couple-guestlist-submit') }}",
+                        method: 'post',
+                        data: formData,
+                        cache: false,
+
+                        processData: false,
+                        contentType: false,
+                        success: function(result) {
+                            $("#couple_success_msg").css('display', 'block');
+                            $("#couple_success_msg").html('Couple guest list submitted successful.');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <!--- Script Two ends --->
+    <!--- Script Three --->
+    <script>
+        jQuery(document).ready(function() {
+            /* Household Guest */
+            jQuery('#household_guest').submit(function(e) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+
+                $("#household_danger_msg").css('display', 'none');
+                $("#household_success_msg").css('display', 'none');
+
+                if ($.trim($("#household_fname").val()) === "" || $.trim($("#household_lname").val()) === "" ||
+                    $.trim($("#household_family").val()) === "" || $.trim($("#household_address").val()) === "" ||
+                    $.trim($("#household_email").val()) === "" || $.trim($("#household_city").val()) === "" ||
+                    $.trim($("#household_country").val()) === "" || $.trim($("#household_postcode").val()) === "") {
+                    $("#household_danger_msg").css('display', 'block');
+                    $("#household_danger_msg").html('Text feilds cannot be blank');
+                } else {
+                    var formData = new FormData($('#household_guest')[0]);
+
+                    jQuery.ajax({
+                        url: "{{ url('household-guestlist-submit') }}",
+                        method: 'post',
+                        data: formData,
+                        cache: false,
+
+                        processData: false,
+                        contentType: false,
+                        success: function(result) {
+                            $("#household_success_msg").css('display', 'block');
+                            $("#household_success_msg").html('Household guest list submitted successful.');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <!--- Script Three ends --->
+    <!--- /************************ */ Guest List Scripts ends /************************ */ --->
+    <!--- /************************ */ Couple Table Planner Scripts /************************ */ --->
+    <script src="{{ asset('js/custom-magicsuggest.js') }}"></script>
+    <!--- <script type="text/javascript" src="{{ asset('js/custom-seating.js') }}"></script> -->
+    <!--- /************************ */ Couple Table Planner Scripts Ends /************************ */ --->
 </body>
 
 </html>

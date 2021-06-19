@@ -16,7 +16,7 @@ class CoupleWebsite extends Controller
         $couplewebsite = AppCoupleWebsite::where('couple_id', $user->id)
             ->get();
 
-        return view('couple-dashboard-website', [
+        return view('couples.couple-dashboard-website', [
             'users' => $user, 'couplewebsite' => $couplewebsite
         ]);
     }

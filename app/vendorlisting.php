@@ -27,4 +27,9 @@ class VendorListing extends Model
         'city',
         'country'
     ];
+
+    public function wishlist()
+    {
+        return $this->hasMany(WishList::class);
+    }
 }

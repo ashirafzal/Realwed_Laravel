@@ -198,8 +198,8 @@
                                         <tr>
                                             <td><input type="checkbox" id="check-tab1" name="check-tab1"></td>
                                             <td style="display:none;">{{ $addtask->id }}</td>
-                                            <td>{{ $addtask->tasktitle }}</td>
-                                            <td>{{ $addtask->taskdate }}</td>
+                                            <td>{{ $addtask->task_title }}</td>
+                                            <td>{{ $addtask->task_date }}</td>
                                             <td><span class="to-do-status"><span class="badge badge-success">Completed</span></span></td>
                                             <td><a href="javascript:edittask()" onclick="edittask()" class="btn btn-outline-violate btn-xs">Edit</a></td>
                                             <td><a href="delete-task/{{$addtask->id}}" class="btn btn-outline-violate btn-xs">Delete</a></td>
@@ -208,9 +208,15 @@
                                         <tr>
                                             <td><input type="checkbox" id="check-tab1" name="check-tab1"></td>
                                             <td style="display:none;">{{ $addtask->id }}</td>
-                                            <td>{{ $addtask->tasktitle }}</td>
-                                            <td>{{ $addtask->taskdate }}</td>
-                                            <td><span class="to-do-status"><span class="badge badge-danger">Due</span></span></td>
+                                            <td>{{ $addtask->task_title }}</td>
+                                            <td>{{ $addtask->task_date }}</td>
+                                            <td><span class="to-do-status">
+                                                @if($addtask->task_status === 'Due')
+                                                <span class="badge badge-danger">Due</span>
+                                                @else
+                                                <span class="badge badge-success">Completed</span>
+                                                @endif
+                                            </span></td>
                                             <td><a href="javascript:edittask()" onclick="edittask()" class="btn btn-outline-violate btn-xs">Edit</a></td>
                                             <td><a href="delete-task/{{$addtask->id}}" class="btn btn-outline-violate btn-xs">Delete</a></td>
                                         </tr>

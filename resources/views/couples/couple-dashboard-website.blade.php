@@ -21,7 +21,7 @@
                             <div class="col-xl-8">
                                 <p class="text-primary">
                                     @foreach($couplewebsite as $couplewebsite)
-                                    <a href="http://127.0.0.1:8000/couple-website/{{ $couplewebsite->id }}">http://127.0.0.1:8000/couple-website/{{ $couplewebsite->id }}</a>
+                                    <a href="{{ url('/couple-website') }}/{{ $couplewebsite->id }}">{{ url('/couple-website') }}/{{ $couplewebsite->id }}</a>
                                     <br />
                                     @endforeach
                                 </p>

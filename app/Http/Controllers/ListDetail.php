@@ -80,21 +80,21 @@ class ListDetail extends Controller
                 ]
             );
         } else {
-            $qualityservices = DB::table('listing_review')->where('listid', $id)->avg('qualityservices');
-            $faciliteis = DB::table('listing_review')->where('listid', $id)->avg('faciliteis');
-            $staff = DB::table('listing_review')->where('listid', $id)->avg('staff');
-            $flexibility = DB::table('listing_review')->where('listid', $id)->avg('flexibility');
-            $valueofmoney = DB::table('listing_review')->where('listid', $id)->avg('valueofmoney');
-            $overallrating = DB::table('listing_review')->where('listid', $id)->avg('overallrating');
-            $listing_review_count = DB::table('listing_review')->where('listid', $id)->get();
+            $qualityservices = DB::table('listing_review')->where('id', $id)->avg('quality_services');
+            $faciliteis = DB::table('listing_review')->where('id', $id)->avg('faciliteis');
+            $staff = DB::table('listing_review')->where('id', $id)->avg('staff');
+            $flexibility = DB::table('listing_review')->where('id', $id)->avg('flexibility');
+            $valueofmoney = DB::table('listing_review')->where('id', $id)->avg('value_of_money');
+            $overallrating = DB::table('listing_review')->where('id', $id)->avg('overall_rating');
+            $listing_review_count = DB::table('listing_review')->where('id', $id)->get();
             $listing_review_count = count($listing_review_count);
 
-            $listing = DB::table('vendorlistings')->where('id', $id)->get();
-            $listownerid = DB::table('vendorlistings')->where('id', $id)->value('vendorid');
-            $listowner = DB::table('appusers')->where('id', $listownerid)->get();
-            $requestquote = DB::table('requestquote')->where('list_creator_id', $userid)->orderBy('id', 'desc')->get();
-            $last3listing = DB::table('vendorlistings')->where('vendorid', $listownerid)->orderBy('id', 'desc')->take(3)->get();
-            $listing_review = DB::table('listing_review')->where('listid', $id)->orderBy('id', 'desc')->take(5)->get();
+            $listing = DB::table('vendor_listings')->where('id', $id)->get();
+            $listownerid = DB::table('vendor_listings')->where('id', $id)->value('vendor_id');
+            $listowner = DB::table('users')->where('id', $listownerid)->get();
+            // $requestquote = DB::table('requestquote')->where('list_creator_id', $userid)->orderBy('id', 'desc')->get();
+            $last3listing = DB::table('vendor_listings')->where('vendor_id', $listownerid)->orderBy('id', 'desc')->take(3)->get();
+            $listing_review = DB::table('listing_review')->where('list_id', $id)->orderBy('id', 'desc')->take(5)->get();
             return view(
                 'list-detail-2',
                 [

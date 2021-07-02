@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RealWed | Vendor Dashboard</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-    <link href="fontawesome/css/fontawesome-all.css" rel="stylesheet">
-    <link href="fontello/css/fontello.css" rel="stylesheet">
-    <link href="css/summernote-bs4.css" rel="stylesheet">
+    <link href="{{ asset('fontawesome/css/fontawesome-all.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontello/css/fontello.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/summernote-bs4.css') }}" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/offcanvas.css" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/offcanvas.css') }}" rel="stylesheet">
 </head>
 
 <body class="body-bg">
@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-xl-10 col-lg-8 col-md-8 col-sm-6 col-6">
                     <div class="header-logo">
-                        <a href="index-2.html"><img src="images/logo.png" alt="Weddings | Find A Wedding Venue &amp; Supplier WordPress Theme"></a>
+                        <a href="index-2.html"><img src="{{ asset('images/logo.png') }}" alt="Weddings | Find A Wedding Venue &amp; Supplier WordPress Theme"></a>
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6">
@@ -39,7 +39,7 @@
                                                 <div class="list-group">
                                                     <a href="#" class="list-group-item list-group-item-action active">
                                                         <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                            <div class="notification-list-user-img"><img src="{{ asset('images/avatar-2.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
                                                             <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
                                                                 <div class="notification-date">2 min ago</div>
                                                             </div>
@@ -47,7 +47,7 @@
                                                     </a>
                                                     <a href="#" class="list-group-item list-group-item-action">
                                                         <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                            <div class="notification-list-user-img"><img src="{{ asset('images/avatar-3.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
                                                             <div class="notification-list-user-block"><span class="notification-list-user-name">John Deo</span>is now following you
                                                                 <div class="notification-date">2 days ago</div>
                                                             </div>
@@ -55,7 +55,7 @@
                                                     </a>
                                                     <a href="#" class="list-group-item list-group-item-action">
                                                         <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                            <div class="notification-list-user-img"><img src="{{ asset('images/avatar-4.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
                                                             <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
                                                                 <div class="notification-date">2 min ago</div>
                                                             </div>
@@ -63,7 +63,7 @@
                                                     </a>
                                                     <a href="#" class="list-group-item list-group-item-action">
                                                         <div class="notification-info">
-                                                            <div class="notification-list-user-img"><img src="images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                            <div class="notification-list-user-img"><img src="{{ asset('images/avatar-4.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
                                                             <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
                                                                 <div class="notification-date">2 min ago</div>
                                                             </div>
@@ -80,7 +80,7 @@
                                 <li class="nav-item dropdown dropleft user-vendor ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="user-icon">
-                                            <img src="images/dashboard-profile.jpg" alt="" class="rounded-circle mb10">
+                                            <img src="{{ asset('images/dashboard-profile.jpg') }}" alt="" class="rounded-circle mb10">
                                         </span>
                                         <span class="user-vendor-name">{{ Auth::user()->name }}</span></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -109,7 +109,7 @@
         <div class="dashboard-sidebar offcanvas-collapse">
             <div class="vendor-user-profile">
                 <div class="vendor-profile-img">
-                    <img src="images/dashboard-profile.jpg" alt="" class="rounded-circle">
+                    <img src="{{ asset('images/dashboard-profile.jpg') }}" alt="" class="rounded-circle">
                 </div>
                 <h3 class="vendor-profile-name">{{ Auth::user()->name }}</h3>
                 <a href="#" class="edit-link">edit profile</a>
@@ -132,16 +132,16 @@
     </div>
 
      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-     <script src="js/jquery.min.js"></script>
+     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/menumaker.min.js"></script>
-    <script src="js/custom-script.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/fastclick.js"></script>
-    <script src="js/offcanvas.js"></script>
-    <script src="js/jquery.slimscroll.js"></script>
-    <script src="js/summernote-bs4.js"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/menumaker.min.js') }}"></script>
+    <script src="{{ asset('js/custom-script.js') }}"></script>
+    <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('js/fastclick.js') }}"></script>
+    <script src="{{ asset('js/offcanvas.js') }}"></script>
+    <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('js/summernote-bs4.js') }}"></script>
     <!--- Other important scripts --->
     <script type="text/javascript">
         function readURL(input) {
@@ -264,7 +264,7 @@
             });
         });
     </script>
-    <script src="js/jquery.uploadPreview.js"></script>
+    <script src="{{ asset('js/jquery.uploadPreview.js') }}"></script>
 </body>
 
 </html>

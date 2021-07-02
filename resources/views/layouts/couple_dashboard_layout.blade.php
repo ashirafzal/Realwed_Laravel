@@ -362,6 +362,7 @@
 
                 for (var i = 0; i < checkboxes.length; i++) {
                     if (checkboxes[i].checked) {
+                        alert(document.getElementById("edittaskid").value);
                         document.getElementById("edittaskid").value = table1.rows[i + 1].cells[1].innerHTML;
                         document.getElementById("edittasktitle").value = table1.rows[i + 1].cells[2].innerHTML;
                         document.getElementById("edittaskdate").value = table1.rows[i + 1].cells[3].innerHTML;
@@ -1312,7 +1313,7 @@
     <!--- /************************ */ Guest List Scripts ends /************************ */ --->
     <!--- /************************ */ Couple Table Planner Scripts /************************ */ --->
     <script src="{{ asset('js/custom-magicsuggest.js') }}"></script>
-    <!--- <script type="text/javascript" src="{{ asset('js/custom-seating.js') }}"></script> -->
+    <!-- - <script type="text/javascript" src="{{ asset('js/custom-seating.js') }}"></script> -->
     <!--- /************************ */ Couple Table Planner Scripts Ends /************************ */ --->
 </body>
 

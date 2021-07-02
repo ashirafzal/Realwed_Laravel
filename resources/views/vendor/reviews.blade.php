@@ -320,9 +320,9 @@
                                             <tbody>
                                                 @foreach($listing_review as $listing_review)
                                                 <tr>
-                                                    <td class="review-summary-name">{{ $listing_review->username }}</td>
+                                                    <td class="review-summary-name">{{ $listing_review->user_name }}</td>
                                                     <td class="review-summary-rating">
-                                                        @if($listing_review->overallrating == 25)
+                                                        @if($listing_review->overall_rating == 25)
                                                         <span class="rated">
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
@@ -330,7 +330,7 @@
                                                             <i class="fa  fa-star"></i>
                                                             <i class="fa  fa-star"></i>
                                                         </span>
-                                                        @elseif($listing_review->overallrating >= 20)
+                                                        @elseif($listing_review->overall_rating >= 20)
                                                         <span class="rated">
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
@@ -338,7 +338,7 @@
                                                             <i class="fa  fa-star"></i>
                                                             <i class="far  fa-star"></i>
                                                         </span>
-                                                        @elseif($listing_review->overallrating >= 15)
+                                                        @elseif($listing_review->overall_rating >= 15)
                                                         <span class="rated">
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
@@ -346,7 +346,7 @@
                                                             <i class="far  fa-star"></i>
                                                             <i class="far  fa-star"></i>
                                                         </span>
-                                                        @elseif($listing_review->overallrating >= 10)
+                                                        @elseif($listing_review->overall_rating >= 10)
                                                         <span class="rated">
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
@@ -354,7 +354,7 @@
                                                             <i class="far  fa-star"></i>
                                                             <i class="far  fa-star"></i>
                                                         </span>
-                                                        @elseif($listing_review->overallrating >= 5)
+                                                        @elseif($listing_review->overall_rating >= 5)
                                                         <span class="rated">
                                                             <i class="fa fa-star"></i>
                                                             <i class="far fa-star"></i>
@@ -371,9 +371,9 @@
                                                             <i class="far  fa-star"></i>
                                                         </span>
                                                         @endif
-                                                        {{ number_format($listing_review->overallrating/5,1) }}
+                                                        {{ number_format($listing_review->overall_rating/5,1) }}
                                                     </td>
-                                                    <td class="review-summary-id">{{ $listing_review->useremail }}</td>
+                                                    <td class="review-summary-id">{{ $listing_review->user_email }}</td>
                                                     <td class="review-summary-time">{{ $listing_review->date }}</td>
                                                     <td class="review-summary-action"><a class="btn btn-outline-pink btn-xs" data-toggle="collapse" id="example-one" data-text-swap="close" data-text-original="Details" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">Details</a></td>
                                                 </tr>
@@ -384,12 +384,18 @@
                                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                                     <!-- review-user -->
                                                                     <div class="review-user">
-                                                                        <div class="user-img"> <img style="width:50px;height:50px;" src="{{ asset('userimage') }}/{{$listing_review->userimage}}" alt="star rating jquery" class="rounded-circle"></div>
+                                                                        <div class="user-img"> 
+                                                                            @if($listing_review->user_image)
+                                                                                <img style="width:50px;height:50px;" src="{{ asset('userimage') }}/{{$listing_review->user_image}}" alt="" class="rounded-circle">
+                                                                            @else
+                                                                                <img style="width:50px;height:50px;" src="{{ asset('images/dashboard-profile.jpg') }}" alt="" class="rounded-circle">
+                                                                            @endif
+                                                                        </div>
                                                                         <div class="user-meta">
-                                                                            <span class="user-name">{{ $listing_review->username }}</span>
+                                                                            <span class="user-name">{{ $listing_review->user_name }}</span>
                                                                             <span class="user-review-date">Date : {{ $listing_review->date }}</span>
                                                                             <div class="given-review">
-                                                                                @if($listing_review->overallrating == 25)
+                                                                                @if($listing_review->overall_rating == 25)
                                                                                 <span class="rated">
                                                                                     <i class="fa fa-star"></i>
                                                                                     <i class="fa fa-star"></i>
@@ -397,7 +403,7 @@
                                                                                     <i class="fa  fa-star"></i>
                                                                                     <i class="fa  fa-star"></i>
                                                                                 </span>
-                                                                                @elseif($listing_review->overallrating >= 20)
+                                                                                @elseif($listing_review->overall_rating >= 20)
                                                                                 <span class="rated">
                                                                                     <i class="fa fa-star"></i>
                                                                                     <i class="fa fa-star"></i>
@@ -405,7 +411,7 @@
                                                                                     <i class="fa  fa-star"></i>
                                                                                     <i class="far  fa-star"></i>
                                                                                 </span>
-                                                                                @elseif($listing_review->overallrating >= 15)
+                                                                                @elseif($listing_review->overall_rating >= 15)
                                                                                 <span class="rated">
                                                                                     <i class="fa fa-star"></i>
                                                                                     <i class="fa fa-star"></i>
@@ -413,7 +419,7 @@
                                                                                     <i class="far  fa-star"></i>
                                                                                     <i class="far  fa-star"></i>
                                                                                 </span>
-                                                                                @elseif($listing_review->overallrating >= 10)
+                                                                                @elseif($listing_review->overall_rating >= 10)
                                                                                 <span class="rated">
                                                                                     <i class="fa fa-star"></i>
                                                                                     <i class="fa fa-star"></i>
@@ -421,7 +427,7 @@
                                                                                     <i class="far  fa-star"></i>
                                                                                     <i class="far  fa-star"></i>
                                                                                 </span>
-                                                                                @elseif($listing_review->overallrating >= 5)
+                                                                                @elseif($listing_review->overall_rating >= 5)
                                                                                 <span class="rated">
                                                                                     <i class="fa fa-star"></i>
                                                                                     <i class="far fa-star"></i>
@@ -451,7 +457,7 @@
                                                                                 <div class="review-list">
                                                                                     <div class="review-for">Quality Service</div>
                                                                                     <div class="review-rating">
-                                                                                        @if($listing_review->qualityservices == 5)
+                                                                                        @if($listing_review->quality_services == 5)
                                                                                         <span class="rated">
                                                                                             <i class="fa fa-star"></i>
                                                                                             <i class="fa fa-star"></i>
@@ -459,14 +465,14 @@
                                                                                             <i class="fa  fa-star"></i>
                                                                                             <i class="fa  fa-star"></i>
                                                                                         </span>
-                                                                                        @elseif($listing_review->qualityservices >= 4.5 && $listing_review->qualityservices < 5) <span class="rated">
+                                                                                        @elseif($listing_review->quality_services >= 4.5 && $listing_review->quality_services < 5) <span class="rated">
                                                                                             <i class="fa fa-star"></i>
                                                                                             <i class="fa fa-star"></i>
                                                                                             <i class="fa fa-star"></i>
                                                                                             <i class="fa  fa-star"></i>
                                                                                             <i class="fa  fa-star-half"></i>
                                                                                             </span>
-                                                                                            @elseif($listing_review->qualityservices >= 4)
+                                                                                            @elseif($listing_review->quality_services >= 4)
                                                                                             <span class="rated">
                                                                                                 <i class="fa fa-star"></i>
                                                                                                 <i class="fa fa-star"></i>
@@ -474,14 +480,14 @@
                                                                                                 <i class="fa  fa-star"></i>
                                                                                                 <i class="far  fa-star"></i>
                                                                                             </span>
-                                                                                            @elseif($listing_review->qualityservices >= 3.5 && $listing_review->qualityservices < 4) <span class="rated">
+                                                                                            @elseif($listing_review->quality_services >= 3.5 && $listing_review->quality_services < 4) <span class="rated">
                                                                                                 <i class="fa fa-star"></i>
                                                                                                 <i class="fa fa-star"></i>
                                                                                                 <i class="fa fa-star"></i>
                                                                                                 <i class="fa  fa-star-half"></i>
                                                                                                 <i class="far  fa-star"></i>
                                                                                                 </span>
-                                                                                                @elseif($listing_review->qualityservices >= 3)
+                                                                                                @elseif($listing_review->quality_services >= 3)
                                                                                                 <span class="rated">
                                                                                                     <i class="fa fa-star"></i>
                                                                                                     <i class="fa fa-star"></i>
@@ -489,14 +495,14 @@
                                                                                                     <i class="far  fa-star"></i>
                                                                                                     <i class="far  fa-star"></i>
                                                                                                 </span>
-                                                                                                @elseif($listing_review->qualityservices >= 2.5 && $listing_review->qualityservices < 3) <span class="rated">
+                                                                                                @elseif($listing_review->quality_services >= 2.5 && $listing_review->quality_services < 3) <span class="rated">
                                                                                                     <i class="fa fa-star"></i>
                                                                                                     <i class="fa fa-star"></i>
                                                                                                     <i class="fa fa-star-half"></i>
                                                                                                     <i class="far  fa-star"></i>
                                                                                                     <i class="far  fa-star"></i>
                                                                                                     </span>
-                                                                                                    @elseif($listing_review->qualityservices >= 2)
+                                                                                                    @elseif($listing_review->quality_services >= 2)
                                                                                                     <span class="rated">
                                                                                                         <i class="fa fa-star"></i>
                                                                                                         <i class="fa fa-star"></i>
@@ -504,14 +510,14 @@
                                                                                                         <i class="far  fa-star"></i>
                                                                                                         <i class="far  fa-star"></i>
                                                                                                     </span>
-                                                                                                    @elseif($listing_review->qualityservices >= 1.5 && $listing_review->qualityservices < 2) <span class="rated">
+                                                                                                    @elseif($listing_review->quality_services >= 1.5 && $listing_review->quality_services < 2) <span class="rated">
                                                                                                         <i class="fa fa-star"></i>
                                                                                                         <i class="fa fa-star-half"></i>
                                                                                                         <i class="far fa-star"></i>
                                                                                                         <i class="far  fa-star"></i>
                                                                                                         <i class="far  fa-star"></i>
                                                                                                         </span>
-                                                                                                        @elseif($listing_review->qualityservices >= 1)
+                                                                                                        @elseif($listing_review->quality_services >= 1)
                                                                                                         <span class="rated">
                                                                                                             <i class="fa fa-star"></i>
                                                                                                             <i class="far fa-star"></i>
@@ -519,7 +525,7 @@
                                                                                                             <i class="far  fa-star"></i>
                                                                                                             <i class="far  fa-star"></i>
                                                                                                         </span>
-                                                                                                        @elseif($listing_review->qualityservices >= 0.5 && $listing_review->qualityservices < 1) <span class="rated">
+                                                                                                        @elseif($listing_review->quality_services >= 0.5 && $listing_review->quality_services < 1) <span class="rated">
                                                                                                             <i class="fa fa-star-half"></i>
                                                                                                             <i class="far fa-star"></i>
                                                                                                             <i class="far fa-star"></i>
@@ -819,7 +825,7 @@
                                                                                 <div class="review-list">
                                                                                     <div class="review-for">Value of money</div>
                                                                                     <div class="review-rating">
-                                                                                        @if($listing_review->valueofmoney == 5)
+                                                                                        @if($listing_review->value_of_money == 5)
                                                                                         <span class="rated">
                                                                                             <i class="fa fa-star"></i>
                                                                                             <i class="fa fa-star"></i>
@@ -827,14 +833,14 @@
                                                                                             <i class="fa  fa-star"></i>
                                                                                             <i class="fa  fa-star"></i>
                                                                                         </span>
-                                                                                        @elseif($listing_review->valueofmoney >= 4.5 && $listing_review->valueofmoney < 5) <span class="rated">
+                                                                                        @elseif($listing_review->value_of_money >= 4.5 && $listing_review->value_of_money < 5) <span class="rated">
                                                                                             <i class="fa fa-star"></i>
                                                                                             <i class="fa fa-star"></i>
                                                                                             <i class="fa fa-star"></i>
                                                                                             <i class="fa  fa-star"></i>
                                                                                             <i class="fa  fa-star-half"></i>
                                                                                             </span>
-                                                                                            @elseif($listing_review->valueofmoney >= 4)
+                                                                                            @elseif($listing_review->value_of_money >= 4)
                                                                                             <span class="rated">
                                                                                                 <i class="fa fa-star"></i>
                                                                                                 <i class="fa fa-star"></i>
@@ -842,14 +848,14 @@
                                                                                                 <i class="fa  fa-star"></i>
                                                                                                 <i class="far  fa-star"></i>
                                                                                             </span>
-                                                                                            @elseif($listing_review->valueofmoney >= 3.5 && $listing_review->valueofmoney < 4) <span class="rated">
+                                                                                            @elseif($listing_review->value_of_money >= 3.5 && $listing_review->value_of_money < 4) <span class="rated">
                                                                                                 <i class="fa fa-star"></i>
                                                                                                 <i class="fa fa-star"></i>
                                                                                                 <i class="fa fa-star"></i>
                                                                                                 <i class="fa  fa-star-half"></i>
                                                                                                 <i class="far  fa-star"></i>
                                                                                                 </span>
-                                                                                                @elseif($listing_review->valueofmoney >= 3)
+                                                                                                @elseif($listing_review->value_of_money >= 3)
                                                                                                 <span class="rated">
                                                                                                     <i class="fa fa-star"></i>
                                                                                                     <i class="fa fa-star"></i>
@@ -857,14 +863,14 @@
                                                                                                     <i class="far  fa-star"></i>
                                                                                                     <i class="far  fa-star"></i>
                                                                                                 </span>
-                                                                                                @elseif($listing_review->valueofmoney >= 2.5 && $listing_review->valueofmoney < 3) <span class="rated">
+                                                                                                @elseif($listing_review->value_of_money >= 2.5 && $listing_review->value_of_money < 3) <span class="rated">
                                                                                                     <i class="fa fa-star"></i>
                                                                                                     <i class="fa fa-star"></i>
                                                                                                     <i class="fa fa-star-half"></i>
                                                                                                     <i class="far  fa-star"></i>
                                                                                                     <i class="far  fa-star"></i>
                                                                                                     </span>
-                                                                                                    @elseif($listing_review->valueofmoney >= 2)
+                                                                                                    @elseif($listing_review->value_of_money >= 2)
                                                                                                     <span class="rated">
                                                                                                         <i class="fa fa-star"></i>
                                                                                                         <i class="fa fa-star"></i>
@@ -872,14 +878,14 @@
                                                                                                         <i class="far  fa-star"></i>
                                                                                                         <i class="far  fa-star"></i>
                                                                                                     </span>
-                                                                                                    @elseif($listing_review->valueofmoney >= 1.5 && $listing_review->valueofmoney < 2) <span class="rated">
+                                                                                                    @elseif($listing_review->value_of_money >= 1.5 && $listing_review->value_of_money < 2) <span class="rated">
                                                                                                         <i class="fa fa-star"></i>
                                                                                                         <i class="fa fa-star-half"></i>
                                                                                                         <i class="far fa-star"></i>
                                                                                                         <i class="far  fa-star"></i>
                                                                                                         <i class="far  fa-star"></i>
                                                                                                         </span>
-                                                                                                        @elseif($listing_review->valueofmoney >= 1)
+                                                                                                        @elseif($listing_review->value_of_money >= 1)
                                                                                                         <span class="rated">
                                                                                                             <i class="fa fa-star"></i>
                                                                                                             <i class="far fa-star"></i>
@@ -887,7 +893,7 @@
                                                                                                             <i class="far  fa-star"></i>
                                                                                                             <i class="far  fa-star"></i>
                                                                                                         </span>
-                                                                                                        @elseif($listing_review->valueofmoney >= 0.5 && $listing_review->valueofmoney < 1) <span class="rated">
+                                                                                                        @elseif($listing_review->value_of_money >= 0.5 && $listing_review->value_of_money < 1) <span class="rated">
                                                                                                             <i class="fa fa-star-half"></i>
                                                                                                             <i class="far fa-star"></i>
                                                                                                             <i class="far fa-star"></i>
@@ -904,7 +910,7 @@
                                                                                                             </span>
                                                                                                             @endif
                                                                                     </div>
-                                                                                    <div class="review-number">{{ number_format($listing_review->valueofmoney,1) }}</div>
+                                                                                    <div class="review-number">{{ number_format($listing_review->value_of_money,1) }}</div>
                                                                                 </div>
                                                                             </div>
                                                                             <!-- /.review-list -->

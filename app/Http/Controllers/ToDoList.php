@@ -66,7 +66,7 @@ class ToDoList extends Controller
         $edittaskdate = $request->input('edittaskdate');
         $edittaskstatus = $request->input('edittaskstatus');
 
-        $AddTask = AddTask::where('id', $edittaskid)->get();
+        $AddTask = AddTask::where('id', $edittaskid)->first();
         
         $AddTask->couple_id = Auth::user()->id;
         $AddTask->task_title = $edittasktitle;

@@ -1,7 +1,9 @@
 $(function() {
     var ms1 = $('#ms1').magicSuggest({
         data: [
-            
+            '4',
+            '8',
+            '12',
         ],
     });
 });

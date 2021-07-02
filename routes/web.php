@@ -89,7 +89,7 @@ Route::middleware('auth')->group(function () {
 
     /** Budget routes */
     Route::get('couple-budget', 'Budget@index');
-Route::post('save-budget', 'Budget@savebudget');
+    Route::post('save-budget', 'Budget@savebudget');
     Route::post('delete-budget', 'Budget@deletebudget');
     /** Budget routes ends */
 

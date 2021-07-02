@@ -1716,8 +1716,8 @@
     <script>
     function initMap() {
         var uluru = {
-            lat: {{ $listing->latitude }},
-            lng: {{ $listing->longitude }}
+            lat: 23.0732195,
+            lng: 72.5646902
         };
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 17,
@@ -1726,7 +1726,7 @@
         var marker = new google.maps.Marker({
             position: uluru,
             map: map,
-            icon: '{{ asset('images') }}/map-pin.jpg',
+            icon: "{{ asset('images/map-pin.png') }}",
         });
     }
     </script>

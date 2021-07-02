@@ -13,11 +13,13 @@ class Whislist extends Controller
     {
         $user = Auth::user();
 
-        $wishlist = WishList::where('user_id', $user->id)->get();
+        $wishlists = WishList::with('listings')->where('user_id', $user->id)->get();
+
+        $count = WishList::with('listings')->where('user_id', $user->id)->count();
 
         return view(
             'couples.wishlist',
-            ['users' => $user, 'wishlist' => $wishlist]
+            ['users' => $user, 'wishlists' => $wishlists, 'count' => $count]
         );
     }
 

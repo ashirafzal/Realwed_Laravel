@@ -205,48 +205,42 @@
             <div class="venue-thumbnail-carousel">
                 <div class="owl-carousel owl-theme owl-venue-thumb-second">
                     @foreach($listing as $listing)
-                    <div class="item">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="vendor-thumbnail">
-                                <!-- Vendor thumbnail -->
-                                <div class="vendor-img zoomimg">
-                                    <!-- Vendor img -->
-                                    <a href="list-detail/{{$listing->id}}"><img style="width:400px; height:250px;" src="{{asset('userimage')}}/{{$listing->filebutton}}" alt=""  class="img-fluid"></a>
-                                    <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
-                                </div>
-                                <!-- /.Vendor img -->
-                                <div class="vendor-content">
-                                    <!-- Vendor Content -->
-                                    <h2 class="vendor-title"><a href="list-detail/{{$listing->id}}" class="title">{{$listing->title}}</a></h2>
-                                    <p class="vendor-address">{{$listing->city}} , {{$listing->country}}</p>
-                                </div>
-                                <!-- /.Vendor Content -->
-                                <div class="vendor-meta">
-                                    <div class="vendor-meta-item vendor-meta-item-bordered">
-                                        <span class="vendor-price">
-                                        {{$listing->price}}
-                                </span>
-                                        <span class="vendor-text">Start From</span></div>
-                                    <div class="vendor-meta-item vendor-meta-item-bordered">
-                                        <span class="vendor-guest">
-                                        {{$listing->seat}}
-                                </span>
-                                        <span class="vendor-text">Guest</span>
+                        <div class="item">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="vendor-thumbnail">
+                                    <div class="vendor-img zoomimg">
+                                        <a href="list-detail/{{$listing->id}}"><img style="width:400px; height:250px;" src="{{asset('userimage')}}/{{$listing->filebutton}}" alt=""  class="img-fluid"></a>
+                                        <div class="wishlist-sign"><a href="#" class="btn-wishlist"><i class="fa fa-heart"></i></a></div>
                                     </div>
-                                    <div class="vendor-meta-item vendor-meta-item-bordered">
-                                        <span class="rating-star">
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rated"></i>
-                                    <i class="fa fa-star rate-mute"></i> 
+                                    <div class="vendor-content">
+                                        <h2 class="vendor-title"><a href="list-detail/{{$listing->id}}" class="title">{{$listing->title}}</a></h2>
+                                        <p class="vendor-address">{{$listing->city}} , {{$listing->country}}</p>
+                                    </div>
+                                    <div class="vendor-meta">
+                                        <div class="vendor-meta-item vendor-meta-item-bordered">
+                                            <span class="vendor-price">
+                                            {{$listing->price}}
                                     </span>
-                                        <span class="rating-count vendor-text">(20)</span></div>
+                                            <span class="vendor-text">Start From</span></div>
+                                        <div class="vendor-meta-item vendor-meta-item-bordered">
+                                            <span class="vendor-guest">
+                                            {{$listing->seat}}
+                                    </span>
+                                            <span class="vendor-text">Guest</span>
+                                        </div>
+                                        <div class="vendor-meta-item vendor-meta-item-bordered">
+                                            <span class="rating-star">
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star rate-mute"></i> 
+                                        </span>
+                                            <span class="rating-count vendor-text">(20)</span></div>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- /.Vendor thumbnail -->
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -366,14 +360,14 @@
                             <!-- real wedding block -->
                             <div class="real-wedding-img zoomimg">
                                 <!-- real wedding img -->
-                                <a href="#"><img src="{{asset('userimage')}}/{{$couplewebsite->rsvpformpic}}" style="height:300px;" class="img-fluid"></a>
+                                <a href="#"><img src="{{asset('userimage')}}/{{$couplewebsite->rsvp_form_pic}}" style="height:300px;" class="img-fluid"></a>
                             </div>
                             <!-- /.real wedding img -->
                             <div class="real-wedding-content ">
                                 <!-- real wedding content -->
-                                <h3 class="real-wedding-title"><a href="http://127.0.0.1:8000/couple-website/{{ $couplewebsite->id }}" class="title">{{ $couplewebsite->couplename }}</a></h3>
-                                <div class="real-wedding-meta"><span class="real-wedding-date">{{ $couplewebsite->weddingdate }}</span> 
-                                <span class="real-wedding-place pl-3"><i class="fas fa-map-marker-alt pr-1"></i>{{ $couplewebsite->weddingplace }}</span>
+                                <h3 class="real-wedding-title"><a href="http://127.0.0.1:8000/couple-website/{{ $couplewebsite->id }}" class="title">{{ $couplewebsite->couple_name }}</a></h3>
+                                <div class="real-wedding-meta"><span class="real-wedding-date">{{ $couplewebsite->wedding_date }}</span> 
+                                <span class="real-wedding-place pl-3"><i class="fas fa-map-marker-alt pr-1"></i>{{ $couplewebsite->wedding_place }}</span>
                                 </div>
                             </div>
                             <!-- /.real wedding img -->

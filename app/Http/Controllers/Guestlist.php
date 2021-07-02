@@ -70,10 +70,10 @@ class Guestlist extends Controller
         $GuestListCouple = new GuestListCouple();
 
         $GuestListCouple->couple_id = $user->id;
-        $GuestListCouple->couple_firstname = $couple_firstname;
-        $GuestListCouple->couple_lastname = $couple_lastname;
-        $GuestListCouple->couple_partnerfname = $couple_partnerfname;
-        $GuestListCouple->couple_partnerlname = $couple_partnerlname;
+        $GuestListCouple->couple_first_name = $couple_firstname;
+        $GuestListCouple->couple_last_name = $couple_lastname;
+        $GuestListCouple->couple_partner_fname = $couple_partnerfname;
+        $GuestListCouple->couple_partner_lname = $couple_partnerlname;
         $GuestListCouple->couple_group = $couple_group;
         $GuestListCouple->couple_address = $couple_address;
         $GuestListCouple->couple_address2 = $couple_address2;

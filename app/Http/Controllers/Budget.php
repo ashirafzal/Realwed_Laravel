@@ -61,7 +61,7 @@ class Budget extends Controller
         if ($count > 0) {
             echo json_encode(['success' => 'Budget already added please edit budget or delete previous budget to add new budget .']);
         } else {
-            $coupleid = $user;
+            $coupleid = $user->id;
 
             $locationfees = $request->input('locationfees');
             $locationfees_estimate = $request->input('locationfees_estimate');
@@ -151,11 +151,11 @@ class Budget extends Controller
             $HairAndMakeup = new HairAndMakeup();
 
             $HairAndMakeup->couple_id = $coupleid;
-            $HairAndMakeup->hairandmakeup = $hairandmakeup;
-            $HairAndMakeup->hairandmakeup_estimate = $hairandmakeup_estimate;
-            $HairAndMakeup->hairandmakeup_actual = $hairandmakeup_actual;
-            $HairAndMakeup->hairandmakeup_paid = $hairandmakeup_paid;
-            $HairAndMakeup->hairandmakeup_pending = $hairandmakeup_pending;
+            $HairAndMakeup->hair_and_makeup = $hairandmakeup;
+            $HairAndMakeup->hair_and_makeup_estimate = $hairandmakeup_estimate;
+            $HairAndMakeup->hair_and_makeup_actual = $hairandmakeup_actual;
+            $HairAndMakeup->hair_and_makeup_paid = $hairandmakeup_paid;
+            $HairAndMakeup->hair_and_makeup_pending = $hairandmakeup_pending;
             $HairAndMakeup->estimate_total = $hairandmakeup_estimate_total;
             $HairAndMakeup->actual_total = $hairandmakeup_actual_total;
             $HairAndMakeup->paid_total = $hairandmakeup_paid_total;
@@ -274,11 +274,11 @@ class Budget extends Controller
             $PrintedMaterials = new PrintedMaterials();
 
             $PrintedMaterials->couple_id = $coupleid;
-            $PrintedMaterials->savethedates = $savethedates;
-            $PrintedMaterials->savethedates_estimate = $savethedates_estimate;
-            $PrintedMaterials->savethedates_actual = $savethedates_actual;
-            $PrintedMaterials->savethedates_paid = $savethedates_paid;
-            $PrintedMaterials->savethedates_pending = $savethedates_pending;
+            $PrintedMaterials->save_the_dates = $savethedates;
+            $PrintedMaterials->save_the_dates_estimate = $savethedates_estimate;
+            $PrintedMaterials->save_the_dates_actual = $savethedates_actual;
+            $PrintedMaterials->save_the_dates_paid = $savethedates_paid;
+            $PrintedMaterials->save_the_dates_pending = $savethedates_pending;
             $PrintedMaterials->invitations = $invitations;
             $PrintedMaterials->invitations_estimate = $invitations_estimate;
             $PrintedMaterials->invitations_actual = $invitations_actual;
@@ -310,11 +310,11 @@ class Budget extends Controller
             $Cake = new Cake();
 
             $Cake->couple_id = $coupleid;
-            $Cake->cakecuttingfee =  $cakecuttingfee;
-            $Cake->cakecuttingfee_estimate = $cakecuttingfee_estimate;
-            $Cake->cakecuttingfee_actual = $cakecuttingfee_actual;
-            $Cake->cakecuttingfee_paid = $cakecuttingfee_paid;
-            $Cake->cakecuttingfee_pending = $cakecuttingfee_pending;
+            $Cake->cake_cutting_fee =  $cakecuttingfee;
+            $Cake->cake_cutting_fee_estimate = $cakecuttingfee_estimate;
+            $Cake->cake_cutting_fee_actual = $cakecuttingfee_actual;
+            $Cake->cake_cutting_fee_paid = $cakecuttingfee_paid;
+            $Cake->cake_cuttingfee_pending = $cakecuttingfee_pending;
             $Cake->estimate_total = $cakecuttingfee_estimate_total;
             $Cake->actual_total = $cakecuttingfee_actual_total;
             $Cake->paid_total = $cakecuttingfee_paid_total;
